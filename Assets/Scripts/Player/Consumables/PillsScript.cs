@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PillsScript : MonoBehaviour
 {
-    private bool tookPills = false;
     private int healthAmount = 2;
-    private int pillsCount = 0;
 
     public void GainHealth()
     {
@@ -19,8 +17,6 @@ public class PillsScript : MonoBehaviour
         if (healthScript && healthScript.CanHealAmount(healthAmount))
         {
             healthScript.HealthRegen(healthAmount);
-            tookPills = true;
-            pillsCount--;
         }
 
 
