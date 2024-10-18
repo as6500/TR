@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DamageToPlayer : MonoBehaviour
+{
+    [SerializeField] private float DamageToDeal = 3f;
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            HealthScript healthScript = collider.GetComponent<HealthScript>();
+            if (healthScript)
+            {
+                healthScript.DealDamage(DamageToDeal);
+            }
+        }
+    }
+    //    //DontDestroyOnLoad(gameObject); //do not destroy this when transitioning between scenes
+
+}
