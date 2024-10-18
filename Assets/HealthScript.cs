@@ -49,4 +49,9 @@ public class HealthScript : MonoBehaviour
     {
         return normalizedHealth < 1.0f;
     }
+
+    public bool CanHeal(bool heal)
+    {
+        return canHeal;
+    }
 }

@@ -16,6 +16,4 @@ public class DamageToPlayer : MonoBehaviour
             }
         }
     }
-    //    //DontDestroyOnLoad(gameObject); //do not destroy this when transitioning between scenes
-
 }
