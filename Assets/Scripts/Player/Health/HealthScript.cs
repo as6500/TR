@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 [System.Serializable]
@@ -13,6 +14,7 @@ public class HealthScript : MonoBehaviour
     private float currentHealth = 0.0f;
     private float normalizedHealth = 0.0f;
     private bool canHeal = false;
+    [SerializeField] PillsScript pillsScript;
 
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
 
@@ -22,6 +24,16 @@ public class HealthScript : MonoBehaviour
         normalizedHealth = currentHealth / maxHealth;
 
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+
+        pillsScript = gameObject.GetComponent<PillsScript>();
+    }
+
+    private void Update()
+    {               
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            pillsScript.GainHealth();
+        }
     }
 
     public void DealDamage(float damageAmount)
