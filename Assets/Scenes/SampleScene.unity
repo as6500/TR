@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 553287222}
   - component: {fileID: 553287224}
   m_Layer: 0
-  m_Name: Isometric Diamond
+  m_Name: AntiRadiationFlask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 624912980}
   - component: {fileID: 624912983}
   m_Layer: 0
-  m_Name: Hexagon Flat-Top
+  m_Name: Pills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7e992865c600f4e831c4ff56e4a957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 12
+  maxHealth: 100
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 1406284875}
   - component: {fileID: 1406284874}
   m_Layer: 0
-  m_Name: Hexagon Pointed-Top
+  m_Name: Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
