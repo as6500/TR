@@ -11,12 +11,18 @@ public class PillsScript : MonoBehaviour
     public void GainHealth()
     {
         HealthScript healthScript = gameObject.GetComponent<HealthScript>();
+        if (healthScript.CanHealAmount(healthAmount) == false)
+        {
+            healthScript.CanHeal(false);
+        }
+
         if (healthScript && healthScript.CanHealAmount(healthAmount))
         {
-            Debug.Log("Hello!");
             healthScript.HealthRegen(healthAmount);
             tookPills = true;
             pillsCount--;
         }
+
+
     }
 }
