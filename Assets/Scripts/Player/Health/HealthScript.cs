@@ -14,7 +14,9 @@ public class HealthScript : MonoBehaviour
     private float currentHealth = 0.0f;
     private float normalizedHealth = 0.0f;
     private bool canHeal = false;
-    [SerializeField] PillsScript pillsScript;
+    private int pillsCount = 10; //change later
+    private PillsScript pillsScript;
+    [SerializeField] private PillsUIScript pillsUIScript;
 
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
 
@@ -26,13 +28,14 @@ public class HealthScript : MonoBehaviour
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
 
         pillsScript = gameObject.GetComponent<PillsScript>();
-    }
+	}
 
     private void Update()
     {               
         if (Input.GetKeyDown(KeyCode.Q))
         {
             pillsScript.GainHealth();
+            pillsUIScript.PillCount();
         }
     }
 

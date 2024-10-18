@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  pillsScript: {fileID: 0}
+  pillsUIScript: {fileID: 1683019373}
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1461,7 +1461,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
+    m_Font: {fileID: 12800000, guid: f95147a9bab9fe649b8070170fa7ebd2, type: 3}
     m_FontSize: 10
     m_FontStyle: 1
     m_BestFit: 0

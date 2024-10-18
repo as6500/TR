@@ -17,8 +17,12 @@ public class PillsScript : MonoBehaviour
         if (healthScript && healthScript.CanHealAmount(healthAmount))
         {
             healthScript.HealthRegen(healthAmount);
+
         }
+    }
 
-
+    public bool Healed(bool healed)
+    {
+        return healed;
     }
 }

@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PillsUIScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	private int pillsQuantity = 10;
+	private bool healed = false;
+	private PillsScript pillsScript;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Start()
+	{
+		pillsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PillsScript>();
+		gameObject.GetComponent<Text>().text = pillsQuantity.ToString();
+	}
+
+	public void PillCount()
+	{
+		if (pillsScript.Healed(true) && pillsQuantity > 0)
+		{
+			pillsQuantity--;
+			gameObject.GetComponent<Text>().text = pillsQuantity.ToString();
+		}
+	}
 }
