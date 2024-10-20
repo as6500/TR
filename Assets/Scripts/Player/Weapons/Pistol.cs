@@ -8,30 +8,25 @@ public class Pistol : MonoBehaviour
 {
     [Header("Pistol Settings")]
     [SerializeField] private float rechargeDelaySeconds = 0.1f;
+    [SerializeField] private float pistolDist = 1.5f;
+    private bool reloading = false;
 
     [Header("Pistol Sprites")]
-    [SerializeField] private GameObject rightSide;
-    [SerializeField] private GameObject leftSide;
-    [SerializeField] private GameObject topSide;
-    [SerializeField] private GameObject downSide;
+    [SerializeField] private GameObject horizontalSprite;
+    [SerializeField] private GameObject verticalSprite;
 
     [Header("Bullets")]
     [SerializeField] private GameObject prefabBullets;
     [SerializeField] private GameObject storeBullets;
+    private int bulletsMag;
+
+    [Header("UI")]
     [SerializeField] private BulletsUIScript pocketBulletsUI;
     [SerializeField] private PistolUI magBulletsUI;
     [SerializeField] private GameObject[] bullets;
 
     [Header("FlashLight")]
     [SerializeField] private GameObject flashLight;
-
-
-    private bool reloading = false;
-
-    private int bulletsMag;
-
-    //para as funções crazy
-    private float pistolDist = 1.5f;
 
     private void Update()
     {
@@ -124,33 +119,15 @@ public class Pistol : MonoBehaviour
 
     private void SetSpriteAng(float angle)
     {
-        if (angle < 45 && angle > -45)
+        if ((angle > 45 && angle < 135) || (angle < -45 && angle > -135))
         {
-            rightSide.SetActive(true);
-            topSide.SetActive(false);
-            leftSide.SetActive(false);
-            downSide.SetActive(false);
-        }
-        else if (angle > 45 && angle < 135)
-        {
-            rightSide.SetActive(false);
-            topSide.SetActive(true);
-            leftSide.SetActive(false);
-            downSide.SetActive(false);
-        }
-        else if (angle < -45 && angle > -135)
-        {
-            rightSide.SetActive(false);
-            topSide.SetActive(false);
-            leftSide.SetActive(false);
-            downSide.SetActive(true);
+            horizontalSprite.SetActive(false);
+            verticalSprite.SetActive(true);
         }
         else
         {
-            rightSide.SetActive(false);
-            topSide.SetActive(false);
-            leftSide.SetActive(true);
-            downSide.SetActive(false);
+            horizontalSprite.SetActive(true);
+            verticalSprite.SetActive(false);
         }
     }
 
