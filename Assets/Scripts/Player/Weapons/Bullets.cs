@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
+    [Header("Bullets Settings")]
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float lifeTime = 5.0f;
-    [SerializeField] private GameObject startPoint;
-
     private Vector3 bulletVelocity = Vector3.zero;
-
     private bool dying = false;
     private Rigidbody2D rb;
+
+    [Header("Bullets Origin")]
+    [SerializeField] private GameObject startPoint;
 
     private void Start()
     {
@@ -69,8 +70,8 @@ public class Bullets : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //Mais funções bue fixes
-    Vector3 Norm(Vector3 vec)
+    //Funções bue fixes
+    private Vector3 Norm(Vector3 vec)
     {
         float mag = Mag(vec);
 
@@ -82,7 +83,7 @@ public class Bullets : MonoBehaviour
         return vec;
     }
 
-    float Mag(Vector3 vec)
+    private float Mag(Vector3 vec)
     {
         return Mathf.Sqrt((vec.x * vec.x) + (vec.y * vec.y));
     }

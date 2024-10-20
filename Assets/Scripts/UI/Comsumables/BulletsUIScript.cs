@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class BulletsUIScript : MonoBehaviour
 {
-    private Text bulletsText;
+    [Header("Bullets")]
     [SerializeField] private int pocketBullets = 0;
+    private Text bulletsText;
 
     // Start is called before the first frame update
     void Start()
