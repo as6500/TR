@@ -2054,8 +2054,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeDelaySeconds: 0.1
   pistolDist: 1.5
-  mag: []
-  reloading: 0
+  mag:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   horizontalSprite: {fileID: 1573040157}
   verticalSprite: {fileID: 548700998}
   prefabBullets: {fileID: 3873132781566433826, guid: 1773444502ae8e142b90b637bc95a48e, type: 3}
