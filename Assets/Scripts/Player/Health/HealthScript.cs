@@ -31,10 +31,10 @@ public class HealthScript : MonoBehaviour
 	}
 
     private void Update()
-    {               
-        if (Input.GetKeyDown(KeyCode.Q))
+    {
+		if (Input.GetKeyDown(KeyCode.Q) && currentHealth < 100.0f)
         {
-            pillsScript.GainHealth();
+			pillsScript.GainHealth();
             pillsUIScript.PillCount();
         }
     }
@@ -62,11 +62,15 @@ public class HealthScript : MonoBehaviour
 
     public bool CanHealAmount(float amount)
     {
+        if (normalizedHealth >= 1.0f)
+        {
+            canHeal = false;
+        }
         return normalizedHealth < 1.0f;
     }
 
     public bool CanHeal(bool heal)
     {
-        return canHeal;
+		return canHeal;
     }
 }

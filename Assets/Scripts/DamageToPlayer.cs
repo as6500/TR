@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageToPlayer : MonoBehaviour
 {
-    [SerializeField] private float DamageToDeal = 3f;
+    [SerializeField] private float DamageToDeal = 3.0f;
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player"))
@@ -12,7 +12,7 @@ public class DamageToPlayer : MonoBehaviour
             HealthScript healthScript = collider.GetComponent<HealthScript>();
             if (healthScript)
             {
-                healthScript.DealDamage(DamageToDeal);
+				healthScript.DealDamage(DamageToDeal);
             }
         }
     }
