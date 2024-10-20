@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponsUiManager : MonoBehaviour
 {
     private int pistolNum = 1;
-    private int stickNum = 2;
 
     [SerializeField] private GameObject pistolMain;
     [SerializeField] private GameObject stickMain;
@@ -15,31 +15,39 @@ public class WeaponsUiManager : MonoBehaviour
 
     void Start()
     {
-        MainWeaponChanged(1);
+        UIChanged(1);
     }
 
-    public void MainWeaponChanged(int weapon)
+    public void UIChanged(int weapon = -1)
     {
+        if (weapon != -1)
+        {
+            ChangeWeapon(weapon);
+        }
+    }
+
+    private void ChangeWeapon(int weapon)
+    {
+        bool mainWeaponPistol;
+
         if (pistolNum == weapon)
         {
-            pistolMain.SetActive(true);
-            stickSec.SetActive(true);
-
-            pistolSec.SetActive(false);
-            stickMain.SetActive(false);
-        }
-        else if(stickNum == weapon)
-        {
-            pistolMain.SetActive(false);
-            stickSec.SetActive(false);
-
-            pistolSec.SetActive(true);
-            stickMain.SetActive(true);
+            mainWeaponPistol = true;
         }
         else
         {
-            Debug.LogError("No Weapon Selected");
+            mainWeaponPistol = false;
         }
+
+        ApplyChanges(mainWeaponPistol);
+    }
+
+    private void ApplyChanges(bool b)
+    {
+        pistolMain.SetActive(b);
+        pistolSec.SetActive(!b);
+        stickSec.SetActive(b);
+        stickMain.SetActive(!b);
     }
 
     void Update()
