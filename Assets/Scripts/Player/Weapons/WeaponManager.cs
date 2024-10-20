@@ -39,6 +39,6 @@ public class WeaponManager : MonoBehaviour
             weaponNum = 2;
         }
 
-        ui.MainWeaponChanged(weaponNum);
+        ui.UIChanged(weaponNum);
     }
 }
