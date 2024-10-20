@@ -32,11 +32,8 @@ public class HealthScript : MonoBehaviour
 
     private void Update()
     {
-		Debug.Log("currentHealth: " + currentHealth);
 		if (Input.GetKeyDown(KeyCode.Q) && currentHealth < 100.0f)
         {
-            Debug.Log("canHeal: " + canHeal);
-
 			pillsScript.GainHealth();
             pillsUIScript.PillCount();
         }

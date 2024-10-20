@@ -12,7 +12,6 @@ public class DamageToPlayer : MonoBehaviour
             HealthScript healthScript = collider.GetComponent<HealthScript>();
             if (healthScript)
             {
-				Debug.Log("DamageToDeal: " + DamageToDeal);
 				healthScript.DealDamage(DamageToDeal);
             }
         }

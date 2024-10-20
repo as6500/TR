@@ -16,7 +16,6 @@ public class PillsScript : MonoBehaviour
 
         if (healthScript && healthScript.CanHealAmount(healthAmount))
         {
-            Debug.Log("healthAmount: " + healthAmount);
             healthScript.HealthRegen(healthAmount);
 
         }
