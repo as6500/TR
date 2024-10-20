@@ -9,6 +9,7 @@ public class Pistol : MonoBehaviour
     [Header("Pistol Settings")]
     [SerializeField] private float rechargeDelaySeconds = 0.1f;
     [SerializeField] private float pistolDist = 1.5f;
+    [SerializeField] private GameObject[] mag;
     private bool reloading = false;
 
     [Header("Pistol Sprites")]
@@ -23,7 +24,6 @@ public class Pistol : MonoBehaviour
     [Header("UI")]
     [SerializeField] private BulletsUIScript pocketBulletsUI;
     [SerializeField] private PistolUI magBulletsUI;
-    [SerializeField] private GameObject[] bullets;
 
     [Header("FlashLight")]
     [SerializeField] private GameObject flashLight;
@@ -48,6 +48,11 @@ public class Pistol : MonoBehaviour
         PistolPosition();
         FlashLightAngle();
         GunAng();
+    }
+
+    public void ResetReload()
+    {
+        reloading = false;
     }
 
     private void PistolPosition()
@@ -83,20 +88,13 @@ public class Pistol : MonoBehaviour
     {
         float scaleY = transform.localScale.y;
 
-
         if (sub < 0)
         {
-            if (scaleY > 0)
-            {
-                scaleY *= -1;
-            }
+            if (scaleY > 0) scaleY *= -1;
         }
         else
         {
-            if (scaleY < 0)
-            {
-                scaleY *= -1;
-            }
+            if (scaleY < 0) scaleY *= -1;
         }
 
         transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
@@ -135,28 +133,28 @@ public class Pistol : MonoBehaviour
     {
         reloading = true;
 
-        for (int i = 0; i < bullets.Length; i++)
+        for (int i = 0; i < mag.Length; i++)
         {
-            if (bullets[i] == null && pocketBulletsUI.PocketBullets() > 0)
+            if (mag[i] == null && pocketBulletsUI.PocketBullets() > 0)
             {
                 yield return new WaitForSeconds(rechargeDelaySeconds);
-                bullets[i] = Instantiate(prefabBullets, storeBullets.transform);
+                mag[i] = Instantiate(prefabBullets, storeBullets.transform);
                 pocketBulletsUI.AddOrRmvBullets(-1);
                 AddOrRmvBullets(1);
                 ChangeUIText();
             }
         }
-        
-        reloading = false;
+
+        ResetReload();
     }
 
     private void Shoot()
     {
         if (MagBullets() > 0)
         {
-            for (int i = 0; i < bullets.Length; i++)
+            for (int i = 0; i < mag.Length; i++)
             {
-                if (bullets[i] != null && !bullets[i].activeSelf)
+                if (mag[i] != null && !mag[i].activeSelf)
                 {
                     StartBullet(i);
                     ChangeUIText();
@@ -169,8 +167,8 @@ public class Pistol : MonoBehaviour
 
     private void StartBullet(int i)
     {
-        bullets[i].SetActive(true);
-        bullets[i] = null;
+        mag[i].SetActive(true);
+        mag[i] = null;
     }
 
     private void ChangeUIText()
@@ -181,9 +179,9 @@ public class Pistol : MonoBehaviour
     public int MagBullets()
     {
         bulletsMag = 0;
-        for (int i = 0; i < bullets.Length; i++)
+        for (int i = 0; i < mag.Length; i++)
         {
-            if (bullets[i] != null)
+            if (mag[i] != null)
             {
                 bulletsMag++;
             }
@@ -204,7 +202,7 @@ public class Pistol : MonoBehaviour
 
     //Funções bué crazy
 
-    Vector3 Norm(Vector3 vec)
+    private Vector3 Norm(Vector3 vec)
     {
         float mag = Mag(vec);
 
@@ -215,7 +213,7 @@ public class Pistol : MonoBehaviour
         return vec;
     }
 
-    float Mag(Vector3 vec)
+    private float Mag(Vector3 vec)
     {
         return Mathf.Sqrt((vec.x * vec.x) + (vec.y * vec.y));
     }

@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class WeaponsUiManager : MonoBehaviour
 {
+
+    [Header("Pistol Sprites")]
+    [SerializeField] private GameObject pistolMain;
     private int pistolNum = 1;
 
-    [SerializeField] private GameObject pistolMain;
+    [Header("Stick Sprites")]
     [SerializeField] private GameObject stickMain;
-
-    [SerializeField] private GameObject pistolSec;
-    [SerializeField] private GameObject stickSec;
 
     void Start()
     {
@@ -45,8 +45,6 @@ public class WeaponsUiManager : MonoBehaviour
     private void ApplyChanges(bool b)
     {
         pistolMain.SetActive(b);
-        pistolSec.SetActive(!b);
-        stickSec.SetActive(b);
         stickMain.SetActive(!b);
     }
 

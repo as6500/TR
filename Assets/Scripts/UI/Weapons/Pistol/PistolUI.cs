@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PistolUI : MonoBehaviour
 {
+    [Header("Bullets")]
     [SerializeField] private Text bulletsText;
     [SerializeField] private Pistol bullets;
 
