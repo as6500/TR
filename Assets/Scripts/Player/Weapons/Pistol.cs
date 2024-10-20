@@ -6,18 +6,28 @@ using UnityEngine;
 
 public class Pistol : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private GameObject storeBullets;
-    [SerializeField] private GameObject flashLight;
+    [Header("Pistol Settings")]
+    [SerializeField] private float rechargeDelaySeconds = 0.1f;
 
+    [Header("Pistol Sprites")]
     [SerializeField] private GameObject rightSide;
     [SerializeField] private GameObject leftSide;
     [SerializeField] private GameObject topSide;
     [SerializeField] private GameObject downSide;
 
-    [SerializeField] private BulletsUIScript pocketBullsUI;
-    [SerializeField] private PistolUI bulletsMagUI;
+    [Header("Bullets")]
+    [SerializeField] private GameObject prefabBullets;
+    [SerializeField] private GameObject storeBullets;
+    [SerializeField] private BulletsUIScript pocketBulletsUI;
+    [SerializeField] private PistolUI magBulletsUI;
     [SerializeField] private GameObject[] bullets;
+
+    [Header("FlashLight")]
+    [SerializeField] private GameObject flashLight;
+
+
+    private bool reloading = false;
+
     private int bulletsMag;
 
     //para as funções crazy
@@ -35,12 +45,13 @@ public class Pistol : MonoBehaviour
             ChangeFlashlightState();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !reloading)
         {
             StartCoroutine(FillPistolMag());
         }
 
         PistolPosition();
+        FlashLightAngle();
         GunAng();
     }
 
@@ -54,6 +65,46 @@ public class Pistol : MonoBehaviour
         Vector3 mult = Norm(sub) * pistolDist;
 
         transform.position = new Vector3((playerP + mult).x, (playerP + mult).y, 0);
+
+        sub = transform.position - playerP;
+
+        ChangeSide(sub.x);
+    }
+
+    private void FlashLightAngle()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(playerP);
+
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        flashLight.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+    }
+
+    private void ChangeSide(float sub)
+    {
+        float scaleY = transform.localScale.y;
+
+
+        if (sub < 0)
+        {
+            if (scaleY > 0)
+            {
+                scaleY *= -1;
+            }
+        }
+        else
+        {
+            if (scaleY < 0)
+            {
+                scaleY *= -1;
+            }
+        }
+
+        transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
     }
 
     private void GunAng()
@@ -105,17 +156,21 @@ public class Pistol : MonoBehaviour
 
     private IEnumerator FillPistolMag()
     {
+        reloading = true;
+
         for (int i = 0; i < bullets.Length; i++)
         {
-            if (bullets[i] == null && pocketBullsUI.PocketBullets() > 0)
+            if (bullets[i] == null && pocketBulletsUI.PocketBullets() > 0)
             {
-                yield return new WaitForSeconds(0.1f);
-                bullets[i] = Instantiate(bulletPrefab, storeBullets.transform);
-                pocketBullsUI.AddOrRmvBullets(-1);
+                yield return new WaitForSeconds(rechargeDelaySeconds);
+                bullets[i] = Instantiate(prefabBullets, storeBullets.transform);
+                pocketBulletsUI.AddOrRmvBullets(-1);
                 AddOrRmvBullets(1);
                 ChangeUIText();
             }
         }
+        
+        reloading = false;
     }
 
     private void Shoot()
@@ -143,7 +198,7 @@ public class Pistol : MonoBehaviour
 
     private void ChangeUIText()
     {
-        bulletsMagUI.ChangeText();
+        magBulletsUI.ChangeText();
     }
 
     public int MagBullets()
