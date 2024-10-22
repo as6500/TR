@@ -7,13 +7,12 @@ public class MovementScript : MonoBehaviour
     private Rigidbody2D myRigidbody;
     [SerializeField] private int VelocityModifier = 4;
 
-    void Start()
+    private void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Movement();
     }
