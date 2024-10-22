@@ -26,7 +26,7 @@ public class AntiRadiationTimer : MonoBehaviour
 			else
 			{
 				timeRemaining = 0;
-				isTimerOn= false;
+				isTimerOn = false;
 			}
 		}
 	}
