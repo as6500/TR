@@ -5,24 +5,16 @@ using UnityEngine.UI;
 
 public class PillsUIScript : MonoBehaviour
 {
-	private int pillsQuantity = 10;
-	private bool healed = false;
-	private PillsScript pillsScript;
-	private HealthScript healthScript;
+	[SerializeField] private PillsScript pillsScript;
 
-	private void Start()
+	public void Start()
 	{
-		pillsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PillsScript>();
-		healthScript = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
-		gameObject.GetComponent<Text>().text = pillsQuantity.ToString();
+		//pillsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PillsScript>();
+		UpdateUIText();
 	}
 
-	public void PillCount()
+	public void UpdateUIText()
 	{
-		if (pillsQuantity > 0)
-		{
-			pillsQuantity--;
-			gameObject.GetComponent<Text>().text = pillsQuantity.ToString();
-		}
+		gameObject.GetComponent<Text>().text = pillsScript.PillsQuantityReturn().ToString();
 	}
 }

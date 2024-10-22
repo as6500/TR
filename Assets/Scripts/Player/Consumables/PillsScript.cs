@@ -6,8 +6,20 @@ using UnityEngine;
 public class PillsScript : MonoBehaviour
 {
 	[SerializeField] private float healthAmount = 30.0f; //amount of health gained in total
-    [SerializeField] private float healingTimeSec = 10.0f;//during 10 seconds
-    [SerializeField] private float delayTimeSec = 2.0f;//2 sec in 2 sec it heals 
+    [SerializeField] private float healingTimeSec = 10.0f;
+    [SerializeField] private float delayTimeSec = 2.0f;//2 sec in 2 sec it heals /during 10 seconds
+	private int pillsQuantity = 10;
+	[SerializeField] private PillsUIScript pillsUIScript;
+
+	public void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Q)) //pills taken
+		{
+			GainHealth();
+			PillCount();
+		}
+	}
+
 	public void GainHealth()
     {
         HealthScript healthScript = gameObject.GetComponent<HealthScript>();
@@ -21,6 +33,20 @@ public class PillsScript : MonoBehaviour
             StartCoroutine(timer(healthScript));
         }
     }
+
+	private void PillCount()
+	{
+		if (pillsQuantity > 0)
+		{
+			pillsQuantity--;
+			pillsUIScript.UpdateUIText();
+		}
+	}
+
+	public int PillsQuantityReturn()
+	{
+		return pillsQuantity;
+	}
 
 	private IEnumerator timer(HealthScript healthScript)
 	{

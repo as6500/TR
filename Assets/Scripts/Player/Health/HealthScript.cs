@@ -29,24 +29,16 @@ public class HealthScript : MonoBehaviour
 
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
 
-        pillsScript = gameObject.GetComponent<PillsScript>();
         antiRadiationScript = gameObject.GetComponent<AntiRadiationScript>();
 
 	}
 
     private void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Q) && currentHealth < 100.0f) //pills taken
-        {
-			pillsScript.GainHealth();
-            pillsUIScript.PillCount();
-        }
-
         if (Input.GetKeyDown(KeyCode.E)) //flasks taken
         {
             antiRadiationScript.GainImmunity();
             antiRadiationFlaskUIScript.FlasksCount();
-
 		}
     }
 
@@ -61,8 +53,11 @@ public class HealthScript : MonoBehaviour
 
     public void HealthRegen(float healAmount)
     {
-        ModifyHealth(healAmount);
-        OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+        if (currentHealth < 100.0f)
+        {
+			ModifyHealth(healAmount);
+			OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+		}
     }
 
     private void ModifyHealth(float modifier)
