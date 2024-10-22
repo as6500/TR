@@ -17,7 +17,6 @@ public class PillsScript : MonoBehaviour
         if (healthScript && healthScript.CanHealAmount(healthAmount))
         {
             healthScript.HealthRegen(healthAmount);
-
         }
     }
 }

@@ -16,7 +16,9 @@ public class HealthScript : MonoBehaviour
     private bool canHeal = false;
     private int pillsCount = 10; //change later
     private PillsScript pillsScript;
+    private AntiRadiationScript antiRadiationScript;
     [SerializeField] private PillsUIScript pillsUIScript;
+    [SerializeField] private AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
 
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
 
@@ -28,15 +30,23 @@ public class HealthScript : MonoBehaviour
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
 
         pillsScript = gameObject.GetComponent<PillsScript>();
+        antiRadiationScript = gameObject.GetComponent<AntiRadiationScript>();
 	}
 
     private void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Q) && currentHealth < 100.0f)
+		if (Input.GetKeyDown(KeyCode.Q) && currentHealth < 100.0f) //pills taken
         {
 			pillsScript.GainHealth();
             pillsUIScript.PillCount();
         }
+
+        if (Input.GetKeyDown(KeyCode.E)) //flasks taken
+        {
+            antiRadiationScript.GainImmunity();
+            antiRadiationFlaskUIScript.FlasksCount();
+
+		}
     }
 
     public void DealDamage(float damageAmount)
