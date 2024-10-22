@@ -5,11 +5,15 @@ using UnityEngine.Rendering;
 
 public class CameraMovement : MonoBehaviour
 {
-    private enum CameraType {FollowPlayerFixed, FollowPlayerDelay, FollowPlayerMouse};
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform followMouseObject;
+    [Header("Camera Settings")]
     [SerializeField] private int speed = 0;
     [SerializeField] private CameraType type;
+    private enum CameraType {FollowPlayerFixed, FollowPlayerDelay, FollowPlayerMouse};
+
+    [Header("Camera Followed Objects")]
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform followMouseObject;
+
 
     private void FixedUpdate()
     {

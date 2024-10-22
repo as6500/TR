@@ -123,16 +123,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: MouseCursor
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.11538462}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 17
+      width: 26
       height: 26
-    spriteID: 2be46ddfb56acab4b86ab912624ad1b6
+    spriteID: 0f1d3c7b045d45342834076213b91a72
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -154,11 +154,11 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 17
+        x: 3
+        y: 3
+        width: 26
         height: 26
-      spriteId: 2be46ddfb56acab4b86ab912624ad1b6
+      spriteId: 0f1d3c7b045d45342834076213b91a72
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -177,4 +177,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 17, y: 26}
+  canvasSize: {x: 32, y: 32}
