@@ -79,4 +79,9 @@ public class HealthScript : MonoBehaviour
     {
 		return canHeal;
     }
+
+	public float CurrentHealthReturn()
+	{
+		return currentHealth;
+	}
 }

@@ -7,7 +7,7 @@ public class PillsUIScript : MonoBehaviour
 {
 	[SerializeField] private PillsScript pillsScript;
 
-	public void Start()
+	private void Start()
 	{
 		//pillsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PillsScript>();
 		UpdateUIText();
