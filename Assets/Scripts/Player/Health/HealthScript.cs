@@ -31,6 +31,7 @@ public class HealthScript : MonoBehaviour
 
         pillsScript = gameObject.GetComponent<PillsScript>();
         antiRadiationScript = gameObject.GetComponent<AntiRadiationScript>();
+
 	}
 
     private void Update()
