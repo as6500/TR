@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
-    [Header("Bullets Settings")]
+    [Header("Bullet Settings")]
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float lifeTime = 5.0f;
     private Vector3 bulletVelocity = Vector3.zero;
     private bool dying = false;
     private Rigidbody2D rb;
 
-    [Header("Bullets Origin")]
+    [Header("Bullet Origin")]
     [SerializeField] private GameObject startPoint;
 
     private void Start()
