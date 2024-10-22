@@ -33,15 +33,6 @@ public class HealthScript : MonoBehaviour
 
 	}
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E)) //flasks taken
-        {
-            antiRadiationScript.GainImmunity();
-            antiRadiationFlaskUIScript.FlasksCount();
-		}
-    }
-
     public void DealDamage(float damageAmount)
     {
         ModifyHealth(-damageAmount);

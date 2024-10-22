@@ -648,6 +648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882f5a4368c2b7c43afa2da5473bb878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: {fileID: 1492299637}
+  antiRadiationFlaskUIScript: {fileID: 1207183093}
 --- !u!1 &882862333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535a66ecf767c054bb6e35a21892d6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  antiRadiationScript: {fileID: 822313643}
 --- !u!1 &1301778496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57531fd746ffea64a92b0fb2e38e4112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemainingMin: 0.5
+  timeRemainingMin: 10
 --- !u!1 &1652619445
 GameObject:
   m_ObjectHideFlags: 0
