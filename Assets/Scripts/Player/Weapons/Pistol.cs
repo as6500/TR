@@ -45,9 +45,9 @@ public class Pistol : MonoBehaviour
             StartCoroutine(FillPistolMag());
         }
 
-        PistolPosition();
+        //PistolPosition();
         FlashLightAngle();
-        GunAng();
+        //GunAng();
     }
 
     public void ResetReload()
@@ -55,21 +55,7 @@ public class Pistol : MonoBehaviour
         reloading = false;
     }
 
-    private void PistolPosition()
-    {
-        Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
 
-        Vector3 sub = mouseP - playerP;
-
-        Vector3 mult = Norm(sub) * pistolDist;
-
-        transform.position = new Vector3((playerP + mult).x, (playerP + mult).y, 0);
-
-        sub = transform.position - playerP;
-
-        ChangeSide(sub.x);
-    }
 
     private void FlashLightAngle()
     {
@@ -84,36 +70,7 @@ public class Pistol : MonoBehaviour
         flashLight.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
     }
 
-    private void ChangeSide(float sub)
-    {
-        float scaleY = transform.localScale.y;
 
-        if (sub < 0)
-        {
-            if (scaleY > 0) scaleY *= -1;
-        }
-        else
-        {
-            if (scaleY < 0) scaleY *= -1;
-        }
-
-        transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
-    }
-
-    private void GunAng()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(playerP);
-
-        mousePos.x = mousePos.x - objectPos.x;
-        mousePos.y = mousePos.y - objectPos.y;
-
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        SetSpriteAng(angle);
-    }
 
     private void SetSpriteAng(float angle)
     {

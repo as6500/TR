@@ -12,14 +12,15 @@ public class EnvironmentManager : MonoBehaviour
     [SerializeField] private float minimNightLight = 0.04f;
 
     [Header("Day Settings")]
-    [SerializeField] private float dayTimeMinutes = 1;
+    [SerializeField] private float dayTimeMinutes = 1f;
     private float dayTimeSeconds;
 
     [Header("Time Settings")]
-    [SerializeField] private float secondsInSeconds = 1;
-    private int currentTimeSeconds = 0;
+    [SerializeField] private float secondsInSeconds = 1f;
+    [SerializeField] private float addToSeconds = 1f;
+    private float currentTimeSeconds = 0f;
 
-    void Start()
+    private void Start()
     {
         dayTimeSeconds = dayTimeMinutes * 60;
         mainLight.intensity = 1;
@@ -30,14 +31,14 @@ public class EnvironmentManager : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsInSeconds);
 
-
         if (currentTimeSeconds >= dayTimeMinutes * 60)
         {
             currentTimeSeconds = 0;
         }
 
-        currentTimeSeconds++;
+        currentTimeSeconds += addToSeconds;
 
+        Debug.Log(currentTimeSeconds);
         StartCoroutine(CountTime());
     }
 
