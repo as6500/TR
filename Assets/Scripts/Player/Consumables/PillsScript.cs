@@ -6,20 +6,22 @@ using UnityEngine;
 
 public class PillsScript : MonoBehaviour
 {
+	private int pillsQuantity = 10;
+	private bool pillsTaken;
 	[SerializeField] private float healthAmount = 30.0f; //amount of health gained in total
     [SerializeField] private float healingTimeSec = 10.0f;
     [SerializeField] private float delayTimeSec = 2.0f;//2 sec in 2 sec it heals /during 10 seconds
-	private int pillsQuantity = 10;
 	[SerializeField] private PillsUIScript pillsUIScript;
 	private HealthScript healthScript;
 	private void Start()
 	{
 		healthScript = gameObject.GetComponent<HealthScript>();
+		pillsTaken = false;
 	}
 
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Q) && healthScript.CurrentHealthReturn() < 100.0f) //pills taken
+		if (Input.GetKeyDown(KeyCode.Q) && healthScript.CurrentHealthReturn() < 100.0f && pillsTaken == false) //pills taken
 		{
 			GainHealth();
 			PillCount();
@@ -44,6 +46,7 @@ public class PillsScript : MonoBehaviour
 		if (pillsQuantity > 0)
 		{
 			pillsQuantity--;
+			pillsTaken = false;
 			pillsUIScript.UpdateUIText();
 		}
 	}
@@ -61,6 +64,7 @@ public class PillsScript : MonoBehaviour
 			{
 				yield return new WaitForSeconds(delayTimeSec);
 				healthScript.HealthRegen((healthAmount / healingTimeSec) * delayTimeSec);
+				pillsTaken = true;
 			}
 			else
 			{
