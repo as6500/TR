@@ -5,21 +5,15 @@ using UnityEngine.UI;
 
 public class AntiRadiationFlaskUIScript : MonoBehaviour
 {
-	private int numberOfFlasks = 5;
-	private AntiRadiationScript antiRadiationScript;
-	private HealthScript healthScript;
+	[SerializeField] private AntiRadiationScript antiRadiationScript;
 	private void Start()
 	{
-		antiRadiationScript = GameObject.FindGameObjectWithTag("Player").GetComponent<AntiRadiationScript>();
-		healthScript = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
-		gameObject.GetComponent<Text>().text = numberOfFlasks.ToString();
+		UpdateTextFlasks();
 	}
-	public void FlasksCount()
+
+	public void UpdateTextFlasks()
 	{
-		if (numberOfFlasks > 0)
-		{
-			numberOfFlasks--;
-			gameObject.GetComponent<Text>().text = numberOfFlasks.ToString();
-		}
+		gameObject.GetComponent<Text>().text = antiRadiationScript.FlasksQuantityReturn().ToString();
 	}
+
 }

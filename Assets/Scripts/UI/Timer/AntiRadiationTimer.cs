@@ -5,37 +5,44 @@ using UnityEngine.UI;
 
 public class AntiRadiationTimer : MonoBehaviour
 {
-	private float timeRemaining = 10;
+	[SerializeField] private float timeRemainingMin = 10.0f;
 	private bool isTimerOn = false;
-	private Text timerText;
+
 
 	public void Start()
 	{
-		isTimerOn = true;
+		isTimerOn = false;
+		timeRemainingMin *= 60;
 	}
 
 	public void Update()
 	{
 		if (isTimerOn == true)
 		{
-			if (timeRemaining > 0)
+			if (timeRemainingMin > 0)
 			{
-				timeRemaining -= Time.deltaTime;
-				timeDisplayed(timeRemaining);
+				timeRemainingMin -= Time.deltaTime;
+				TimeDisplayed(timeRemainingMin);
 			}
 			else
 			{
-				timeRemaining = 0;
+				timeRemainingMin = 0;
+				TimeDisplayed(0);
 				isTimerOn = false;
 			}
 		}
 	}
 
-	public void timeDisplayed(float timeOnScreen)
+	private void TimeDisplayed(float timeOnScreen)
 	{
 		float minutes = Mathf.FloorToInt(timeOnScreen / 60); //calculate the minutes
 		float seconds = Mathf.FloorToInt(timeOnScreen % 60); //calculate the seconds
 
-		timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+		gameObject.GetComponent<Text>().text = string.Format("{0:00}:{1:00}", minutes, seconds);
+	}
+
+	public bool TimerSwitch(bool timerOnOff)
+	{
+		return isTimerOn = timerOnOff;
 	}
 }
