@@ -13,17 +13,9 @@ public class WeaponsUiManager : MonoBehaviour
     [Header("Stick Sprites")]
     [SerializeField] private GameObject stickMain;
 
-    void Start()
+    public void UIChanged(int weapon)
     {
-        UIChanged(1);
-    }
-
-    public void UIChanged(int weapon = -1)
-    {
-        if (weapon != -1)
-        {
-            ChangeWeapon(weapon);
-        }
+        ChangeWeapon(weapon);
     }
 
     private void ChangeWeapon(int weapon)
@@ -46,10 +38,5 @@ public class WeaponsUiManager : MonoBehaviour
     {
         pistolMain.SetActive(b);
         stickMain.SetActive(!b);
-    }
-
-    void Update()
-    {
-        
     }
 }

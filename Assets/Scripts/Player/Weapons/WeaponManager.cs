@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private float weaponDist;
 
     private enum MainWeapon {Pistol, Stick};
-    private MainWeapon mainWeapon;
+    [SerializeField] private MainWeapon mainWeapon;
     private GameObject tempMainWeapon;
 
     private WeaponsUiManager ui;
@@ -24,7 +24,6 @@ public class WeaponManager : MonoBehaviour
         pistolScript = pistol.GetComponent<Pistol>();
         ui = GameObject.FindGameObjectWithTag("WeaponsUI").GetComponent<WeaponsUiManager>();
 
-        mainWeapon = MainWeapon.Pistol;
         ChangeUI();
         SetMainWeapon();
     }
@@ -135,7 +134,7 @@ public class WeaponManager : MonoBehaviour
 
         if (MainWeapon.Stick == mainWeapon)
         {
-            weaponNum = 1;
+            weaponNum = 2;
         }
 
         ui.UIChanged(weaponNum);
