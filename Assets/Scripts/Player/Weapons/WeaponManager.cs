@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,22 @@ public class WeaponManager : MonoBehaviour
 
     [Header("Main Weapon Settings")]
     [SerializeField] private float weaponDist;
-    private GameObject mainWeapon;
+
+    private enum MainWeapon {Pistol, Stick};
+    private MainWeapon mainWeapon;
+    private GameObject tempMainWeapon;
+
     private WeaponsUiManager ui;
+    private Pistol pistolScript;
 
     private void Start()
     {
+        pistolScript = pistol.GetComponent<Pistol>();
         ui = GameObject.FindGameObjectWithTag("WeaponsUI").GetComponent<WeaponsUiManager>();
-        mainWeapon = pistol;
+
+        mainWeapon = MainWeapon.Pistol;
+        ChangeUI();
+        SetMainWeapon();
     }
 
     private void Update()
@@ -24,6 +34,9 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             ChangeWeapon();
+            ResetRelodingPistol();
+            ChangeUI();
+            SetMainWeapon();
         }
 
         ChangeMainWeaponSettings();
@@ -31,28 +44,40 @@ public class WeaponManager : MonoBehaviour
 
     private void ChangeMainWeaponSettings()
     {
-        mainWeapon.transform.rotation = Quaternion.Euler(0, 0, WeaponAng());
+        tempMainWeapon.transform.rotation = Quaternion.Euler(0, 0, WeaponAng());
 
-        mainWeapon.transform.position = ChangePosition();
+        tempMainWeapon.transform.position = ChangePosition();
+
+        pistolScript.SetSpriteAng(WeaponAng());
     }
 
     private void ChangeWeapon()
     {
-        if (mainWeapon == pistol)
+        switch (mainWeapon)
         {
-            stick.SetActive(true);
-            pistol.SetActive(false);
-            mainWeapon = stick;
+            case MainWeapon.Pistol:
+                mainWeapon = MainWeapon.Stick;
+                break;
+            case MainWeapon.Stick:
+                mainWeapon = MainWeapon.Pistol;
+                break;
+        }
+    }
+
+    private void SetMainWeapon()
+    {
+        if(MainWeapon.Pistol == mainWeapon)
+        {
+            tempMainWeapon = pistol;
+            pistol.SetActive(true);
+            stick.SetActive(false);
         }
         else
         {
-            stick.SetActive(false);
-            pistol.SetActive(true);
-            mainWeapon = pistol;
+            tempMainWeapon = stick;
+            stick.SetActive(true);
+            pistol.SetActive(false);
         }
-
-        ResetRelodingPistol();
-        ChangeUI();
     }
 
     public float WeaponAng()
@@ -69,8 +94,6 @@ public class WeaponManager : MonoBehaviour
         return angle;
     }
 
-
-
     private Vector3 ChangePosition()
     {
         Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -80,16 +103,14 @@ public class WeaponManager : MonoBehaviour
 
         Vector3 mult = Norm(sub) * weaponDist;
 
-        sub = transform.position - playerP;
-
-        mainWeapon.transform.localScale = ChangeSideMainWeapon(sub.x);
+        tempMainWeapon.transform.localScale = ChangeSideMainWeapon((tempMainWeapon.transform.position - playerP).x);
 
         return new Vector3((playerP + mult).x, (playerP + mult).y, 0);
     }
 
     private Vector3 ChangeSideMainWeapon(float sub)
     {
-        float scaleY = pistol.transform.localScale.y;
+        float scaleY = tempMainWeapon.transform.localScale.y;
 
         if (sub < 0)
         {
@@ -100,28 +121,21 @@ public class WeaponManager : MonoBehaviour
             if (scaleY < 0) scaleY *= -1;
         }
 
-        return new Vector3(pistol.transform.localScale.x, scaleY, pistol.transform.localScale.z);
+        return new Vector3(tempMainWeapon.transform.localScale.x, scaleY, tempMainWeapon.transform.localScale.z);
     }
 
     private void ResetRelodingPistol()
     {
-        Pistol pistol = this.pistol.GetComponent<Pistol>();
-
-        pistol.ResetReload();
-    }
-
-    private bool ActiveWeapon(bool pistol)
-    {
-        return !pistol;
+        pistolScript.ResetReload();
     }
 
     private void ChangeUI()
     {
         int weaponNum = 1;
 
-        if (pistol.activeSelf == false)
+        if (MainWeapon.Stick == mainWeapon)
         {
-            weaponNum = 2;
+            weaponNum = 1;
         }
 
         ui.UIChanged(weaponNum);

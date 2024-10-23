@@ -14,7 +14,6 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Transform followMouseObject;
 
-
     private void FixedUpdate()
     {
         if(type == CameraType.FollowPlayerFixed)
