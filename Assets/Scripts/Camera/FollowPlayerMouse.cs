@@ -5,8 +5,15 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class FollowPlayerMouse : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    [Header("Follow Settings")]
     [SerializeField] private int distanceAhead = 2;
+    private Transform player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void FixedUpdate()
     {
         ChangePosition();

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainLight: {fileID: 6104890308854739560}
   minimNightLight: 0.04
-  dayTimeMinutes: 20
+  dayTimeMinutes: 1
   secondsInSeconds: 0.1
   addToSeconds: 0.1
 --- !u!1 &7439271890492430188

@@ -45,17 +45,13 @@ public class Pistol : MonoBehaviour
             StartCoroutine(FillPistolMag());
         }
 
-        //PistolPosition();
         FlashLightAngle();
-        //GunAng();
     }
 
     public void ResetReload()
     {
         reloading = false;
     }
-
-
 
     private void FlashLightAngle()
     {
@@ -70,9 +66,7 @@ public class Pistol : MonoBehaviour
         flashLight.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
     }
 
-
-
-    private void SetSpriteAng(float angle)
+    public void SetSpriteAng(float angle)
     {
         if ((angle > 45 && angle < 135) || (angle < -45 && angle > -135))
         {
