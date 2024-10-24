@@ -23,7 +23,7 @@ public class MutantEnemieAttack : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-
+            attack = true;
         }
     }
 
@@ -31,7 +31,7 @@ public class MutantEnemieAttack : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-
+            attack = false;
         }
     }
 
