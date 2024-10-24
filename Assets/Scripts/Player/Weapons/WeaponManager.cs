@@ -97,17 +97,33 @@ public class WeaponManager : MonoBehaviour
         
         if (mainWeapon == MainWeapon.Stick)
         {
-            if ((angle < 135 && angle > 45))
+            if (angle < 22.5f && angle > -22.5f)
+            {
+                angle = 0;
+            }
+            else if (angle > 22.5f && angle < 67.5f)
+            {
+                angle = 45;
+            }
+            else if (angle > 67.5f && angle < 112.5f)
             {
                 angle = 90;
             }
-            else if (angle < -45 && angle > -135)
+            else if (angle > 112.5f && angle < 157.5f)
+            {
+                angle = 135;
+            }
+            else if (angle < -22.5f && angle > -67.5f)
+            {
+                angle = -45;
+            }
+            else if (angle < -67.5f && angle > -112.5f)
             {
                 angle = -90;
             }
-            else if (angle < 45 && angle > -45)
+            else if (angle < -112.5f && angle > -157.5f)
             {
-                angle = 0;
+                angle = -135;
             }
             else
             {
@@ -138,18 +154,39 @@ public class WeaponManager : MonoBehaviour
     {
         float x = player.transform.position.x;
         float y = player.transform.position.y;
+        Vector3 tempDirection = Norm(new Vector3(weaponDist, weaponDist, 0));
 
-        if ((angle < 135 && angle > 45))
+        if (angle == 0)
+        {
+            x += weaponDist;
+        }
+        else if (angle == 45)
+        {
+            x += tempDirection.x*weaponDist;
+            y += tempDirection.y*weaponDist;
+        }
+        else if (angle == 90)
         {
             y += weaponDist;
         }
-        else if (angle < -45 && angle > -135)
+        else if (angle == 135)
+        {
+            x -= tempDirection.x * weaponDist;
+            y += tempDirection.y * weaponDist;
+        }
+        else if (angle == -45)
+        {
+            x += tempDirection.x * weaponDist;
+            y -= tempDirection.y * weaponDist;
+        }
+        else if (angle == -90)
         {
             y -= weaponDist;
         }
-        else if (angle < 45 && angle > -45)
+        else if (angle == -135)
         {
-            x += weaponDist;
+            x -= tempDirection.x * weaponDist;
+            y -= tempDirection.y * weaponDist;
         }
         else
         {

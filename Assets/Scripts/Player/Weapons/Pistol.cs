@@ -14,6 +14,7 @@ public class Pistol : MonoBehaviour
     [Header("Pistol Sprites")]
     [SerializeField] private GameObject horizontalSprite;
     [SerializeField] private GameObject verticalSprite;
+    [SerializeField] private GameObject diagonalSprite;
 
     [Header("Bullets")]
     [SerializeField] private GameObject prefabBullets;
@@ -67,15 +68,23 @@ public class Pistol : MonoBehaviour
 
     public void SetSpriteAng(float angle)
     {
-        if ((angle > 45 && angle < 135) || (angle < -45 && angle > -135))
+        if (angle > 22.5f && angle < 67.5f || angle < -112.5f && angle > -157.5f || angle > 112.5f && angle < 157.5f || angle < -22.5f && angle > -67.5f)
+        {
+            horizontalSprite.SetActive(false);
+            verticalSprite.SetActive(false);
+            diagonalSprite.SetActive(true);
+        }
+        else if (angle > 67.5f && angle < 112.5f || angle < -67.5f && angle > -112.5f)
         {
             horizontalSprite.SetActive(false);
             verticalSprite.SetActive(true);
+            diagonalSprite.SetActive(false);
         }
         else
         {
             horizontalSprite.SetActive(true);
             verticalSprite.SetActive(false);
+            diagonalSprite.SetActive(false);
         }
     }
 
@@ -148,23 +157,5 @@ public class Pistol : MonoBehaviour
     {
         bool tempState = !flashLight.activeSelf;
         flashLight.SetActive(tempState);
-    }
-
-    //Funções bué crazy
-
-    private Vector3 Norm(Vector3 vec)
-    {
-        float mag = Mag(vec);
-
-        if (mag != 0)
-        {
-            return vec/mag;
-        }
-        return vec;
-    }
-
-    private float Mag(Vector3 vec)
-    {
-        return Mathf.Sqrt((vec.x * vec.x) + (vec.y * vec.y));
     }
 }

@@ -18,9 +18,6 @@ public class Stick : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            bool tempBool = anim.GetBool("attacking");
-
-            AttackAnimation(false);
             AttackAnimation(true);
         }
     }
