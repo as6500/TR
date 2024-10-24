@@ -8,7 +8,6 @@ public class Pistol : MonoBehaviour
 {
     [Header("Pistol Settings")]
     [SerializeField] private float rechargeDelaySeconds = 0.1f;
-    [SerializeField] private float pistolDist = 1.5f;
     [SerializeField] private GameObject[] mag;
     private bool reloading = false;
 

@@ -1,10 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WeaponManager : MonoBehaviour
 {
+    [Header("Player Object")]
+    [SerializeField] private GameObject player;
+
     [Header("Weapons")]
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject stick;
@@ -43,11 +48,10 @@ public class WeaponManager : MonoBehaviour
 
     private void ChangeMainWeaponSettings()
     {
-        tempMainWeapon.transform.rotation = Quaternion.Euler(0, 0, WeaponAng());
+        float anglePlayerToMouse = WeaponAng();
 
-        tempMainWeapon.transform.position = ChangePosition();
-
-        pistolScript.SetSpriteAng(WeaponAng());
+        tempMainWeapon.transform.rotation = Quaternion.Euler(0, 0, anglePlayerToMouse);
+        tempMainWeapon.transform.position = ChangePosition(anglePlayerToMouse);
     }
 
     private void ChangeWeapon()
@@ -81,19 +85,83 @@ public class WeaponManager : MonoBehaviour
 
     public float WeaponAng()
     {
+        float angle;
+
         Vector3 mousePos = Input.mousePosition;
-        Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(playerP);
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(player.transform.position);
 
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
 
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        
+        if (mainWeapon == MainWeapon.Stick)
+        {
+            if ((angle < 135 && angle > 45))
+            {
+                angle = 90;
+            }
+            else if (angle < -45 && angle > -135)
+            {
+                angle = -90;
+            }
+            else if (angle < 45 && angle > -45)
+            {
+                angle = 0;
+            }
+            else
+            {
+                angle = 180;
+            }
+        }
+        else
+        {
+            pistolScript.SetSpriteAng(angle);
+        }
 
         return angle;
     }
+    
+    private Vector3 ChangePosition(float angle)
+    {
+        if(mainWeapon == MainWeapon.Pistol)
+        {
+            return ChangePositionPistol();
+        }
+        else
+        {
+            return ChangePositionStick(angle);
+        }
+    }
 
-    private Vector3 ChangePosition()
+    private Vector3 ChangePositionStick(float angle)
+    {
+        float x = player.transform.position.x;
+        float y = player.transform.position.y;
+
+        if ((angle < 135 && angle > 45))
+        {
+            y += weaponDist;
+        }
+        else if (angle < -45 && angle > -135)
+        {
+            y -= weaponDist;
+        }
+        else if (angle < 45 && angle > -45)
+        {
+            x += weaponDist;
+        }
+        else
+        {
+            x -= weaponDist;
+        }
+
+        tempMainWeapon.transform.localScale = ChangeSideMainWeapon((tempMainWeapon.transform.position - player.transform.position).x);
+
+        return new Vector3(x, y, player.transform.position.z);
+    }
+
+    private Vector3 ChangePositionPistol()
     {
         Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;

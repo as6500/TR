@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
+
+public class Stick : MonoBehaviour
+{
+    [SerializeField] private Animator anim;
+    [SerializeField] private Collider2D coll;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        coll.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            bool tempBool = anim.GetBool("attacking");
+
+            AttackAnimation(false);
+            AttackAnimation(true);
+        }
+    }
+
+    private void AttackAnimation(bool setAnim)
+    {
+        anim.SetBool("attacking", setAnim);
+    }
+
+    private void AnimationBeginingEvent()
+    {
+        coll.enabled = true;
+    }
+
+    private void AnimationEndEvent()
+    {
+        coll.enabled = false;
+        AttackAnimation(false);
+    }
+}
