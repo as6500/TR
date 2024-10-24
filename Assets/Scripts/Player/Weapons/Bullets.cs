@@ -5,8 +5,10 @@ using UnityEngine;
 public class Bullets : MonoBehaviour
 {
     [Header("Bullet Settings")]
-    [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float speed = 30.0f;
     [SerializeField] private float lifeTime = 5.0f;
+    [SerializeField] private float damage = 10f;
+
     private Vector3 bulletVelocity = Vector3.zero;
     private bool dying = false;
     private Rigidbody2D rb;
@@ -62,6 +64,19 @@ public class Bullets : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = bulletVelocity;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.isTrigger)
+        {
+            if (collision.CompareTag("Enemy"))
+            {
+                EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
+                enemyHealth.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
     }
 
     private IEnumerator KillBullet()

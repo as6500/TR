@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
+
 [System.Serializable]
 public class OnPlayerHealthChanged : UnityEvent<float> { };
 public class OnPlayerDied : UnityEvent { };
@@ -30,7 +31,6 @@ public class HealthScript : MonoBehaviour
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
 
         antiRadiationScript = gameObject.GetComponent<AntiRadiationScript>();
-
 	}
 
     public void DealDamage(float damageAmount)

@@ -8,6 +8,9 @@ TagManager:
   - BulletsUI
   - Pistol
   - BulletOrigin
+  - Enemy
+  - Trigger
+  - SapOrigin
   layers:
   - Default
   - TransparentFX

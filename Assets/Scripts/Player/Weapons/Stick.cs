@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Stick : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private int damage;
     [SerializeField] private Animator anim;
     [SerializeField] private Collider2D coll;
 
@@ -36,5 +38,14 @@ public class Stick : MonoBehaviour
     {
         coll.enabled = false;
         AttackAnimation(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(damage);
+        }
     }
 }
