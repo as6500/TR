@@ -6,13 +6,34 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    private enum Menu {MainMenu, InGameMenu};
+
+    [Header("Choose Menu")]
+    [SerializeField] private Menu menu;
+
+    [Header("Main Menu")]
     [SerializeField] private GameObject settingsView;
     [SerializeField] private GameObject mainOptions;
     [SerializeField] private GameObject backButton;
 
+    [Header("In-Game Menu")]
+    [SerializeField] private GameObject inGameMenu;
+    [SerializeField] private GameObject map;
+    [SerializeField] private GameObject collectibles;
+    [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject close;
+
+
     void Start()
     {
-        GoBackMainOptions();
+        if (menu == Menu.MainMenu)
+        {
+            GoBackMainOptions();
+        }
+        else if (menu == Menu.InGameMenu)
+        {
+
+        }
     }
 
     public void GoToSettings()
