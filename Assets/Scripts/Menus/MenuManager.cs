@@ -12,8 +12,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Menu menu;
 
     [Header("Main Menu")]
-    [SerializeField] private GameObject settingsView;
     [SerializeField] private GameObject mainOptions;
+    [SerializeField] private GameObject settingsView;
     [SerializeField] private GameObject backButton;
 
     [Header("In-Game Menu")]
@@ -21,7 +21,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject map;
     [SerializeField] private GameObject collectibles;
     [SerializeField] private GameObject settings;
-    [SerializeField] private GameObject close;
+
+    private bool isMenuActive = false;
 
 
     void Start()
@@ -32,9 +33,11 @@ public class MenuManager : MonoBehaviour
         }
         else if (menu == Menu.InGameMenu)
         {
-
+            ChangeGameState(isMenuActive);
         }
     }
+
+    //Main Menu Functions
 
     public void GoToSettings()
     {
@@ -53,10 +56,49 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Weapons");
     }
 
+    //In-Game Menu Functions
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.M))
+        {
+            ChangeGameState(!isMenuActive);
+            ShowMap();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ChangeGameState(!isMenuActive);
+            ShowSettings();
+        }
+    }
+
     public void LeaveToMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void ChangeGameState(bool state)
+    {
+        isMenuActive = state;
+        inGameMenu.SetActive(isMenuActive);
+    }
+
+    public void ShowMap()
+    {
+        map.transform.SetAsLastSibling();
+    }
+
+    public void ShowCollectibles()
+    {
+        collectibles.transform.SetAsLastSibling();
+    }
+
+    public void ShowSettings()
+    {
+        settings.transform.SetAsLastSibling();
+    }
+
+    //Commun Menu Functions
 
     public void LeaveGame()
     {
@@ -65,5 +107,10 @@ public class MenuManager : MonoBehaviour
     #else
             Application.Quit();
     #endif
+    }
+
+    public bool IsMenuActive()
+    {
+        return isMenuActive;
     }
 }
