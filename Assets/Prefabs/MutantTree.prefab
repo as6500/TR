@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 3673937651156489891}
   - component: {fileID: 4467776829183699319}
   - component: {fileID: 471905545831886187}
+  - component: {fileID: 4291471297945047052}
   m_Layer: 0
   m_Name: MutantTree
   m_TagString: Enemy
@@ -247,6 +248,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
+--- !u!114 &4291471297945047052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871030766902764616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.31735635, y: -0.90106815, z: 0}
+  - {x: -0.49656224, y: -0.605007, z: 0}
+  - {x: -0.5003674, y: 0.57456636, z: 0}
+  - {x: -0.32496643, y: 0.8934579, z: 0}
+  - {x: 0.024733067, y: 1.0007348, z: 0}
+  - {x: 0.34399176, y: 0.87062746, z: 0}
+  - {x: 0.496562, y: 0.5821765, z: 0}
+  - {x: 0.48895216, y: -0.57837147, z: 0}
+  - {x: 0.34018707, y: -0.87823755, z: 0}
+  - {x: -0.0019025803, y: -1.00454, z: 0}
+  m_ShapePathHash: -428875623
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -64724
+  m_LocalBounds:
+    m_Center: {x: -0.0019026995, y: -0.0019025803, z: 0}
+    m_Extent: {x: 0.4984647, y: 1.0026374, z: 0}
 --- !u!1 &4699790991906567872
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,4 +350,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 5
