@@ -8,7 +8,9 @@ public class Pistol : MonoBehaviour
 {
     [Header("Pistol Settings")]
     [SerializeField] private float rechargeDelaySeconds = 0.1f;
+    [SerializeField] private float shootDelaySeconds = 0.5f;
     [SerializeField] private GameObject[] mag;
+    private bool canShoot = true;
     private bool reloading = false;
 
     [Header("Pistol Sprites")]
@@ -99,8 +101,6 @@ public class Pistol : MonoBehaviour
         }
     }
 
-    
-
     private IEnumerator FillPistolMag()
     {
         reloading = true;
@@ -122,7 +122,7 @@ public class Pistol : MonoBehaviour
 
     private void Shoot()
     {
-        if (MagBullets() > 0)
+        if (MagBullets() > 0 && canShoot)
         {
             for (int i = 0; i < mag.Length; i++)
             {
@@ -131,11 +131,19 @@ public class Pistol : MonoBehaviour
                     StartBullet(i);
                     ChangeUIText();
                     AddOrRmvBullets(-1);
-                    particles.Play();       
+                    particles.Play();
+                    StartCoroutine(ShootDelay());
                     break;
                 }
             }
         }
+    }
+
+    private IEnumerator ShootDelay()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(shootDelaySeconds);
+        canShoot = true;
     }
 
     private void StartBullet(int i)
