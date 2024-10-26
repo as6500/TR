@@ -17,16 +17,22 @@ public class Pistol : MonoBehaviour
     [SerializeField] private GameObject diagonalSprite;
 
     [Header("Bullets")]
-    [SerializeField] private GameObject prefabBullets;
+    [SerializeField] private GameObject prefabBullet;
+    [SerializeField] private GameObject bulletOrigin;
+    [SerializeField] private GameObject bulletOriginHPosition;
+    [SerializeField] private GameObject bulletOriginDPosition;
     [SerializeField] private GameObject storeBullets;
     private int bulletsMag;
+
+    [Header("Particle System")]
+    [SerializeField] private ParticleSystem particles;
+
+    [Header("FlashLight")]
+    [SerializeField] private GameObject flashLight;
 
     [Header("UI")]
     [SerializeField] private BulletsUIScript pocketBulletsUI;
     [SerializeField] private PistolUI magBulletsUI;
-
-    [Header("FlashLight")]
-    [SerializeField] private GameObject flashLight;
 
     private void Update()
     {
@@ -73,20 +79,27 @@ public class Pistol : MonoBehaviour
             horizontalSprite.SetActive(false);
             verticalSprite.SetActive(false);
             diagonalSprite.SetActive(true);
+
+            bulletOrigin.transform.position = bulletOriginDPosition.transform.position;
         }
         else if (angle > 67.5f && angle < 112.5f || angle < -67.5f && angle > -112.5f)
         {
             horizontalSprite.SetActive(false);
             verticalSprite.SetActive(true);
             diagonalSprite.SetActive(false);
+
+            bulletOrigin.transform.position = flashLight.transform.position;
         }
         else
         {
             horizontalSprite.SetActive(true);
             verticalSprite.SetActive(false);
             diagonalSprite.SetActive(false);
+            bulletOrigin.transform.position = bulletOriginHPosition.transform.position;
         }
     }
+
+    
 
     private IEnumerator FillPistolMag()
     {
@@ -97,7 +110,7 @@ public class Pistol : MonoBehaviour
             if (mag[i] == null && pocketBulletsUI.PocketBullets() > 0)
             {
                 yield return new WaitForSeconds(rechargeDelaySeconds);
-                mag[i] = Instantiate(prefabBullets, storeBullets.transform);
+                mag[i] = Instantiate(prefabBullet, storeBullets.transform);
                 pocketBulletsUI.AddOrRmvBullets(-1);
                 AddOrRmvBullets(1);
                 ChangeUIText();
@@ -118,6 +131,7 @@ public class Pistol : MonoBehaviour
                     StartBullet(i);
                     ChangeUIText();
                     AddOrRmvBullets(-1);
+                    particles.Play();       
                     break;
                 }
             }

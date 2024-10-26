@@ -60,6 +60,7 @@ public class Sap : MonoBehaviour
         {
             HealthScript playerHealth = collision.GetComponent<HealthScript>();
             playerHealth.DealDamage(damage);
+            Destroy(gameObject);
         }
     }
 
