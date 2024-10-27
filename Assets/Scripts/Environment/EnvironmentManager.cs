@@ -38,7 +38,7 @@ public class EnvironmentManager : MonoBehaviour
 
         currentTimeSeconds += addToSeconds;
 
-        Debug.Log(currentTimeSeconds);
+        //Debug.Log(currentTimeSeconds);
         StartCoroutine(CountTime());
     }
 

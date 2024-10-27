@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  type: 2
+  type: 1
   player: {fileID: 0}
   followMouseObject: {fileID: 2630646032263070809}
 --- !u!114 &6064159088416288735
