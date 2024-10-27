@@ -3033,9 +3033,10 @@ MonoBehaviour:
   - {fileID: 2062694651}
   - {fileID: 1779975690}
   - {fileID: 621562148}
-  spawnRatePerSeconds: 1
+  spawnRatePerSeconds: 2
   spawnDelaySeconds: 1
   maxDistFromPlayer: 10
+  maxEnemiesInGame: 10
 --- !u!1 &1997249269
 GameObject:
   m_ObjectHideFlags: 0

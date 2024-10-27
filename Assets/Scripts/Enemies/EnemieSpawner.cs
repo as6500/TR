@@ -46,9 +46,11 @@ public class EnemieSpawner : MonoBehaviour
             CheckEnemyType();
             for (int i = 0; i < spawnRatePerSeconds; i++)
             {
-                GameObject enemy = GetRandomEnemy();
                 GameObject spawn = GetRandomSpawnPointCloseToPlayer();
 
+                if(spawn == null) break;
+
+                GameObject enemy = GetRandomEnemy();
                 if (spawn != null) Instantiate(enemy, spawn.transform);
             }
         }
@@ -87,6 +89,7 @@ public class EnemieSpawner : MonoBehaviour
         GameObject[] tempSpawnPoint = new GameObject[spawnPoint.Length];
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject chosenSpawnPoint = null;
+        bool noSpawnAvailable = true;
 
         for (int i = 0; i < spawnPoint.Length; i++)
         {
@@ -95,12 +98,16 @@ public class EnemieSpawner : MonoBehaviour
             if (currentDistance <= maxDistFromPlayer)
             {
                 tempSpawnPoint[i] = spawnPoint[i];
+                noSpawnAvailable = false;
             }
         }
 
-        while (chosenSpawnPoint == null)
+        if (!noSpawnAvailable)
         {
-            chosenSpawnPoint = tempSpawnPoint[Random.Range(0, tempSpawnPoint.Length)];
+            while (chosenSpawnPoint == null)
+            {
+                chosenSpawnPoint = tempSpawnPoint[Random.Range(0, tempSpawnPoint.Length)];
+            }
         }
 
         return chosenSpawnPoint;
