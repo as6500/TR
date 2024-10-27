@@ -32,11 +32,6 @@ public class EnemieSpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-    void Update()
-    {
-        
-    }
-
     private IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(spawnDelaySeconds);
@@ -131,17 +126,6 @@ public class EnemieSpawner : MonoBehaviour
         {
             enemiesChosen[3] = bigWormPrefab;
         }
-    }
-
-    private Vector3 Norm(Vector3 vec)
-    {
-        float mag = Mag(vec);
-
-        if (mag != 0)
-        {
-            return vec / mag;
-        }
-        return vec;
     }
 
     private float Mag(Vector3 vec)
