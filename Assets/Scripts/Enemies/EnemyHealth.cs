@@ -6,15 +6,11 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
+    [SerializeField] private Color bloodColor;
 
     private void Start()
     {
         currentHealth = maxHealth;
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void TakeDamage(float damage)
@@ -25,5 +21,10 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public Color GetBloodColor()
+    {
+        return bloodColor;
     }
 }

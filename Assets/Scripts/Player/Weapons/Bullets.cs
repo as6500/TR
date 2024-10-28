@@ -16,10 +16,14 @@ public class Bullets : MonoBehaviour
     [Header("Bullet Origin")]
     [SerializeField] private GameObject startPoint;
 
+    [Header("Particle System Bullet Destroyed")]
+    [SerializeField] private ParticleSystem particleSystem;
+
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         startPoint = GameObject.FindGameObjectWithTag("BulletOrigin");
+
         gameObject.SetActive(false);
     }
 
@@ -29,12 +33,12 @@ public class Bullets : MonoBehaviour
         {
             dying = true;
             bulletVelocity = BulletDirection();
-            BulletAng();
-            StartCoroutine(KillBullet());
+            transform.rotation = Quaternion.Euler(0, 0, BulletAng() + 90);
+            StartCoroutine(KillBullet(lifeTime));
         }
     }
 
-    private void BulletAng()
+    private float BulletAng()
     {
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
@@ -44,7 +48,8 @@ public class Bullets : MonoBehaviour
         mousePos.y = mousePos.y - objectPos.y;
 
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+
+        return angle;
     }
 
     private Vector3 BulletDirection()
@@ -74,14 +79,35 @@ public class Bullets : MonoBehaviour
             {
                 EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
                 enemyHealth.TakeDamage(damage);
-                Destroy(gameObject);
+                BulletDestroyedEffect(enemyHealth.GetBloodColor(), 5);
+            }
+            else if (collision.CompareTag("Wall"))
+            {
+                BulletDestroyedEffect(Color.white);
             }
         }
     }
 
-    private IEnumerator KillBullet()
+    private void BulletDestroyedEffect(Color particleColor, int speed = 0)
     {
-        yield return new WaitForSeconds(lifeTime);
+        bulletVelocity = Vector3.zero;
+        gameObject.GetComponent<Renderer>().enabled = false;
+
+        if (speed > 0)
+        {
+            particleSystem.startSpeed = speed;  
+        }
+        particleSystem.startColor = particleColor;
+
+        particleSystem.transform.position = transform.position;
+        particleSystem.transform.rotation = Quaternion.Euler(0, 0, BulletAng());
+        particleSystem.Play();
+        StartCoroutine(KillBullet(particleSystem.main.duration*2));
+    }
+
+    private IEnumerator KillBullet(float lifetime)
+    {
+        yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
     }
 

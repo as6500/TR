@@ -17,20 +17,19 @@ public class Sap : MonoBehaviour
 
     private Vector3 bulletVelocity = Vector3.zero;
 
-    private void Start()
+    private void FixedUpdate()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        sapOrigin = GameObject.FindGameObjectWithTag("SapOrigin");
+        rb.velocity = bulletVelocity;
+    }
 
+    public void SapSetup(GameObject origin)
+    {
+        sapOrigin = origin;
+        player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - sapOrigin.transform.position;
         SapAng(direction);
         bulletVelocity = SapDirection(direction);
         StartCoroutine(KillSap());
-    }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = bulletVelocity;
     }
 
     private IEnumerator KillSap()
@@ -60,6 +59,10 @@ public class Sap : MonoBehaviour
         {
             HealthScript playerHealth = collision.GetComponent<HealthScript>();
             playerHealth.DealDamage(damage);
+            Destroy(gameObject);
+        }
+        else if (collision.CompareTag("Wall"))
+        {
             Destroy(gameObject);
         }
     }

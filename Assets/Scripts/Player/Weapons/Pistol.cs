@@ -14,9 +14,9 @@ public class Pistol : MonoBehaviour
     private bool reloading = false;
 
     [Header("Pistol Sprites")]
-    [SerializeField] private GameObject horizontalSprite;
-    [SerializeField] private GameObject verticalSprite;
-    [SerializeField] private GameObject diagonalSprite;
+    [SerializeField] private Sprite horizontalSprite;
+    [SerializeField] private Sprite verticalSprite;
+    [SerializeField] private Sprite diagonalSprite;
 
     [Header("Bullets")]
     [SerializeField] private GameObject prefabBullet;
@@ -59,6 +59,7 @@ public class Pistol : MonoBehaviour
     public void ResetReload()
     {
         reloading = false;
+        canShoot = true;
     }
 
     private void FlashLightAngle()
@@ -78,25 +79,17 @@ public class Pistol : MonoBehaviour
     {
         if (angle > 22.5f && angle < 67.5f || angle < -112.5f && angle > -157.5f || angle > 112.5f && angle < 157.5f || angle < -22.5f && angle > -67.5f)
         {
-            horizontalSprite.SetActive(false);
-            verticalSprite.SetActive(false);
-            diagonalSprite.SetActive(true);
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = diagonalSprite;
             bulletOrigin.transform.position = bulletOriginDPosition.transform.position;
         }
         else if (angle > 67.5f && angle < 112.5f || angle < -67.5f && angle > -112.5f)
         {
-            horizontalSprite.SetActive(false);
-            verticalSprite.SetActive(true);
-            diagonalSprite.SetActive(false);
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = verticalSprite;
             bulletOrigin.transform.position = flashLight.transform.position;
         }
         else
         {
-            horizontalSprite.SetActive(true);
-            verticalSprite.SetActive(false);
-            diagonalSprite.SetActive(false);
+            gameObject.GetComponent<SpriteRenderer>().sprite = horizontalSprite;
             bulletOrigin.transform.position = bulletOriginHPosition.transform.position;
         }
     }

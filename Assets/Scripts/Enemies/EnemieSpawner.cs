@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class EnemieSpawner : MonoBehaviour
@@ -24,7 +25,9 @@ public class EnemieSpawner : MonoBehaviour
     [Header("Spawner Settings")]
     [SerializeField] private int spawnRatePerSeconds = 1;
     [SerializeField] private int spawnDelaySeconds = 1;
-    [SerializeField] private int maxDistFromPlayer = 10;
+    [SerializeField] private int spawnArea = 7;
+    [SerializeField] private int minSpawnDistFromPlayer = 16;
+    [SerializeField] private int maxSpawnDistFromPlayer = 36;
     [SerializeField] private int maxEnemiesInGame = 10;
 
     void Start()
@@ -41,12 +44,18 @@ public class EnemieSpawner : MonoBehaviour
             CheckEnemyType();
             for (int i = 0; i < spawnRatePerSeconds; i++)
             {
-                GameObject spawn = GetRandomSpawnPointCloseToPlayer();
+                GameObject spawner = GetRandomSpawnerCloseToPlayer();
 
-                if(spawn == null) break;
+                if (spawner == null) break;
+                Vector3 spawn = GetRandomSpawnPoint(spawner);
+                GameObject enemyType = GetRandomEnemy();
 
-                GameObject enemy = GetRandomEnemy();
-                if (spawn != null) Instantiate(enemy, spawn.transform);
+                if (spawner != null)
+                {
+                    GameObject enemy = Instantiate(enemyType, spawner.transform);
+                    enemy.transform.position = spawn;
+                    Debug.Log(enemy.GetComponent<SpriteRenderer>().isVisible);
+                }
             }
         }
 
@@ -69,8 +78,6 @@ public class EnemieSpawner : MonoBehaviour
     {
         int tempEnemy = Random.Range(0, enemiesChosen.Length);
 
-        Debug.Log(tempEnemy);
-
         if (enemiesChosen[tempEnemy] != null)
         {
             return enemiesChosen[tempEnemy];
@@ -79,7 +86,7 @@ public class EnemieSpawner : MonoBehaviour
         return GetRandomEnemy();
     }
 
-    private GameObject GetRandomSpawnPointCloseToPlayer()
+    private GameObject GetRandomSpawnerCloseToPlayer()
     {
         GameObject[] tempSpawnPoint = new GameObject[spawnPoint.Length];
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -90,7 +97,8 @@ public class EnemieSpawner : MonoBehaviour
         {
             float currentDistance = Mag(spawnPoint[i].transform.position - player.transform.position);
 
-            if (currentDistance <= maxDistFromPlayer)
+            //In further progress instead of being it always a circle collider, i want to know if the object is inside an area (circled or not)
+            if (currentDistance <= maxSpawnDistFromPlayer && currentDistance >= minSpawnDistFromPlayer)
             {
                 tempSpawnPoint[i] = spawnPoint[i];
                 noSpawnAvailable = false;
@@ -106,6 +114,15 @@ public class EnemieSpawner : MonoBehaviour
         }
 
         return chosenSpawnPoint;
+    }
+
+    private Vector3 GetRandomSpawnPoint(GameObject spawner)
+    {
+        Vector3 randomSpawn = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+
+        randomSpawn = spawner.transform.position + Norm(randomSpawn) * Random.Range(0f, spawnArea);
+
+        return randomSpawn;
     }
 
     private void CheckEnemyType()
@@ -126,6 +143,17 @@ public class EnemieSpawner : MonoBehaviour
         {
             enemiesChosen[3] = bigWormPrefab;
         }
+    }
+
+    private Vector3 Norm(Vector3 vec)
+    {
+        float mag = Mag(vec);
+
+        if (mag != 0)
+        {
+            return vec / mag;
+        }
+        return vec;
     }
 
     private float Mag(Vector3 vec)

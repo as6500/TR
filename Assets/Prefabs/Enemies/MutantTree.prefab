@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440372775039490396}
   m_Layer: 0
-  m_Name: ShootOrigin
+  m_Name: SapOrigin
   m_TagString: SapOrigin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5941527452807093446
 Transform:
@@ -233,6 +233,7 @@ MonoBehaviour:
   attack: 0
   sap: {fileID: 3646532361901412936, guid: d7696f045c71eef4cbd1c0eb1c3f58ae, type: 3}
   sapHolder: {fileID: 1065254514807299356}
+  sapOrigin: {fileID: 573325456576667944}
   shootDelaySeconds: 1
 --- !u!114 &471905545831886187
 MonoBehaviour:
@@ -248,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
+  bloodColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &2902481268434080716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +268,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: c5dbf060
   m_ShapePath:
   - {x: -0.35912538, y: -0.88730043, z: 0}
   - {x: -0.51088023, y: -0.59869826, z: 0}
@@ -278,7 +280,7 @@ MonoBehaviour:
   - {x: 0.017399311, y: -1.0072343, z: 0}
   m_ShapePathHash: 969988937
   m_Mesh: {fileID: 0}
-  m_InstanceId: -439508
+  m_InstanceId: -75288
   m_LocalBounds:
     m_Center: {x: 0.0033117533, y: -0.58813256, z: 0}
     m_Extent: {x: 0.514192, y: 0.41910177, z: 0}

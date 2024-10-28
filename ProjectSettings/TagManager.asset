@@ -11,11 +11,13 @@ TagManager:
   - Enemy
   - Trigger
   - SapOrigin
+  - Wall
+  - BulletDestroyedEffect
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - FlashLight
   - Water
   - UI
   - 
@@ -45,6 +47,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 1626397637
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Wall
+    uniqueID: 2363211241
+    locked: 0
+  - name: Player
+    uniqueID: 3418312931
+    locked: 0
+  - name: Enemy
+    uniqueID: 1711166557
     locked: 0

@@ -12,6 +12,7 @@ public class MutantTreeAttack : MonoBehaviour
     [Header("Sap")]
     [SerializeField] private GameObject sap;
     [SerializeField] private GameObject sapHolder;
+    [SerializeField] private GameObject sapOrigin;
     [SerializeField] private int shootDelaySeconds;
 
 
@@ -22,7 +23,8 @@ public class MutantTreeAttack : MonoBehaviour
 
     private IEnumerator ShootSap()
     {
-        Instantiate(sap, sapHolder.transform);
+        GameObject tempSap = Instantiate(sap, sapHolder.transform);
+        tempSap.GetComponent<Sap>().SapSetup(sapOrigin);
         yield return new WaitForSeconds(shootDelaySeconds);
         StartCoroutine(ShootSap());
     }

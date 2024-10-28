@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class AttachGameObjectsToParticles : MonoBehaviour
 {
-    public GameObject m_Prefab;
+    [SerializeField] private GameObject m_Prefab;
 
     private ParticleSystem m_ParticleSystem;
     private List<GameObject> m_Instances = new List<GameObject>();

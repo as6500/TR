@@ -11,8 +11,9 @@ public class EnvironmentManager : MonoBehaviour
     [Header("Light Settings")]
     [SerializeField] private float minimNightLight = 0.04f;
 
-    [Header("Day Settings")]
-    [SerializeField] private float dayTimeMinutes = 1f;
+    [Header("Day And Night Cicle")]
+    [SerializeField] private float timeMinutes = 1f;
+    [SerializeField] private ParticleSystem dustParticles;
     private float dayTimeSeconds;
 
     [Header("Time Settings")]
@@ -22,7 +23,7 @@ public class EnvironmentManager : MonoBehaviour
 
     private void Start()
     {
-        dayTimeSeconds = dayTimeMinutes * 60;
+        dayTimeSeconds = timeMinutes * 60;
         mainLight.intensity = 1;
         StartCoroutine(CountTime());
     }
@@ -31,7 +32,7 @@ public class EnvironmentManager : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsInSeconds);
 
-        if (currentTimeSeconds >= dayTimeMinutes * 60)
+        if (currentTimeSeconds >= timeMinutes * 60)
         {
             currentTimeSeconds = 0;
         }
@@ -45,6 +46,7 @@ public class EnvironmentManager : MonoBehaviour
     void FixedUpdate()
     {
         ControlTime();
+        dustParticles.transform.position = Camera.main.transform.position;
     }
 
     private void ControlTime()
