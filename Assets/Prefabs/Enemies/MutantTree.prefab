@@ -250,6 +250,11 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 0
   bloodColor: {r: 1, g: 0, b: 0, a: 1}
+  damageEffectTimeSeconds: 0.1
+  dropCollectibles:
+  - {fileID: 4605421280697415680, guid: 768773ade1d6c5b46bf55521d04b482e, type: 3}
+  collectiblesHolder: {fileID: 0}
+  dropProbability: 0.3
 --- !u!114 &2902481268434080716
 MonoBehaviour:
   m_ObjectHideFlags: 0

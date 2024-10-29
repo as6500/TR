@@ -24,6 +24,7 @@ public class Pistol : MonoBehaviour
     [SerializeField] private GameObject bulletOriginHPosition;
     [SerializeField] private GameObject bulletOriginDPosition;
     [SerializeField] private GameObject storeBullets;
+    [SerializeField] private PocketBullets pocketBullets;
     private int bulletsMag;
 
     [Header("Particle System")]
@@ -33,7 +34,6 @@ public class Pistol : MonoBehaviour
     [SerializeField] private GameObject flashLight;
 
     [Header("UI")]
-    [SerializeField] private BulletsUIScript pocketBulletsUI;
     [SerializeField] private PistolUI magBulletsUI;
 
     private void Update()
@@ -100,11 +100,11 @@ public class Pistol : MonoBehaviour
 
         for (int i = 0; i < mag.Length; i++)
         {
-            if (mag[i] == null && pocketBulletsUI.PocketBullets() > 0)
+            if (mag[i] == null && pocketBullets.GetPocketBullets() > 0)
             {
                 yield return new WaitForSeconds(rechargeDelaySeconds);
                 mag[i] = Instantiate(prefabBullet, storeBullets.transform);
-                pocketBulletsUI.AddOrRmvBullets(-1);
+                pocketBullets.AddOrRmvBullets(-1);
                 AddOrRmvBullets(1);
                 ChangeUIText();
             }

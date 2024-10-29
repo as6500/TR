@@ -21,6 +21,7 @@ public class EnemieSpawner : MonoBehaviour
 
     [Header("Spawners")]
     [SerializeField] private GameObject[] spawnPoint;
+    [SerializeField] private GameObject enemyHolder;
 
     [Header("Spawner Settings")]
     [SerializeField] private int spawnRatePerSeconds = 1;
@@ -47,15 +48,11 @@ public class EnemieSpawner : MonoBehaviour
                 GameObject spawner = GetRandomSpawnerCloseToPlayer();
 
                 if (spawner == null) break;
+
                 Vector3 spawn = GetRandomSpawnPoint(spawner);
                 GameObject enemyType = GetRandomEnemy();
-
-                if (spawner != null)
-                {
-                    GameObject enemy = Instantiate(enemyType, spawner.transform);
-                    enemy.transform.position = spawn;
-                    Debug.Log(enemy.GetComponent<SpriteRenderer>().isVisible);
-                }
+                GameObject enemy = Instantiate(enemyType, enemyHolder.transform);
+                enemy.transform.position = spawn;
             }
         }
 
@@ -64,12 +61,7 @@ public class EnemieSpawner : MonoBehaviour
 
     private bool CanSpawnEnemy()
     {
-        int enemiesSpawned = 0;
-
-        for(int i = 0; i < spawnPoint.Length; i++)
-        {
-            enemiesSpawned += spawnPoint[i].transform.childCount;
-        }
+        int enemiesSpawned = enemyHolder.transform.childCount;
 
         return enemiesSpawned < maxEnemiesInGame;
     }

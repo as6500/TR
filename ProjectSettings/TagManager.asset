@@ -13,6 +13,13 @@ TagManager:
   - SapOrigin
   - Wall
   - BulletDestroyedEffect
+  - Stick
+  - Ammo
+  - AmmoEnemyDrop
+  - Pills
+  - PillsEnemyDrop
+  - CollectiblesHolder
+  - Consumables
   layers:
   - Default
   - TransparentFX
