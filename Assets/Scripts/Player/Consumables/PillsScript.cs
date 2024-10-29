@@ -21,10 +21,13 @@ public class PillsScript : MonoBehaviour
 
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Q) && healthScript.CurrentHealthReturn() < 100.0f && pillsTaken == false) //pills taken
+		if (Input.GetKeyDown(KeyCode.Q) && healthScript.CurrentHealthReturn() < 100.0f) //pills taken
 		{
-			GainHealth();
-			PillCount();
+			if (pillsTaken == false)
+			{
+				GainHealth();
+				PillCount();
+			}
 		}
 	}
 
@@ -46,7 +49,6 @@ public class PillsScript : MonoBehaviour
 		if (pillsQuantity > 0)
 		{
 			pillsQuantity--;
-			pillsTaken = false;
 			pillsUIScript.UpdateUIText();
 		}
 	}
@@ -69,6 +71,7 @@ public class PillsScript : MonoBehaviour
 			else
 			{
 				StopCoroutine(timer());
+				pillsTaken = false;
 			}
 		}
 	}
