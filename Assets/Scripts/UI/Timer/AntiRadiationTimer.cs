@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class AntiRadiationTimer : MonoBehaviour
 {
+	[SerializeField] private HealthScript healthScript;
 	[SerializeField] private float timeRemainingMin = 10.0f;
+	[SerializeField] private float amountDamageGiven = 2.0f;
 	private bool isTimerOn = false;
 
 
@@ -29,6 +31,7 @@ public class AntiRadiationTimer : MonoBehaviour
 				timeRemainingMin = 0;
 				TimeDisplayed(0);
 				isTimerOn = false;
+				healthScript.DamageFromRadiation(amountDamageGiven);
 			}
 		}
 	}
@@ -44,5 +47,10 @@ public class AntiRadiationTimer : MonoBehaviour
 	public bool TimerSwitch(bool timerOnOff)
 	{
 		return isTimerOn = timerOnOff;
+	}
+
+	public float TimeRemaining ()
+	{
+		return timeRemainingMin;
 	}
 }

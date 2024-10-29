@@ -61,11 +61,13 @@ public class Sap : MonoBehaviour
             playerHealth.DealDamage(damage);
             Destroy(gameObject);
         }
-        else if (collision.CompareTag("Wall"))
+        else if (collision.CompareTag("Wall") || collision.CompareTag("Stick"))
         {
             Destroy(gameObject);
         }
     }
+
+
 
     private Vector3 Norm(Vector3 vec)
     {
