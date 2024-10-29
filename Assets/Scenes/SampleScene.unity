@@ -558,6 +558,7 @@ MonoBehaviour:
   maxHealth: 100
   pillsUIScript: {fileID: 1683019373}
   antiRadiationFlaskUIScript: {fileID: 1207183093}
+  timer: {fileID: 1492299637}
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1411,7 +1412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57531fd746ffea64a92b0fb2e38e4112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemainingMin: 10
+  healthScript: {fileID: 822313640}
+  timeRemainingMin: 0.5
+  amountDamageGiven: 2
 --- !u!1 &1652619445
 GameObject:
   m_ObjectHideFlags: 0

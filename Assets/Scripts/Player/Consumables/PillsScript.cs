@@ -7,7 +7,7 @@ using UnityEngine;
 public class PillsScript : MonoBehaviour
 {
 	private int pillsQuantity = 10;
-	private bool pillsTaken;
+	private bool pillsTaken = false;
 	[SerializeField] private float healthAmount = 30.0f; //amount of health gained in total
     [SerializeField] private float healingTimeSec = 10.0f;
     [SerializeField] private float delayTimeSec = 2.0f;//2 sec in 2 sec it heals /during 10 seconds
@@ -16,7 +16,6 @@ public class PillsScript : MonoBehaviour
 	private void Start()
 	{
 		healthScript = gameObject.GetComponent<HealthScript>();
-		pillsTaken = false;
 	}
 
 	public void Update()
@@ -40,7 +39,7 @@ public class PillsScript : MonoBehaviour
 
         if (healthScript && healthScript.CanHealAmount(healthAmount))
         {
-            StartCoroutine(timer());
+			StartCoroutine(PillsTimer(healingTimeSec));
         }
     }
 
@@ -50,6 +49,7 @@ public class PillsScript : MonoBehaviour
 		{
 			pillsQuantity--;
 			pillsUIScript.UpdateUIText();
+			pillsTaken = true;
 		}
 	}
 
@@ -58,21 +58,20 @@ public class PillsScript : MonoBehaviour
 		return pillsQuantity;
 	}
 
-	private IEnumerator timer()
+	private IEnumerator PillsTimer(float secondsLeft)
 	{
-		for (float i = healingTimeSec; i > 0; i -= delayTimeSec)
+		if (secondsLeft > 0)
 		{
 			if (healthScript.CurrentHealthReturn() < 100.0f)
 			{
 				yield return new WaitForSeconds(delayTimeSec);
 				healthScript.HealthRegen((healthAmount / healingTimeSec) * delayTimeSec);
-				pillsTaken = true;
+				StartCoroutine(PillsTimer(secondsLeft - delayTimeSec));
 			}
-			else
-			{
-				StopCoroutine(timer());
-				pillsTaken = false;
-			}
+		}
+		else
+		{
+			pillsTaken = false;
 		}
 	}
 }
