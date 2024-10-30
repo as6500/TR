@@ -20,7 +20,6 @@ public class AntiRadiationScript : MonoBehaviour
 	}
 	public void Update()
 	{
-		Debug.Log("FlaskTaken: " + flaskTaken);
 		if (Input.GetKeyDown(KeyCode.E) && flaskTaken == false) //flasks taken
 		{
 			FlasksCount();

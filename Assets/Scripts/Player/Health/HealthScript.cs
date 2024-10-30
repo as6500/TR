@@ -15,12 +15,7 @@ public class HealthScript : MonoBehaviour, IDamageable
     private float currentHealth = 0.0f;
     private float normalizedHealth = 0.0f;
     private bool canHeal = false;
-    private int pillsCount = 10; //change later
-    private PillsScript pillsScript;
     private AntiRadiationScript antiRadiationScript;
-    [SerializeField] private PillsUIScript pillsUIScript;
-    [SerializeField] private AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
-    [SerializeField] private AntiRadiationTimer timer;
 
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
 
