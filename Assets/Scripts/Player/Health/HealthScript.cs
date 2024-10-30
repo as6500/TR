@@ -15,12 +15,7 @@ public class HealthScript : MonoBehaviour, IDamageable
     private float currentHealth = 0.0f;
     private float normalizedHealth = 0.0f;
     private bool canHeal = false;
-    private int pillsCount = 10; //change later
-    private PillsScript pillsScript;
     private AntiRadiationScript antiRadiationScript;
-    [SerializeField] private PillsUIScript pillsUIScript;
-    [SerializeField] private AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
-    [SerializeField] private AntiRadiationTimer timer;
 
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
 
@@ -54,13 +49,10 @@ public class HealthScript : MonoBehaviour, IDamageable
 
     public void DamageFromRadiation(float damageAmount) //damage from radiation if player doesn't take an anti-radiation flask
     {
-        if (timer.TimeRemaining() == 0.0f)
-        {
-            ModifyHealth(-damageAmount);
-			normalizedHealth = currentHealth / maxHealth;
+        ModifyHealth(-damageAmount);
+		normalizedHealth = currentHealth / maxHealth;
 
-			OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
-		}
+		OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
     }
 
     private void ModifyHealth(float modifier)
