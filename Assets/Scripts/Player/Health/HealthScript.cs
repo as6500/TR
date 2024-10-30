@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class OnPlayerHealthChanged : UnityEvent<float> { };
 public class OnPlayerDied : UnityEvent { };
 
-public class HealthScript : MonoBehaviour
+public class HealthScript : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth = 100.0f;
     private float currentHealth = 0.0f;
@@ -87,4 +87,9 @@ public class HealthScript : MonoBehaviour
 	{
 		return currentHealth;
 	}
+
+    public virtual void TakeDamage(GameObject instigator)
+    {
+        Destroy(gameObject);
+    }
 }
