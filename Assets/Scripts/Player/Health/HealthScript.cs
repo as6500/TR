@@ -54,13 +54,10 @@ public class HealthScript : MonoBehaviour, IDamageable
 
     public void DamageFromRadiation(float damageAmount) //damage from radiation if player doesn't take an anti-radiation flask
     {
-        if (timer.TimeRemaining() == 0.0f)
-        {
-            ModifyHealth(-damageAmount);
-			normalizedHealth = currentHealth / maxHealth;
+        ModifyHealth(-damageAmount);
+		normalizedHealth = currentHealth / maxHealth;
 
-			OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
-		}
+		OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
     }
 
     private void ModifyHealth(float modifier)
