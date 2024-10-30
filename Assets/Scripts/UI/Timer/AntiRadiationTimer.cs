@@ -5,41 +5,38 @@ using UnityEngine.UI;
 
 public class AntiRadiationTimer : MonoBehaviour
 {
-	[SerializeField] private HealthScript healthScript;
-	[SerializeField] private float timeRemainingMin = 10.0f;
-	[SerializeField] private float amountDamageGiven = 2.0f;
+	[SerializeField] private float timeRemainingMin;
+	private float timeRemainingSec;
 	[SerializeField] private RawImage TimerAntiRadiation;
 	[SerializeField] private Text TimerText;
+	[SerializeField] private AntiRadiationScript antiRadiationScript;
 	private bool isTimerOn = false;
 
 
 	public void Start()
 	{
-		isTimerOn = false;
-		timeRemainingMin *= 60;
-		Debug.Log(TimerAntiRadiation);
+		TimerReset(false);
 		TimerAntiRadiation.enabled = false;
 		TimerText.enabled = false;
 	}
 
 	public void Update()
 	{
-		Debug.Log(isTimerOn);
 		if (isTimerOn == true)
 		{
-			if (timeRemainingMin > 0)
+			if (timeRemainingSec > 0)
 			{
-				timeRemainingMin -= Time.deltaTime;
-				TimeDisplayed(timeRemainingMin);
+				timeRemainingSec -= Time.deltaTime;
+				TimeDisplayed(timeRemainingSec);
 				TimerAntiRadiation.enabled = true;
 				TimerText.enabled = true;
 			}
-			else
+			else 
 			{
-				timeRemainingMin = 0;
+				timeRemainingSec = 0;
 				TimeDisplayed(0);
 				isTimerOn = false;
-				healthScript.DamageFromRadiation(amountDamageGiven);
+				StartCoroutine(antiRadiationScript.RadiationDamage());
 				TimerAntiRadiation.enabled = false;
 				TimerText.enabled = false;
 			}
@@ -54,13 +51,14 @@ public class AntiRadiationTimer : MonoBehaviour
 		gameObject.GetComponent<Text>().text = string.Format("{0:00}:{1:00}", minutes, seconds);
 	}
 
-	public bool TimerSwitch(bool timerOnOff)
+	public void TimerReset(bool timerOnOff)
 	{
-		return isTimerOn = timerOnOff;
+		isTimerOn = timerOnOff;
+		timeRemainingSec = timeRemainingMin * 60;
 	}
 
 	public float TimeRemaining ()
 	{
-		return timeRemainingMin;
+		return timeRemainingSec;
 	}
 }

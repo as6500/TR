@@ -649,8 +649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882f5a4368c2b7c43afa2da5473bb878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayTimeSec: 2
+  amountDamageGiven: 2
   timer: {fileID: 1492299637}
   antiRadiationFlaskUIScript: {fileID: 1207183093}
+  healthScript: {fileID: 822313640}
 --- !u!1 &882862333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 204.50002, y: -374.69998}
+  m_AnchoredPosition: {x: 204.50002, y: -458.5}
   m_SizeDelta: {x: 46.7138, y: 23.1197}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359833491
@@ -1410,11 +1413,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57531fd746ffea64a92b0fb2e38e4112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthScript: {fileID: 822313640}
-  timeRemainingMin: 0.5
-  amountDamageGiven: 2
+  timeRemainingMin: 0.25
   TimerAntiRadiation: {fileID: 2047315068}
   TimerText: {fileID: 1492299635}
+  antiRadiationScript: {fileID: 822313643}
 --- !u!1 &1652619445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 204.5, y: -397.3}
+  m_AnchoredPosition: {x: 204.5, y: -483.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1652619447
@@ -1615,7 +1617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 208.5, y: -403}
+  m_AnchoredPosition: {x: 208.5, y: -488.80002}
   m_SizeDelta: {x: 98.4867, y: 17.8824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737615347

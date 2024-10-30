@@ -7,8 +7,11 @@ public class AntiRadiationScript : MonoBehaviour
 {
 	private int numberOfFlasks = 5;
 	private bool flaskTaken;
+	[SerializeField] private float delayTimeSec = 2.0f;
+	[SerializeField] private float amountDamageGiven;
 	[SerializeField] private AntiRadiationTimer timer;
 	[SerializeField] AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
+	[SerializeField] private HealthScript healthScript;
 
 	private void Start()
 	{
@@ -17,24 +20,31 @@ public class AntiRadiationScript : MonoBehaviour
 	}
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.E)) //flasks taken
+		Debug.Log("FlaskTaken: " + flaskTaken);
+		if (Input.GetKeyDown(KeyCode.E) && flaskTaken == false) //flasks taken
 		{
-			GainImmunity();
 			FlasksCount();
-			timer.TimerSwitch(true);
+			timer.TimerReset(true);
 		}
-	}
-	public void GainImmunity()
-    {
-        flaskTaken = true;
 	}
 
 	public void FlasksCount()
 	{
 		if (numberOfFlasks > 0)
 		{
+			flaskTaken = true;
 			numberOfFlasks--;
 			antiRadiationFlaskUIScript.UpdateTextFlasks();
+		}
+	}
+	public IEnumerator RadiationDamage()
+	{
+		flaskTaken = timer.TimeRemaining() > 0.0f;
+		if (flaskTaken == false)
+		{
+			healthScript.DamageFromRadiation(amountDamageGiven);
+			yield return new WaitForSeconds(delayTimeSec);
+			StartCoroutine(RadiationDamage());
 		}
 	}
 
@@ -43,8 +53,4 @@ public class AntiRadiationScript : MonoBehaviour
 		return numberOfFlasks;
 	}
 
-	//public IEnumerator FlasksTimer()
-	//{
-
-	//}
 }
