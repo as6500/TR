@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AntiRadiationScript : MonoBehaviour
 {
 	private int numberOfFlasks = 5;
 	private bool flaskTaken;
-    [SerializeField] private AntiRadiationTimer timer;
+	[SerializeField] private AntiRadiationTimer timer;
 	[SerializeField] AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
 
 	private void Start()
 	{
 		flaskTaken = false;
+		
 	}
 	public void Update()
 	{
@@ -40,4 +42,9 @@ public class AntiRadiationScript : MonoBehaviour
 	{
 		return numberOfFlasks;
 	}
+
+	//public IEnumerator FlasksTimer()
+	//{
+
+	//}
 }
