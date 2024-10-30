@@ -1,20 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-//vector between initial point and end  point, normalize this vector and then multiply it by the velocity
-public class IsPatroling : MonoBehaviour
+public class IsPatrolling : MonoBehaviour
+//this is a script that makes it so an enemy moves from point A to point B, you can set point A and point B on unity as well as speed
 {
-    // Start is called before the first frame update
-    
+    public Transform pointA;
+    public Transform pointB; 
+    public float speed = 2f; 
+    private Rigidbody2D rb;
+    private bool fromAtoB; //if yes then enemy is moving from A to B, if false then it is on its way back
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        fromAtoB = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        // if fromAtoB is on then head to point B, otherwise point A
+        Vector2 targetPosition;
+        if (fromAtoB == true)
+        {
+            targetPosition = pointB.position;
+        }
+        else
+        {
+            targetPosition = pointA.position;
+        }
         
+        //make a vector between the target position and the current position and then normalize it
+        Vector2 direction = (targetPosition - rb.position).normalized;
+ 
+        //multiply the vector by the speed that can be customised in unity
+        rb.velocity = direction * speed;
+
+        //switch directions when the enemy comes close enough to the point
+        if (Vector2.Distance(rb.position, targetPosition) < 0.1f)
+        {
+            fromAtoB = !fromAtoB;
+        }
     }
 }
+
