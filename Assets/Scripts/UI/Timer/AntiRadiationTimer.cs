@@ -8,8 +8,8 @@ public class AntiRadiationTimer : MonoBehaviour
 	[SerializeField] private HealthScript healthScript;
 	[SerializeField] private float timeRemainingMin = 10.0f;
 	[SerializeField] private float amountDamageGiven = 2.0f;
-	private RawImage timerAntiRadiation;
-	private Texture timerTexture;
+	[SerializeField] private RawImage TimerAntiRadiation;
+	[SerializeField] private Text TimerText;
 	private bool isTimerOn = false;
 
 
@@ -17,19 +17,22 @@ public class AntiRadiationTimer : MonoBehaviour
 	{
 		isTimerOn = false;
 		timeRemainingMin *= 60;
-		timerAntiRadiation = GetComponent<RawImage>();
+		Debug.Log(TimerAntiRadiation);
+		TimerAntiRadiation.enabled = false;
+		TimerText.enabled = false;
 	}
 
 	public void Update()
 	{
+		Debug.Log(isTimerOn);
 		if (isTimerOn == true)
 		{
 			if (timeRemainingMin > 0)
 			{
 				timeRemainingMin -= Time.deltaTime;
 				TimeDisplayed(timeRemainingMin);
-				Debug.Log(gameObject);
-				timerAntiRadiation.texture = timerTexture;
+				TimerAntiRadiation.enabled = true;
+				TimerText.enabled = true;
 			}
 			else
 			{
@@ -37,6 +40,8 @@ public class AntiRadiationTimer : MonoBehaviour
 				TimeDisplayed(0);
 				isTimerOn = false;
 				healthScript.DamageFromRadiation(amountDamageGiven);
+				TimerAntiRadiation.enabled = false;
+				TimerText.enabled = false;
 			}
 		}
 	}
