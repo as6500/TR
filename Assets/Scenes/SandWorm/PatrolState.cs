@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IsPatrolling : MonoBehaviour
+public class PatrolState : StateBehaviour
 //this is a script that makes it so an enemy moves from point A to point B, you can set point A and point B on unity as well as speed
 {
     public Transform pointA;
@@ -11,11 +11,27 @@ public class IsPatrolling : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        fromAtoB = true;
+        
     }
 
     void FixedUpdate()
+    {
+
+    }
+
+    public override bool InitializeState()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        fromAtoB = true;
+        return true;
+    }
+
+    public override void OnStateStart()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
+    public override void OnStateUpdate()
     {
         // if fromAtoB is on then head to point B, otherwise point A
         Vector2 targetPosition;
@@ -39,6 +55,16 @@ public class IsPatrolling : MonoBehaviour
         {
             fromAtoB = !fromAtoB;
         }
+    }
+
+    public override void OnStateEnd()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
+    public override int StateTransitionCondition()
+    {
+        return -1;
     }
 }
 
