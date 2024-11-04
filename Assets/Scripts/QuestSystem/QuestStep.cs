@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// handles the steps for all the quests (narrative and has the job to update the steps on the ui)
+
 public class QuestStep : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private FetchQuestInfo fetchQuestInfo;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Start()
+	{
+		fetchQuestInfo = GetComponent<FetchQuestInfo>();
+	}
+
+	public void UpdatingSteps()
+	{
+
+	}
 }
