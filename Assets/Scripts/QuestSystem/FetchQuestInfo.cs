@@ -14,7 +14,7 @@ public class FetchQuestInfo : MonoBehaviour
 	[SerializeField] private int objectReward;
 	[SerializeField] private string[] steps;
 
-	public void DisplayQuestQuest(int i)
+	public void DisplayQuest(int i)
 	{
 		GetComponent<TextMeshProUGUI>().text = $"{displayName}: \n - {steps[i]}";
 	}

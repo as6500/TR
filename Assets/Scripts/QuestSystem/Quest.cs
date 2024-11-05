@@ -10,44 +10,32 @@ using UnityEngine.Events;
 public class Quest : MonoBehaviour
 {
 	private bool objectTaken;
-
 	private string state;
-	private string state1 = "requirementNotMet";
-	private string state2 = "active";
-	private string state3 = "completed";
-
 
 	public UnityEvent getQuest;
 	[SerializeField] private GameObject exclamationPoint;
 	[SerializeField] private QuestManager manager;
 	[SerializeField] private FetchQuestInfo fetchQuestInfo;
+	[SerializeField] private string[] questStates;
 
 	private void Start()
 	{
 		objectTaken = false;
 		manager = GetComponent<QuestManager>();
-		state = state1;
+		state = questStates[1]; //the player hasn't picked up the quest but has the requirements for it to be available
 		exclamationPoint.SetActive(true);
 	}
 
-	private void OnTriggerEnter2D (Collider2D collision) //NPC
+	private void OnTriggerEnter2D (Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
 			getQuest.Invoke();
-			state = state2;
+			state = questStates[2]; //player picked up the quest
 			exclamationPoint.SetActive(false);
 		}
 	}
-	public void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.N))
-		{
-			int i = 0;
-			fetchQuestInfo.DisplayQuestQuest(i);
-			manager.AdvanceQuest.Invoke();
-		}
-	}
+
 	// if player gets the item, quest updates, passes to another step.
 	// if player gets the item, counter increments.
 
