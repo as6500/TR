@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-public class PatrolState : StateBehaviour
+
+public class PatrolStateOld : StateBehaviour
 //this is a script that makes it so an enemy moves from point A to point B, you can set point A and point B on unity as well as speed
 {
     public Transform pointA;
