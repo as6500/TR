@@ -10,9 +10,10 @@ public class PatrolState : StateBehaviour
     [SerializeField] private bool fromAtoB;
     [SerializeField] 
     private NavMeshAgent agent;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -27,7 +28,9 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateStart()
     {
-        agent.isStopped = true;
+        //agent.isStopped = true;
+        Debug.Log("Chase state started");
+        spriteRenderer.color = Color.red;
     }
 
     public override void OnStateUpdate()
@@ -56,7 +59,7 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        agent.isStopped = true;
+        //agent.isStopped = true;
     }
 
     public override int StateTransitionCondition()
