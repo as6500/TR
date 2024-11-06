@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class StateBehaviour : MonoBehaviour
 {
-    public NewStateMachine AssociatedStateMachine { get; set; }
+    public StateMachine AssociatedStateMachine { get; set; }
     public abstract bool InitializeState();
     public abstract void OnStateStart();
     public abstract void OnStateUpdate();

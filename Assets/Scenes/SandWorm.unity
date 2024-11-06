@@ -379,8 +379,6 @@ GameObject:
   - component: {fileID: 340229175}
   - component: {fileID: 340229176}
   - component: {fileID: 340229178}
-  - component: {fileID: 340229180}
-  - component: {fileID: 340229179}
   m_Layer: 0
   m_Name: SmallSandworm
   m_TagString: Untagged
@@ -511,7 +509,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
+  m_Color: {r: 0.6745283, g: 0.97224087, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -543,16 +541,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340229165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed2018d431f64f34694c02150c123dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateBehaviours:
   - {fileID: 340229178}
-  - {fileID: 340229178}
   defaultState: 0
-  currentState: {fileID: 0}
 --- !u!114 &340229174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,7 +603,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340229165}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df7d5f45d2b9eaa4b9b5395345b20fad, type: 3}
   m_Name: 
@@ -623,7 +619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340229165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8195f88d181a1c44bd3cdee4c8a4136, type: 3}
   m_Name: 
@@ -632,34 +628,6 @@ MonoBehaviour:
   pointB: {fileID: 1079693494}
   fromAtoB: 0
   agent: {fileID: 340229176}
---- !u!114 &340229179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340229165}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efc648c40c419114699ba41ee3c4bb35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateBehaviours:
-  - {fileID: 340229178}
-  - {fileID: 340229178}
-  defaultState: 0
---- !u!114 &340229180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340229165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d2c04443ac8a24d890a08a0afed985, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &893291803
 GameObject:
   m_ObjectHideFlags: 0
