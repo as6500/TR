@@ -54,14 +54,15 @@ public class NewStateMachine : MonoBehaviour
     void Update()
     {
         currentState.OnStateUpdate();
-        
+        //switch to chase state
         if (Input.GetKeyDown(KeyCode.M))
         {
             currentState.OnStateEnd();
             currentState = stateBehaviours[1];
             currentState.OnStateStart();
+            currentState.OnStateUpdate();
         }
-        
+        //switch to patrol state
         if (Input.GetKeyDown(KeyCode.N))
         {
             currentState.OnStateEnd();

@@ -8,11 +8,13 @@ public class PatrolState : StateBehaviour
     [SerializeField] private GameObject pointA;
     [SerializeField] private GameObject pointB;
     [SerializeField] private bool fromAtoB;
-    [SerializeField] 
-    private NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
+    
+    private Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -28,12 +30,14 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateStart()
     {
-        Debug.Log("Chase state started");
+        Debug.Log("patrol state started");
         spriteRenderer.color = Color.red;
     }
 
     public override void OnStateUpdate()
     {
+        rb.velocity = Vector2.zero;
+        
         //if agent reaches its destination, move to next point
         if (fromAtoB == true)
         {
