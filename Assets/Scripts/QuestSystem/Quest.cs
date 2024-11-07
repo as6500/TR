@@ -7,36 +7,58 @@ using UnityEngine.Events;
 // if it's resource, it handles which object to count as the matching to the one in the quest (drops from mobs)
 // if it's find a location, it handles if the player is really on the correct area for the quest to count and advance to another step
 
+//states: 0 - requirements_not_met; 1 - not active; 2 - active; 3 - completed; 4 - finished
+
 public class Quest : MonoBehaviour
 {
 	private bool objectTaken;
 	private string state;
 
-	public UnityEvent getQuest;
-	[SerializeField] private GameObject exclamationPoint;
+	[SerializeField] private GameObject exclamationPointQuest;
 	[SerializeField] private QuestManager manager;
 	[SerializeField] private FetchQuestInfo fetchQuestInfo;
+	[SerializeField] private QuestStep questStep;
+	[SerializeField] private QuestDelivery questDelivery;
 	[SerializeField] private string[] questStates;
+
+	[SerializeField] private Sprite exclamationPoint;
+	[SerializeField] private Sprite questionMark;
+	public QuestManager.QuestState thestate;
 
 	private void Start()
 	{
 		objectTaken = false;
-		manager = GetComponent<QuestManager>();
 		state = questStates[1]; //the player hasn't picked up the quest but has the requirements for it to be available
-		exclamationPoint.SetActive(true);
+		exclamationPointQuest.SetActive(true);
+		exclamationPointQuest.GetComponent<SpriteRenderer>().sprite = exclamationPoint;
 	}
 
-	private void OnTriggerEnter2D (Collider2D collision)
+	private void OnTriggerEnter2D (Collider2D collision) //accepting quest
 	{
-		if (collision.gameObject.CompareTag("Player"))
+		if (collision.gameObject.CompareTag("Player") && state == questStates[1])
 		{
-			getQuest.Invoke();
+			manager.StartQuest();
 			state = questStates[2]; //player picked up the quest
-			exclamationPoint.SetActive(false);
+			exclamationPointQuest.SetActive(false);
+		}
+
+		if (collision.gameObject.CompareTag("Player") && state == questStates[3])
+		{
+			exclamationPointQuest.SetActive(false);
+			questDelivery.DeliveryTheQuest();
+			state = questStates[4]; //finished quest
 		}
 	}
 
-	// if player gets the item, quest updates, passes to another step.
-	// if player gets the item, counter increments.
+	public void UpdateQuestIcon()
+	{
+		exclamationPointQuest.SetActive(true);
+		exclamationPointQuest.GetComponent<SpriteRenderer>().sprite = questionMark;
+		state = questStates[3]; //completed quest (all steps), need to deliver it to the quest giver
+	}
 
+	public string CurrentQuestState(int i)
+	{
+		return questStates[i];
+	}
 }

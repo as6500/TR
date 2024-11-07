@@ -18,4 +18,9 @@ public class FetchQuestInfo : MonoBehaviour
 	{
 		GetComponent<TextMeshProUGUI>().text = $"{displayName}: \n - {steps[i]}";
 	}
+
+	public int StepsLength()
+	{
+		return steps.Length;
+	}
 }

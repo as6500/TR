@@ -151,7 +151,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1345552234}
   m_Father: {fileID: 1132101631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -287,22 +288,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStartQuest:
     m_PersistentCalls:
-      m_Calls: []
-  AdvanceQuest:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1345552233}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1345552237}
+        m_TargetAssemblyTypeName: FetchQuestInfo, Assembly-CSharp
+        m_MethodName: DisplayQuest
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  advanceQuest:
+    m_PersistentCalls:
+      m_Calls: []
   onFinishQuest:
     m_PersistentCalls:
       m_Calls: []
@@ -1198,7 +1199,6 @@ RectTransform:
   - {fileID: 1652619446}
   - {fileID: 1301778497}
   - {fileID: 2047315067}
-  - {fileID: 1345552234}
   - {fileID: 273891998}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1535,6 +1535,7 @@ GameObject:
   - component: {fileID: 1345552236}
   - component: {fileID: 1345552237}
   - component: {fileID: 1345552238}
+  - component: {fileID: 1345552239}
   - component: {fileID: 1345552235}
   m_Layer: 5
   m_Name: ActiveQuest
@@ -1550,16 +1551,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345552233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1132101631}
+  m_Father: {fileID: 273891998}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 856.5, y: 431.1}
+  m_AnchoredPosition: {x: 61.5, y: -59.899994}
   m_SizeDelta: {x: 447.789, y: 54.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1345552235
@@ -1679,7 +1680,7 @@ MonoBehaviour:
   - Head to the nearby abandoned electronics store
   - Locate a generator or battery to bring back
   - Avoid or fend off any mutated creatures in the area
-  - Return to the Medical Bay and help Ziggy restore power
+  - Return to the Medical Bay (Ziggy)
 --- !u!114 &1345552238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,9 +1694,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fetchQuestInfo: {fileID: 1345552237}
+  quest: {fileID: 2055561811}
+  questDelivery: {fileID: 1345552239}
   questStepStates:
   - active
   - completed
+--- !u!114 &1345552239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345552233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1a8575c5b1c7b4a95230e5d78c85ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questScript: {fileID: 2055561811}
+  questStepScript: {fileID: 1345552238}
+  fetchQuestInfoScript: {fileID: 1345552237}
 --- !u!1 &1359833489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,54 +2515,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef7b420dfeaeb3498a6fe71d3918eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getQuest:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2055561811}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: You have collected a quest
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1345552237}
-        m_TargetAssemblyTypeName: FetchQuestInfo, Assembly-CSharp
-        m_MethodName: DisplayQuest
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1345552238}
-        m_TargetAssemblyTypeName: QuestStep, Assembly-CSharp
-        m_MethodName: UpdateSteps
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  exclamationPoint: {fileID: 706623901}
+  exclamationPointQuest: {fileID: 706623901}
   manager: {fileID: 312346170}
   fetchQuestInfo: {fileID: 1345552237}
+  questStep: {fileID: 1345552238}
+  questDelivery: {fileID: 1345552239}
   questStates:
   - requirement_not_met
   - not active
   - active
   - completed
   - finished
+  exclamationPoint: {fileID: 21300000, guid: 2baef15a343b6564aaf6c9fde6ea266c, type: 3}
+  questionMark: {fileID: 21300000, guid: 6ace0c133cb17b24192dac24a5b8b9e4, type: 3}
+  thestate: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

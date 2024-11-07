@@ -7,12 +7,22 @@ using UnityEngine.Events;
 // handles the events of the quests: start, finish and advance
 // (advance is for when the quests have several steps and the event gives an ok to update the steps).
 
-
+[System.Serializable] public class OnStartQuest : UnityEvent { }; //for when the player starts a quest
+[System.Serializable] public class AdvanceQuest : UnityEvent { }; //for when the player advances on the steps of the quest
+[System.Serializable] public class OnFinishQuest : UnityEvent { }; //for when the player finishes all the steps for the quest and is completed
+[System.Serializable] public class QuestStateChanges : UnityEvent { }; // for the program to know what is the state that the quest that the player has, is in (mal escrito mas conta o esforço)
 
 public class QuestManager : MonoBehaviour
 {
-	public UnityEvent onStartQuest; //for when the player starts a quest
-	public UnityEvent AdvanceQuest; //for when the player advances on the steps of the quest
-	public UnityEvent onFinishQuest; //for when the player finishes all the steps for the quest and is completed
-	public UnityEvent questStateChanges; // for the program to know what is the state that the quest that the player has, is in (mal escrito mas conta o esforço)
+	public enum QuestState { RequirementNotMet, NotActive, Active, Completed, Finished };
+
+	public OnStartQuest onStartQuest;
+	public AdvanceQuest advanceQuest;
+	public OnFinishQuest onFinishQuest;
+	public QuestStateChanges questStateChanges;
+
+	public void StartQuest()
+	{
+		onStartQuest.Invoke();
+	}
 }
