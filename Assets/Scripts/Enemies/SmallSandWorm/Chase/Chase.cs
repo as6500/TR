@@ -6,9 +6,14 @@ public class Chase : StateBehaviour
 {
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
+    [SerializeField] public float speed;
+    private Rigidbody2D enemyRb;
+    private GameObject player;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyRb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
     }
 
     public override bool InitializeState()
@@ -25,8 +30,10 @@ public class Chase : StateBehaviour
 
     public override void OnStateUpdate()
     {
-        // Debug.Log("Chase state started");
+        Debug.Log("Chase state update");
         // spriteRenderer.color = Color.yellow;
+        Vector2 vectorFromEnemyToPlayer = (player.transform.position - transform.position).normalized;
+        enemyRb.AddForce(vectorFromEnemyToPlayer * speed);
     }
 
     public override void OnStateEnd()
