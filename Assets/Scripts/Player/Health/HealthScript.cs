@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 [System.Serializable]
 public class OnPlayerHealthChanged : UnityEvent<float> { };
-public class OnPlayerDied : UnityEvent { };
+//public class OnPlayerDied : UnityEvent { };
 
 public class HealthScript : MonoBehaviour, IDamageable
 {
