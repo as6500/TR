@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class NPCInteractable : MonoBehaviour , IInteractable
+[System.Serializable] public class interacting : UnityEvent { };
+
+public class NPCInteractable : MonoBehaviour
 {
-	private bool interactedWith = false;
-	public void Interact()
+    [SerializeField] private bool isInRange;
+    [SerializeField] private interacting interacting;
+
+    void Update()
+    {
+        if (isInRange == true)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+                interacting.Invoke();
+        }
+    }
+
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log("NPC interacted with!!!");
-		interactedWith=true;
+		if (collision.gameObject.CompareTag("Player"))
+            isInRange = true;
 	}
 
-	public bool Interacted (bool trueFalse)
+	private void OnTriggerExit2D(Collider2D collision)
 	{
-		return interactedWith;
+		if (collision.gameObject.CompareTag("Player"))
+            isInRange = false;
 	}
 }
