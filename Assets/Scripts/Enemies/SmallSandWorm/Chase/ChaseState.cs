@@ -1,14 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class Chase : StateBehaviour
+public class ChaseState : StateBehaviour
 {
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
     [SerializeField] public float speed;
     private Rigidbody2D enemyRb;
     private GameObject player;
+    [SerializeField] private NavMeshAgent agent;
+    Vector2 moveDirection; 
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,9 +39,7 @@ public class Chase : StateBehaviour
     public override void OnStateUpdate()
     {
         Debug.Log("Chase state update");
-        // spriteRenderer.color = Color.yellow;
-        Vector2 vectorFromEnemyToPlayer = (player.transform.position - transform.position).normalized;
-        enemyRb.AddForce(vectorFromEnemyToPlayer * speed);
+        agent.SetDestination(player.transform.position);
     }
 
     public override void OnStateEnd()
