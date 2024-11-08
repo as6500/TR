@@ -27,9 +27,9 @@ TagManager:
   - FlashLight
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Obstacles
   - 
   - 
   - 

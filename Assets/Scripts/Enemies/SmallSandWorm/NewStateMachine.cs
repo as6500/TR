@@ -54,6 +54,7 @@ public class NewStateMachine : MonoBehaviour
     void Update()
     {
         currentState.OnStateUpdate();
+        
         //switch to chase state
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -82,6 +83,7 @@ public class NewStateMachine : MonoBehaviour
             currentState = stateBehaviours[newState];
             currentState.OnStateStart();
         }
+        
     }
 
     public bool IsCurrentState(StateBehaviour stateBehaviour)
