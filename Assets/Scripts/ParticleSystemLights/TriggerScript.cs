@@ -19,8 +19,7 @@ public class TriggerScript : MonoBehaviour
 
     void OnParticleTrigger()
     {
-        //Debug.Log("Triggered");
-
+        Debug.Log("Trigger");
         // get the particles which matched the trigger conditions this frame
         int numEnter = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
         int numExit = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Exit, exit);
@@ -43,6 +42,6 @@ public class TriggerScript : MonoBehaviour
 
         // re-assign the modified particles back into the particle system
         ps.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
-        //ps.SetTriggerParticles(ParticleSystemTriggerEventType.Exit, exit);
+        ps.SetTriggerParticles(ParticleSystemTriggerEventType.Exit, exit);
     }
 }
