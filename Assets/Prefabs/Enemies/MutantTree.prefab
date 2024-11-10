@@ -234,7 +234,7 @@ MonoBehaviour:
   sap: {fileID: 3646532361901412936, guid: d7696f045c71eef4cbd1c0eb1c3f58ae, type: 3}
   sapHolder: {fileID: 1065254514807299356}
   sapOrigin: {fileID: 573325456576667944}
-  shootDelaySeconds: 2
+  shootDelaySeconds: 1
 --- !u!114 &471905545831886187
 MonoBehaviour:
   m_ObjectHideFlags: 0
