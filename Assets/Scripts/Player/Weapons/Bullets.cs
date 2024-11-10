@@ -97,6 +97,7 @@ public class Bullets : MonoBehaviour
         {
             particleSystem.startSpeed = speed;  
         }
+
         particleSystem.startColor = particleColor;
 
         particleSystem.transform.position = transform.position;
