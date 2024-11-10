@@ -6,9 +6,9 @@ public class InteractWithObjects : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IInteractable interactableObject = collision.GetComponent<IInteractable>();
+        ICollectible collectableObject = collision.GetComponent<ICollectible>();
 
-        if(interactableObject != null)
-            interactableObject.Interact(gameObject);
+        if(collectableObject != null)
+            collectableObject.Collect(gameObject);
     }
 }

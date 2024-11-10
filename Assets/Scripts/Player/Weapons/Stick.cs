@@ -42,10 +42,13 @@ public class Stick : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (!collision.isTrigger)
         {
-            EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
-            enemyHealth.TakeDamage(damage);
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(gameObject, damage);
+            }
         }
     }
 }

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6843101284385405927}
   - component: {fileID: 5197731031094483931}
   - component: {fileID: 6944105040744474065}
-  m_Layer: 0
+  - component: {fileID: 6669889883589575522}
+  m_Layer: 31
   m_Name: Dust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +224,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7075472, g: 0.5750293, b: 0.45723566, a: 1}
+      maxColor: {r: 0.7075472, g: 0.5750293, b: 0.45723566, a: 0}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2133,7 +2134,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   LifetimeByEmitterSpeedModule:
-    enabled: 1
+    enabled: 0
     m_Curve:
       serializedVersion: 2
       minMaxState: 1
@@ -3800,15 +3801,16 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
-    exit: 0
-    colliderQueryMode: 0
-    radiusScale: 1
-    primitives: []
+    enter: 2
+    exit: 2
+    colliderQueryMode: 2
+    radiusScale: 2
+    primitives:
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -4830,6 +4832,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6669889883589575522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2826509783526242261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f17f5919c438724f86b8f3d0341db88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7386889158152402665
 GameObject:
   m_ObjectHideFlags: 0

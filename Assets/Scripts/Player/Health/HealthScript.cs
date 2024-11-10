@@ -12,7 +12,8 @@ public class OnPlayerHealthChanged : UnityEvent<float> { };
 public class HealthScript : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth = 100.0f;
-    private float currentHealth = 0.0f;
+    [SerializeField] private float currentHealth = 0.0f;
+    [SerializeField] private Color bloodColor;
     private float normalizedHealth = 0.0f;
     private bool canHeal = false;
     private AntiRadiationScript antiRadiationScript;
@@ -80,8 +81,13 @@ public class HealthScript : MonoBehaviour, IDamageable
 		return currentHealth;
 	}
 
-    public virtual void TakeDamage(GameObject instigator)
+    public virtual void TakeDamage(GameObject instigator, float damage)
     {
-        Destroy(gameObject);
+        DealDamage(damage);
+    }
+
+    public virtual Color GetBloodColor()
+    {
+        return bloodColor;
     }
 }

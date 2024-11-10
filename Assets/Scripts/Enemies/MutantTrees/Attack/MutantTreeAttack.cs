@@ -13,8 +13,7 @@ public class MutantTreeAttack : MonoBehaviour
     [SerializeField] private GameObject sap;
     [SerializeField] private GameObject sapHolder;
     [SerializeField] private GameObject sapOrigin;
-    [SerializeField] private int shootDelaySeconds;
-
+    [SerializeField] private float shootDelaySeconds;
 
     void Update()
     {

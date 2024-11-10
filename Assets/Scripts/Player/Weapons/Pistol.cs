@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Pistol : MonoBehaviour
@@ -9,7 +10,6 @@ public class Pistol : MonoBehaviour
     [Header("Pistol Settings")]
     [SerializeField] private float rechargeDelaySeconds = 0.1f;
     [SerializeField] private float shootDelaySeconds = 0.5f;
-    [SerializeField] private GameObject[] mag;
     private bool canShoot = true;
     private bool reloading = false;
 
@@ -18,14 +18,15 @@ public class Pistol : MonoBehaviour
     [SerializeField] private Sprite verticalSprite;
     [SerializeField] private Sprite diagonalSprite;
 
-    [Header("Bullets")]
+    [Header("Bullet")]
     [SerializeField] private GameObject prefabBullet;
     [SerializeField] private GameObject bulletOrigin;
     [SerializeField] private GameObject bulletOriginHPosition;
     [SerializeField] private GameObject bulletOriginDPosition;
     [SerializeField] private GameObject storeBullets;
     [SerializeField] private PocketBullets pocketBullets;
-    private int bulletsMag;
+    [SerializeField] private int maxBulletsMag = 10;
+    [SerializeField] private int bulletsMag;
 
     [Header("Particle System")]
     [SerializeField] private ParticleSystem particles;
@@ -97,13 +98,15 @@ public class Pistol : MonoBehaviour
     private IEnumerator FillPistolMag()
     {
         reloading = true;
+        canShoot = false;
 
-        for (int i = 0; i < mag.Length; i++)
+        int tempCurrentBulls = bulletsMag;
+
+        for (int i = 0; i < maxBulletsMag - tempCurrentBulls; i++)
         {
-            if (mag[i] == null && pocketBullets.GetPocketBullets() > 0)
+            if (pocketBullets.GetPocketBullets() > 0)
             {
                 yield return new WaitForSeconds(rechargeDelaySeconds);
-                mag[i] = Instantiate(prefabBullet, storeBullets.transform);
                 pocketBullets.AddOrRmvBullets(-1);
                 AddOrRmvBullets(1);
                 ChangeUIText();
@@ -117,18 +120,11 @@ public class Pistol : MonoBehaviour
     {
         if (MagBullets() > 0 && canShoot)
         {
-            for (int i = 0; i < mag.Length; i++)
-            {
-                if (mag[i] != null && !mag[i].activeSelf)
-                {
-                    StartBullet(i);
-                    ChangeUIText();
-                    AddOrRmvBullets(-1);
-                    particles.Play();
-                    StartCoroutine(ShootDelay());
-                    break;
-                }
-            }
+            StartBullet();
+            AddOrRmvBullets(-1);
+            particles.Play();
+            StartCoroutine(ShootDelay());
+            ChangeUIText();
         }
     }
 
@@ -139,10 +135,9 @@ public class Pistol : MonoBehaviour
         canShoot = true;
     }
 
-    private void StartBullet(int i)
+    private void StartBullet(int i = 0)
     {
-        mag[i].SetActive(true);
-        mag[i] = null;
+        Instantiate(prefabBullet, storeBullets.transform);
     }
 
     private void ChangeUIText()
@@ -152,14 +147,6 @@ public class Pistol : MonoBehaviour
 
     public int MagBullets()
     {
-        bulletsMag = 0;
-        for (int i = 0; i < mag.Length; i++)
-        {
-            if (mag[i] != null)
-            {
-                bulletsMag++;
-            }
-        }
         return bulletsMag;
     }
 

@@ -15,6 +15,10 @@ public class Sap : MonoBehaviour
     [SerializeField] private GameObject sapOrigin;
     [SerializeField] private GameObject player;
 
+    [Header ("Bullet destroyed Particle System")]
+    [SerializeField] private ParticleSystem particleSystem;
+
+
     private Vector3 bulletVelocity = Vector3.zero;
 
     private void FixedUpdate()
@@ -26,26 +30,28 @@ public class Sap : MonoBehaviour
     {
         sapOrigin = origin;
         player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 direction = player.transform.position - sapOrigin.transform.position;
-        SapAng(direction);
-        bulletVelocity = SapDirection(direction);
-        StartCoroutine(KillSap());
+        transform.rotation = Quaternion.Euler(0, 0, SapAng() + 90);
+        bulletVelocity = SapDirection();
+        StartCoroutine(KillSap(lifeTimeSeconds));
     }
 
-    private IEnumerator KillSap()
+    private IEnumerator KillSap(float lifeTime)
     {
-        yield return new WaitForSeconds(lifeTimeSeconds);
+        yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
 
-    private void SapAng(Vector3 dir)
+    private float SapAng()
     {
+        Vector3 dir = player.transform.position - sapOrigin.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+        return angle;
     }
 
-    private Vector3 SapDirection(Vector3 dir)
+    private Vector3 SapDirection()
     {
+        Vector3 dir = player.transform.position - sapOrigin.transform.position;
+
         transform.position = sapOrigin.transform.position;
 
         Vector3 norm = Norm(dir);
@@ -55,19 +61,37 @@ public class Sap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!collision.CompareTag("Enemy") && !collision.isTrigger)
         {
-            HealthScript playerHealth = collision.GetComponent<HealthScript>();
-            playerHealth.DealDamage(damage);
-            Destroy(gameObject);
-        }
-        else if (collision.CompareTag("Wall") || collision.CompareTag("Stick"))
-        {
-            Destroy(gameObject);
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(gameObject, damage);
+                BulletDestroyedEffect(damageable.GetBloodColor(), 5);
+            }
+            else
+            {
+                BulletDestroyedEffect(Color.white);
+            }
         }
     }
 
+    private void BulletDestroyedEffect(Color particleColor, int speed = 0)
+    {
+        bulletVelocity = Vector3.zero;
+        gameObject.GetComponent<Renderer>().enabled = false;
 
+        if (speed > 0)
+        {
+            particleSystem.startSpeed = speed;
+        }
+
+        particleSystem.startColor = particleColor;
+        particleSystem.transform.position = transform.position;
+        particleSystem.transform.rotation = Quaternion.Euler(0, 0, SapAng());
+        particleSystem.Play();
+        StartCoroutine(KillSap(particleSystem.main.duration * 2));
+    }
 
     private Vector3 Norm(Vector3 vec)
     {

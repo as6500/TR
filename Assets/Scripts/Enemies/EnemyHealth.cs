@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IDamageable
 {
     [Header("Health")]
     [SerializeField] private float maxHealth;
@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void DealDamage(float damage)
     {
         currentHealth -= damage;
         StartCoroutine(DamageEffect());
@@ -56,7 +56,12 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public Color GetBloodColor()
+    public virtual void TakeDamage(GameObject instigator, float damage)
+    {
+        DealDamage(damage);
+    }
+
+    public virtual Color GetBloodColor()
     {
         return bloodColor;
     }

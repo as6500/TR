@@ -6,7 +6,7 @@ public class Bullets : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private float speed = 30.0f;
-    [SerializeField] private float lifeTime = 5.0f;
+    [SerializeField] private float lifeTimeSeconds = 5.0f;
     [SerializeField] private float damage = 10f;
 
     private Vector3 bulletVelocity = Vector3.zero;
@@ -23,8 +23,8 @@ public class Bullets : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         startPoint = GameObject.FindGameObjectWithTag("BulletOrigin");
-
-        gameObject.SetActive(false);
+        transform.position = startPoint.transform.position;
+        //gameObject.SetActive(false);
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class Bullets : MonoBehaviour
             dying = true;
             bulletVelocity = BulletDirection();
             transform.rotation = Quaternion.Euler(0, 0, BulletAng() + 90);
-            StartCoroutine(KillBullet(lifeTime));
+            StartCoroutine(KillBullet(lifeTimeSeconds));
         }
     }
 
@@ -54,7 +54,7 @@ public class Bullets : MonoBehaviour
 
     private Vector3 BulletDirection()
     {
-        transform.position = startPoint.transform.position;
+       // transform.position = startPoint.transform.position;
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         Vector3 objectP = Camera.main.WorldToScreenPoint(playerP);
@@ -75,13 +75,13 @@ public class Bullets : MonoBehaviour
     {
         if (!collision.isTrigger)
         {
-            if (collision.CompareTag("Enemy"))
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
-                enemyHealth.TakeDamage(damage);
-                BulletDestroyedEffect(enemyHealth.GetBloodColor(), 5);
+                damageable.TakeDamage(gameObject, damage);
+                BulletDestroyedEffect(damageable.GetBloodColor(), 5);
             }
-            else if (collision.CompareTag("Wall"))
+            else
             {
                 BulletDestroyedEffect(Color.white);
             }
