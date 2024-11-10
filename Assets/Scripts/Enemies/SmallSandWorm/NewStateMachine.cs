@@ -10,6 +10,9 @@ public class NewStateMachine : MonoBehaviour
     [SerializeField] private int defaultState = 0;
 
     private StateBehaviour currentState = null;
+    [SerializeField] private LineOfSight2D lineOfSight;
+    [SerializeField] private ChaseState chaseState;
+    [SerializeField] private PlayerLostState playerLostState;
 
     bool InitializeStates()
     {
@@ -22,7 +25,7 @@ public class NewStateMachine : MonoBehaviour
                 continue;
             }
 
-            Debug.Log($"StateMachine On {gameObject.name} has failed to initalize the state {stateBehaviours[i]?.GetType().Name}!");
+            Debug.Log($"StateMachine On {gameObject.name} has failed to initialize the state {stateBehaviours[i]?.GetType().Name}!");
             return false;
         }
 
@@ -47,7 +50,7 @@ public class NewStateMachine : MonoBehaviour
         }
         else
         {
-            Debug.Log($"StateMachine On {gameObject.name} is has no state behaviours associated with it!");
+            Debug.Log($"StateMachine On {gameObject.name} has no state behaviours associated with it!");
         }
     }
 
@@ -55,7 +58,7 @@ public class NewStateMachine : MonoBehaviour
     {
         currentState.OnStateUpdate();
         
-        //switch to chase state
+        //switch to chase state by key
         if (Input.GetKeyDown(KeyCode.M))
         {
             currentState.OnStateEnd();
@@ -63,7 +66,7 @@ public class NewStateMachine : MonoBehaviour
             currentState.OnStateStart();
             currentState.OnStateUpdate();
         }
-        //switch to patrol state
+        //switch to patrol state by key
         if (Input.GetKeyDown(KeyCode.N))
         {
             currentState.OnStateEnd();
@@ -75,6 +78,46 @@ public class NewStateMachine : MonoBehaviour
         {
             Debug.Log(currentState);
         }
+        //switch to playerlost state by key
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[2];
+            currentState.OnStateStart();
+        }
+        
+        //if player is declared lost while chasing then switch to playerLost state
+        if (chaseState.enemyHasLostPlayer && currentState == stateBehaviours[1])
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[2];
+            currentState.OnStateStart();
+        }
+        
+        //if player is seen while in patrol mode then switch to chase state
+        if (currentState ==  stateBehaviours[0] && lineOfSight.HasSeenPlayerThisFrame())
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[1];
+            currentState.OnStateStart();
+        }
+        
+        //switch from lost to patrol
+        if (playerLostState.readyToPatrol && currentState == stateBehaviours[2])
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[0];
+            currentState.OnStateStart();
+        }
+
+        if (chaseState.enemyHasLostPlayer && currentState != stateBehaviours[2] && !lineOfSight.HasSeenPlayerThisFrame())
+        {
+            Debug.Log("Player lost again, switching to PlayerLostState.");
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[2];
+            currentState.OnStateStart();
+        }
+
 
         int newState = currentState.StateTransitionCondition();
         if (IsValidNewStateIndex(newState))
@@ -83,7 +126,6 @@ public class NewStateMachine : MonoBehaviour
             currentState = stateBehaviours[newState];
             currentState.OnStateStart();
         }
-        
     }
 
     public bool IsCurrentState(StateBehaviour stateBehaviour)
@@ -110,4 +152,6 @@ public class NewStateMachine : MonoBehaviour
     {
         return currentState;
     }
+    
+    
 }

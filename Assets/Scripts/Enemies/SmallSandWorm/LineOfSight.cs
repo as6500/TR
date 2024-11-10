@@ -11,7 +11,6 @@ public class LineOfSight2D : MonoBehaviour
 
     private Transform playerTransform;
     private bool hasSeenPlayerThisFrame = false;
-
     private void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag(tagObjectToFind)?.GetComponent<Transform>();
@@ -22,6 +21,7 @@ public class LineOfSight2D : MonoBehaviour
         if (playerTransform != null)
         {
             CheckPlayerInLineOfSight();
+            //Debug.Log(hasSeenPlayerThisFrame);
         }
     }
 
@@ -33,7 +33,7 @@ public class LineOfSight2D : MonoBehaviour
         if (distanceToPlayer > visionDistance)
         {
             hasSeenPlayerThisFrame = false;
-            OnPlayerLost();
+            OnPlayerNotDetected();
             return;
         }
 
@@ -41,7 +41,6 @@ public class LineOfSight2D : MonoBehaviour
 
         if (angleToPlayer <= viewConeAngle / 2)
         {
-            // Use a CircleCast for a wider detection range
             RaycastHit2D hitInfo = Physics2D.CircleCast(transform.position, 0.5f, directionToPlayer, distanceToPlayer, detectionLayerMask);
             Debug.DrawLine(transform.position, playerTransform.position, Color.red, 0.1f);
 
@@ -53,33 +52,29 @@ public class LineOfSight2D : MonoBehaviour
                     OnPlayerDetected();
                     return;
                 }
-                else
-                {
-                    Debug.Log($"CircleCast hit something else: {hitInfo.collider.gameObject.name}");
-                }
             }
             else
             {
-                Debug.Log("CircleCast did not hit anything.");
+                Debug.Log("Radius did not hit anything.");
             }
         }
         else
         {
-            Debug.Log("Player is outside the view cone angle.");
+            //Debug.Log("Player is outside the view cone angle.");
         }
 
         hasSeenPlayerThisFrame = false;
-        OnPlayerLost();
+        OnPlayerNotDetected();
     }
 
     private void OnPlayerDetected()
     {
-        Debug.Log("Player detected!");
+        Debug.Log("Player detected!!!");
     }
 
-    private void OnPlayerLost()
+    private void OnPlayerNotDetected()
     {
-        Debug.Log("Player lost.");
+        //Debug.Log("Player not detected.");
     }
 
     public bool HasSeenPlayerThisFrame()
@@ -102,4 +97,5 @@ public class LineOfSight2D : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + coneLeft);
         Gizmos.DrawLine(transform.position, transform.position + coneRight);
     }
+    
 }

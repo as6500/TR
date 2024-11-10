@@ -10,7 +10,7 @@ public class PatrolState : StateBehaviour
     [SerializeField] private bool fromAtoB;
     [SerializeField] private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
-    
+    [SerializeField] private LineOfSight2D lineOfSight;
     private Rigidbody2D rb;
     void Start()
     {
