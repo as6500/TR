@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour
 	public List<QuestNPC> npcs = new List<QuestNPC>();
 	public List<QuestScriptableObject> quests = new List<QuestScriptableObject>();
 	public QuestState activeQuestState;
+	public QuestTypeFetch fetchQuest;
 	private int activeQuestCounter;
 	private bool activeQuestCompleted = false;
 	private int activeQuest;
@@ -18,15 +19,17 @@ public class QuestManager : MonoBehaviour
 	{
 		activeQuest = quests[0].id;
 		activeQuestState = QuestState.Pending;
+		quests[activeQuest].typeCount = 0;
 
 		npcs[0].SetIcon(IconType.ExclamationPoint);
 		npcs[1].SetIcon(IconType.None);
-
+		npcs[2].SetIcon(IconType.None);
+		npcs[3].SetIcon(IconType.None);
 	}
 
 	private void Update()
 	{
-		CompleteQuest(quests[activeQuest].questNPCId);
+		CompletingQuest(quests[activeQuest].questNPCId);
 	}
 
 	public void AcceptQuest()
@@ -36,28 +39,56 @@ public class QuestManager : MonoBehaviour
 			activeQuestState = QuestState.Active;
 
 			npcs[quests[activeQuest].questNPCId].SetIcon(IconType.None);
-			//npcs[1].SetIcon(IconType.None);
+			if (quests[activeQuest].type == QuestType.fetch)
+			{
+				fetchQuest.gameObject.SetActive(true);
+			}
+			else if (quests[activeQuest].type == QuestType.locate)
+			{
 
-			Debug.Log("Active? " +  activeQuestState);
+			}
+			else if (quests[activeQuest].type == QuestType.resource)
+			{
+
+			}
 		}
 	}
 
-	public void CompleteQuest(int npcId)
+	public void CompletingQuest(int npcId)
 	{
-		if (Input.GetKeyDown(KeyCode.G) && activeQuestState == QuestState.Active)
+		if (activeQuestState == QuestState.Active && quests[activeQuest].type == QuestType.fetch)
 		{
-			activeQuestState = QuestState.Completed;
-
-			npcs[npcId].SetIcon(IconType.InterrogationPoint);
-
-			Debug.Log("Completed? " + activeQuestState);
+			if (fetchQuest.ItemPickedUp() == true)
+			{
+				activeQuestState = QuestState.Completed;
+				npcs[npcId].SetIcon(IconType.InterrogationPoint);
+			}
 		}
+		//FOR WHEN THEY DO THEIR PART
+		//else if (activeQuestState == QuestState.Active && quests[activeQuest].type == QuestType.locate)
+		//{
+		//	if (locateQuest.LocationReached() == true)
+		//	{
+		//		activeQuestState = QuestState.Completed;
+		//		npcs[npcId].SetIcon(IconType.InterrogationPoint);
+		//	}
+		//}
+		//else if (activeQuestState == QuestState.Active && quests[activeQuest].type == QuestType.resource)
+		//{
+		//	if (resourceQuest.AllItemsObtained() == true)
+		//	{
+		//		activeQuestState = QuestState.Completed;
+		//		npcs[npcId].SetIcon(IconType.InterrogationPoint);
+		//	}
+		//}
+
 	}
 
 	public void OntoNextQuest()
 	{
 		if (activeQuestState == QuestState.Completed)
 		{
+			quests[activeQuest].typeCount = 0;
 			npcs[quests[activeQuest].questNPCId].SetIcon(IconType.None);
 			activeQuestCompleted = true;
 
@@ -70,54 +101,11 @@ public class QuestManager : MonoBehaviour
 			npcs[quests[activeQuest].questNPCId].SetIcon(IconType.ExclamationPoint);
 			activeQuestCompleted = false;
 
-			Debug.Log("All quests: " + (quests.Count - 1));
-			Debug.Log("Did it move? " + activeQuestState);
-			Debug.Log("What is the next active quest? " + quests[activeQuest].id);
-			Debug.Log("What is the name of the active quest? " + quests[activeQuest].displayName);
+
+			//Debug.Log("All quests: " + (quests.Count - 1));
+			//Debug.Log("Did it move? " + activeQuestState);
+			//Debug.Log("What is the next active quest? " + quests[activeQuest].id);
+			//Debug.Log("What is the name of the active quest? " + quests[activeQuest].displayName);
 		}
 	}
-
-	//public void updatethings()
-	//{
-	//	if (input.getkeydown(keycode.f)) //means player talked to the npc
-	//	{
-	//		activequeststate = queststate.active;
-
-
-	//		debug.log(activequeststate);
-	//	}
-
-	//	if (input.getkeydown(keycode.m)) //means player completed quest
-	//	{
-	//		activequeststate = queststate.completed;
-	//		npcs[0].seticon(icontype.interrogationpoint);
-	//		npcs[1].seticon(icontype.none);
-
-	//		debug.log(activequeststate);
-	//	}
-
-	//	if (input.getkeydown(keycode.b)) //means player delivered quest and is prepared for next one
-	//	{
-
-	//		debug.log("again: " + npcs[0].icontype);
-
-	//		debug.log(activequeststate);
-
-	//	}
-	//}
-
-	//UpdateThings();
-	//Debug.Log("activequestid: " + activeQuest);
-	//Debug.Log("displayname:" + quests[activeQuest + 1].displayName);
-	//Debug.Log(npcInteractable[0].Interacted(true));
-	//Debug.Log("activeQuestState part2: " + activeQuestState);
-	//Debug.Log("activeQuestID part2: " + activeQuest);
-	//Debug.Log("NPC ID: " + npc.NPCId);
-
-	//public void Update()
-	//{
-
-	//}
-
-
 }

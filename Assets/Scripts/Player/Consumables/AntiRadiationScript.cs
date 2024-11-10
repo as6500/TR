@@ -20,7 +20,7 @@ public class AntiRadiationScript : MonoBehaviour
 	}
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.E) && flaskTaken == false) //flasks taken
+		if (Input.GetKeyDown(KeyCode.Alpha1) && flaskTaken == false) //flasks taken
 		{
 			FlasksCount();
 			timer.TimerReset(true);

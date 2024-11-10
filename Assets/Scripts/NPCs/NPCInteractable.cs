@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable] public class interacting : UnityEvent { };
+[System.Serializable] public class Interacting : UnityEvent { };
 
 public class NPCInteractable : MonoBehaviour
 {
     [SerializeField] private bool isInRange;
-    [SerializeField] private interacting interacting;
+    [SerializeField] private Interacting interacting;
 
     void Update()
     {

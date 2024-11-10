@@ -20,7 +20,7 @@ public class PillsScript : MonoBehaviour
 
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Q) && healthScript.CurrentHealthReturn() < 100.0f) //pills taken
+		if (Input.GetKeyDown(KeyCode.Alpha2) && healthScript.CurrentHealthReturn() < 100.0f) //pills taken
 		{
 			if (pillsTaken == false)
 			{
