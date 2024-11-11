@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rechargeDelaySeconds: 0.1
-  shootDelaySeconds: 0.5
+  shootDelaySeconds: 0.2
   horizontalSprite: {fileID: 21300000, guid: 8bf7f8ae3aad39943b9759d09672ac73, type: 3}
   verticalSprite: {fileID: 21300000, guid: d493e199bbbf69a469c83df30ef558fb, type: 3}
   diagonalSprite: {fileID: 21300000, guid: 8690520caf9f2ce40b8b6cf9ec1cd2ac, type: 3}

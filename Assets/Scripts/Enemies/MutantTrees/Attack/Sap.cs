@@ -19,11 +19,11 @@ public class Sap : MonoBehaviour
     [SerializeField] private ParticleSystem particleSystem;
 
 
-    private Vector3 bulletVelocity = Vector3.zero;
+    private Vector3 sapVelocity = Vector3.zero;
 
     private void FixedUpdate()
     {
-        rb.velocity = bulletVelocity;
+        rb.velocity = sapVelocity;
     }
 
     public void SapSetup(GameObject origin)
@@ -31,7 +31,7 @@ public class Sap : MonoBehaviour
         sapOrigin = origin;
         player = GameObject.FindGameObjectWithTag("Player");
         transform.rotation = Quaternion.Euler(0, 0, SapAng() + 90);
-        bulletVelocity = SapDirection();
+        sapVelocity = SapDirection();
         StartCoroutine(KillSap(lifeTimeSeconds));
     }
 
@@ -78,7 +78,7 @@ public class Sap : MonoBehaviour
 
     private void BulletDestroyedEffect(Color particleColor, int speed = 0)
     {
-        bulletVelocity = Vector3.zero;
+        sapVelocity = Vector3.zero;
         gameObject.GetComponent<Renderer>().enabled = false;
 
         if (speed > 0)

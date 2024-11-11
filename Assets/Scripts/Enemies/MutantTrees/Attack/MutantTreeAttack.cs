@@ -15,6 +15,8 @@ public class MutantTreeAttack : MonoBehaviour
     [SerializeField] private GameObject sapOrigin;
     [SerializeField] private float shootDelaySeconds;
 
+    private Coroutine shootSapCor;
+
     void Update()
     {
         coll.radius = radius;
@@ -22,17 +24,19 @@ public class MutantTreeAttack : MonoBehaviour
 
     private IEnumerator ShootSap()
     {
-        GameObject tempSap = Instantiate(sap, sapHolder.transform);
-        tempSap.GetComponent<Sap>().SapSetup(sapOrigin);
-        yield return new WaitForSeconds(shootDelaySeconds);
-        StartCoroutine(ShootSap());
+        while (true)
+        {
+            GameObject tempSap = Instantiate(sap, sapHolder.transform);
+            tempSap.GetComponent<Sap>().SapSetup(sapOrigin);
+            yield return new WaitForSeconds(shootDelaySeconds);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            StartCoroutine(ShootSap());
+            shootSapCor = StartCoroutine(ShootSap());
         }
     }
 
@@ -40,7 +44,7 @@ public class MutantTreeAttack : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            StopAllCoroutines();
+            StopCoroutine(shootSapCor);
         }
     }
 
