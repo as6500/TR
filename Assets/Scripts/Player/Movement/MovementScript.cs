@@ -35,9 +35,5 @@ public class MovementScript : MonoBehaviour
                 Input.GetAxis("Horizontal") * movementSpeed,
                 Input.GetAxis("Vertical") * movementSpeed
             );
-<<<<<<< Updated upstream
-        //Debug.Log("your speed is"+ movementSpeed);
-=======
->>>>>>> Stashed changes
     }
 }

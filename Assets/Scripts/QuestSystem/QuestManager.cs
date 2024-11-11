@@ -17,7 +17,7 @@ public class QuestManager : MonoBehaviour
 	[SerializeField] private GameObject item;
 	public Item interactedItem;
 	private int activeQuestCounter;
-	public ScriptableObject activeQuest;
+	public int activeQuest;
 	public int currentStep;
 	
 	public void Start()
