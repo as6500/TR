@@ -3,7 +3,6 @@ using UnityEngine.AI;
 
 
 public class PatrolState : StateBehaviour
-//this is a script that makes it so an enemy moves from point A to point B, you can set point A and point B on unity as well as speed
 {
     [SerializeField] private GameObject pointA;
     [SerializeField] private GameObject pointB;
@@ -11,6 +10,7 @@ public class PatrolState : StateBehaviour
     [SerializeField] private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private LineOfSight2D lineOfSight;
+    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
     private Rigidbody2D rb;
     
     void Start()
@@ -31,8 +31,8 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateStart()
     {
-        Debug.Log("patrol state started");
         spriteRenderer.color = Color.red;
+        smallSandwormAttackState.isUnderground = true;
     }
 
     public override void OnStateUpdate()
@@ -63,7 +63,7 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        //agent.isStopped = true;
+        smallSandwormAttackState.isUnderground = true;
     }
 
     public override int StateTransitionCondition()

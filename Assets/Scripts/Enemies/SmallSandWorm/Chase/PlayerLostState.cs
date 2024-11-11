@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class PlayerLostState : StateBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private float searchDuration = 3f; // Time to "search" after losing the player
+    private float searchDuration = 3f; // time to search after losing the player
     private float searchTimer;
     private NavMeshAgent agent;
     private float waitToPatrolMaxTime = 3f;
@@ -13,6 +13,7 @@ public class PlayerLostState : StateBehaviour
     public bool readyToPatrol = false; 
     [SerializeField] private LineOfSight2D lineOfSight;
     [SerializeField] private ChaseState chaseState;
+    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
     
 
     void Start()
@@ -33,7 +34,8 @@ public class PlayerLostState : StateBehaviour
         searchTimer = searchDuration;
         waitToPatrolTime = 0f;
         readyToPatrol = false;
-        agent.isStopped = true;  // Stop the enemy from moving
+        agent.isStopped = true;
+        smallSandwormAttackState.isUnderground = true;
     }
 
     public override void OnStateUpdate()
@@ -58,11 +60,12 @@ public class PlayerLostState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        agent.isStopped = false;  // Resume movement when leaving Lost State
+        agent.isStopped = false; 
+        smallSandwormAttackState.isUnderground = true;
     }
 
     public override int StateTransitionCondition()
     {
-        return -1; // Define your conditions here if needed
+        return -1;
     }
 }
