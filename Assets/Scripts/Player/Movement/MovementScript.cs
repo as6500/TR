@@ -5,7 +5,9 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
     private Rigidbody2D myRigidbody;
-    [SerializeField] private int VelocityModifier = 4;
+    [SerializeField] private float velocityModifier = 4.0f;
+    [SerializeField] private float sprintMultiplier = 1.5f;
+    
 
     private void Start()
     {
@@ -19,10 +21,20 @@ public class MovementScript : MonoBehaviour
 
     private void Movement()
     {
+        // if shift is held apply the SprintMultiplier
+        float movementSpeed = velocityModifier;
+
+        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            movementSpeed *= sprintMultiplier;
+        }
+        
         myRigidbody.velocity = new Vector2
             (
-                Input.GetAxis("Horizontal") * VelocityModifier,
-                Input.GetAxis("Vertical") * VelocityModifier
+                Input.GetAxis("Horizontal") * movementSpeed,
+                Input.GetAxis("Vertical") * movementSpeed
             );
+        Debug.Log("your speed is"+ movementSpeed);
     }
 }
