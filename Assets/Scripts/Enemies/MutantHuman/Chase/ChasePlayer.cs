@@ -7,9 +7,14 @@ using UnityEngine.UIElements.Experimental;
 
 public class ChasePlayer : MonoBehaviour
 {
+    [Header("AI Agent")]
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform idlePosition;
+    private Vector3 idlePosition;
+
+    [Header("Object to Follow")]
     [SerializeField] private Transform player;
+
+    [Header("State Configurations")]
     [SerializeField] private MutantHumanState state;
     [SerializeField] private bool chasing;
 
@@ -18,7 +23,7 @@ public class ChasePlayer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         state = GetComponent<MutantHumanState>();
-        idlePosition = GetComponent<Transform>();
+        idlePosition = transform.position;
         chasing = false;
     }
 
@@ -26,7 +31,7 @@ public class ChasePlayer : MonoBehaviour
     {
         if (chasing)
         {
-            ActivOrDeactivChaseState();
+            ActivOrDeactivChaseState(); //Updatedasfiags
         }
     }
 
@@ -37,10 +42,10 @@ public class ChasePlayer : MonoBehaviour
             chasing = true;
             agent.SetDestination(player.position);
         }
-        else
+        else if (state.GetCurrentState() == State.Idle)
         {
             chasing = false;
-            agent.SetDestination(idlePosition.position);
+            agent.SetDestination(idlePosition);
         }
     }
 }
