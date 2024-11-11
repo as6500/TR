@@ -11,6 +11,7 @@ public class QuestScriptableObject : ScriptableObject
 	public string displayName; //put private after testing
 	public List<QuestSteps> steps;
 	public int questNPCId;
-	[SerializeField] private int nextQuestId;
+	public int nextQuestId;
+	public ScriptableObject nextQuest;
 
 }
