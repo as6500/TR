@@ -8,12 +8,14 @@ public class NewStateMachine : MonoBehaviour
     [SerializeField] private List<StateBehaviour> stateBehaviours = new List<StateBehaviour>();
 
     [SerializeField] private int defaultState = 0;
-
     private StateBehaviour currentState = null;
     [SerializeField] private LineOfSight2D lineOfSight;
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private PlayerLostState playerLostState;
-
+    [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject SmallSandworm;
+    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
+    
     bool InitializeStates()
     {
         for (int i = 0; i < stateBehaviours.Count; ++i)
@@ -78,11 +80,20 @@ public class NewStateMachine : MonoBehaviour
         {
             Debug.Log(currentState);
         }
+        
         //switch to playerlost state by key
         if (Input.GetKeyDown(KeyCode.B))
         {
             currentState.OnStateEnd();
             currentState = stateBehaviours[2];
+            currentState.OnStateStart();
+        }
+        
+        //switch to attack state by key
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[3];
             currentState.OnStateStart();
         }
         
@@ -118,7 +129,28 @@ public class NewStateMachine : MonoBehaviour
             currentState.OnStateStart();
         }
 
+        //currentstate is lost and player is seen switch to chase
+        if (currentState == stateBehaviours[2] && lineOfSight.HasSeenPlayerThisFrame())
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[1];
+            currentState.OnStateStart();
+        }
+        
+        if (Vector3.Distance(SmallSandworm.transform.position, Player.transform.position) <= smallSandwormAttackState.attackRange && currentState == stateBehaviours[1])
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[3];
+            currentState.OnStateStart();
+        }
 
+        if (Vector3.Distance(SmallSandworm.transform.position, Player.transform.position) >= smallSandwormAttackState.attackRange && currentState == stateBehaviours[3])
+        {
+            currentState.OnStateEnd();
+            currentState = stateBehaviours[1];
+            currentState.OnStateStart();
+        }
+        
         int newState = currentState.StateTransitionCondition();
         if (IsValidNewStateIndex(newState))
         {

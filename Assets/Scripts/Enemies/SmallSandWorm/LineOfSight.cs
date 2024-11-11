@@ -8,6 +8,7 @@ public class LineOfSight2D : MonoBehaviour
     [SerializeField] private float visionDistance = 5.0f;
     [SerializeField] private float viewConeAngle = 45.0f;
     [SerializeField] private LayerMask detectionLayerMask;
+    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
 
     private Transform playerTransform;
     private bool hasSeenPlayerThisFrame = false;
@@ -42,7 +43,7 @@ public class LineOfSight2D : MonoBehaviour
         if (angleToPlayer <= viewConeAngle / 2)
         {
             RaycastHit2D hitInfo = Physics2D.CircleCast(transform.position, 0.5f, directionToPlayer, distanceToPlayer, detectionLayerMask);
-            Debug.DrawLine(transform.position, playerTransform.position, Color.red, 0.1f);
+            Debug.DrawLine(transform.position, playerTransform.position, Color.white, 0.1f);
 
             if (hitInfo.collider != null)
             {
@@ -84,6 +85,9 @@ public class LineOfSight2D : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, smallSandwormAttackState.attackRange);
+        
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, visionDistance);
 

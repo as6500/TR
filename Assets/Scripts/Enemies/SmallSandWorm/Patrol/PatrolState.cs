@@ -12,6 +12,7 @@ public class PatrolState : StateBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private LineOfSight2D lineOfSight;
     private Rigidbody2D rb;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
