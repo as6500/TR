@@ -70,7 +70,7 @@ public class LineOfSight2D : MonoBehaviour
 
     private void OnPlayerDetected()
     {
-        Debug.Log("Player detected!!!");
+        //Debug.Log("Player detected!!!");
     }
 
     private void OnPlayerNotDetected()

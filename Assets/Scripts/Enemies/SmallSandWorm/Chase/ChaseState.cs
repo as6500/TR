@@ -20,6 +20,7 @@ public class ChaseState : StateBehaviour
     private float playerLostMaxTime = 3f;
     private float playerLostSinceTime = 0f;
     public bool enemyHasLostPlayer = false;
+    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
     
     void Start()
     {
@@ -38,20 +39,15 @@ public class ChaseState : StateBehaviour
         //Debug.Log("Chase state started");
         spriteRenderer.color = Color.yellow;
         ResetPlayerLostTimer();
-        // playerLostSinceTime = 0f;
-        // enemyHasLostPlayer = false;
+        smallSandwormAttackState.isUnderground = true;
     }
 
     public override void OnStateUpdate()
     {
-        //Debug.Log("Chase state update");
-        //Debug.Log("hi was player seen?" + lineOfSight.HasSeenPlayerThisFrame());
         agent.SetDestination(player.transform.position);
         if (lineOfSight.HasSeenPlayerThisFrame())
         {
             ResetPlayerLostTimer();
-            // playerLostSinceTime = 0f; //stays zero if player is in sight
-            // enemyHasLostPlayer = false;
         }
         else
         {
@@ -67,6 +63,7 @@ public class ChaseState : StateBehaviour
     public override void OnStateEnd()
     {
         ResetPlayerLostTimer();
+        smallSandwormAttackState.isUnderground = true;
     }
     private void ResetPlayerLostTimer()
     {

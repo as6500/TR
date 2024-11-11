@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SmallSandwormAttackState : StateBehaviour
 {
@@ -7,16 +8,19 @@ public class SmallSandwormAttackState : StateBehaviour
     private float attackCooldown = 5f;  // time between attacks
     private float timeSinceLastAttack;
     private Transform player;  
-    private float attackDamage = 5f;
-    private HealthScriptForTesting playerHealthScript;
+    private float attackEarthquakeDamage = 4f;
+    private float attackBitingDamage = 3f;
+    [SerializeField] private HealthScript healthScript;
     private Rigidbody2D rb;
+    private NavMeshAgent agent;
+    public bool isUnderground;
     
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;  // Find the player by tag (adjust if needed)
+        player = GameObject.FindGameObjectWithTag("Player").transform;  // find the player by tag
         rb = GetComponent<Rigidbody2D>();
-        playerHealthScript = player.GetComponent<HealthScriptForTesting>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     public override bool InitializeState()
@@ -27,50 +31,62 @@ public class SmallSandwormAttackState : StateBehaviour
     public override void OnStateStart()
     {
         spriteRenderer.color = Color.white;
-        timeSinceLastAttack = 0f;  // Reset the attack timer when the state starts
+        timeSinceLastAttack = 0f;  // reset the attack timer when the state starts
+        agent.isStopped = true;
     }
 
     public override void OnStateUpdate()
     {
         rb.velocity = Vector2.zero;
         timeSinceLastAttack += Time.deltaTime;
+        
+        //check if player is withing attack range and if the worm is underground
+        if (Vector3.Distance(transform.position, player.position) <= attackRange && isUnderground)
+        {
+            DoEarthquakeAttack();
+        }
+
 
         // check player is within attack range and if the attack cooldown has passed
         if (Vector3.Distance(transform.position, player.position) <= attackRange)
         {
             if (timeSinceLastAttack >= attackCooldown)
             {
-                DoAttack();
+                DoBitingAttack();
                 timeSinceLastAttack = 0f;
             }
         }
     }
 
-    private void DoAttack()
+    private void DoBitingAttack()
     {
-        //Debug.Log("Attacking the player!");
-         if (playerHealthScript != null)
-         {
-             playerHealthScript.TakeDamage(attackDamage);
-             Debug.Log($"Player takes {attackDamage} damage!");
-         }
-         else
-         {
-             Debug.Log("PlayerHealth component not found on the player!");
-         }
-         if (playerHealthScript.currentHealth <= 0)
-         {
-             Debug.Log("player dead");
-         }
+        IDamageable damageable = player.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(gameObject, attackBitingDamage);
+        }
+        Debug.Log("biting the player");
+         isUnderground = false;
+    }
+    
+    private void DoEarthquakeAttack()
+    {
+        IDamageable damageable = player.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(gameObject, attackEarthquakeDamage);
+        }
+        Debug.Log("earthquake attack");
+        isUnderground = false;
     }
 
     public override void OnStateEnd()
     {
-        
+        agent.isStopped = false;
     }
 
     public override int StateTransitionCondition()
     {
-        return -1;  // Define your transition condition here based on your state machine
+        return -1;
     }
 }

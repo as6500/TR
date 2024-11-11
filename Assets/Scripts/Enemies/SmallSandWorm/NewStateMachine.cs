@@ -38,7 +38,6 @@ public class NewStateMachine : MonoBehaviour
     {
         if (!InitializeStates())
         {
-            // Stop This class from executing
             this.enabled = false;
             return;
         }
