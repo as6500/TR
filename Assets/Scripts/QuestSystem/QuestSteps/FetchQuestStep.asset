@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef7b420dfeaeb3498a6fe71d3918eab, type: 3}
-  m_Name: Quest2
+  m_Script: {fileID: 11500000, guid: cf8565483c401c841aa8dfdd84311086, type: 3}
+  m_Name: FetchQuestStep
   m_EditorClassIdentifier: 
-  id: 1
-  displayName: Lost in The Dark
-  steps:
-  - {fileID: 11400000, guid: 2074245ffd9905c4bb0ad10d605e82de, type: 2}
-  questNPCId: 1
-  nextQuestId: 2
+  type: 0
+  stepId: 0
+  typeParam: 0
+  typeCount: 1
+  typeDisplayName: Medkit

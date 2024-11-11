@@ -6,25 +6,13 @@ using UnityEngine;
 public class QuestTypeFetch : MonoBehaviour
 {
 	[SerializeField] private bool isInRange;
-	[SerializeField] private Interacting interacting;
 	[SerializeField] private QuestScriptableObject quest;
+	private Item item;
 	private bool itemPickedUp;
 	private void Start()
 	{
-		gameObject.SetActive(false);
 		itemPickedUp = false;
-	}
-
-	private void Update()
-	{
-		if (isInRange == true)
-		{
-			if (Input.GetKeyDown(KeyCode.E))
-			{
-				interacting.Invoke();
-				GetItem();
-			}
-		}
+		item = GetComponent<Item>();
 	}
 	
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -41,14 +29,11 @@ public class QuestTypeFetch : MonoBehaviour
 
 	public void GetItem()
 	{
-		quest.typeCount++;
-		itemPickedUp = true;
-		Destroy(gameObject);
-		Debug.Log("Item on inventory!");
-	}
-
-	public bool ItemPickedUp()
-	{
-		return itemPickedUp;
+		if (isInRange)
+		{
+			itemPickedUp = true;
+			Destroy(gameObject);
+			Debug.Log("Item on inventory!");
+		}
 	}
 }
