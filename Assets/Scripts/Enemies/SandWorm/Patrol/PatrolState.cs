@@ -10,10 +10,10 @@ public class PatrolState : StateBehaviour
     [SerializeField] private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private LineOfSight2D lineOfSight;
-    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
+    [SerializeField] private AttackState attackState;
     private Rigidbody2D rb;
     
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,7 +32,7 @@ public class PatrolState : StateBehaviour
     public override void OnStateStart()
     {
         spriteRenderer.color = Color.red;
-        smallSandwormAttackState.isUnderground = true;
+        attackState.isUnderground = true;
     }
 
     public override void OnStateUpdate()
@@ -63,7 +63,7 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        smallSandwormAttackState.isUnderground = true;
+        attackState.isUnderground = true;
     }
 
     public override int StateTransitionCondition()

@@ -20,9 +20,9 @@ public class ChaseState : StateBehaviour
     private float playerLostMaxTime = 3f;
     private float playerLostSinceTime = 0f;
     public bool enemyHasLostPlayer = false;
-    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
+    [SerializeField] private AttackState attackState;
     
-    void Start()
+    void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyRb = GetComponent<Rigidbody2D>();
@@ -39,7 +39,7 @@ public class ChaseState : StateBehaviour
         //Debug.Log("Chase state started");
         spriteRenderer.color = Color.yellow;
         ResetPlayerLostTimer();
-        smallSandwormAttackState.isUnderground = true;
+        attackState.isUnderground = true;
     }
 
     public override void OnStateUpdate()
@@ -63,7 +63,7 @@ public class ChaseState : StateBehaviour
     public override void OnStateEnd()
     {
         ResetPlayerLostTimer();
-        smallSandwormAttackState.isUnderground = true;
+        attackState.isUnderground = true;
     }
     private void ResetPlayerLostTimer()
     {

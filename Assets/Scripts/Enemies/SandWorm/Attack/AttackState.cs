@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SmallSandwormAttackState : StateBehaviour
+public class AttackState : StateBehaviour
 {
     private SpriteRenderer spriteRenderer;
     [SerializeField] public int attackRange = 2; 
@@ -15,7 +15,7 @@ public class SmallSandwormAttackState : StateBehaviour
     private NavMeshAgent agent;
     public bool isUnderground;
     
-    void Start()
+    void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;  // find the player by tag

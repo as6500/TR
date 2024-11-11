@@ -8,7 +8,7 @@ public class LineOfSight2D : MonoBehaviour
     [SerializeField] private float visionDistance = 5.0f;
     [SerializeField] private float viewConeAngle = 45.0f;
     [SerializeField] private LayerMask detectionLayerMask;
-    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
+    [SerializeField] private AttackState attackState;
 
     private Transform playerTransform;
     private bool hasSeenPlayerThisFrame = false;
@@ -86,7 +86,7 @@ public class LineOfSight2D : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, smallSandwormAttackState.attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackState.attackRange);
         
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, visionDistance);

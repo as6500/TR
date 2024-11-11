@@ -13,7 +13,7 @@ public class PlayerLostState : StateBehaviour
     public bool readyToPatrol = false; 
     [SerializeField] private LineOfSight2D lineOfSight;
     [SerializeField] private ChaseState chaseState;
-    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
+    [SerializeField] private AttackState attackState;
     
 
     void Start()
@@ -35,7 +35,7 @@ public class PlayerLostState : StateBehaviour
         waitToPatrolTime = 0f;
         readyToPatrol = false;
         agent.isStopped = true;
-        smallSandwormAttackState.isUnderground = true;
+        attackState.isUnderground = true;
     }
 
     public override void OnStateUpdate()
@@ -61,7 +61,7 @@ public class PlayerLostState : StateBehaviour
     public override void OnStateEnd()
     {
         agent.isStopped = false; 
-        smallSandwormAttackState.isUnderground = true;
+        attackState.isUnderground = true;
     }
 
     public override int StateTransitionCondition()

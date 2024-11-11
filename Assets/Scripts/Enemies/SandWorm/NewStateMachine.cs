@@ -6,7 +6,6 @@ using UnityEngine.XR;
 public class NewStateMachine : MonoBehaviour
 {
     [SerializeField] private List<StateBehaviour> stateBehaviours = new List<StateBehaviour>();
-
     [SerializeField] private int defaultState = 0;
     private StateBehaviour currentState = null;
     [SerializeField] private LineOfSight2D lineOfSight;
@@ -14,7 +13,7 @@ public class NewStateMachine : MonoBehaviour
     [SerializeField] private PlayerLostState playerLostState;
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject SmallSandworm;
-    [SerializeField] private SmallSandwormAttackState smallSandwormAttackState;
+    [SerializeField] private AttackState attackState;
     
     bool InitializeStates()
     {
@@ -136,14 +135,14 @@ public class NewStateMachine : MonoBehaviour
             currentState.OnStateStart();
         }
         
-        if (Vector3.Distance(SmallSandworm.transform.position, Player.transform.position) <= smallSandwormAttackState.attackRange && currentState == stateBehaviours[1])
+        if (Vector3.Distance(SmallSandworm.transform.position, Player.transform.position) <= attackState.attackRange && currentState == stateBehaviours[1])
         {
             currentState.OnStateEnd();
             currentState = stateBehaviours[3];
             currentState.OnStateStart();
         }
 
-        if (Vector3.Distance(SmallSandworm.transform.position, Player.transform.position) >= smallSandwormAttackState.attackRange && currentState == stateBehaviours[3])
+        if (Vector3.Distance(SmallSandworm.transform.position, Player.transform.position) >= attackState.attackRange && currentState == stateBehaviours[3])
         {
             currentState.OnStateEnd();
             currentState = stateBehaviours[1];
@@ -163,17 +162,7 @@ public class NewStateMachine : MonoBehaviour
     {
         return currentState == stateBehaviour;
     }
-
-    public void SetState(int index)
-    {
-        if (IsValidNewStateIndex(index))
-        {
-            currentState.OnStateEnd();
-            currentState = stateBehaviours[index];
-            currentState.OnStateStart();
-        }
-    }
-
+    
     private bool IsValidNewStateIndex(int stateIndex)
     {
         return stateIndex < stateBehaviours.Count && stateIndex >= 0;
