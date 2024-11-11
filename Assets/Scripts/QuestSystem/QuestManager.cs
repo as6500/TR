@@ -29,8 +29,6 @@ public class QuestManager : MonoBehaviour
 		npcs[1].SetIcon(IconType.None);
 		npcs[2].SetIcon(IconType.None);
 		npcs[3].SetIcon(IconType.None);
-		
-		Debug.Log(activeQuestState);
 	}
 
 	private void Update()
@@ -38,9 +36,7 @@ public class QuestManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.E))
 		{
 			CompletingQuest(quests[activeQuest].questNPCId);
-			Debug.Log(activeQuestState);
 		}
-		
 	}
 
 	public void AcceptQuest()
@@ -54,7 +50,7 @@ public class QuestManager : MonoBehaviour
 			{
 				GameObject tempItem = Instantiate(item, transform);
 				currentItems = tempItem.GetComponent<Item>();
-				currentItems.SetUpItem(quests[activeQuest].steps[currentStep].GetParam(), quests[activeQuest].steps[currentStep].GetDisplayName()); //change later
+				currentItems.SetUpItem(quests[activeQuest].steps[currentStep].GetParam(), quests[activeQuest].steps[currentStep].GetDisplayName());
 				typeFetch = tempItem.GetComponent<QuestTypeFetch>();
 			}
 		}
@@ -89,7 +85,7 @@ public class QuestManager : MonoBehaviour
 		}
 	}
 
-	public void ExecuteQuestSteps(int stepId) //still working on this
+	public void ExecuteQuestSteps(int stepId)
 	{
 		if (stepId < 0 || stepId > quests[activeQuest].steps.Count)
 			return;
@@ -98,12 +94,11 @@ public class QuestManager : MonoBehaviour
 		{
 			int questItemId = quests[activeQuest].steps[currentStep].GetParam(); //id of the item that the step needs
 			int questItemCount = quests[activeQuest].steps[currentStep].GetCount(); // how many items the step needs
-			string questItemName = quests[activeQuest].steps[currentStep].GetDisplayName();
+			string questItemName = quests[activeQuest].steps[currentStep].GetDisplayName(); //what is the name of the object that the quest needs
 			int currentItem = currentItems.id;
 
 			if (questItemId == currentItem)
 			{
-				Debug.Log("Hello!");
 				typeFetch.GetItem();
 			}
 			Debug.Log($"Get {questItemCount} {questItemName} for Many");
