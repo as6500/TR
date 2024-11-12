@@ -553,16 +553,12 @@ MonoBehaviour:
   - {fileID: 1385357535}
   - {fileID: 1494268253}
   - {fileID: 2087159898}
-  quests:
-  - {fileID: 11400000, guid: 872faeb8e561dbd4f8783af3f597c904, type: 2}
-  - {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}
-  - {fileID: 11400000, guid: cc6803dd49510bc459b9f37b6040df55, type: 2}
-  - {fileID: 11400000, guid: 4a797dda0e9c6d74eacd36e306bc3215, type: 2}
-  - {fileID: 11400000, guid: 4b9770a4d0d373843841ea48a574b5aa, type: 2}
   activeQuestState: 0
-  currentItems: {fileID: 0}
-  typeFetch: {fileID: 1032432592775728407, guid: 8d2346eaae7a856439a0028fdcc05714, type: 3}
+  typeFetch: []
+  currentItems: []
   item: {fileID: 2577600633806197976, guid: 8d2346eaae7a856439a0028fdcc05714, type: 3}
+  activeQuest: {fileID: 11400000, guid: 872faeb8e561dbd4f8783af3f597c904, type: 2}
+  interactedItem: {fileID: 0}
 --- !u!4 &312346171
 Transform:
   m_ObjectHideFlags: 0
