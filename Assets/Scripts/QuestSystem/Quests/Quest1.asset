@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   displayName: 'Explore the World '
-  type: 1
+  type: 0
   typeParam: 0
   typeCount: 3
   typeName: Flaks of pills

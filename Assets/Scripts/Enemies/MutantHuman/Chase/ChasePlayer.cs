@@ -24,10 +24,23 @@ public class ChasePlayer : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        //agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         state = GetComponent<MutantHumanState>();
 
         chasing = false;
+
+        StartCoroutine(Test());
+
+        agent.enabled = true;
+    }
+
+    private IEnumerator Test()
+    {
+        yield return new WaitForSeconds(1);
+
+        agent.nextPosition = transform.position;
+
+        agent.enabled = true;
     }
 
     private void Update()
@@ -64,5 +77,10 @@ public class ChasePlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsWaitingToFindPlayer);
         agent.SetDestination(idlePosition);
+    }
+
+    public void SetStartPosition(Vector3 position)
+    {
+        idlePosition = position;
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   displayName: Boredom
-  type: 2
+  type: 0
   typeParam: 2
   typeCount: 5
   typeName: Cable Wires

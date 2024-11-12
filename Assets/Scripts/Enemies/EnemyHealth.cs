@@ -19,6 +19,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [SerializeField] private GameObject collectiblesHolder;
     [SerializeField][Range(0,1)] private float dropProbability = 0.5f;
 
+    [Header("EnemyType")]
+    [SerializeField] public EnemyType enemyType;
+
     private void Start()
     {
         collectiblesHolder = GameObject.FindGameObjectWithTag("CollectiblesHolder");

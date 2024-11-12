@@ -6,6 +6,9 @@ using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor.AI;
+using UnityEngine.UIElements;
+
+public enum EnemyType { MutantTree, MutantHuman, SmallWorm, BigWorm }
 
 public class EnemieSpawner : MonoBehaviour
 {
@@ -37,6 +40,8 @@ public class EnemieSpawner : MonoBehaviour
     [SerializeField] private int maxSpawnDistFromPlayer = 36;
     [SerializeField] private int maxEnemiesInGame = 10;
 
+    private EnemyType enemyType;
+
     void Start()
     {
         StartCoroutine(SpawnEnemy());
@@ -58,8 +63,8 @@ public class EnemieSpawner : MonoBehaviour
                     if (spawner == null) break;
 
                     Vector3 spawn = GetRandomSpawnPoint(spawner);
-                    GameObject enemyType = GetRandomEnemy();
-                    GameObject enemy = Instantiate(enemyType, enemyHolder.transform);
+                    GameObject enemyPrefab = GetRandomEnemy();
+                    GameObject enemy = Instantiate(enemyPrefab, enemyHolder.transform);
                     enemy.transform.position = spawn;
                 }
                 surfaceAI.RemoveData();
@@ -85,6 +90,30 @@ public class EnemieSpawner : MonoBehaviour
         }
 
         return GetRandomEnemy();
+    }
+
+    private GameObject EnemyTypeToPrefab(EnemyType enemyType)
+    {
+        if(enemyType == EnemyType.MutantTree)
+        {
+            return mutantTreePrefab;
+        }
+        else if (enemyType == EnemyType.MutantHuman)
+        {
+            return mutantHumanPrefab;
+        }
+        else if (enemyType == EnemyType.SmallWorm)
+        {
+            return smallWormPrefab;
+        }
+        else if (enemyType == EnemyType.BigWorm)
+        {
+            return bigWormPrefab;
+        }
+
+        Debug.Log($"Enemy {enemyType} doesn't exist.");
+
+        return null;
     }
 
     private GameObject GetRandomSpawnerCloseToPlayer()
