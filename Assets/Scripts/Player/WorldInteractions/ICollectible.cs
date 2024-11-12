@@ -8,4 +8,9 @@ public interface ICollectible
     {
         Debug.Log("Collectible Interface Not Implemented");
     }
+    public virtual void SetParent(CollectibleParent parent)
+    {
+        Debug.Log("Collectible Interface Not Implemented");
+    }
+
 }

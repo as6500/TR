@@ -16,7 +16,6 @@ public class HealthScript : MonoBehaviour, IDamageable
     [SerializeField] private Color bloodColor;
     private float normalizedHealth = 0.0f;
     private bool canHeal = false;
-    private AntiRadiationScript antiRadiationScript;
 
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
 
@@ -26,8 +25,6 @@ public class HealthScript : MonoBehaviour, IDamageable
         normalizedHealth = currentHealth / maxHealth;
 
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
-
-        antiRadiationScript = gameObject.GetComponent<AntiRadiationScript>();
 	}
 
     public void DealDamage(float damageAmount)
@@ -81,9 +78,20 @@ public class HealthScript : MonoBehaviour, IDamageable
 		return currentHealth;
 	}
 
-    public virtual void TakeDamage(GameObject instigator, float damage)
+    private void KnockbackEffect(GameObject instigator, float force)
+    {
+        Vector2 tempKnockDirection = transform.position - instigator.transform.position;
+        tempKnockDirection = tempKnockDirection.normalized;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        //rb.velocity += tempKnockDirection * force;
+
+        rb.AddForce(tempKnockDirection * force);
+    }
+
+    public virtual void TakeDamage(GameObject instigator, float damage, float knockbackForce)
     {
         DealDamage(damage);
+        KnockbackEffect(instigator, knockbackForce);
     }
 
     public virtual Color GetBloodColor()

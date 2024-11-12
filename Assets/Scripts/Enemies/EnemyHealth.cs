@@ -53,10 +53,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         {
             GameObject drop = Instantiate(dropCollectibles[Random.Range(0, dropCollectibles.Length)], collectiblesHolder.transform);
             drop.transform.position = transform.position;
+            drop.GetComponent<ICollectible>().SetParent(CollectibleParent.Enemy);
         }
     }
 
-    public virtual void TakeDamage(GameObject instigator, float damage)
+    public virtual void TakeDamage(GameObject instigator, float damage, float knockback)
     {
         DealDamage(damage);
     }

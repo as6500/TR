@@ -11,4 +11,9 @@ public class Item : MonoBehaviour
 		this.id = id;
 		this.displayName = displayName;
 	}
+
+	public string GetDisplayName()
+	{
+		return this.displayName;
+	}
 }

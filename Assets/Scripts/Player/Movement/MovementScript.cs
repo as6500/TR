@@ -5,8 +5,8 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
     private Rigidbody2D myRigidbody;
-    [SerializeField] private float velocityModifier = 4.0f;
-    [SerializeField] private float sprintMultiplier = 1.5f;
+    [SerializeField] private float velocityModifier;
+    [SerializeField] private float sprintMultiplier;
     
 
     private void Start()
@@ -30,11 +30,13 @@ public class MovementScript : MonoBehaviour
             movementSpeed *= sprintMultiplier;
         }
         
-        myRigidbody.velocity = new Vector2
+        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            myRigidbody.velocity = new Vector2
             (
                 Input.GetAxis("Horizontal") * movementSpeed,
                 Input.GetAxis("Vertical") * movementSpeed
             );
-        //Debug.Log("your speed is"+ movementSpeed);
+        }
     }
 }

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   displayName: Lost in The Dark
-  steps:
-  - {fileID: 11400000, guid: 2074245ffd9905c4bb0ad10d605e82de, type: 2}
+  type: 0
+  typeParam: 1
+  typeCount: 1
   questNPCId: 1
-  nextQuestId: 2
+  nextQuest: {fileID: 11400000, guid: cc6803dd49510bc459b9f37b6040df55, type: 2}

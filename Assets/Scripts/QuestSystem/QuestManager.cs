@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,22 +10,20 @@ using UnityEngine.UIElements;
 
 public class QuestManager : MonoBehaviour
 {
-	public List<QuestNPC> npcs = new List<QuestNPC>();
-	public List<QuestScriptableObject> quests = new List<QuestScriptableObject>();
+	public QuestData activeQuest;
 	public QuestState activeQuestState;
-	[SerializeField] private Item currentItems;
-	[SerializeField] private QuestTypeFetch typeFetch;
+	[SerializeField] private QuestSystemUI questText;
+	public List<QuestNPC> npcs = new List<QuestNPC>();
 	[SerializeField] private GameObject item;
-	private int activeQuestCounter;
-	private bool activeQuestCompleted = false;
-	private int activeQuest;
-	private int currentStep;
+	public Item interactedItem;
+	private List<Item> currentItems = new List<Item>();
+	private List<QuestTypeFetch> itemScript = new List<QuestTypeFetch>();
+	private int activeQuestItemCounter;
 	
 	public void Start()
 	{
-		activeQuest = quests[0].id;
-		currentStep = quests[activeQuest].steps[0].stepId;
 		activeQuestState = QuestState.Pending;
+		activeQuestItemCounter = 0;
 
 		npcs[0].SetIcon(IconType.ExclamationPoint);
 		npcs[1].SetIcon(IconType.None);
@@ -35,7 +35,7 @@ public class QuestManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.E))
 		{
-			CompletingQuest(quests[activeQuest].questNPCId);
+			CompletingQuest();
 		}
 	}
 
@@ -45,24 +45,56 @@ public class QuestManager : MonoBehaviour
 		{
 			activeQuestState = QuestState.Active;
 
-			npcs[quests[activeQuest].questNPCId].SetIcon(IconType.None);
-			if (quests[activeQuest].steps[currentStep].type == QuestType.fetch)
+			npcs[activeQuest.questNPCId].SetIcon(IconType.None);
+			switch (activeQuest.type)
 			{
-				GameObject tempItem = Instantiate(item, transform);
-				currentItems = tempItem.GetComponent<Item>();
-				currentItems.SetUpItem(quests[activeQuest].steps[currentStep].GetParam(), quests[activeQuest].steps[currentStep].GetDisplayName());
-				typeFetch = tempItem.GetComponent<QuestTypeFetch>();
+				case QuestType.fetch:
+					AcceptFetchQuest();
+					break;
+				case QuestType.resource:
+					AcceptResourceQuest();
+					break;
+				case QuestType.locate:
+					AcceptLocateQuest();
+					break;
 			}
 		}
 	}
 
-	public void CompletingQuest(int npcId)
+	private void AcceptFetchQuest()
+	{
+		int questParam = activeQuest.typeParam;
+		string questItemName = item.GetComponent<Item>().GetDisplayName();
+		int questCount = activeQuest.typeCount;
+		
+		for (int i = 0; i < questCount; i++)
+		{
+			Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(4f, 5f), 0);
+			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
+			Item newItem = tempItem.GetComponent<Item>();
+			newItem.SetUpItem(questParam, questItemName);
+			Debug.Log(questItemName);
+			currentItems.Add(newItem); //review this later
+			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>()); //review this later
+		}
+		questText.DisplayQuestText(activeQuest.displayName, questCount, questItemName);
+	}
+
+	private void AcceptResourceQuest()
+	{
+		//Code for Resource Quests
+	}
+	
+	private void AcceptLocateQuest()
+	{
+		//Code for Locate Quests
+	}
+
+	public void CompletingQuest()
 	{
 		if (activeQuestState == QuestState.Active)
 		{
-			ExecuteQuestSteps(currentStep);
-			activeQuestState = QuestState.Completed;
-			npcs[npcId].SetIcon(IconType.InterrogationPoint);
+			ExecuteQuestSteps(activeQuest.questNPCId);
 		}
 	}
 
@@ -70,40 +102,54 @@ public class QuestManager : MonoBehaviour
 	{
 		if (activeQuestState == QuestState.Completed)
 		{
-			npcs[quests[activeQuest].questNPCId].SetIcon(IconType.None);
-			activeQuestCompleted = true;
-
-			if (activeQuest == quests.Count - 1 || quests[activeQuest].questNPCId == npcs.Count - 1) 
+			npcs[activeQuest.questNPCId].SetIcon(IconType.None);
+		
+			if (activeQuest.questNPCId == npcs.Count - 1) 
 				return;
-
-			activeQuest = quests[activeQuest + 1].id;
+		
+			activeQuestItemCounter = 0;
+			activeQuest = activeQuest.nextQuest;
 			activeQuestState = QuestState.Pending;
 			
-			npcs[quests[activeQuest].questNPCId].SetIcon(IconType.ExclamationPoint);
-			activeQuestCompleted = false;
-			Debug.Log(quests[activeQuest].steps[currentStep]);
+			npcs[activeQuest.questNPCId].SetIcon(IconType.ExclamationPoint);
 		}
 	}
 
-	public void ExecuteQuestSteps(int stepId)
+	public void ExecuteQuestSteps(int npcId)
 	{
-		if (stepId < 0 || stepId > quests[activeQuest].steps.Count)
-			return;
-
-		if (quests[activeQuest].steps[currentStep].type == QuestType.fetch)
+		if (activeQuest.type == QuestType.fetch)
 		{
-			int questItemId = quests[activeQuest].steps[currentStep].GetParam(); //id of the item that the step needs
-			int questItemCount = quests[activeQuest].steps[currentStep].GetCount(); // how many items the step needs
-			string questItemName = quests[activeQuest].steps[currentStep].GetDisplayName(); //what is the name of the object that the quest needs
-			int currentItem = currentItems.id;
-
+			int questItemId = activeQuest.typeParam; //id of the item that the step needs
+			int questItemCount = activeQuest.typeCount; // how many items the step needs
+			string questItemName = activeQuest.displayName; //what is the name of the object that the quest needs
+			int currentItem = interactedItem.id; //id of the item that is being interacted with
+			
+			Debug.Log(currentItem);
 			if (questItemId == currentItem)
 			{
-				typeFetch.GetItem();
+				if (activeQuestItemCounter < questItemCount)
+				{
+					itemScript[currentItems.IndexOf(interactedItem)].GetItem();
+					activeQuestItemCounter++;
+				}
+				
+				if (activeQuestItemCounter == questItemCount)
+				{
+					activeQuestState = QuestState.Completed;
+					npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
+				}
 			}
-			Debug.Log($"Get {questItemCount} {questItemName} for Many");
-
 			Debug.Log("itemId" + questItemId);
 		}
+	}
+
+	public List<Item> GetCurrentItems()
+	{
+		return currentItems;
+	}
+
+	public List<QuestTypeFetch> GetItemScript()
+	{
+		return itemScript;
 	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public virtual void TakeDamage(GameObject instigator, float damage)
+    public virtual void TakeDamage(GameObject instigator, float damage, float knockbackForce = 0)
     {
         Debug.Log("TakeDamage Interface Not Implemented");
     }

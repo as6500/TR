@@ -7,17 +7,9 @@ using UnityEngine.Rendering.Universal;
 public class GenerateColliisionBoxForLight : MonoBehaviour
 {
     [SerializeField] private Light2D light;
-
-    // We Keep A Reference To Ensure We
-    private Mesh mesh = null;
     
     private void Start()
     {
-        //light = transform.parent.GetComponent<Light2D>();
-
-        //if (light.lightType != Light2D.LightType)
-        //    return;
-
         GenerateCollision();
     }
 
