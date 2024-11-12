@@ -1,11 +1,17 @@
+using NavMeshPlus.Components;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEditor.AI;
 
 public class EnemieSpawner : MonoBehaviour
 {
+    [Header("AI navigation Configurations")]
+    [SerializeField] private NavMeshSurface surfaceAI;
+
     [Header("Enemy Prefab")]
     [SerializeField] private GameObject mutantTreePrefab;
     [SerializeField] private GameObject mutantHumanPrefab;
@@ -54,6 +60,8 @@ public class EnemieSpawner : MonoBehaviour
                 GameObject enemy = Instantiate(enemyType, enemyHolder.transform);
                 enemy.transform.position = spawn;
             }
+            surfaceAI.RemoveData();
+            surfaceAI.BuildNavMesh();
         }
 
         StartCoroutine(SpawnEnemy());
@@ -123,15 +131,18 @@ public class EnemieSpawner : MonoBehaviour
         {
             enemiesChosen[0] = mutantTreePrefab;
         }
-        else if (mutantHuman && mutantHumanPrefab != null)
+
+        if (mutantHuman && mutantHumanPrefab != null)
         {
             enemiesChosen[1] = mutantHumanPrefab;
         }
-        else if (smallWorm && smallWormPrefab != null)
+        
+        if (smallWorm && smallWormPrefab != null)
         {
             enemiesChosen[2] = smallWormPrefab;
         }
-        else if (bigWorm && bigWormPrefab != null)
+        
+        if (bigWorm && bigWormPrefab != null)
         {
             enemiesChosen[3] = bigWormPrefab;
         }

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class MutantHumanAttack : MonoBehaviour
 {
     [SerializeField] private MutantHumanState state;
+    [SerializeField] private int damage;
     private bool attacking;
 
 
@@ -19,11 +20,11 @@ public class MutantHumanAttack : MonoBehaviour
     {
         if (attacking) 
         {
-            ActivOrDeactivAttackState(); //updateAttackState
+            UpdateAttackState(); 
         }
     }
 
-    public void ActivOrDeactivAttackState()
+    public void UpdateAttackState()
     {
         if (state.GetCurrentState() == State.Attack)
         {
@@ -32,6 +33,17 @@ public class MutantHumanAttack : MonoBehaviour
         else
         {
             attacking = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+
+        if(damageable != null)
+        {
+            Debug.Log("Collided");
+            damageable.TakeDamage(gameObject, damage, 500);
         }
     }
 }

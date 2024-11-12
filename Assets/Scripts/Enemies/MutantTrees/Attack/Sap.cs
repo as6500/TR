@@ -66,7 +66,7 @@ public class Sap : MonoBehaviour
             IDamageable damageable = collision.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(gameObject, damage);
+                damageable.TakeDamage(gameObject, damage, 50);
                 BulletDestroyedEffect(damageable.GetBloodColor(), 5);
             }
             else

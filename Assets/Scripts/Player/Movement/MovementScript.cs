@@ -30,10 +30,13 @@ public class MovementScript : MonoBehaviour
             movementSpeed *= sprintMultiplier;
         }
         
-        myRigidbody.velocity = new Vector2
+        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            myRigidbody.velocity = new Vector2
             (
                 Input.GetAxis("Horizontal") * movementSpeed,
                 Input.GetAxis("Vertical") * movementSpeed
             );
+        }
     }
 }
