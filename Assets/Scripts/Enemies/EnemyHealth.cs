@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     [Header("Damage")]
     [SerializeField] private Color bloodColor;
+    [SerializeField] private Color mainColor;
     [SerializeField] private float damageEffectTimeSeconds = 0.3f;
 
     [Header("Collectibles Settings")]
@@ -22,6 +23,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         collectiblesHolder = GameObject.FindGameObjectWithTag("CollectiblesHolder");
         currentHealth = maxHealth;
+        mainColor = gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     public void DealDamage(float damage)
@@ -40,7 +42,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         gameObject.GetComponent<SpriteRenderer>().color = bloodColor;
         yield return new WaitForSeconds(damageEffectTimeSeconds);
-        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        gameObject.GetComponent<SpriteRenderer>().color = mainColor;
     }
 
     private void Drop()

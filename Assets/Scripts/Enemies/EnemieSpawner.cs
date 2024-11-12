@@ -44,27 +44,28 @@ public class EnemieSpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(spawnDelaySeconds);
-
-        if (CanSpawnEnemy())
+        while (true) 
         {
-            CheckEnemyType();
-            for (int i = 0; i < spawnRatePerSeconds; i++)
+            yield return new WaitForSeconds(spawnDelaySeconds);
+
+            if (CanSpawnEnemy())
             {
-                GameObject spawner = GetRandomSpawnerCloseToPlayer();
+                CheckEnemyType();
+                for (int i = 0; i < spawnRatePerSeconds; i++)
+                {
+                    GameObject spawner = GetRandomSpawnerCloseToPlayer();
 
-                if (spawner == null) break;
+                    if (spawner == null) break;
 
-                Vector3 spawn = GetRandomSpawnPoint(spawner);
-                GameObject enemyType = GetRandomEnemy();
-                GameObject enemy = Instantiate(enemyType, enemyHolder.transform);
-                enemy.transform.position = spawn;
+                    Vector3 spawn = GetRandomSpawnPoint(spawner);
+                    GameObject enemyType = GetRandomEnemy();
+                    GameObject enemy = Instantiate(enemyType, enemyHolder.transform);
+                    enemy.transform.position = spawn;
+                }
+                surfaceAI.RemoveData();
+                surfaceAI.BuildNavMesh();
             }
-            surfaceAI.RemoveData();
-            surfaceAI.BuildNavMesh();
         }
-
-        StartCoroutine(SpawnEnemy());
     }
 
     private bool CanSpawnEnemy()
@@ -120,7 +121,7 @@ public class EnemieSpawner : MonoBehaviour
     {
         Vector3 randomSpawn = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
 
-        randomSpawn = spawner.transform.position + Norm(randomSpawn) * Random.Range(0f, spawnArea);
+        randomSpawn = spawner.transform.position + (Norm(randomSpawn) * Random.Range(0f, spawnArea));
 
         return randomSpawn;
     }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1170477230431613469}
   - component: {fileID: 3944376292266415808}
   m_Layer: 31
-  m_Name: Collision
+  m_Name: LightParticlesColision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

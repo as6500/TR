@@ -334,9 +334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d444ab77566e05e45ad996833c956daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 15
-  minAmmo: 5
-  ammo: 0
+  type: 1
+  maxDrop: 15
+  minDrop: 5
+  drop: 0
 --- !u!1 &6221206038489036104
 GameObject:
   m_ObjectHideFlags: 0

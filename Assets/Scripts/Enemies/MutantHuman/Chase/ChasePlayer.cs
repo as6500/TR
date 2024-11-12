@@ -1,5 +1,7 @@
+using NavMeshPlus.Extensions;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,7 +12,7 @@ public class ChasePlayer : MonoBehaviour
     [Header("AI Agent")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private int secondsWaitingToFindPlayer;
-    private Vector3 idlePosition;
+    [SerializeField] private Vector3 idlePosition;
 
     [Header("Object to Follow")]
     [SerializeField] private Transform player;
@@ -22,9 +24,9 @@ public class ChasePlayer : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         state = GetComponent<MutantHumanState>();
-        idlePosition = transform.position;
+
         chasing = false;
     }
 
@@ -40,8 +42,15 @@ public class ChasePlayer : MonoBehaviour
     {
         if (state.GetCurrentState() == State.Chase)
         {
+            agent.SetDestination(player.position);   
+        }
+    }
+
+    public void SetChaseState()
+    {
+        if (state.GetCurrentState() == State.Chase)
+        {
             chasing = true;
-            agent.SetDestination(player.position);
             StopCoroutine(LookingForPlayer());
         }
         else if (state.GetCurrentState() == State.Idle)

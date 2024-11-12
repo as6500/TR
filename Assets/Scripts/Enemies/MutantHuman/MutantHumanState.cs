@@ -15,7 +15,6 @@ public class MutantHumanState : MonoBehaviour
     [SerializeField] private State currentState;
     private State changeFromState;
 
-
     private void Start()
     {
         currentState = State.Idle;

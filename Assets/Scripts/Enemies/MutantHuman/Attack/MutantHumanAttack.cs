@@ -9,7 +9,6 @@ public class MutantHumanAttack : MonoBehaviour
     [SerializeField] private int damage;
     private bool attacking;
 
-
     void Start()
     {
         state = GetComponent<MutantHumanState>();
@@ -42,7 +41,6 @@ public class MutantHumanAttack : MonoBehaviour
 
         if(damageable != null)
         {
-            Debug.Log("Collided");
             damageable.TakeDamage(gameObject, damage, 500);
         }
     }

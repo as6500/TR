@@ -145,7 +145,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5754717, g: 0.52099717, b: 0.4261748, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -254,6 +254,7 @@ MonoBehaviour:
   damageEffectTimeSeconds: 0.1
   dropCollectibles:
   - {fileID: 4605421280697415680, guid: 768773ade1d6c5b46bf55521d04b482e, type: 3}
+  - {fileID: 4605421280697415680, guid: 55c957732cca5d344a522e201127223f, type: 3}
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.3
 --- !u!114 &2902481268434080716

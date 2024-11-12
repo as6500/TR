@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PillsScript : MonoBehaviour
 {
-	private int pillsQuantity = 10;
+    [SerializeField] private int pillsQuantity = 10;
 	private bool pillsTaken = false;
 	[SerializeField] private float healthAmount = 30.0f; //amount of health gained in total
     [SerializeField] private float healingTimeSec = 10.0f;
@@ -48,7 +48,7 @@ public class PillsScript : MonoBehaviour
 		if (pillsQuantity > 0)
 		{
 			pillsQuantity--;
-			pillsUIScript.UpdateUIText();
+			
 			pillsTaken = true;
 		}
 	}
@@ -58,7 +58,13 @@ public class PillsScript : MonoBehaviour
 		return pillsQuantity;
 	}
 
-	private IEnumerator PillsTimer(float secondsLeft)
+    public void UpdatePills(int quantity)
+    {
+        pillsQuantity += quantity;
+        //pillsUIScript.UpdateUIText();
+    }
+
+    private IEnumerator PillsTimer(float secondsLeft)
 	{
 		if (secondsLeft > 0)
 		{

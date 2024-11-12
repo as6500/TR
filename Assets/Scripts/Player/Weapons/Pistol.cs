@@ -107,7 +107,7 @@ public class Pistol : MonoBehaviour
             if (pocketBullets.GetPocketBullets() > 0)
             {
                 yield return new WaitForSeconds(rechargeDelaySeconds);
-                pocketBullets.AddOrRmvBullets(-1);
+                pocketBullets.UpdateBullets(-1);
                 AddOrRmvBullets(1);
                 ChangeUIText();
             }

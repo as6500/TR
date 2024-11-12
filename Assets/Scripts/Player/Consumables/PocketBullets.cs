@@ -17,7 +17,7 @@ public class PocketBullets : MonoBehaviour
         return pocketBullets;
     }
 
-    public void AddOrRmvBullets(int quantity)
+    public void UpdateBullets(int quantity)
     {
         pocketBullets += quantity;
         bulletsUI.ChangeText(pocketBullets);
