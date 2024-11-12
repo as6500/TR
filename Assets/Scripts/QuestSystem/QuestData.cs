@@ -7,10 +7,10 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/QuestScriptableObject")] 
 
-public class QuestData : ScriptableObject //QuestData em vez de QuestScriptableObject
+public class QuestData : ScriptableObject
 {
 	public int id;
-	public string displayName; //put private after testing
+	public string displayName;
 	public QuestType type;
 	public int typeParam;
 	public int typeCount;

@@ -12,6 +12,7 @@ public class QuestManager : MonoBehaviour
 {
 	public QuestData activeQuest;
 	public QuestState activeQuestState;
+	[SerializeField] private QuestSystemUI questText;
 	public List<QuestNPC> npcs = new List<QuestNPC>();
 	[SerializeField] private GameObject item;
 	public Item interactedItem;
@@ -62,8 +63,8 @@ public class QuestManager : MonoBehaviour
 
 	private void AcceptFetchQuest()
 	{
-		int questParam = activeQuest.typeParam; //just so the param names are not long
-		string questItemName = activeQuest.displayName; //just so the param names are not long
+		int questParam = activeQuest.typeParam;
+		string questItemName = item.GetComponent<Item>().GetDisplayName();
 		int questCount = activeQuest.typeCount;
 		
 		for (int i = 0; i < questCount; i++)
@@ -72,9 +73,11 @@ public class QuestManager : MonoBehaviour
 			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
 			Item newItem = tempItem.GetComponent<Item>();
 			newItem.SetUpItem(questParam, questItemName);
+			Debug.Log(questItemName);
 			currentItems.Add(newItem); //review this later
 			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>()); //review this later
 		}
+		questText.DisplayQuestText(activeQuest.displayName, questCount, questItemName);
 	}
 
 	private void AcceptResourceQuest()

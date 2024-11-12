@@ -548,16 +548,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46db7cedc780b7e4e842b74b5b4bcf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeQuest: {fileID: 11400000, guid: 872faeb8e561dbd4f8783af3f597c904, type: 2}
+  activeQuestState: 0
   npcs:
   - {fileID: 2055561811}
   - {fileID: 1385357535}
   - {fileID: 1494268253}
   - {fileID: 2087159898}
-  activeQuestState: 0
-  typeFetch: []
-  currentItems: []
   item: {fileID: 2577600633806197976, guid: 8d2346eaae7a856439a0028fdcc05714, type: 3}
-  activeQuest: {fileID: 11400000, guid: 872faeb8e561dbd4f8783af3f597c904, type: 2}
+  questText: {fileID: 1345552237}
   interactedItem: {fileID: 0}
 --- !u!4 &312346171
 Transform:
@@ -1459,6 +1458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345552234}
   - component: {fileID: 1345552236}
+  - component: {fileID: 1345552237}
   - component: {fileID: 1345552235}
   m_Layer: 5
   m_Name: ActiveQuest
@@ -1583,6 +1583,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345552233}
   m_CullTransparentMesh: 1
+--- !u!114 &1345552237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345552233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8361efc21cd5cf841aeebecf92c35ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 312346170}
 --- !u!1 &1359833489
 GameObject:
   m_ObjectHideFlags: 0
