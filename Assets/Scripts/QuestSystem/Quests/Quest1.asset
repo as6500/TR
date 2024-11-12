@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   displayName: 'Explore the World '
-  type: 0
+  type: 1
   typeParam: 0
   typeCount: 3
+  typeName: Flaks of pills
   questNPCId: 0
+  questNPCName: Many
   nextQuest: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}

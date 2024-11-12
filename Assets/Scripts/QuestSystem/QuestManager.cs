@@ -34,9 +34,7 @@ public class QuestManager : MonoBehaviour
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.E))
-		{
 			CompletingQuest();
-		}
 	}
 
 	public void AcceptQuest()
@@ -64,7 +62,8 @@ public class QuestManager : MonoBehaviour
 	private void AcceptFetchQuest()
 	{
 		int questParam = activeQuest.typeParam;
-		string questItemName = item.GetComponent<Item>().GetDisplayName();
+		string questName = activeQuest.displayName;
+		string questItemName = activeQuest.typeName;
 		int questCount = activeQuest.typeCount;
 		
 		for (int i = 0; i < questCount; i++)
@@ -72,30 +71,27 @@ public class QuestManager : MonoBehaviour
 			Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(4f, 5f), 0);
 			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
 			Item newItem = tempItem.GetComponent<Item>();
-			newItem.SetUpItem(questParam, questItemName);
-			Debug.Log(questItemName);
+			newItem.SetUpItem(questParam);
 			currentItems.Add(newItem); //review this later
-			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>()); //review this later
+			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>());//review this later
 		}
-		questText.DisplayQuestText(activeQuest.displayName, questCount, questItemName);
+		questText.DisplayQuestText(questName, questCount, questItemName, activeQuestItemCounter);
 	}
 
 	private void AcceptResourceQuest()
 	{
-		//Code for Resource Quests
+		//Code for Resource Quests (Tomás)
 	}
 	
 	private void AcceptLocateQuest()
 	{
-		//Code for Locate Quests
+		//Code for Locate Quests (Sofia)
 	}
 
 	public void CompletingQuest()
 	{
 		if (activeQuestState == QuestState.Active)
-		{
 			ExecuteQuestSteps(activeQuest.questNPCId);
-		}
 	}
 
 	public void OntoNextQuest()
@@ -103,6 +99,7 @@ public class QuestManager : MonoBehaviour
 		if (activeQuestState == QuestState.Completed)
 		{
 			npcs[activeQuest.questNPCId].SetIcon(IconType.None);
+			questText.TextOfQuest().enabled = false;
 		
 			if (activeQuest.questNPCId == npcs.Count - 1) 
 				return;
@@ -119,27 +116,29 @@ public class QuestManager : MonoBehaviour
 	{
 		if (activeQuest.type == QuestType.fetch)
 		{
-			int questItemId = activeQuest.typeParam; //id of the item that the step needs
-			int questItemCount = activeQuest.typeCount; // how many items the step needs
-			string questItemName = activeQuest.displayName; //what is the name of the object that the quest needs
+			string questName = activeQuest.displayName; //name of the quest itself
+			string questNPCName = activeQuest.questNPCName;
+			int questItemId = activeQuest.typeParam; //id of the item that the quest needs
+			string questItemName = activeQuest.typeName; // name of the item that the quest needs
+			int questItemCount = activeQuest.typeCount; // how many items the quest needs
 			int currentItem = interactedItem.id; //id of the item that is being interacted with
 			
-			Debug.Log(currentItem);
 			if (questItemId == currentItem)
 			{
 				if (activeQuestItemCounter < questItemCount)
 				{
 					itemScript[currentItems.IndexOf(interactedItem)].GetItem();
 					activeQuestItemCounter++;
+					questText.DisplayQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
 				}
 				
 				if (activeQuestItemCounter == questItemCount)
 				{
+					questText.DisplayDeliverText(questName, questNPCName);
 					activeQuestState = QuestState.Completed;
 					npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
 				}
 			}
-			Debug.Log("itemId" + questItemId);
 		}
 	}
 

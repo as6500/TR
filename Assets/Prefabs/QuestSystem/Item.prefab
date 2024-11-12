@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInRange: 0
   quest: {fileID: 11400000, guid: 872faeb8e561dbd4f8783af3f597c904, type: 2}
+  manager: {fileID: 0}
 --- !u!114 &3310000105209697386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,5 +199,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69709852d24ccb64e86541247cb78569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: -1
-  displayName: Default
+  id: 0
+  displayName: default

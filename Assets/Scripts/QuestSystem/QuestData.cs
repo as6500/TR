@@ -14,7 +14,9 @@ public class QuestData : ScriptableObject
 	public QuestType type;
 	public int typeParam;
 	public int typeCount;
+	public string typeName;
 	public int questNPCId;
+	public string questNPCName;
 	public QuestData nextQuest;
 	
 }

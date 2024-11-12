@@ -16,6 +16,8 @@ MonoBehaviour:
   displayName: The Good Doctor
   type: 0
   typeParam: 4
-  typeCount: 3
-  questNPCId: 4
+  typeCount: 2
+  typeName: Vials of antibiotics
+  questNPCId: 3
+  questNPCName: Ziggy
   nextQuest: {fileID: 0}

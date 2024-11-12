@@ -16,9 +16,19 @@ public class QuestSystemUI : MonoBehaviour
 		questText.enabled = false;
 	}
 
-	public void DisplayQuestText(string questName, int questAmount, string itemName)
+	public void DisplayQuestText(string questName, int questAmount, string itemName, int currentItemAmount)
 	{
 		questText.enabled = true;
-		questText.text = $"{questName}: \n Get {questAmount} {itemName} ";
+		questText.text = $"{questName}: \n - Get {questAmount} {itemName} {currentItemAmount} / {questAmount}";
+	}
+
+	public void DisplayDeliverText(string questName, string NPCName)
+	{
+		questText.text = $"{questName}: \n Return to {NPCName}";
+	}
+
+	public TextMeshProUGUI TextOfQuest()
+	{
+		return questText;
 	}
 }
