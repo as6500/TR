@@ -3,12 +3,16 @@ using UnityEngine.AI;
 
 public class AttackState : StateBehaviour
 {
+    public enum WormType { Small, Big }
+    [SerializeField] private WormType wormType;
     private SpriteRenderer spriteRenderer;
     [SerializeField] public int attackRange = 2; 
     private float attackCooldown = 5f;  // time between attacks
     private float timeSinceLastAttack;
     private Transform player;  
-    private float attackEarthquakeDamage = 4f;
+    private float attackSmallEarthquakeDamage = 4f;
+    private float attackBigEarthquakeDamage = 6f;
+    private float attackTailDamage = 5;
     private float attackBitingDamage = 3f;
     [SerializeField] private HealthScript healthScript;
     private Rigidbody2D rb;
@@ -52,18 +56,27 @@ public class AttackState : StateBehaviour
         {
             if (timeSinceLastAttack >= attackCooldown)
             {
-                DoBitingAttack();
+                DoMainAttack();
                 timeSinceLastAttack = 0f;
             }
         }
     }
 
-    private void DoBitingAttack()
+    private void DoMainAttack()
     {
         IDamageable damageable = player.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(gameObject, attackBitingDamage);
+            float attackMainDamage;
+            if (wormType == WormType.Small)
+            {
+                attackMainDamage = attackBitingDamage;
+            }
+            else
+            {
+                attackMainDamage = attackTailDamage;
+            }
+            damageable.TakeDamage(gameObject, attackMainDamage);
         }
         Debug.Log("biting the player");
          isUnderground = false;
@@ -74,7 +87,16 @@ public class AttackState : StateBehaviour
         IDamageable damageable = player.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(gameObject, attackEarthquakeDamage);
+            float EarthquakeDamage;
+            if (wormType == WormType.Small)
+            {
+                EarthquakeDamage = attackSmallEarthquakeDamage;
+            }
+            else
+            {
+                EarthquakeDamage = attackBigEarthquakeDamage;
+            }
+            damageable.TakeDamage(gameObject, EarthquakeDamage);
         }
         Debug.Log("earthquake attack");
         isUnderground = false;
