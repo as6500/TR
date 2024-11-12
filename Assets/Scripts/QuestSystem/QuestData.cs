@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable] public enum QuestType { fetch, locate, resource };
+
 [CreateAssetMenu(menuName = "ScriptableObjects/QuestScriptableObject")] 
 
-public class QuestScriptableObject : ScriptableObject
+public class QuestData : ScriptableObject //QuestData em vez de QuestScriptableObject
 {
 	public int id;
 	public string displayName; //put private after testing
-	public List<QuestSteps> steps;
+	public QuestType type;
+	public int typeParam;
+	public int typeCount;
 	public int questNPCId;
-	public int nextQuestId;
-	public ScriptableObject nextQuest;
-
+	public QuestData nextQuest;
+	
 }

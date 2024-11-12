@@ -15,5 +15,7 @@ MonoBehaviour:
   id: 4
   displayName: The Good Doctor
   type: 0
+  typeParam: 4
+  typeCount: 3
   questNPCId: 4
-  nextQuestId: 5
+  nextQuest: {fileID: 0}

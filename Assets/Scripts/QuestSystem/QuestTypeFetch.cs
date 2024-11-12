@@ -6,7 +6,7 @@ using UnityEngine;
 public class QuestTypeFetch : MonoBehaviour
 {
 	[SerializeField] private bool isInRange;
-	[SerializeField] private QuestScriptableObject quest;
+	[SerializeField] private QuestData quest;
 	[SerializeField] private QuestManager manager;
 	private Item item;
 	private bool itemPickedUp;
@@ -41,11 +41,11 @@ public class QuestTypeFetch : MonoBehaviour
 	{
 		if (isInRange)
 		{
-			int id = manager.currentItems.IndexOf(item);
+			int id = manager.GetCurrentItems().IndexOf(item);
 
 			itemPickedUp = true;
-			manager.typeFetch.RemoveAt(id);
-			manager.currentItems.RemoveAt(id);
+			manager.GetItemScript().RemoveAt(id);
+			manager.GetCurrentItems().RemoveAt(id);
 			Destroy(gameObject);
 			Debug.Log("Item on inventory!");
 		}

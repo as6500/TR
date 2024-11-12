@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   displayName: Boredom
-  steps:
-  - {fileID: 11400000, guid: 692cbe1e930a6494f99aa6f6f1400f96, type: 2}
+  type: 0
+  typeParam: 2
+  typeCount: 5
   questNPCId: 2
-  nextQuestId: 3
+  nextQuest: {fileID: 11400000, guid: 4a797dda0e9c6d74eacd36e306bc3215, type: 2}
