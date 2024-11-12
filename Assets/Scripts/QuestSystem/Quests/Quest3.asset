@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 2
   typeParam: 2
   typeCount: 5
-  typeName: Cable Wires
+  typeName: Pills
   questNPCId: 2
   questNPCName: Daniel
   nextQuest: {fileID: 11400000, guid: 4a797dda0e9c6d74eacd36e306bc3215, type: 2}
