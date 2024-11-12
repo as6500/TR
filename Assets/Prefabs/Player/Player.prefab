@@ -1931,15 +1931,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8514970844538690461}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4bf718c5942d3244bda051aaac50e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pillsQuantity: 10
-  healthAmount: 30
+  healthAmount: 20
   healingTimeSec: 10
-  delayTimeSec: 2
+  delayTimeSec: 1
   pillsUIScript: {fileID: 0}
 --- !u!114 &107627910667785486
 MonoBehaviour:
@@ -1948,13 +1948,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8514970844538690461}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 882f5a4368c2b7c43afa2da5473bb878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delayTimeSec: 2
-  amountDamageGiven: 0
+  amountDamageGiven: 2
   timer: {fileID: 0}
   antiRadiationFlaskUIScript: {fileID: 0}
   healthScript: {fileID: 985926617799968136}
