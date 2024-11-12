@@ -434,7 +434,6 @@ GameObject:
   m_Component:
   - component: {fileID: 340229171}
   - component: {fileID: 340229170}
-  - component: {fileID: 340229169}
   - component: {fileID: 340229168}
   - component: {fileID: 340229167}
   - component: {fileID: 340229174}
@@ -446,6 +445,8 @@ GameObject:
   - component: {fileID: 340229181}
   - component: {fileID: 340229182}
   - component: {fileID: 340229183}
+  - component: {fileID: 340229185}
+  - component: {fileID: 340229184}
   m_Layer: 7
   m_Name: SmallSandworm
   m_TagString: SmallSandworm
@@ -468,6 +469,7 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 0
   bloodColor: {r: 0, g: 1, b: 0.045894384, a: 0}
+  mainColor: {r: 0, g: 0, b: 0, a: 0}
   damageEffectTimeSeconds: 0.3
   dropCollectibles: []
   collectiblesHolder: {fileID: 0}
@@ -480,7 +482,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340229165}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -499,41 +501,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &340229169
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340229165}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!212 &340229170
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -660,12 +627,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8195f88d181a1c44bd3cdee4c8a4136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 1067067734}
-  pointB: {fileID: 1079693494}
-  fromAtoB: 0
   agent: {fileID: 340229176}
   lineOfSight: {fileID: 340229181}
   attackState: {fileID: 340229183}
+  pointA: {fileID: 1067067734}
+  pointB: {fileID: 1079693494}
+  fromAtoB: 0
 --- !u!114 &340229179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,11 +669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d2c04443ac8a24d890a08a0afed985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.59
   agent: {fileID: 340229176}
   lineOfSight: {fileID: 340229181}
-  enemyHasLostPlayer: 0
   attackState: {fileID: 340229183}
+  speed: 1.59
+  enemyHasLostPlayer: 0
 --- !u!114 &340229181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,9 +722,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wormType: 0
-  attackRange: 2
   healthScript: {fileID: 1211924637}
+  attackCooldown: 5
+  timeSinceLastAttack: 0
+  attackRange: 2
   isUnderground: 0
+--- !u!58 &340229184
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340229165}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
+--- !u!58 &340229185
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340229165}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!1 &543524698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,8 +1052,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wormType: 1
-  attackRange: 2
   healthScript: {fileID: 1211924637}
+  attackCooldown: 5
+  timeSinceLastAttack: 0
+  attackRange: 2
   isUnderground: 0
 --- !u!114 &958177446
 MonoBehaviour:
@@ -1073,7 +1114,7 @@ MonoBehaviour:
   chaseState: {fileID: 958177449}
   playerLostState: {fileID: 958177446}
   Player: {fileID: 1211924631}
-  SmallSandworm: {fileID: 958177444}
+  SmallSandworm: {fileID: 340229165}
   attackState: {fileID: 958177445}
 --- !u!114 &958177449
 MonoBehaviour:
@@ -1087,11 +1128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d2c04443ac8a24d890a08a0afed985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.59
   agent: {fileID: 958177451}
   lineOfSight: {fileID: 958177447}
-  enemyHasLostPlayer: 0
   attackState: {fileID: 958177445}
+  speed: 1.59
+  enemyHasLostPlayer: 0
 --- !u!114 &958177450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,12 +1145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8195f88d181a1c44bd3cdee4c8a4136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 1067067734}
-  pointB: {fileID: 1079693494}
-  fromAtoB: 0
   agent: {fileID: 958177451}
   lineOfSight: {fileID: 958177447}
   attackState: {fileID: 958177445}
+  pointA: {fileID: 1067067734}
+  pointB: {fileID: 1079693494}
+  fromAtoB: 0
 --- !u!195 &958177451
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1172,6 +1213,7 @@ MonoBehaviour:
   maxHealth: 40
   currentHealth: 0
   bloodColor: {r: 0, g: 1, b: 0.045894384, a: 0}
+  mainColor: {r: 0, g: 0, b: 0, a: 0}
   damageEffectTimeSeconds: 0.3
   dropCollectibles: []
   collectiblesHolder: {fileID: 0}
@@ -1559,7 +1601,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1721,9 +1763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb67ca3285adf041bdd22c094a075fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthText: {fileID: 0}
 --- !u!1001 &1393084849
 PrefabInstance:
   m_ObjectHideFlags: 0

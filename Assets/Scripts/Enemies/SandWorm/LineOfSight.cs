@@ -7,11 +7,11 @@ public class LineOfSight2D : MonoBehaviour
     [SerializeField] private string tagObjectToFind = "Player";
     [SerializeField] private float visionDistance = 5.0f;
     [SerializeField] private float viewConeAngle = 45.0f;
+    private bool hasSeenPlayerThisFrame = false;
     [SerializeField] private LayerMask detectionLayerMask;
     [SerializeField] private AttackState attackState;
-
     private Transform playerTransform;
-    private bool hasSeenPlayerThisFrame = false;
+   
     private void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag(tagObjectToFind)?.GetComponent<Transform>();
@@ -19,7 +19,7 @@ public class LineOfSight2D : MonoBehaviour
 
     private void Update()
     {
-        if (playerTransform != null)
+        if (playerTransform != null) //if playerTransform isn't empty run checkPlayerInLineOfSight
         {
             CheckPlayerInLineOfSight();
             //Debug.Log(hasSeenPlayerThisFrame);
@@ -31,10 +31,10 @@ public class LineOfSight2D : MonoBehaviour
         Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
-        if (distanceToPlayer > visionDistance)
+        if (distanceToPlayer > visionDistance) //if the distance to player is bigger than the visionDistance
         {
-            hasSeenPlayerThisFrame = false;
-            OnPlayerNotDetected();
+            hasSeenPlayerThisFrame = false; //set the flag for seenPlayerThisFrame to false
+            OnPlayerNotDetected(); //this runs only consolelogs
             return;
         }
 
@@ -85,18 +85,18 @@ public class LineOfSight2D : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.red; //draws the attack range circumference 
         Gizmos.DrawWireSphere(transform.position, attackState.attackRange);
         
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, visionDistance);
-
+        
         Vector3 forward = transform.right;
         float halfAngle = viewConeAngle / 2 * Mathf.Deg2Rad;
-
+        
         Vector3 coneLeft = Quaternion.Euler(0, 0, viewConeAngle / 2) * forward * visionDistance;
         Vector3 coneRight = Quaternion.Euler(0, 0, -viewConeAngle / 2) * forward * visionDistance;
-
+        
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + coneLeft);
         Gizmos.DrawLine(transform.position, transform.position + coneRight);

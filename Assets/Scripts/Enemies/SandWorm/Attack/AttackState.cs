@@ -3,21 +3,21 @@ using UnityEngine.AI;
 
 public class AttackState : StateBehaviour
 {
-    public enum WormType { Small, Big }
+    public enum WormType { Small, Big } //type of worm
     [SerializeField] private WormType wormType;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] public int attackRange = 2; 
-    private float attackCooldown = 5f;  // time between attacks
-    private float timeSinceLastAttack;
-    private Transform player;  
-    private float attackSmallEarthquakeDamage = 4f;
-    private float attackBigEarthquakeDamage = 6f;
-    private float attackTailDamage = 5;
-    private float attackBitingDamage = 3f;
+    private Transform player;      
     [SerializeField] private HealthScript healthScript;
     private Rigidbody2D rb;
     private NavMeshAgent agent;
-    public bool isUnderground;
+    [SerializeField] public float attackCooldown = 5f;  // time between attacks
+    public float timeSinceLastAttack;
+    private float attackSmallEarthquakeDamage = 4f;
+    private float attackBigEarthquakeDamage = 6f;
+    public float attackRange = 2f;
+    private float attackTailDamage = 5f;
+    private float attackBitingDamage = 3f;
+    public bool isUnderground; //verifies if the worm is underground so it can do the earthquake attack
     
     void Awake()
     {
@@ -34,41 +34,41 @@ public class AttackState : StateBehaviour
 
     public override void OnStateStart()
     {
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = Color.red;
         timeSinceLastAttack = 0f;  // reset the attack timer when the state starts
-        agent.isStopped = true;
+        agent.isStopped = true; //stops the worm so it doesnt wiggle around
     }
 
     public override void OnStateUpdate()
     {
+        Debug.Log(timeSinceLastAttack);
         rb.velocity = Vector2.zero;
-        timeSinceLastAttack += Time.deltaTime;
-        
-        //check if player is withing attack range and if the worm is underground
-        if (Vector3.Distance(transform.position, player.position) <= attackRange && isUnderground)
-        {
-            DoEarthquakeAttack();
-        }
+        timeSinceLastAttack += Time.deltaTime; //count time since the last attack
+        //check if player is withing attack range and if the worm is underground and if so does the earthquake attack
 
-
-        // check player is within attack range and if the attack cooldown has passed
-        if (Vector3.Distance(transform.position, player.position) <= attackRange)
+    Debug.Log("Distance to player: " + Vector2.Distance(transform.position, player.position));
+        if (Vector2.Distance(transform.position, player.position) <= attackRange)
         {
-            if (timeSinceLastAttack >= attackCooldown)
+            if (isUnderground)
             {
+                Debug.Log("Performing Earthquake Attack.");
+                DoEarthquakeAttack();
+            }
+            else if (timeSinceLastAttack >= attackCooldown)
+            {
+                Debug.Log("Performing main attack.");
                 DoMainAttack();
-                timeSinceLastAttack = 0f;
             }
         }
     }
-
+    
     private void DoMainAttack()
     {
         IDamageable damageable = player.GetComponent<IDamageable>();
         if (damageable != null)
         {
             float attackMainDamage;
-            if (wormType == WormType.Small)
+            if (wormType == WormType.Small) //does the correct earthquake damage depending on the type of worm
             {
                 attackMainDamage = attackBitingDamage;
             }
@@ -77,9 +77,10 @@ public class AttackState : StateBehaviour
                 attackMainDamage = attackTailDamage;
             }
             damageable.TakeDamage(gameObject, attackMainDamage);
+            
         }
-        Debug.Log("biting the player");
-         isUnderground = false;
+        isUnderground = false;
+        timeSinceLastAttack = 0f;
     }
     
     private void DoEarthquakeAttack()
@@ -88,7 +89,7 @@ public class AttackState : StateBehaviour
         if (damageable != null)
         {
             float EarthquakeDamage;
-            if (wormType == WormType.Small)
+            if (wormType == WormType.Small) //does the correct earthquake damage depending on the type of worm
             {
                 EarthquakeDamage = attackSmallEarthquakeDamage;
             }
@@ -97,14 +98,16 @@ public class AttackState : StateBehaviour
                 EarthquakeDamage = attackBigEarthquakeDamage;
             }
             damageable.TakeDamage(gameObject, EarthquakeDamage);
+            Debug.Log("Earthquake attack performed: " + EarthquakeDamage + " damage to player");
+            timeSinceLastAttack = 0f;
         }
-        Debug.Log("earthquake attack");
-        isUnderground = false;
+        isUnderground = false;  //emerges the worm
+
     }
 
     public override void OnStateEnd()
     {
-        agent.isStopped = false;
+        agent.isStopped = false; //unfreezes the worm so its ready for the next state
     }
 
     public override int StateTransitionCondition()
