@@ -53,7 +53,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Weapons");
+        SceneManager.LoadScene(1);
     }
 
     //In-Game Menu Functions

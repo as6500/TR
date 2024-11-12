@@ -4,24 +4,19 @@ using UnityEngine.AI;
 
 public class PatrolState : StateBehaviour
 {
-    [SerializeField] private GameObject pointA;
-    [SerializeField] private GameObject pointB;
-    [SerializeField] private bool fromAtoB;
     [SerializeField] private NavMeshAgent agent;
-    private SpriteRenderer spriteRenderer;
     [SerializeField] private LineOfSight2D lineOfSight;
     [SerializeField] private AttackState attackState;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject pointA;
+    [SerializeField] private GameObject pointB;
+    [SerializeField] private bool fromAtoB;
     
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    void FixedUpdate()
-    {
-
     }
 
     public override bool InitializeState()
@@ -31,25 +26,25 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateStart()
     {
-        spriteRenderer.color = Color.red;
-        attackState.isUnderground = true;
+        spriteRenderer.color = Color.white; 
+        attackState.isUnderground = true; //makes sure the worm is underground
     }
 
     public override void OnStateUpdate()
     {
-        rb.velocity = Vector2.zero;
+        rb.velocity = Vector2.zero; //makes sure the worm isn't affected by forces from the player
         
-        //if agent reaches its destination, move to next point
+        //if worm reaches its destination, move to next point
         if (fromAtoB == true)
         {
             agent.SetDestination(pointB.transform.position);
         }
-
         if (fromAtoB == false)
         {
             agent.SetDestination(pointA.transform.position);
         }
 
+        //if distance between worm and the point is close enough switch the direction to the other point
         if (Vector2.Distance(agent.transform.position, pointB.transform.position) <= 0.1f)
         {
             fromAtoB = false;
@@ -63,7 +58,7 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        attackState.isUnderground = true;
+        attackState.isUnderground = true; //makes sure the worm is underground
     }
 
     public override int StateTransitionCondition()

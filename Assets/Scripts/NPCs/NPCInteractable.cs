@@ -14,7 +14,7 @@ public class NPCInteractable : MonoBehaviour
     {
         if (isInRange == true)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.E))
                 interacting.Invoke();
         }
     }
