@@ -524,10 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a95f2aaf7dd204a8b02ca284df06f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-=======
   bulletsText: {fileID: 180190391}
->>>>>>> Stashed changes
 --- !u!1001 &312021215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14739,7 +14736,6 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: c5dbf06000000000e9bddb8ce350bfcb5d54fe65
   m_ShapePath:
-<<<<<<< Updated upstream
   - {x: -10, y: -17, z: 0}
   - {x: -10, y: 26, z: 0}
   - {x: 103, y: 26, z: 0}
@@ -14747,7 +14743,6 @@ MonoBehaviour:
   m_ShapePathHash: 0
   m_Mesh: {fileID: 18325683}
   m_InstanceId: 33160
-=======
   - {x: -9.071654, y: 4.0038304, z: 0}
   - {x: -8.996116, y: 7.9834695, z: 0}
   - {x: 12.030688, y: 7.9809465, z: 0}
@@ -14825,7 +14820,6 @@ MonoBehaviour:
   m_ShapePathHash: -671021359
   m_Mesh: {fileID: 1855484320}
   m_InstanceId: 42058
->>>>>>> Stashed changes
   m_LocalBounds:
     m_Center: {x: 46.433556, y: 4.519636, z: 0}
     m_Extent: {x: 55.50521, y: 21.58368, z: 0}
@@ -30553,8 +30547,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!43 &1855484320
 Mesh:
   m_ObjectHideFlags: 0
@@ -30725,7 +30717,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1691543554458677594, guid: 37bd2bb5dc96c5942acab3e68efa6749, type: 3}
   m_PrefabInstance: {fileID: 1683283698}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!4 &1883238259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2165540587952613175, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
