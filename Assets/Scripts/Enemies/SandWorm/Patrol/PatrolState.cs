@@ -12,6 +12,7 @@ public class PatrolState : StateBehaviour
     [SerializeField] private GameObject pointA;
     [SerializeField] private GameObject pointB;
     [SerializeField] private bool fromAtoB;
+    private AttackState attack;
 
     void Awake()
     {
@@ -20,6 +21,7 @@ public class PatrolState : StateBehaviour
 
     void Start()
     {
+        attack = gameObject.GetComponent<AttackState>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -31,6 +33,8 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateStart()
     {
+        attack.SetBigAttackDone(false);
+        Debug.Log("Hello!");
         spriteRenderer.color = Color.white; 
         //attackState.isUnderground = true; //makes sure the worm is underground
     }

@@ -22,7 +22,7 @@ public class LineOfSight : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(playerInAttackRange);
+        //Debug.Log(playerInAttackRange);
         //Debug.Log(hasSeenPlayerThisFrame);
         Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
