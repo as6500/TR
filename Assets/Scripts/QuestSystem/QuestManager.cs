@@ -14,6 +14,8 @@ public class QuestManager : MonoBehaviour
 	public QuestState activeQuestState;
 	[SerializeField] private QuestSystemUI questText;
 	public List<QuestNPC> npcs = new List<QuestNPC>();
+	[SerializeField] private QuestTypeLocation questTypeLocation;
+	[SerializeField] private GameObject location;
 	[SerializeField] private GameObject item;
 	public Item interactedItem;
 	private List<Item> currentItems = new List<Item>();
@@ -80,18 +82,32 @@ public class QuestManager : MonoBehaviour
 
 	private void AcceptResourceQuest()
 	{
-		//Code for Resource Quests (Tomás)
+		//Code for Resource Quests (Tomï¿½s)
 	}
 	
 	private void AcceptLocateQuest()
 	{
 		//Code for Locate Quests (Sofia)
+		Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(4f, 5f), 0);
+		GameObject tempLocation = Instantiate(location, randomPosition, Quaternion.identity);
+		questTypeLocation = tempLocation.GetComponent<QuestTypeLocation>();
 	}
 
 	public void CompletingQuest()
 	{
-		if (activeQuestState == QuestState.Active)
-			ExecuteQuestSteps(activeQuest.questNPCId);
+		switch (activeQuest.type)
+		{
+			case QuestType.fetch:
+				ExecuteFetchQuest(activeQuest.questNPCId);
+				break;
+			case QuestType.resource:
+				ExecuteResourceQuest();
+				break;
+			case QuestType.locate:
+				ExecuteLocateQuest();
+				break;
+		}
+		
 	}
 
 	public void OntoNextQuest()
@@ -112,34 +128,45 @@ public class QuestManager : MonoBehaviour
 		}
 	}
 
-	public void ExecuteQuestSteps(int npcId)
+	public void ExecuteFetchQuest(int npcId)
 	{
-		if (activeQuest.type == QuestType.fetch)
+		string questName = activeQuest.displayName; //name of the quest itself
+		string questNPCName = activeQuest.questNPCName;
+		int questItemId = activeQuest.typeParam; //id of the item that the quest needs
+		string questItemName = activeQuest.typeName; // name of the item that the quest needs
+		int questItemCount = activeQuest.typeCount; // how many items the quest needs
+		int currentItem = interactedItem.id; //id of the item that is being interacted with
+		
+		if (questItemId == currentItem)
 		{
-			string questName = activeQuest.displayName; //name of the quest itself
-			string questNPCName = activeQuest.questNPCName;
-			int questItemId = activeQuest.typeParam; //id of the item that the quest needs
-			string questItemName = activeQuest.typeName; // name of the item that the quest needs
-			int questItemCount = activeQuest.typeCount; // how many items the quest needs
-			int currentItem = interactedItem.id; //id of the item that is being interacted with
-			
-			if (questItemId == currentItem)
+			if (activeQuestItemCounter < questItemCount)
 			{
-				if (activeQuestItemCounter < questItemCount)
-				{
-					itemScript[currentItems.IndexOf(interactedItem)].GetItem();
-					activeQuestItemCounter++;
-					questText.DisplayQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
-				}
-				
-				if (activeQuestItemCounter == questItemCount)
-				{
-					questText.DisplayDeliverText(questName, questNPCName);
-					activeQuestState = QuestState.Completed;
-					npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
-				}
+				itemScript[currentItems.IndexOf(interactedItem)].GetItem();
+				activeQuestItemCounter++;
+				questText.DisplayQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
+			}
+			
+			if (activeQuestItemCounter == questItemCount)
+			{
+				questText.DisplayDeliverText(questName, questNPCName);
+				activeQuestState = QuestState.Completed;
+				npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
 			}
 		}
+	}
+
+	public void ExecuteLocateQuest()
+	{
+		if (questTypeLocation.OnLocation())
+		{
+			activeQuestState = QuestState.Completed;
+			npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
+		}
+	}
+
+	public void ExecuteResourceQuest()
+	{
+		
 	}
 
 	public List<Item> GetCurrentItems()
