@@ -16,13 +16,24 @@ public class QuestSystemUI : MonoBehaviour
 		questText.enabled = false;
 	}
 
-	public void DisplayQuestText(string questName, int questAmount, string itemName, int currentItemAmount)
+	public void DisplayFetchQuestText(string questName, int questAmount, string itemName, int currentItemAmount)
 	{
 		questText.enabled = true;
 		questText.text = $"{questName}: \n - Get {questAmount} {itemName} {currentItemAmount} / {questAmount}";
 	}
 
-	public void DisplayDeliverText(string questName, string NPCName)
+	public void DisplayFetchDeliverText(string questName, string NPCName)
+	{
+		questText.text = $"{questName}: \n Return to {NPCName}";
+	}
+
+	public void DisplayLocateQuestText(string questName, string itemName)
+	{
+		questText.enabled = true;
+		questText.text = $"{questName}: \n Find the location of {itemName}";
+	}
+
+	public void DisplayLocateDeliverText(string questName, string NPCName)
 	{
 		questText.text = $"{questName}: \n Return to {NPCName}";
 	}
