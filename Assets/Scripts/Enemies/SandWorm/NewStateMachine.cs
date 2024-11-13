@@ -8,7 +8,7 @@ public class NewStateMachine : MonoBehaviour
     [SerializeField] private List<StateBehaviour> stateBehaviours = new List<StateBehaviour>();
     [SerializeField] private int defaultState = 0;
     private StateBehaviour currentState = null;
-    [SerializeField] private LineOfSight2D lineOfSight;
+    [SerializeField] private LineOfSight lineOfSight;
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private PlayerLostState playerLostState;
     [SerializeField] private GameObject Player;
@@ -100,7 +100,7 @@ public class NewStateMachine : MonoBehaviour
         //if player is declared lost while chasing then switch to playerLost state
         if (chaseState.enemyHasLostPlayer && currentState == stateBehaviours[1])
         {
-            //Debug.Log("Enemy has lost player, switching to PlayerLostState");
+            Debug.Log("Enemy has lost player, switching to PlayerLostState");
             currentState.OnStateEnd();
             currentState = stateBehaviours[2];
             currentState.OnStateStart();
@@ -109,7 +109,7 @@ public class NewStateMachine : MonoBehaviour
         //if player is seen while in patrol mode then switch to chase state
         if (currentState ==  stateBehaviours[0] && lineOfSight.HasSeenPlayerThisFrame())
         {
-            //Debug.Log("Player seen while patrolling, switching to ChaseState");
+            Debug.Log("Player seen while patrolling, switching to ChaseState");
             currentState.OnStateEnd();
             currentState = stateBehaviours[1];
             currentState.OnStateStart();
@@ -118,7 +118,7 @@ public class NewStateMachine : MonoBehaviour
         //switch from lost to patrol
         if (playerLostState.readyToPatrol && currentState == stateBehaviours[2])
         {
-            //Debug.Log("Ready to patrol again, switching to PatrolState");
+            Debug.Log("Ready to patrol again, switching to PatrolState");
             currentState.OnStateEnd();
             currentState = stateBehaviours[0];
             currentState.OnStateStart();
@@ -127,7 +127,7 @@ public class NewStateMachine : MonoBehaviour
         //if the enemy has lost the player and the current state isnt player lost and the player wasnt seen
         if (chaseState.enemyHasLostPlayer && currentState != stateBehaviours[2] && !lineOfSight.HasSeenPlayerThisFrame())
         {
-            //Debug.Log("Player lost, switching to PlayerLostState.");
+            Debug.Log("Player lost, switching to PlayerLostState.");
             currentState.OnStateEnd();
             currentState = stateBehaviours[2];
             currentState.OnStateStart();
@@ -136,29 +136,29 @@ public class NewStateMachine : MonoBehaviour
         //currentstate is lost and player is seen switch to chase
         if (currentState == stateBehaviours[2] && lineOfSight.HasSeenPlayerThisFrame())
         {
-            //Debug.Log("Player seen while in PlayerLostState, switching to ChaseState");
+            Debug.Log("Player seen while in PlayerLostState, switching to ChaseState");
             currentState.OnStateEnd();
             currentState = stateBehaviours[1];
             currentState.OnStateStart();
         }
         
         //if the enemy is not in attacking distance and the current state is attacking then switch to chase state
-        if (Vector2.Distance(SmallSandworm.transform.position, Player.transform.position) < attackState.attackRange && currentState == stateBehaviours[1])
-        {
-            Debug.Log("Switching to AttackState");
-            currentState.OnStateEnd();
-            currentState = stateBehaviours[3];
-            currentState.OnStateStart();
-        }
-
-        //if the enemy is attacking and the player leaves the attack range switch to chase state
-        if (Vector2.Distance(SmallSandworm.transform.position, Player.transform.position) > attackState.attackRange && currentState == stateBehaviours[3])
-        {
-            Debug.Log("Player out of attack range, switching to ChaseState");
-            currentState.OnStateEnd();
-            currentState = stateBehaviours[1];
-            currentState.OnStateStart();
-        }
+         if (lineOfSight.playerInAttackRange  && currentState == stateBehaviours[1])
+         {
+             Debug.Log("Switching to AttackState");
+             currentState.OnStateEnd();
+             currentState = stateBehaviours[3];
+             currentState.OnStateStart();
+         }
+        
+         //if the enemy is attacking and the player leaves the attack range switch to chase state
+         if (!lineOfSight.playerInAttackRange && currentState == stateBehaviours[3])
+         {
+             Debug.Log("Player out of attack range, switching to ChaseState");
+             currentState.OnStateEnd();
+             currentState = stateBehaviours[1];
+             currentState.OnStateStart();
+         }
         
         
         int newState = currentState.StateTransitionCondition();

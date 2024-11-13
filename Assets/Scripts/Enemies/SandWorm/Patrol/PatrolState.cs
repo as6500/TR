@@ -5,15 +5,20 @@ using UnityEngine.AI;
 public class PatrolState : StateBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private LineOfSight2D lineOfSight;
-    [SerializeField] private AttackState attackState;
+    [SerializeField] private LineOfSight lineOfSight;
+    //[SerializeField] private AttackState attackState;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject pointA;
     [SerializeField] private GameObject pointB;
     [SerializeField] private bool fromAtoB;
-    
+
     void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,7 +32,7 @@ public class PatrolState : StateBehaviour
     public override void OnStateStart()
     {
         spriteRenderer.color = Color.white; 
-        attackState.isUnderground = true; //makes sure the worm is underground
+        //attackState.isUnderground = true; //makes sure the worm is underground
     }
 
     public override void OnStateUpdate()
@@ -58,7 +63,7 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        attackState.isUnderground = true; //makes sure the worm is underground
+        //attackState.isUnderground = true; //makes sure the worm is underground
     }
 
     public override int StateTransitionCondition()

@@ -2,72 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineOfSight2D : MonoBehaviour
+public class LineOfSight : MonoBehaviour
 {
     [SerializeField] private string tagObjectToFind = "Player";
-    [SerializeField] private float visionDistance = 5.0f;
-    [SerializeField] private float viewConeAngle = 45.0f;
-    private bool hasSeenPlayerThisFrame = false;
+    [SerializeField] private float visionDistance = 3.0f;
+    public bool hasSeenPlayerThisFrame = false;
+    public bool playerInAttackRange;
     [SerializeField] private LayerMask detectionLayerMask;
     [SerializeField] private AttackState attackState;
+    [SerializeField] private NewStateMachine stateMachine;
     private Transform playerTransform;
    
-    private void Awake()
+    
+    private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag(tagObjectToFind)?.GetComponent<Transform>();
+
     }
 
     private void Update()
     {
-        if (playerTransform != null) //if playerTransform isn't empty run checkPlayerInLineOfSight
-        {
-            CheckPlayerInLineOfSight();
-            //Debug.Log(hasSeenPlayerThisFrame);
-        }
-    }
-
-    private void CheckPlayerInLineOfSight()
-    {
+        Debug.Log(playerInAttackRange);
+        //Debug.Log(hasSeenPlayerThisFrame);
         Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
-        if (distanceToPlayer > visionDistance) //if the distance to player is bigger than the visionDistance
+        if (distanceToPlayer > visionDistance)
         {
-            hasSeenPlayerThisFrame = false; //set the flag for seenPlayerThisFrame to false
-            OnPlayerNotDetected(); //this runs only consolelogs
+            hasSeenPlayerThisFrame = false;
+            OnPlayerNotDetected();
             return;
         }
-
-        float angleToPlayer = Vector2.Angle(transform.right, directionToPlayer);
-
-        if (angleToPlayer <= viewConeAngle / 2)
+        else if (distanceToPlayer < visionDistance)
         {
-            RaycastHit2D hitInfo = Physics2D.CircleCast(transform.position, 0.5f, directionToPlayer, distanceToPlayer, detectionLayerMask);
-            Debug.DrawLine(transform.position, playerTransform.position, Color.white, 0.1f);
-
-            if (hitInfo.collider != null)
-            {
-                if (hitInfo.collider.CompareTag(tagObjectToFind))
-                {
-                    hasSeenPlayerThisFrame = true;
-                    OnPlayerDetected();
-                    return;
-                }
-            }
-            else
-            {
-                Debug.Log("Radius did not hit anything.");
-            }
+            hasSeenPlayerThisFrame = true;
+            OnPlayerDetected();
+            return;
         }
-        else
-        {
-            //Debug.Log("Player is outside the view cone angle.");
-        }
-
-        hasSeenPlayerThisFrame = false;
-        OnPlayerNotDetected();
     }
-
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.CompareTag(tagObjectToFind))
+    //     {
+    //         hasSeenPlayerThisFrame = true;
+    //         OnPlayerDetected();
+    //     }
+    // }
+    //
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.CompareTag(tagObjectToFind))
+    //     {
+    //         hasSeenPlayerThisFrame = false;
+    //         OnPlayerNotDetected();
+    //     }
+    // }
+    
     private void OnPlayerDetected()
     {
         //Debug.Log("Player detected!!!");
@@ -83,23 +73,42 @@ public class LineOfSight2D : MonoBehaviour
         return hasSeenPlayerThisFrame;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Gizmos.color = Color.red; //draws the attack range circumference 
-        Gizmos.DrawWireSphere(transform.position, attackState.attackRange);
-        
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, visionDistance);
-        
-        Vector3 forward = transform.right;
-        float halfAngle = viewConeAngle / 2 * Mathf.Deg2Rad;
-        
-        Vector3 coneLeft = Quaternion.Euler(0, 0, viewConeAngle / 2) * forward * visionDistance;
-        Vector3 coneRight = Quaternion.Euler(0, 0, -viewConeAngle / 2) * forward * visionDistance;
-        
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + coneLeft);
-        Gizmos.DrawLine(transform.position, transform.position + coneRight);
+        if (other.CompareTag("Player"))
+        {
+            playerInAttackRange = true;
+            Debug.Log("inside attack range");
+        }
     }
+
+    // detect when player exits the attack range
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInAttackRange = false;
+            Debug.Log("outside attack range");
+        }
+    }
+    
+    // private void OnDrawGizmosSelected()
+    // {
+    //      Gizmos.color = Color.red; //draws the attack range circumference 
+    //      Gizmos.DrawWireSphere(transform.position, attackState.attackRange);
+    //     
+    //     Gizmos.color = Color.green;
+    //     Gizmos.DrawWireSphere(transform.position, visionDistance);
+    //     
+    //      Vector3 forward = transform.right;
+    //      float halfAngle = viewConeAngle / 2 * Mathf.Deg2Rad;
+    //     
+    //      Vector3 coneLeft = Quaternion.Euler(0, 0, viewConeAngle / 2) * forward * visionDistance;
+    //      Vector3 coneRight = Quaternion.Euler(0, 0, -viewConeAngle / 2) * forward * visionDistance;
+    //     
+    //      Gizmos.color = Color.yellow;
+    //      Gizmos.DrawLine(transform.position, transform.position + coneLeft);
+    //      Gizmos.DrawLine(transform.position, transform.position + coneRight);
+    // }
     
 }

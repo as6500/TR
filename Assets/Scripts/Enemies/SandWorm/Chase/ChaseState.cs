@@ -11,8 +11,8 @@ using UnityEngine.UIElements;
 public class ChaseState : StateBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private LineOfSight2D lineOfSight;
-    [SerializeField] private AttackState attackState;
+    [SerializeField] private LineOfSight lineOfSight;
+    //[SerializeField] private AttackState attackState;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D enemyRb;
     private Rigidbody2D rb;
@@ -23,7 +23,7 @@ public class ChaseState : StateBehaviour
     public bool enemyHasLostPlayer = false;
     
     
-    void Awake()
+    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -41,7 +41,7 @@ public class ChaseState : StateBehaviour
         //Debug.Log("Chase state started");
         spriteRenderer.color = Color.yellow;
         ResetPlayerLostTimer();
-        attackState.isUnderground = true; //make sure the worm is underground at the start of the state
+        //attackState.isUnderground = true; //make sure the worm is underground at the start of the state
         
     }
 
@@ -67,7 +67,7 @@ public class ChaseState : StateBehaviour
     public override void OnStateEnd()
     {
         ResetPlayerLostTimer(); //at the end of the state reset the timer
-        attackState.isUnderground = true; //and makes sure the worm is underground
+        //attackState.isUnderground = true; //and makes sure the worm is underground
     }
     private void ResetPlayerLostTimer()
     {

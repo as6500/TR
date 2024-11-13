@@ -23,6 +23,8 @@ TagManager:
   - SmallSandworm
   - BigSandworm
   - ExitLevel
+  - VisionCollider
+  - AttackCollider
   layers:
   - Default
   - TransparentFX

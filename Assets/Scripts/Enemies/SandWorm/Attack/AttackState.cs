@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,22 +9,27 @@ public class AttackState : StateBehaviour
     private SpriteRenderer spriteRenderer;
     private Transform player;      
     [SerializeField] private HealthScript healthScript;
+    [SerializeField] private LineOfSight lineOfSight;
     private Rigidbody2D rb;
     private NavMeshAgent agent;
     [SerializeField] public float attackCooldown = 5f;  // time between attacks
     public float timeSinceLastAttack;
     private float attackSmallEarthquakeDamage = 4f;
     private float attackBigEarthquakeDamage = 6f;
-    public float attackRange = 2f;
+    [SerializeField] public float attackRange = 2f;
     private float attackTailDamage = 5f;
     private float attackBitingDamage = 3f;
     public bool isUnderground; //verifies if the worm is underground so it can do the earthquake attack
-    
-    void Awake()
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;  // find the player by tag
-        rb = GetComponent<Rigidbody2D>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -35,19 +41,19 @@ public class AttackState : StateBehaviour
     public override void OnStateStart()
     {
         spriteRenderer.color = Color.red;
-        timeSinceLastAttack = 0f;  // reset the attack timer when the state starts
         agent.isStopped = true; //stops the worm so it doesnt wiggle around
+        isUnderground = true;
     }
 
     public override void OnStateUpdate()
     {
-        Debug.Log(timeSinceLastAttack);
+        Debug.Log("is player in attack range?" + lineOfSight.playerInAttackRange);
+        //Debug.Log(timeSinceLastAttack);
         rb.velocity = Vector2.zero;
         timeSinceLastAttack += Time.deltaTime; //count time since the last attack
+        
         //check if player is withing attack range and if the worm is underground and if so does the earthquake attack
-
-    Debug.Log("Distance to player: " + Vector2.Distance(transform.position, player.position));
-        if (Vector2.Distance(transform.position, player.position) <= attackRange)
+        if (lineOfSight.playerInAttackRange)
         {
             if (isUnderground)
             {
@@ -108,10 +114,13 @@ public class AttackState : StateBehaviour
     public override void OnStateEnd()
     {
         agent.isStopped = false; //unfreezes the worm so its ready for the next state
+        lineOfSight.playerInAttackRange = false;
     }
 
     public override int StateTransitionCondition()
     {
         return -1;
     }
+    
+    
 }
