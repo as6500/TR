@@ -19,6 +19,11 @@ public class HealthScript : MonoBehaviour, IDamageable
 
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
         currentHealth = maxHealth;
