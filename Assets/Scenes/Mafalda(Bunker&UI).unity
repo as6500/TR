@@ -503,17 +503,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 152590ba7c0168b45ac7ffa4600c5ab3, type: 3}
---- !u!114 &1000972698 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9054350361869229540, guid: 37bd2bb5dc96c5942acab3e68efa6749, type: 3}
-  m_PrefabInstance: {fileID: 6699838632754903344}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92a95f2aaf7dd204a8b02ca284df06f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1122154389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1026,7 @@ PrefabInstance:
     - target: {fileID: 1477826207938555813, guid: 0bf8e49c29a797647aad91af4123957f, type: 3}
       propertyPath: bulletsUI
       value: 
-      objectReference: {fileID: 1000972698}
+      objectReference: {fileID: 1610530428}
     - target: {fileID: 2381387438219204223, guid: 0bf8e49c29a797647aad91af4123957f, type: 3}
       propertyPath: pillsUIScript
       value: 
@@ -1091,6 +1080,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf8e49c29a797647aad91af4123957f, type: 3}
+--- !u!114 &1610530428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9011929513798444155, guid: 37bd2bb5dc96c5942acab3e68efa6749, type: 3}
+  m_PrefabInstance: {fileID: 6699838632754903344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a95f2aaf7dd204a8b02ca284df06f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1673756334
 GameObject:
   m_ObjectHideFlags: 0

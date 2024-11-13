@@ -70,14 +70,14 @@ public class QuestManager : MonoBehaviour
 		
 		for (int i = 0; i < questCount; i++)
 		{
-			Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(4f, 5f), 0);
+			Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(6f, 8f), 0);
 			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
 			Item newItem = tempItem.GetComponent<Item>();
 			newItem.SetUpItem(questParam);
 			currentItems.Add(newItem); //review this later
 			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>());//review this later
 		}
-		questText.DisplayQuestText(questName, questCount, questItemName, activeQuestItemCounter);
+		questText.DisplayFetchQuestText(questName, questCount, questItemName, activeQuestItemCounter);
 	}
 
 	private void AcceptResourceQuest()
@@ -87,10 +87,13 @@ public class QuestManager : MonoBehaviour
 	
 	private void AcceptLocateQuest()
 	{
-		//Code for Locate Quests (Sofia)
-		Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(4f, 5f), 0);
+		string questName = activeQuest.displayName;
+		string questItemName = activeQuest.typeName;
+		
+		Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(6f, 8f), 0);
 		GameObject tempLocation = Instantiate(location, randomPosition, Quaternion.identity);
 		questTypeLocation = tempLocation.GetComponent<QuestTypeLocation>();
+		questText.DisplayLocateQuestText(questName, questItemName);
 	}
 
 	public void CompletingQuest()
@@ -143,12 +146,12 @@ public class QuestManager : MonoBehaviour
 			{
 				itemScript[currentItems.IndexOf(interactedItem)].GetItem();
 				activeQuestItemCounter++;
-				questText.DisplayQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
+				questText.DisplayFetchQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
 			}
 			
 			if (activeQuestItemCounter == questItemCount)
 			{
-				questText.DisplayDeliverText(questName, questNPCName);
+				questText.DisplayFetchDeliverText(questName, questNPCName);
 				activeQuestState = QuestState.Completed;
 				npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
 			}
@@ -157,9 +160,14 @@ public class QuestManager : MonoBehaviour
 
 	public void ExecuteLocateQuest()
 	{
+		string questName = activeQuest.displayName;
+		string questNPCName = activeQuest.questNPCName;
+		
 		if (questTypeLocation.OnLocation())
 		{
+			questText.DisplayLocateDeliverText(questName, questNPCName);
 			activeQuestState = QuestState.Completed;
+			Destroy(questTypeLocation.gameObject);
 			npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
 		}
 	}

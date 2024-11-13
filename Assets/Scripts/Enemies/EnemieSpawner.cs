@@ -23,10 +23,7 @@ public class EnemieSpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemiesChosen = new GameObject[4];
 
     [Header("Spawn Enemy Type")]
-    [SerializeField] private bool mutantTree;
-    [SerializeField] private bool mutantHuman;
-    [SerializeField] private bool smallWorm;
-    [SerializeField] private bool bigWorm;
+    [SerializeField] private EnemyType enemyChosen;
 
     [Header("Spawners")]
     [SerializeField] private GameObject[] spawnPoint;
@@ -40,10 +37,11 @@ public class EnemieSpawner : MonoBehaviour
     [SerializeField] private int maxSpawnDistFromPlayer = 36;
     [SerializeField] private int maxEnemiesInGame = 10;
 
-    private EnemyType enemyType;
+
 
     void Start()
     {
+        surfaceAI = GameObject.FindGameObjectWithTag("AINavMeshSurface").GetComponent<NavMeshSurface>();
         StartCoroutine(SpawnEnemy());
     }
 
@@ -55,7 +53,6 @@ public class EnemieSpawner : MonoBehaviour
 
             if (CanSpawnEnemy())
             {
-                CheckEnemyType();
                 for (int i = 0; i < spawnRatePerSeconds; i++)
                 {
                     GameObject spawner = GetRandomSpawnerCloseToPlayer();
@@ -63,7 +60,7 @@ public class EnemieSpawner : MonoBehaviour
                     if (spawner == null) break;
 
                     Vector3 spawn = GetRandomSpawnPoint(spawner);
-                    GameObject enemyPrefab = GetRandomEnemy();
+                    GameObject enemyPrefab = EnemyTypeToPrefab(enemyChosen);
                     GameObject enemy = Instantiate(enemyPrefab, enemyHolder.transform);
                     enemy.transform.position = spawn;
                 }
@@ -80,33 +77,21 @@ public class EnemieSpawner : MonoBehaviour
         return enemiesSpawned < maxEnemiesInGame;
     }
 
-    private GameObject GetRandomEnemy()
-    {
-        int tempEnemy = Random.Range(0, enemiesChosen.Length);
-
-        if (enemiesChosen[tempEnemy] != null)
-        {
-            return enemiesChosen[tempEnemy];
-        }
-
-        return GetRandomEnemy();
-    }
-
     private GameObject EnemyTypeToPrefab(EnemyType enemyType)
     {
-        if(enemyType == EnemyType.MutantTree)
+        if(enemyType == EnemyType.MutantTree && mutantTreePrefab != null)
         {
             return mutantTreePrefab;
         }
-        else if (enemyType == EnemyType.MutantHuman)
+        else if (enemyType == EnemyType.MutantHuman && mutantHumanPrefab != null)
         {
             return mutantHumanPrefab;
         }
-        else if (enemyType == EnemyType.SmallWorm)
+        else if (enemyType == EnemyType.SmallWorm && smallWormPrefab != null)
         {
             return smallWormPrefab;
         }
-        else if (enemyType == EnemyType.BigWorm)
+        else if (enemyType == EnemyType.BigWorm && bigWormPrefab != null)
         {
             return bigWormPrefab;
         }
@@ -155,28 +140,41 @@ public class EnemieSpawner : MonoBehaviour
         return randomSpawn;
     }
 
+    /*   
     private void CheckEnemyType()
-    {
-        if (mutantTree && mutantTreePrefab != null)
         {
-            enemiesChosen[0] = mutantTreePrefab;
+            if (mutantTree && mutantTreePrefab != null)
+            {
+                enemiesChosen[0] = mutantTreePrefab;
+            }
+
+            if (mutantHuman && mutantHumanPrefab != null)
+            {
+                enemiesChosen[1] = mutantHumanPrefab;
+            }
+
+            if (smallWorm && smallWormPrefab != null)
+            {
+                enemiesChosen[2] = smallWormPrefab;
+            }
+
+            if (bigWorm && bigWormPrefab != null)
+            {
+                enemiesChosen[3] = bigWormPrefab;
+            }
+        }
+    
+    private GameObject GetRandomEnemy()
+    {
+        int tempEnemy = Random.Range(0, enemiesChosen.Length);
+
+        if (enemiesChosen[tempEnemy] != null)
+        {
+            return enemiesChosen[tempEnemy];
         }
 
-        if (mutantHuman && mutantHumanPrefab != null)
-        {
-            enemiesChosen[1] = mutantHumanPrefab;
-        }
-        
-        if (smallWorm && smallWormPrefab != null)
-        {
-            enemiesChosen[2] = smallWormPrefab;
-        }
-        
-        if (bigWorm && bigWormPrefab != null)
-        {
-            enemiesChosen[3] = bigWormPrefab;
-        }
-    }
+        return GetRandomEnemy();
+    }*/
 
     private Vector3 Norm(Vector3 vec)
     {

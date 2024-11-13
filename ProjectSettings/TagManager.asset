@@ -25,6 +25,7 @@ TagManager:
   - ExitLevel
   - VisionCollider
   - AttackCollider
+  - AINavMeshSurface
   layers:
   - Default
   - TransparentFX

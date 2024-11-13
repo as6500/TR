@@ -5,4 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
+    [SerializeField] private GameObject[] DontDestroyOnLoadArray;
+    private void Awake()
+    {
+        for (int i = 0; i < DontDestroyOnLoadArray.Length; i++) 
+        {
+            DontDestroyOnLoad(DontDestroyOnLoadArray[i]);
+        }
+    }
 }

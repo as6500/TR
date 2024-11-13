@@ -61,7 +61,7 @@ public class PillsScript : MonoBehaviour
     public void UpdatePills(int quantity)
     {
         pillsQuantity += quantity;
-        //pillsUIScript.UpdateUIText();
+        pillsUIScript.UpdateUIText();
     }
 
     private IEnumerator PillsTimer(float secondsLeft)

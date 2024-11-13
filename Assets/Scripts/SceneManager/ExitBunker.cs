@@ -9,7 +9,7 @@ public class ExitBunker : MonoBehaviour
 	{
 		if (collision.tag == "Player")
 		{
-			SceneManager.LoadScene(2);
+			SceneManager.LoadScene("Bunker");
 		}
 	}
 }

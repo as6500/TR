@@ -16,8 +16,8 @@ MonoBehaviour:
   displayName: 'Explore the World '
   type: 1
   typeParam: 0
-  typeCount: 3
-  typeName: Flaks of pills
+  typeCount: 1
+  typeName: bottle of alcohol
   questNPCId: 0
   questNPCName: Many
   nextQuest: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}
