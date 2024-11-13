@@ -144,5 +144,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onLocation: 0
-  quest: {fileID: 11400000, guid: 872faeb8e561dbd4f8783af3f597c904, type: 2}
-  manager: {fileID: 0}

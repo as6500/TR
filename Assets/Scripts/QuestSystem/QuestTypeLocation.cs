@@ -17,7 +17,6 @@ public class QuestTypeLocation : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             onLocation = true;
-            Destroy(gameObject);
         }
     }
 
