@@ -52,5 +52,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  questTypeLocation: {fileID: 0}
+  location: {fileID: 0}
   item: {fileID: 2577600633806197976, guid: 8d2346eaae7a856439a0028fdcc05714, type: 3}
   interactedItem: {fileID: 0}

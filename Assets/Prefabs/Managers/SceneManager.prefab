@@ -44,10 +44,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f751d2a8f987404c8f61313d0eb7220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DontDestroyOnLoadArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 7435358658957237397}
-  - {fileID: 0}
