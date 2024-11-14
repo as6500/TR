@@ -321,8 +321,8 @@ MonoBehaviour:
   - {x: 103, y: 26, z: 0}
   - {x: 103, y: -17, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 1827971406}
-  m_InstanceId: 67996
+  m_Mesh: {fileID: 1530734965}
+  m_InstanceId: 37308
   m_LocalBounds:
     m_Center: {x: 46.5, y: 4.5, z: 0}
     m_Extent: {x: 56.5, y: 21.5, z: 0}
@@ -1194,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3112154706643284012, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 0a1b8c2a2fb56ee48a3f74ccbf08d056, type: 2}
     - target: {fileID: 3477689285066982398, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
       propertyPath: m_Name
       value: LevelDesign
@@ -1221,7 +1225,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2837199101886126300, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
   m_PrefabInstance: {fileID: 1459901340}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1753480688
+--- !u!43 &1530734965
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1386,7 +1390,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1827971406
+--- !u!43 &1753480688
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
