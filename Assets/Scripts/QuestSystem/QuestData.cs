@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable] public enum QuestType { Fetch, Locate, Resource };
@@ -18,5 +15,4 @@ public class QuestData : ScriptableObject
 	public int questNPCId;
 	public string questNPCName;
 	public QuestData nextQuest;
-	
 }

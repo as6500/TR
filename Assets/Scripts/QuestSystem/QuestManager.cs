@@ -1,30 +1,22 @@
 using System;
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-[System.Serializable] public enum QuestState { Pending, Active, Completed };
+[Serializable] public enum QuestState { Pending, Active, Completed };
 
 public class QuestManager : Singleton<QuestManager>
 {
-	public static readonly UnityEvent OnQuestAction = new UnityEvent(); //readonly so you can't change it
+	public static readonly UnityEvent OnQuestAction = new(); //readonly so you can't change it
 	public QuestData activeQuest;
 	public QuestState activeQuestState;
 	[SerializeField] private QuestSystemUI questText;
-	public List<QuestNPC> npcs = new List<QuestNPC>();
+	public List<QuestNPC> npcs = new();
 	[SerializeField] private QuestTypeLocation questTypeLocation;
 	[SerializeField] private GameObject location;
 	[SerializeField] private GameObject item;
 	public Item interactedItem;
-	private List<Item> currentItems = new List<Item>();
-	private List<QuestTypeFetch> itemScript = new List<QuestTypeFetch>();
 	private int activeQuestItemCounter;
 	
 	public void Start()
@@ -37,7 +29,6 @@ public class QuestManager : Singleton<QuestManager>
 		npcs[3].SetIcon(IconType.None);
 		
 		OnQuestAction.AddListener(CompleteQuest);
-
 	}
 	
 	public void AcceptQuest()
@@ -82,7 +73,8 @@ public class QuestManager : Singleton<QuestManager>
 	}
 	public void OntoNextQuest()
 	{
-		if (activeQuestState != QuestState.Completed) return;
+		if (activeQuestState != QuestState.Completed) 
+			return;
 		
 		npcs[activeQuest.questNPCId].SetIcon(IconType.None);
 		questText.TextOfQuest().enabled = false;
@@ -110,8 +102,6 @@ public class QuestManager : Singleton<QuestManager>
 			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
 			Item newItem = tempItem.GetComponent<Item>();
 			newItem.SetUpItem(questParam);
-			currentItems.Add(newItem); //review this later(eVENTOs)
-			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>());//review this later(eVENTOs)
 		}
 		questText.DisplayFetchQuestText(questName, questCount, questItemName, activeQuestItemCounter);
 	}
@@ -135,31 +125,27 @@ public class QuestManager : Singleton<QuestManager>
 	private void ExecuteFetchQuest()
 	{
 		string questName = activeQuest.displayName; //name of the quest itself
-		string questNPCName = activeQuest.questNPCName;
+		string questNPCName = activeQuest.questNPCName; //name of the npc that has the quest/the npc where the player needs to deliver
 		int questItemId = activeQuest.typeParam; //id of the item that the quest needs
 		string questItemName = activeQuest.typeName; // name of the item that the quest needs
 		int questItemCount = activeQuest.typeCount; // how many items the quest needs
 		int currentItem = interactedItem.id; //id of the item that is being interacted with
+
+		if (questItemId != currentItem) 
+			return;
 		
-		if (activeQuest.type == QuestType.Fetch)
+		if (activeQuestItemCounter < questItemCount)
 		{
-			if (questItemId == currentItem)
-			{
-				if (activeQuestItemCounter < questItemCount)
-				{
-					itemScript[currentItems.IndexOf(interactedItem)].GetItem();
-					activeQuestItemCounter++;
-					questText.DisplayFetchQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
-				}
-				
-				if (activeQuestItemCounter == questItemCount)
-				{
-					questText.DisplayFetchDeliverText(questName, questNPCName);
-					activeQuestState = QuestState.Completed;
-					npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
-				}
-			}
+			activeQuestItemCounter++;
+			questText.DisplayFetchQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
 		}
+
+		if (activeQuestItemCounter != questItemCount) 
+			return;
+		
+		questText.DisplayFetchDeliverText(questName, questNPCName);
+		activeQuestState = QuestState.Completed;
+		npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
 	}
 
 	private void ExecuteLocateQuest()
@@ -167,7 +153,8 @@ public class QuestManager : Singleton<QuestManager>
 		string questName = activeQuest.displayName;
 		string questNPCName = activeQuest.questNPCName;
 
-		if (!questTypeLocation.OnLocation()) return;
+		if (!questTypeLocation.OnLocation()) 
+			return;
 		
 		questText.DisplayLocateDeliverText(questName, questNPCName);
 		activeQuestState = QuestState.Completed;
@@ -178,15 +165,5 @@ public class QuestManager : Singleton<QuestManager>
 	private void ExecuteResourceQuest()
 	{
 		
-	}
-
-	public List<Item> GetCurrentItems()
-	{
-		return currentItems;
-	}
-
-	public List<QuestTypeFetch> GetItemScript()
-	{
-		return itemScript;
 	}
 }

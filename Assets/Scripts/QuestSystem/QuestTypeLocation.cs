@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 
 public class QuestTypeLocation : MonoBehaviour
@@ -16,11 +12,11 @@ public class QuestTypeLocation : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            onLocation = true;
-            QuestManager.OnQuestAction.Invoke();
-        }
+        if (!collision.gameObject.CompareTag("Player")) 
+            return;
+        
+        onLocation = true;
+        QuestManager.OnQuestAction.Invoke();
     }
     
     public bool OnLocation()
