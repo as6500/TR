@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WeaponManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [Header("Weapons")]
+    [SerializeField] private GameObject holder;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject stick;
 
@@ -26,11 +28,13 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManagement.Instance.AddObjectToScene(gameObject, "Bunker");
+
         pistolScript = pistol.GetComponent<Pistol>();
         ui = GameObject.FindGameObjectWithTag("WeaponsUI").GetComponent<WeaponsUiManager>();
 
-        ChangeUI();
         SetMainWeapon();
+        ChangeUI();
     }
 
     private void Update()
@@ -38,9 +42,9 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             ChangeWeapon();
+            SetMainWeapon();
             ResetRelodingPistol();
             ChangeUI();
-            SetMainWeapon();
         }
 
         ChangeMainWeaponSettings();

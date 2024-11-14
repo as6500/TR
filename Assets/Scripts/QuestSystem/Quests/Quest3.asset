@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   displayName: Boredom
-  type: 0
-  typeParam: 2
+  type: 2
+  typeParam: 0
   typeCount: 5
   typeName: Pills
   npc: {fileID: 11400000, guid: 14ec758859277d24d8fe243863469e95, type: 2}
