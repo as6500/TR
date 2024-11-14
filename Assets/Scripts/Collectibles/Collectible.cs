@@ -9,6 +9,7 @@ public class Collectible : MonoBehaviour, ICollectible
 {
     private CollectibleParent parent;
     [SerializeField] private CollectibleType type;
+    [SerializeField] private QuestManager manager;
 
     [SerializeField] private int maxDrop = 1;
     [SerializeField] private int minDrop = 1;
@@ -17,6 +18,8 @@ public class Collectible : MonoBehaviour, ICollectible
     void Start()
     {
         drop = Random.Range(minDrop, maxDrop);
+
+        manager = FindFirstObjectByType<QuestManager>();
     }
 
     public virtual void Collect(GameObject instigator)
@@ -31,16 +34,22 @@ public class Collectible : MonoBehaviour, ICollectible
             PillsScript pills = GameObject.FindGameObjectWithTag("Consumables").GetComponent<PillsScript>();
             pills.UpdatePills(drop);
         }
+
+        if (manager.activeQuest.type == QuestType.Resource)
+        {
+            CollectibleType temp = (CollectibleType) manager.activeQuest.typeParam;
+
+            if (parent == CollectibleParent.Enemy && type == temp)
+            {
+                QuestManager.OnQuestAction.Invoke();
+            }
+        }
+       
         Destroy(gameObject);
     }
 
     public virtual void SetParent(CollectibleParent parent)
     {
         this.parent = parent;
-    }
-
-    public CollectibleParent GetParent()
-    {
-        return parent;
     }
 }

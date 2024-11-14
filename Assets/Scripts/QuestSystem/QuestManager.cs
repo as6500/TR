@@ -17,7 +17,9 @@ public class QuestManager : Singleton<QuestManager>
 	[SerializeField] private GameObject location;
 	[SerializeField] private GameObject item;
 	public Item interactedItem;
-	private int activeQuestItemCounter;
+	private CollectibleType collectibleType;
+	public CollectibleType currentCollectibleType;
+    private int activeQuestItemCounter;
 	
 	public void Start()
 	{
@@ -109,8 +111,13 @@ public class QuestManager : Singleton<QuestManager>
 
 	private void AcceptResourceQuest()
 	{
-		//Code for Resource Quests (Tom�s)
-	}
+        collectibleType = (CollectibleType) activeQuest.typeParam;	
+        string questName = activeQuest.displayName;
+        string questItemName = activeQuest.typeName;
+        int questCount = activeQuest.typeCount;
+
+        questText.DisplayResourceQuestText(questName, questItemName, questCount, activeQuestItemCounter);
+    }
 	
 	private void AcceptLocateQuest()
 	{
@@ -166,6 +173,22 @@ public class QuestManager : Singleton<QuestManager>
 
 	private void ExecuteResourceQuest()
 	{
-		
-	}
+        string questName = activeQuest.displayName;
+        string questNPCName = activeQuest.npc.name;
+        string questItemName = activeQuest.typeName; // name of the item that the quest needs
+        int questItemCount = activeQuest.typeCount; // how many items the quest needs
+
+        if (activeQuestItemCounter < questItemCount)
+        {
+            activeQuestItemCounter++;
+            questText.DisplayResourceQuestText(questName, questItemName, questItemCount, activeQuestItemCounter);
+        }
+
+        if (activeQuestItemCounter != questItemCount)
+            return;
+
+        activeQuestState = QuestState.Completed;
+        questText.DisplayResourceDeliverText(questName, questNPCName);
+        npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
+    }
 }
