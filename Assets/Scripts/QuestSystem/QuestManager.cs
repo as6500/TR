@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 [System.Serializable] public enum QuestState { Pending, Active, Completed };
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : Singleton<QuestManager>
 {
 	public QuestData activeQuest;
 	public QuestState activeQuestState;

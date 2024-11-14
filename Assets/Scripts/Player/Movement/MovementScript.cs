@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
+public class MovementScript : Singleton<MovementScript>
 {
     private Rigidbody2D myRigidbody;
     [SerializeField] private float velocityModifier;

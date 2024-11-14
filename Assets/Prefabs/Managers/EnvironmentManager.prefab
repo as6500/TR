@@ -4855,7 +4855,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5697989246840049219}
   - component: {fileID: 2673162193907973230}
-  - component: {fileID: 8514299031593401321}
   m_Layer: 0
   m_Name: EnvironmentManager
   m_TagString: Untagged
@@ -4898,18 +4897,6 @@ MonoBehaviour:
   dustParticles: {fileID: 5197731031094483931}
   secondsInSeconds: 0.1
   addToSeconds: 0.1
---- !u!114 &8514299031593401321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7386889158152402665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 006acb4bfec491c4da7018c99a4f1a6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7439271890492430188
 GameObject:
   m_ObjectHideFlags: 0

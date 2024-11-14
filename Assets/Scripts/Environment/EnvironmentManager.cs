@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class EnvironmentManager : MonoBehaviour
+public class EnvironmentManager : Singleton<EnvironmentManager>
 {
     [Header("Light Objects")]
     [SerializeField] private Light2D mainLight;
