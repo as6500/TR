@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class QuestTypeFetch : MonoBehaviour
 {
@@ -16,13 +18,22 @@ public class QuestTypeFetch : MonoBehaviour
 		item = GetComponent<Item>();
 		manager = FindFirstObjectByType<QuestManager>();
 	}
-	
+
+	private void Update()
+	{
+		if (isInRange && Input.GetKeyDown(KeyCode.E))
+		{
+			QuestManager.OnQuestAction.Invoke();
+		}
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
 			isInRange = true;
 			manager.interactedItem = item;
+			
 		}
 	}
 

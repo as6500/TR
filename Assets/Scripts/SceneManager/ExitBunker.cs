@@ -10,6 +10,7 @@ public class ExitBunker : MonoBehaviour
 		if (collision.tag == "Player")
 		{
 			SceneManager.LoadScene("Bunker");
+			collision.transform.position = new Vector3(-10, 2, 0);
 		}
 	}
 }

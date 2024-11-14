@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,11 +6,15 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
+
 [System.Serializable] public enum QuestState { Pending, Active, Completed };
 
 public class QuestManager : MonoBehaviour
 {
+	public static readonly UnityEvent OnQuestAction = new UnityEvent(); //readonly so you can't change it
 	public QuestData activeQuest;
 	public QuestState activeQuestState;
 	[SerializeField] private QuestSystemUI questText;
@@ -26,39 +31,70 @@ public class QuestManager : MonoBehaviour
 	{
 		activeQuestState = QuestState.Pending;
 		activeQuestItemCounter = 0;
-
 		npcs[0].SetIcon(IconType.ExclamationPoint);
 		npcs[1].SetIcon(IconType.None);
 		npcs[2].SetIcon(IconType.None);
 		npcs[3].SetIcon(IconType.None);
-	}
+		
+		OnQuestAction.AddListener(CompleteQuest);
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.E))
-			CompletingQuest();
 	}
-
+	
 	public void AcceptQuest()
 	{
-		if (activeQuestState == QuestState.Pending)
-		{
-			activeQuestState = QuestState.Active;
+		if (activeQuestState != QuestState.Pending) return;
+		activeQuestState = QuestState.Active;
 
-			npcs[activeQuest.questNPCId].SetIcon(IconType.None);
-			switch (activeQuest.type)
-			{
-				case QuestType.fetch:
-					AcceptFetchQuest();
-					break;
-				case QuestType.resource:
-					AcceptResourceQuest();
-					break;
-				case QuestType.locate:
-					AcceptLocateQuest();
-					break;
-			}
+		npcs[activeQuest.questNPCId].SetIcon(IconType.None);
+		switch (activeQuest.type)
+		{
+			case QuestType.Fetch:
+				AcceptFetchQuest();
+				break;
+			case QuestType.Resource:
+				AcceptResourceQuest();
+				break;
+			case QuestType.Locate:
+				AcceptLocateQuest();
+				break;
+			default:
+				throw new ArgumentOutOfRangeException(); //in case it's not those 3, it gives an error
 		}
+	}
+
+	public void CompleteQuest()
+	{
+		if (activeQuestState != QuestState.Active) return;
+		switch (activeQuest.type)
+		{
+			case QuestType.Fetch:
+				ExecuteFetchQuest();
+				break;
+			case QuestType.Resource:
+				ExecuteResourceQuest();
+				break;
+			case QuestType.Locate:
+				ExecuteLocateQuest();
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+	}
+	public void OntoNextQuest()
+	{
+		if (activeQuestState != QuestState.Completed) return;
+		
+		npcs[activeQuest.questNPCId].SetIcon(IconType.None);
+		questText.TextOfQuest().enabled = false;
+		
+		if (activeQuest.questNPCId == npcs.Count - 1) 
+			return;
+		
+		activeQuestItemCounter = 0;
+		activeQuest = activeQuest.nextQuest;
+		activeQuestState = QuestState.Pending;
+			
+		npcs[activeQuest.questNPCId].SetIcon(IconType.ExclamationPoint);
 	}
 
 	private void AcceptFetchQuest()
@@ -70,12 +106,12 @@ public class QuestManager : MonoBehaviour
 		
 		for (int i = 0; i < questCount; i++)
 		{
-			Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(6f, 8f), 0);
+			Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(3f, 4f), 0);
 			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
 			Item newItem = tempItem.GetComponent<Item>();
 			newItem.SetUpItem(questParam);
-			currentItems.Add(newItem); //review this later
-			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>());//review this later
+			currentItems.Add(newItem); //review this later(eVENTOs)
+			itemScript.Add(tempItem.GetComponent<QuestTypeFetch>());//review this later(eVENTOs)
 		}
 		questText.DisplayFetchQuestText(questName, questCount, questItemName, activeQuestItemCounter);
 	}
@@ -90,48 +126,13 @@ public class QuestManager : MonoBehaviour
 		string questName = activeQuest.displayName;
 		string questItemName = activeQuest.typeName;
 		
-		Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(6f, 8f), 0);
+		Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(3f, 4f), 0);
 		GameObject tempLocation = Instantiate(location, randomPosition, Quaternion.identity);
 		questTypeLocation = tempLocation.GetComponent<QuestTypeLocation>();
 		questText.DisplayLocateQuestText(questName, questItemName);
 	}
-
-	public void CompletingQuest()
-	{
-		switch (activeQuest.type)
-		{
-			case QuestType.fetch:
-				ExecuteFetchQuest(activeQuest.questNPCId);
-				break;
-			case QuestType.resource:
-				ExecuteResourceQuest();
-				break;
-			case QuestType.locate:
-				ExecuteLocateQuest();
-				break;
-		}
-		
-	}
-
-	public void OntoNextQuest()
-	{
-		if (activeQuestState == QuestState.Completed)
-		{
-			npcs[activeQuest.questNPCId].SetIcon(IconType.None);
-			questText.TextOfQuest().enabled = false;
-		
-			if (activeQuest.questNPCId == npcs.Count - 1) 
-				return;
-		
-			activeQuestItemCounter = 0;
-			activeQuest = activeQuest.nextQuest;
-			activeQuestState = QuestState.Pending;
-			
-			npcs[activeQuest.questNPCId].SetIcon(IconType.ExclamationPoint);
-		}
-	}
-
-	public void ExecuteFetchQuest(int npcId)
+	
+	private void ExecuteFetchQuest()
 	{
 		string questName = activeQuest.displayName; //name of the quest itself
 		string questNPCName = activeQuest.questNPCName;
@@ -140,39 +141,41 @@ public class QuestManager : MonoBehaviour
 		int questItemCount = activeQuest.typeCount; // how many items the quest needs
 		int currentItem = interactedItem.id; //id of the item that is being interacted with
 		
-		if (questItemId == currentItem)
+		if (activeQuest.type == QuestType.Fetch)
 		{
-			if (activeQuestItemCounter < questItemCount)
+			if (questItemId == currentItem)
 			{
-				itemScript[currentItems.IndexOf(interactedItem)].GetItem();
-				activeQuestItemCounter++;
-				questText.DisplayFetchQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
-			}
-			
-			if (activeQuestItemCounter == questItemCount)
-			{
-				questText.DisplayFetchDeliverText(questName, questNPCName);
-				activeQuestState = QuestState.Completed;
-				npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
+				if (activeQuestItemCounter < questItemCount)
+				{
+					itemScript[currentItems.IndexOf(interactedItem)].GetItem();
+					activeQuestItemCounter++;
+					questText.DisplayFetchQuestText(questName, questItemCount, questItemName, activeQuestItemCounter);
+				}
+				
+				if (activeQuestItemCounter == questItemCount)
+				{
+					questText.DisplayFetchDeliverText(questName, questNPCName);
+					activeQuestState = QuestState.Completed;
+					npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
+				}
 			}
 		}
 	}
 
-	public void ExecuteLocateQuest()
+	private void ExecuteLocateQuest()
 	{
 		string questName = activeQuest.displayName;
 		string questNPCName = activeQuest.questNPCName;
+
+		if (!questTypeLocation.OnLocation()) return;
 		
-		if (questTypeLocation.OnLocation())
-		{
-			questText.DisplayLocateDeliverText(questName, questNPCName);
-			activeQuestState = QuestState.Completed;
-			Destroy(questTypeLocation.gameObject);
-			npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
-		}
+		questText.DisplayLocateDeliverText(questName, questNPCName);
+		activeQuestState = QuestState.Completed;
+		Destroy(questTypeLocation.gameObject);
+		npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
 	}
 
-	public void ExecuteResourceQuest()
+	private void ExecuteResourceQuest()
 	{
 		
 	}

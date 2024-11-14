@@ -12,7 +12,7 @@ public class NPCInteractable : MonoBehaviour
 
     void Update()
     {
-        if (isInRange == true)
+        if (isInRange)
         {
             if (Input.GetKeyDown(KeyCode.E))
                 interacting.Invoke();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[System.Serializable] public enum QuestType { fetch, locate, resource };
+[System.Serializable] public enum QuestType { Fetch, Locate, Resource };
 
 [CreateAssetMenu(menuName = "ScriptableObjects/QuestScriptableObject")] 
 
