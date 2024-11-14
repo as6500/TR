@@ -6,12 +6,29 @@ using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
     [SerializeField] private GameObject[] DontDestroyOnLoadArray;
+    [SerializeField] private bool gameRuning = false;
     private void Awake()
     {
-        for (int i = 0; i < DontDestroyOnLoadArray.Length; i++) 
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        if (!gameRuning)
         {
-            Instantiate(DontDestroyOnLoadArray[i]);
-            DontDestroyOnLoad(DontDestroyOnLoadArray[i]);
+            GameObject temp = GameObject.FindGameObjectWithTag("SceneManager");
+            if (temp != null)
+            {
+                Debug.LogError("Aqui");
+                Destroy(gameObject);
+                return;
+            }
+
+            for (int i = 0; i < DontDestroyOnLoadArray.Length; i++)
+            {
+                DontDestroyOnLoad(DontDestroyOnLoadArray[i]);
+            }
+            gameRuning = true;
         }
     }
 }
