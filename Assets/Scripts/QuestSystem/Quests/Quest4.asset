@@ -18,6 +18,5 @@ MonoBehaviour:
   typeParam: 3
   typeCount: 1
   typeName: Record
-  questNPCId: 2
-  questNPCName: Daniel
+  npc: {fileID: 11400000, guid: 14ec758859277d24d8fe243863469e95, type: 2}
   nextQuest: {fileID: 11400000, guid: 4b9770a4d0d373843841ea48a574b5aa, type: 2}

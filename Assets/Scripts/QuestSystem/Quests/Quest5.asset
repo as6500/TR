@@ -18,6 +18,5 @@ MonoBehaviour:
   typeParam: 4
   typeCount: 2
   typeName: Vials of antibiotics
-  questNPCId: 3
-  questNPCName: Ziggy
+  npc: {fileID: 11400000, guid: bde54cfe715e57f47b1ce1780caa1ea2, type: 2}
   nextQuest: {fileID: 0}

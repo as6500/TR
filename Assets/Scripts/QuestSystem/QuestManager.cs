@@ -36,7 +36,7 @@ public class QuestManager : Singleton<QuestManager>
 		if (activeQuestState != QuestState.Pending) return;
 		activeQuestState = QuestState.Active;
 
-		npcs[activeQuest.questNPCId].SetIcon(IconType.None);
+		npcs[activeQuest.npc.id].SetIcon(IconType.None);
 		switch (activeQuest.type)
 		{
 			case QuestType.Fetch:
@@ -76,17 +76,17 @@ public class QuestManager : Singleton<QuestManager>
 		if (activeQuestState != QuestState.Completed) 
 			return;
 		
-		npcs[activeQuest.questNPCId].SetIcon(IconType.None);
+		npcs[activeQuest.npc.id].SetIcon(IconType.None);
 		questText.TextOfQuest().enabled = false;
 		
-		if (activeQuest.questNPCId == npcs.Count - 1) 
+		if (activeQuest.npc.id == npcs.Count - 1) 
 			return;
 		
 		activeQuestItemCounter = 0;
 		activeQuest = activeQuest.nextQuest;
 		activeQuestState = QuestState.Pending;
 			
-		npcs[activeQuest.questNPCId].SetIcon(IconType.ExclamationPoint);
+		npcs[activeQuest.npc.id].SetIcon(IconType.ExclamationPoint);
 	}
 
 	private void AcceptFetchQuest()
@@ -100,6 +100,7 @@ public class QuestManager : Singleton<QuestManager>
 		{
 			Vector3 randomPosition = transform.position + new Vector3(Random.Range(2f, 6f), Random.Range(3f, 4f), 0);
 			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
+			tempItem.name = "Item" + i; //name + 1 namber
 			Item newItem = tempItem.GetComponent<Item>();
 			newItem.SetUpItem(questParam);
 		}
@@ -125,7 +126,7 @@ public class QuestManager : Singleton<QuestManager>
 	private void ExecuteFetchQuest()
 	{
 		string questName = activeQuest.displayName; //name of the quest itself
-		string questNPCName = activeQuest.questNPCName; //name of the npc that has the quest/the npc where the player needs to deliver
+		string questNPCName = activeQuest.npc.name; //name of the npc that has the quest/the npc where the player needs to deliver
 		int questItemId = activeQuest.typeParam; //id of the item that the quest needs
 		string questItemName = activeQuest.typeName; // name of the item that the quest needs
 		int questItemCount = activeQuest.typeCount; // how many items the quest needs
@@ -145,21 +146,22 @@ public class QuestManager : Singleton<QuestManager>
 		
 		questText.DisplayFetchDeliverText(questName, questNPCName);
 		activeQuestState = QuestState.Completed;
-		npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
+		npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
 	}
 
 	private void ExecuteLocateQuest()
 	{
 		string questName = activeQuest.displayName;
-		string questNPCName = activeQuest.questNPCName;
+		string questNPCName = activeQuest.npc.name;
 
 		if (!questTypeLocation.OnLocation()) 
 			return;
 		
 		questText.DisplayLocateDeliverText(questName, questNPCName);
 		activeQuestState = QuestState.Completed;
+		SceneManagement.Instance.RemoveObjectFromScene(questTypeLocation.gameObject);
 		Destroy(questTypeLocation.gameObject);
-		npcs[activeQuest.questNPCId].SetIcon(IconType.InterrogationPoint);
+		npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
 	}
 
 	private void ExecuteResourceQuest()

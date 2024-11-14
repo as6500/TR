@@ -94,9 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2165540587952613175}
   - component: {fileID: 8399252756014058942}
-  - component: {fileID: 5269359620930649999}
   - component: {fileID: 2863468061856879030}
   - component: {fileID: 1976119027446612190}
+  - component: {fileID: 5269359620930649999}
   - component: {fileID: 8153398904479057478}
   m_Layer: 0
   m_Name: NPC Prefab
@@ -173,22 +173,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5269359620930649999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5438534924606040141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e399e3c9aa2504bbfbfd0f2773c875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconType: 1
-  icon: {fileID: 3016283914554798850}
-  exclamationPoint: {fileID: 21300000, guid: 2baef15a343b6564aaf6c9fde6ea266c, type: 3}
-  questionMark: {fileID: 21300000, guid: 6ace0c133cb17b24192dac24a5b8b9e4, type: 3}
 --- !u!61 &2863468061856879030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279,6 +263,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5269359620930649999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438534924606040141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e399e3c9aa2504bbfbfd0f2773c875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconType: 1
+  icon: {fileID: 3016283914554798850}
+  exclamationPoint: {fileID: 21300000, guid: 2baef15a343b6564aaf6c9fde6ea266c, type: 3}
+  questionMark: {fileID: 21300000, guid: 6ace0c133cb17b24192dac24a5b8b9e4, type: 3}
 --- !u!114 &8153398904479057478
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,5 @@ MonoBehaviour:
   typeParam: 0
   typeCount: 1
   typeName: bottle of alcohol
-  questNPCId: 0
-  questNPCName: Many
+  npc: {fileID: 11400000, guid: ca9f231201e5f6b4490ef182c266a647, type: 2}
   nextQuest: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}

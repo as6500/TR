@@ -13,6 +13,8 @@ public class QuestTypeFetch : MonoBehaviour
 		itemPickedUp = false;
 		item = GetComponent<Item>();
 		manager = FindFirstObjectByType<QuestManager>();
+		
+		SceneManagement.Instance.AddObjectToScene(gameObject, "Bunker");
 	}
 
 	private void Update()
@@ -21,6 +23,7 @@ public class QuestTypeFetch : MonoBehaviour
 			return;
 		
 		QuestManager.OnQuestAction.Invoke();
+		SceneManagement.Instance.RemoveObjectFromScene(gameObject);
 		Destroy(gameObject);
 	}
 	
