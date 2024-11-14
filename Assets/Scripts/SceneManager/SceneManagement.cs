@@ -10,6 +10,7 @@ public class SceneManagement : MonoBehaviour
     {
         for (int i = 0; i < DontDestroyOnLoadArray.Length; i++) 
         {
+            Instantiate(DontDestroyOnLoadArray[i]);
             DontDestroyOnLoad(DontDestroyOnLoadArray[i]);
         }
     }
