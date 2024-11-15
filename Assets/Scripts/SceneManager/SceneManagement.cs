@@ -69,7 +69,7 @@ public class SceneManagement : Singleton<SceneManagement>
         if (otherObject != null && uniqueIdentifiers[instanceId] != otherObject)
             Destroy(otherObject);
 
-        if (sceneName != SceneManager.GetActiveScene().name) //if the scene is not the correct one, it deactivates them
+        if (sceneName != "BunkerInsideBuildings") //if the scene is not the correct one, it deactivates them
             obj.SetActive(true);
 
         DontDestroyOnLoad(obj);

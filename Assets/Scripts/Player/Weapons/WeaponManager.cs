@@ -28,8 +28,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        SceneManagement.Instance.AddObjectToSceneForWeapon(gameObject, "Bunker");
-
+        SceneManagement.Instance.AddObjectToSceneForWeapon(gameObject, SceneManager.GetActiveScene().name);
         pistolScript = pistol.GetComponent<Pistol>();
         ui = GameObject.FindGameObjectWithTag("WeaponsUI").GetComponent<WeaponsUiManager>();
 

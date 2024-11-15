@@ -12,7 +12,6 @@ public class ShowSceneName : MonoBehaviour
         FadeInFadeOut fadeInFadeOut = FindObjectOfType<FadeInFadeOut>();
         if (fadeInFadeOut != null)
         {
-            Debug.Log("Hello");
             fadeInFadeOut.SetText(sceneName);
         }
     }

@@ -485,7 +485,8 @@ MonoBehaviour:
   currentSceneText: {fileID: 2189885361427889834}
   fadingIn: 0
   fadingOut: 0
-  valueToAdd: 0.002
+  valueToAdd: 0.02
+  colorAlpha: 0
 --- !u!114 &2189885361427889834
 MonoBehaviour:
   m_ObjectHideFlags: 0

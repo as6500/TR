@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,13 +10,14 @@ using UnityEngine.UI;
 public class FadeInFadeOut : MonoBehaviour
 {
     [SerializeField] private Text currentSceneText;
+    private Text tempText;
     [SerializeField] private bool fadingIn;
     [SerializeField] private bool fadingOut;
     [SerializeField] private float valueToAdd;
-    
+
     private void Start()
     {
-        currentSceneText.color = new Color(currentSceneText.color.r, currentSceneText.color.g, currentSceneText.color.b,0);
+        SetTextAppha(0);
     }
 
     private void Update()
@@ -24,7 +26,7 @@ public class FadeInFadeOut : MonoBehaviour
         {
             if (currentSceneText.color.a < 1)
             {
-                currentSceneText.color = new Color(currentSceneText.color.r, currentSceneText.color.g, currentSceneText.color.b,valueToAdd + currentSceneText.color.a);
+                SetTextAppha(currentSceneText.color.a + valueToAdd);
                 if (currentSceneText.color.a >= 1)
                 {
                     fadingIn = false;
@@ -37,17 +39,24 @@ public class FadeInFadeOut : MonoBehaviour
         {
             if (currentSceneText.color.a >= 0)
             {
-                currentSceneText.color = new Color(currentSceneText.color.r, currentSceneText.color.g, currentSceneText.color.b,currentSceneText.color.a - valueToAdd);
+                SetTextAppha(currentSceneText.color.a - valueToAdd);
                 if (currentSceneText.color.a <= 0)
                     fadingOut = false;
             }
         }
     }
+
+    private void SetTextAppha(float alpha)
+    {
+        currentSceneText.color = new Color(currentSceneText.color.r, currentSceneText.color.g, currentSceneText.color.b, alpha);   
+    }
     
     public void SetText(String sceneName)
     {
         currentSceneText.text = sceneName;
+        SetTextAppha(0);
         fadingIn = true;
+        fadingOut = false;
     }
     
     public IEnumerator FadingOut()
