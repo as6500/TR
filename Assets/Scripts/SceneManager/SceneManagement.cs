@@ -53,4 +53,25 @@ public class SceneManagement : Singleton<SceneManagement>
         uniqueIdentifiers.Remove(obj.GetInstanceID());
         scenes.Remove(obj);
     }
+
+    public void AddObjectToSceneForWeapon(GameObject obj, String sceneName)
+    {
+        int instanceId = obj.GetInstanceID(); // get the id that the unity creates on the object
+
+        if (!uniqueIdentifiers.ContainsKey(instanceId)) //if it doesn't have the name of this gameObject
+        {
+            uniqueIdentifiers.Add(instanceId, obj); //adds the name
+            scenes.Add(obj, sceneName);
+        }
+
+        GameObject otherObject = GameObject.Find(obj.name);
+
+        if (otherObject != null && uniqueIdentifiers[instanceId] != otherObject)
+            Destroy(otherObject);
+
+        if (sceneName != SceneManager.GetActiveScene().name) //if the scene is not the correct one, it deactivates them
+            obj.SetActive(true);
+
+        DontDestroyOnLoad(obj);
+    }
 }
