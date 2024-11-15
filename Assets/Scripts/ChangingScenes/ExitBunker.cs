@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +9,6 @@ public class ExitBunker : MonoBehaviour
 		{
 			SceneManager.LoadScene("Bunker");
 			collision.transform.position = new Vector3(-10, 2, 0);
-			
 		}
 	}
 }
