@@ -9,6 +9,6 @@ public class EnterTheCity : MonoBehaviour
             return;
         
         SceneManager.LoadScene("Scenes/MapOutside/City");
-        collision.transform.position = new Vector3(27, -1, 0);
+        collision.transform.position = new Vector3(43, 9, 0);
     }
 }
