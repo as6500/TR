@@ -8,7 +8,6 @@ using Unity.VisualScripting;
 public class TriggerScript : MonoBehaviour
 {
     [SerializeField] private GameObject lightReference;
-    private Light2D light;
 
     private ParticleSystem ps;
 
@@ -22,7 +21,6 @@ public class TriggerScript : MonoBehaviour
     void OnEnable()
     {
         ps = GetComponent<ParticleSystem>();
-        light = lightReference.GetComponent<Light2D>();
     }
 
     void OnParticleTrigger()
@@ -35,7 +33,7 @@ public class TriggerScript : MonoBehaviour
         for (int i = 0; i < numEnter; i++)
         {
             ParticleSystem.Particle p = enter[i];
-            p.startColor = new Color32(p.startColor.r, p.startColor.g, p.startColor.b, GetAlpha(p));
+            p.startColor = new Color32(p.startColor.r, p.startColor.g, p.startColor.b, 1);
             enter[i] = p;
         }
 
@@ -50,35 +48,6 @@ public class TriggerScript : MonoBehaviour
         // re-assign the modified particles back into the particle system
         ps.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
         ps.SetTriggerParticles(ParticleSystemTriggerEventType.Exit, exit);
-    }
-
-    private void Update()
-    {
-        if (numEnter != 0)
-        {
-            for (int i = 0; i < numEnter; i++)
-            {
-                ParticleSystem.Particle p = enter[i];
-                p.startColor = new Color32(p.startColor.r, p.startColor.g, p.startColor.b, GetAlpha(p));
-                enter[i] = p;
-            }
-        }
-    }
-
-    private byte GetAlpha(ParticleSystem.Particle particle)
-    {
-        Vector3 particleRelativePosition = particle.position - lightReference.transform.position;
-
-        Vector3 normParticlePosition = particleRelativePosition.normalized;
-        Vector3 normLightPosition = lightReference.transform.position.normalized;
-
-        float angle = Mathf.Acos(normLightPosition.magnitude/normParticlePosition.magnitude) * Mathf.Rad2Deg;
-
-        float a = (Mathf.InverseLerp(light.pointLightOuterAngle, 0, angle) * 255);
-
-        byte alpha = (byte) a;
-
-        return alpha;
     }
 }
 
