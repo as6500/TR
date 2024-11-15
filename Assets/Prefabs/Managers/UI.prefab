@@ -483,9 +483,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSceneText: {fileID: 2189885361427889834}
-  fadeTime: 2
   fadingIn: 0
   fadingOut: 0
+  valueToAdd: 0.002
 --- !u!114 &2189885361427889834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.80811393, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3190,7 +3190,7 @@ GameObject:
   - component: {fileID: 4166693184050741306}
   - component: {fileID: 3494707197015773387}
   m_Layer: 5
-  m_Name: Weapons
+  m_Name: WeaponsUI
   m_TagString: WeaponsUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
