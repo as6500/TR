@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapOutside/Bunker.unity
     guid: 0337601648b3aba44abe0b84bd9c63b2
+  - enabled: 1
+    path: Assets/Scenes/MapOutside/City.unity
+    guid: 56e406580617d0f42805a14db510abae
   m_configObjects: {}
