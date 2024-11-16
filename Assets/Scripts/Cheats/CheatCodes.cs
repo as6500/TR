@@ -9,5 +9,7 @@ public class CheatCodes : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
             SceneManager.LoadScene("Scenes/MapInside/Building1");
+        if (Input.GetKeyDown(KeyCode.B)) 
+            SceneManager.LoadScene("Scenes/MapInside/BunkerInsideBuildings");
     }
 }

@@ -14,7 +14,7 @@ public class QuestTypeFetch : MonoBehaviour
 		item = GetComponent<Item>();
 		manager = FindFirstObjectByType<QuestManager>();
 		
-		SceneManagement.Instance.AddObjectToScene(gameObject, "Bunker");
+		SceneManagement.Instance.AddObjectToScene(gameObject, "3rdFloorBuilding1");
 	}
 
 	private void Update()
