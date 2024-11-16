@@ -7,9 +7,22 @@ public class CheatCodes : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-            SceneManager.LoadScene("Scenes/MapInside/Building1");
-        if (Input.GetKeyDown(KeyCode.B)) 
-            SceneManager.LoadScene("Scenes/MapInside/BunkerInsideBuildings");
+        if (Input.GetKeyDown(KeyCode.C)) //change scene to inside of the building in the city
+        {
+            SceneManager.LoadScene("Building1");
+            transform.position = new Vector3(-17, -3, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.V)) //change scene to the entry of the city 
+        {
+            SceneManager.LoadScene("City");
+            transform.position = new Vector3(43, 9, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B)) //change scene to right outside of the enterance of the bunker
+        {
+            SceneManager.LoadScene("Bunker");
+            transform.position = new Vector3(-11, 2, 0);
+        }
     }
 }
