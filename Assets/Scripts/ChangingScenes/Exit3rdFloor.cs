@@ -8,7 +8,7 @@ public class Exit3rdFloor : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             SceneManager.LoadScene("Scenes/MapInside/2ndFloorBuilding1");
-            collision.transform.position = new Vector3(-16, -5, 0);
+            collision.transform.position = new Vector3(1, 1, 0);
         }
     }
 }
