@@ -15,14 +15,14 @@ public class PillsScript : MonoBehaviour
 	[SerializeField] private HealthScript healthScript;
 	public void Update()
 	{
-		if (!Input.GetKeyDown(KeyCode.Alpha2) || healthScript.CurrentHealthReturn() >= 100.0f) 
-			return; //pills taken
-
+		if (Input.GetKeyDown(KeyCode.Alpha2) && healthScript.CurrentHealthReturn() < 100.0f)
+		{
+			GainHealth();
+			PillCount();
+		}
+		
 		if (pillsTaken) 
 			return;
-		
-		GainHealth();
-		PillCount();
 	}
 
 	public void GainHealth()
