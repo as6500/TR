@@ -35,7 +35,7 @@ public class WeaponManager : MonoBehaviour
         ui = GameObject.FindGameObjectWithTag("WeaponsUI").GetComponent<WeaponsUiManager>();
 
         currentScene = SceneManager.GetActiveScene().name;
-        outDatedScene = currentScene;
+        outDatedScene = null;
 
         SetMainWeapon();
         ChangeUI();
@@ -43,19 +43,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        currentScene = SceneManager.GetActiveScene().name;
-
-        if(SceneChanged())
-        {
-            if (RightScene())
-            {
-                holder.SetActive(true);
-            }
-            else
-            {
-                holder.SetActive(false);
-            }
-        }
+        CheckWeapons();
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -66,6 +54,23 @@ public class WeaponManager : MonoBehaviour
         }
 
         ChangeMainWeaponSettings();
+    }
+
+    private void CheckWeapons()
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+
+        if (SceneChanged())
+        {
+            if (RightScene())
+            {
+                holder.SetActive(true);
+            }
+            else
+            {
+                holder.SetActive(false);
+            }
+        }
     }
 
     private bool SceneChanged()
