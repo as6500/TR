@@ -26,8 +26,8 @@ public class CheatCodes : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B)) //change scene to right outside the entrance of the bunker
         {
-            SceneManager.LoadScene("BunkerOutside");
-            transform.position = new Vector3(-11, 2, 0);
+            SceneManager.LoadScene("BunkerInsideBuildings");
+            transform.position = new Vector3(-6, 2, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.N)) //adds 80 more pills and anti-radiation flasks to the player

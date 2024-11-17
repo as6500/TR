@@ -77,3 +77,6 @@ TagManager:
   - name: Enemy
     uniqueID: 1711166557
     locked: 0
+  - name: TopOfBuildings
+    uniqueID: 4026580143
+    locked: 0
