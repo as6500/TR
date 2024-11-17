@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RadiationOutsideSafeZones : MonoBehaviour
 {
-    [SerializeField] private AntiRadiationScript antiRadiationScript;
-
-    private void Update()
+    private AntiRadiationScript antiRadiationScript;
+    
+    private void Start()
     {
-        StartCoroutine(antiRadiationScript.RadiationDamage());
+        antiRadiationScript = FindObjectOfType<AntiRadiationScript>();
+
+        if (SceneManager.GetActiveScene().name != "BunkerInsideBuildings" && antiRadiationScript.IsCoroutineActive() == false)
+            StartCoroutine(antiRadiationScript.RadiationDamage());
     }
 }

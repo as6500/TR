@@ -18,11 +18,12 @@ public class AntiRadiationTimer : MonoBehaviour
 		TimerReset(false);
 		TimerAntiRadiation.enabled = false;
 		TimerText.enabled = false;
+		timeRemainingSec = 0;
 	}
 
 	public void Update()
 	{
-		if (isTimerOn == true)
+		if (isTimerOn)
 		{
 			if (timeRemainingSec > 0)
 			{

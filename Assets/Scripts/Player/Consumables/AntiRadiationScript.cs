@@ -12,11 +12,13 @@ public class AntiRadiationScript : MonoBehaviour
 	[SerializeField] private AntiRadiationTimer timer;
 	[SerializeField] AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
 	[SerializeField] private HealthScript healthScript;
+	private bool isCoroutineActive;
 
 	private void Start()
 	{
 		flaskTaken = false;
-		
+		isCoroutineActive = false;
+
 	}
 	public void Update()
 	{
@@ -38,6 +40,7 @@ public class AntiRadiationScript : MonoBehaviour
 	}
 	public IEnumerator RadiationDamage()
 	{
+		isCoroutineActive = true;
 		flaskTaken = timer.TimeRemaining() > 0.0f;
 		if (flaskTaken == false)
 		{
@@ -45,6 +48,8 @@ public class AntiRadiationScript : MonoBehaviour
 			yield return new WaitForSeconds(delayTimeSec);
 			StartCoroutine(RadiationDamage());
 		}
+		else
+			isCoroutineActive = false;
 	}
 	public void UpdateFlasks(int quantity)
 	{
@@ -55,6 +60,11 @@ public class AntiRadiationScript : MonoBehaviour
 	public int FlasksQuantityReturn()
 	{
 		return numberOfFlasks;
+	}
+
+	public bool IsCoroutineActive()
+	{
+		return isCoroutineActive;
 	}
 	
 
