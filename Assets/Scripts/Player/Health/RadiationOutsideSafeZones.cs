@@ -7,12 +7,43 @@ using UnityEngine.SceneManagement;
 public class RadiationOutsideSafeZones : MonoBehaviour
 {
     private AntiRadiationScript antiRadiationScript;
-    
+    private string currentScene;
+    private string outDatedScene;
+
+
     private void Start()
     {
         antiRadiationScript = FindObjectOfType<AntiRadiationScript>();
+    }
 
-        if (SceneManager.GetActiveScene().name != "BunkerInside" && antiRadiationScript.IsCoroutineActive() == false)
-            StartCoroutine(antiRadiationScript.RadiationDamage());
+    private void Update()
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+        if (SceneChanged())
+        {
+            if (RightScene())
+            {
+                antiRadiationScript.StopCoroutines();
+            }
+            else
+            {
+                antiRadiationScript.StartCoroutine(antiRadiationScript.RadiationDamage());
+            }
+        }
+    }
+
+    private bool SceneChanged()
+    {
+        if (outDatedScene != currentScene)
+        {
+            outDatedScene = currentScene;
+            return true;
+        }
+        return false;
+    }
+
+    private bool RightScene()
+    {
+        return SceneManager.GetActiveScene().name == "BunkerInside";
     }
 }

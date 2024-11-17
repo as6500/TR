@@ -40,17 +40,26 @@ public class AntiRadiationScript : MonoBehaviour
 	}
 	public IEnumerator RadiationDamage()
 	{
-		isCoroutineActive = true;
-		flaskTaken = timer.TimeRemaining() > 0.0f;
-		if (flaskTaken == false)
+        isCoroutineActive = true;
+
+		while (isCoroutineActive)
 		{
-			healthScript.DamageFromRadiation(amountDamageGiven);
-			yield return new WaitForSeconds(delayTimeSec);
-			StartCoroutine(RadiationDamage());
-		}
-		else
-			isCoroutineActive = false;
+            flaskTaken = timer.TimeRemaining() > 0.0f;
+            if (flaskTaken == false)
+            {
+                yield return new WaitForSeconds(delayTimeSec);
+                healthScript.DamageFromRadiation(amountDamageGiven);
+            }
+            else
+                isCoroutineActive = false;
+        }
 	}
+
+	public void StopCoroutines()
+	{
+		StopAllCoroutines();
+	}
+
 	public void UpdateFlasks(int quantity)
 	{
 		numberOfFlasks += quantity;
