@@ -449,6 +449,7 @@ MonoBehaviour:
   bulletsMag: 0
   particles: {fileID: 1841126279450851954}
   flashLight: {fileID: 7830230651307510288}
+  particlesCollider: {fileID: 6810260785948441776}
   magBulletsUI: {fileID: 0}
 --- !u!212 &751717997626881792
 SpriteRenderer:

@@ -33,6 +33,7 @@ public class Pistol : MonoBehaviour
 
     [Header("FlashLight")]
     [SerializeField] private GameObject flashLight;
+    [SerializeField] private GameObject particlesCollider;
 
     [Header("UI")]
     [SerializeField] private PistolUI magBulletsUI;
@@ -44,7 +45,7 @@ public class Pistol : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ChangeFlashlightState();
         }
@@ -158,6 +159,8 @@ public class Pistol : MonoBehaviour
     private void ChangeFlashlightState()
     {
         bool tempState = !flashLight.activeSelf;
+
+        particlesCollider.SetActive(tempState);
         flashLight.SetActive(tempState);
     }
 }
