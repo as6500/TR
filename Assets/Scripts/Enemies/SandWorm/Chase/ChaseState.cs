@@ -12,9 +12,6 @@ public class ChaseState : StateBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private LineOfSight lineOfSight;
-    //[SerializeField] private AttackState attackState;
-    private SpriteRenderer spriteRenderer;
-    private Rigidbody2D enemyRb;
     private Rigidbody2D rb;
     private GameObject player;
     [SerializeField] public float speed;
@@ -25,9 +22,7 @@ public class ChaseState : StateBehaviour
     
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player"); //finds the player by tag
     }
 
@@ -38,11 +33,7 @@ public class ChaseState : StateBehaviour
 
     public override void OnStateStart()
     {
-        //Debug.Log("Chase state started");
-        spriteRenderer.color = Color.yellow;
         ResetPlayerLostTimer();
-        //attackState.isUnderground = true; //make sure the worm is underground at the start of the state
-        
     }
 
     public override void OnStateUpdate()
@@ -67,7 +58,6 @@ public class ChaseState : StateBehaviour
     public override void OnStateEnd()
     {
         ResetPlayerLostTimer(); //at the end of the state reset the timer
-        //attackState.isUnderground = true; //and makes sure the worm is underground
     }
     private void ResetPlayerLostTimer()
     {

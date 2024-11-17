@@ -7,22 +7,15 @@ public class PatrolState : StateBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private LineOfSight lineOfSight;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
     [SerializeField] private Vector3 pointA;
     [SerializeField] private Vector3 pointB;
     [SerializeField] private bool fromAtoB;
     private AttackState attack;
 
-    void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
     void Start()
     {
         attack = gameObject.GetComponent<AttackState>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         agent.enabled = true;
     }
 
@@ -34,7 +27,6 @@ public class PatrolState : StateBehaviour
     public override void OnStateStart()
     {
         attack.SetBigAttackDone(false);
-        spriteRenderer.color = Color.white; 
     }
 
     public override void OnStateUpdate()

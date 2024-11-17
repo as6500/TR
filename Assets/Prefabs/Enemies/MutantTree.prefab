@@ -250,13 +250,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
-  bloodColor: {r: 1, g: 0, b: 0, a: 1}
+  bloodColor: {r: 1, g: 0.8595875, b: 0.6273585, a: 1}
+  mainColor: {r: 0.5764706, g: 0.52156866, b: 0.42745098, a: 1}
   damageEffectTimeSeconds: 0.1
   dropCollectibles:
   - {fileID: 4605421280697415680, guid: 768773ade1d6c5b46bf55521d04b482e, type: 3}
   - {fileID: 4605421280697415680, guid: 55c957732cca5d344a522e201127223f, type: 3}
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.3
+  enemyType: 0
 --- !u!114 &2902481268434080716
 MonoBehaviour:
   m_ObjectHideFlags: 0

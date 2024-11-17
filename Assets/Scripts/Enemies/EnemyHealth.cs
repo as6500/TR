@@ -25,8 +25,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private void Start()
     {
         collectiblesHolder = GameObject.FindGameObjectWithTag("CollectiblesHolder");
+        gameObject.GetComponent<SpriteRenderer>().color = mainColor;
         currentHealth = maxHealth;
-        mainColor = gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     public void DealDamage(float damage)

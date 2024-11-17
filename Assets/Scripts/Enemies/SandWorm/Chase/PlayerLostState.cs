@@ -10,7 +10,6 @@ public class PlayerLostState : StateBehaviour
     private float searchDuration = 3f; // time to search after losing the player
     private float searchTimer;
     private NavMeshAgent agent;
-    private SpriteRenderer spriteRenderer;
     [SerializeField] private LineOfSight lineOfSight;
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private AttackState attackState;
@@ -18,7 +17,6 @@ public class PlayerLostState : StateBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -29,13 +27,10 @@ public class PlayerLostState : StateBehaviour
 
     public override void OnStateStart()
     {
-        //Debug.Log("Player lost. Entering Lost State.");
-        spriteRenderer.color = Color.blue;
         searchTimer = searchDuration;
         waitToPatrolTime = 0f; //makes sure the waitToPatrol timer starts at 0 at the start of the state
         readyToPatrol = false; //makes sure the readyToPatrol boolean is off at the start of the state
         agent.isStopped = true; //stops the worm from moving
-        //attackState.isUnderground = true; //makes sure the worm is underground at the start of the state
     }
 
     public override void OnStateUpdate()
@@ -43,7 +38,6 @@ public class PlayerLostState : StateBehaviour
         if (lineOfSight.HasSeenPlayerThisFrame() == false) //if player isn't seen
         {
             waitToPatrolTime = waitToPatrolTime + Time.deltaTime; //counts up the time to patrol timer
-            Debug.Log("Patrol time: " + waitToPatrolTime);
         }
         else
         {

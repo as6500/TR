@@ -9,7 +9,6 @@ public class AttackState : StateBehaviour
 {
      //type of worm
     [SerializeField] private WormType wormType;
-    private SpriteRenderer spriteRenderer;
     private Transform player;      
     [SerializeField] private HealthScript healthScript;
     [SerializeField] private LineOfSight lineOfSight;
@@ -34,7 +33,6 @@ public class AttackState : StateBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;  // find the player by tag
         agent = GetComponent<NavMeshAgent>();
     }
@@ -51,7 +49,6 @@ public class AttackState : StateBehaviour
 
     public override void OnStateStart()
     {
-        spriteRenderer.color = Color.red;
         agent.isStopped = true; //stops the worm so it doesnt wiggle around
         isUnderground = true;
         timeSinceOnAttackMode = 0;
@@ -59,8 +56,6 @@ public class AttackState : StateBehaviour
 
     public override void OnStateUpdate()
     {
-        //Debug.Log("is player in attack range?" + lineOfSight.playerInAttackRange);
-        //Debug.Log(timeSinceLastAttack);
         rb.velocity = Vector2.zero;
         timeSinceLastAttack += Time.deltaTime; //count time since the last attack
         timeSinceOnAttackMode += Time.deltaTime; //count the time since the worm entered attack mode
@@ -136,6 +131,4 @@ public class AttackState : StateBehaviour
     {
         return -1;
     }
-    
-    
 }

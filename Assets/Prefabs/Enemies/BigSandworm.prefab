@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
+  m_Color: {r: 0.20784314, g: 0.29411766, b: 0.16078432, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -138,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   currentHealth: 0
-  bloodColor: {r: 0, g: 1, b: 0.045894384, a: 1}
-  mainColor: {r: 0.34934455, g: 0.3584906, b: 0.16740833, a: 1}
+  bloodColor: {r: 0.18632075, g: 0.745283, b: 0.21293804, a: 1}
+  mainColor: {r: 0.2088507, g: 0.2924528, b: 0.16140084, a: 1}
   damageEffectTimeSeconds: 0.3
   dropCollectibles:
   - {fileID: 4605421280697415680, guid: 768773ade1d6c5b46bf55521d04b482e, type: 3}
@@ -181,7 +181,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2289588527511844780}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.79
+  m_Radius: 0.1
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
