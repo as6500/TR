@@ -8,7 +8,7 @@ public class EnterBunker : MonoBehaviour
         if (!collision.CompareTag("Player")) 
             return;
         
-        SceneManager.LoadScene("Scenes/MapInside/BunkerInsideBuildings");
+        SceneManager.LoadScene("Scenes/MapInside/BunkerInside");
         collision.transform.position = new Vector3(-6, 2, 0);
     }
 }

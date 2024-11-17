@@ -12,7 +12,7 @@ public class RadiationOutsideSafeZones : MonoBehaviour
     {
         antiRadiationScript = FindObjectOfType<AntiRadiationScript>();
 
-        if (SceneManager.GetActiveScene().name != "BunkerInsideBuildings" && antiRadiationScript.IsCoroutineActive() == false)
+        if (SceneManager.GetActiveScene().name != "BunkerInside" && antiRadiationScript.IsCoroutineActive() == false)
             StartCoroutine(antiRadiationScript.RadiationDamage());
     }
 }
