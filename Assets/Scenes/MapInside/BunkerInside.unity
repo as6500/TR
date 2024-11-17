@@ -376,6 +376,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.08
+      objectReference: {fileID: 0}
     - target: {fileID: 2165540587952613175, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -431,6 +439,14 @@ PrefabInstance:
     - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.08
       objectReference: {fileID: 0}
     - target: {fileID: 3016283914554798850, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_Layer
@@ -939,7 +955,7 @@ GameObject:
   - component: {fileID: 485840918}
   - component: {fileID: 485840917}
   - component: {fileID: 485840916}
-  - component: {fileID: 485840915}
+  - component: {fileID: 485840919}
   m_Layer: 0
   m_Name: ExitBunker
   m_TagString: Untagged
@@ -947,18 +963,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &485840915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485840914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba7486ba2114d64787a7d22ccccc876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &485840916
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1071,6 +1075,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &485840919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485840914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c7a175dcb132242823adade6f699a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: BunkerOutside
+  position: {x: -10, y: 2, z: 0}
 --- !u!1001 &646210002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16845,6 +16863,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.88
+      objectReference: {fileID: 0}
     - target: {fileID: 2165540587952613175, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -16917,6 +16943,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.88
+      objectReference: {fileID: 0}
     - target: {fileID: 3016283914554798850, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -16937,6 +16971,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8153398904479057478, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: questData
+      value: 
+      objectReference: {fileID: 11400000, guid: 872faeb8e561dbd4f8783af3f597c904, type: 2}
     - target: {fileID: 8153398904479057478, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: interacting.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -32422,6 +32460,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.68
+      objectReference: {fileID: 0}
     - target: {fileID: 2165540587952613175, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -32477,6 +32523,14 @@ PrefabInstance:
     - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.68
       objectReference: {fileID: 0}
     - target: {fileID: 3016283914554798850, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_Layer
@@ -32855,6 +32909,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976119027446612190, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.84
+      objectReference: {fileID: 0}
     - target: {fileID: 2165540587952613175, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -32919,6 +32981,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863468061856879030, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.84
+      objectReference: {fileID: 0}
     - target: {fileID: 3016283914554798850, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -32943,6 +33013,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8153398904479057478, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
+      propertyPath: questData
+      value: 
+      objectReference: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}
     - target: {fileID: 8153398904479057478, guid: 627c5a8e8023a7a4688373d13cbbb911, type: 3}
       propertyPath: interacting.m_PersistentCalls.m_Calls.Array.size
       value: 2

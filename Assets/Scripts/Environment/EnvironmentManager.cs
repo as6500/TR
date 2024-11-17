@@ -81,7 +81,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     private bool RightScene()
     {
-        return SceneManager.GetActiveScene().name == "BunkerInsideBuildings";
+        return SceneManager.GetActiveScene().name == "BunkerInside";
     }
 
     private void StartNight()

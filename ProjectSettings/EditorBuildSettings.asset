@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Weapons.unity
     guid: 0a04987f18b25d0458c558148c44ff27
   - enabled: 1
-    path: Assets/Scenes/MapInside/BunkerInsideBuildings.unity
+    path: Assets/Scenes/MapInside/BunkerInside.unity
     guid: eb48149c2fded414f9de4ca85b7040c9
   - enabled: 1
     path: Assets/Scenes/MapOutside/BunkerOutside.unity

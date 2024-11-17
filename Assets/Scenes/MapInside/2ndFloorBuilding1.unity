@@ -4979,9 +4979,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 94665888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8a3d08905f67140b84cf6e1656e081, type: 3}
+  m_Script: {fileID: 11500000, guid: a4c7a175dcb132242823adade6f699a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 3rdFloorBuilding1
+  position: {x: -16, y: 0, z: 0}
 --- !u!1 &194269664
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,7 +4995,7 @@ GameObject:
   - component: {fileID: 194269668}
   - component: {fileID: 194269667}
   - component: {fileID: 194269666}
-  - component: {fileID: 194269665}
+  - component: {fileID: 194269669}
   m_Layer: 0
   m_Name: Exit2ndFloor
   m_TagString: Untagged
@@ -5001,18 +5003,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &194269665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194269664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d041cf0b66f857c43bea8237ecc7731f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &194269666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5125,6 +5115,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194269669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194269664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c7a175dcb132242823adade6f699a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Building1
+  position: {x: 1, y: -8, z: 0}
 --- !u!1001 &581513949
 PrefabInstance:
   m_ObjectHideFlags: 0
