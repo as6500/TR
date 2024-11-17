@@ -1144,7 +1144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3692475895697902832
 Transform:
   m_ObjectHideFlags: 0
@@ -1368,8 +1368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236aac474fda07249ad2661b5dd12f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  antiRadiationScript: {fileID: 0}
-  pillsScript: {fileID: 0}
+  antiRadiationScript: {fileID: 107627910667785486}
+  pillsScript: {fileID: 2381387438219204223}
   pillsUIScript: {fileID: 0}
   antiRadiationFlaskUIScript: {fileID: 0}
 --- !u!114 &1219374903157713629
@@ -1392,16 +1392,28 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: c5dbf06000000000e9bddb8ce350bfcb5d54fe65afbc00f0
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  m_ShapePathHash: 0
+  - {x: -0.35853672, y: -0.36818194, z: 0}
+  - {x: -0.47009134, y: -0.20959139, z: 0}
+  - {x: -0.5038166, y: -0.008674622, z: 0}
+  - {x: -0.467196, y: 0.1841433, z: 0}
+  - {x: -0.37461185, y: 0.32638597, z: 0}
+  - {x: -0.21517754, y: 0.45148158, z: 0}
+  - {x: 0.0073804855, y: 0.50252223, z: 0}
+  - {x: 0.20497036, y: 0.46098495, z: 0}
+  - {x: 0.34889126, y: 0.36496687, z: 0}
+  - {x: 0.4684248, y: 0.20332026, z: 0}
+  - {x: 0.50250196, y: -0.008674622, z: 0}
+  - {x: 0.46552992, y: -0.19620466, z: 0}
+  - {x: 0.36175203, y: -0.35532165, z: 0}
+  - {x: 0.18180943, y: -0.4683447, z: 0}
+  - {x: -0.0022649765, y: -0.4973662, z: 0}
+  - {x: -0.2008462, y: -0.47015095, z: 0}
+  m_ShapePathHash: 1831644765
   m_Mesh: {fileID: 0}
   m_InstanceId: -107308
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0}
+    m_Center: {x: -0.00065732, y: 0.00257802, z: 0}
+    m_Extent: {x: 0.5031593, y: 0.4999442, z: 0}
 --- !u!1 &5684625343898364618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,7 +2058,7 @@ MonoBehaviour:
   healingTimeSec: 10
   delayTimeSec: 1
   pillsUIScript: {fileID: 0}
-  healthScript: {fileID: 0}
+  healthScript: {fileID: 985926617799968136}
 --- !u!114 &107627910667785486
 MonoBehaviour:
   m_ObjectHideFlags: 0

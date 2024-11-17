@@ -52,7 +52,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  questTypeLocation: {fileID: 0}
-  location: {fileID: 0}
+  questTypeLocation: {fileID: 653853630678967155, guid: f3c9c0b14fdc66641847e0e3bd895311, type: 3}
+  location: {fileID: 4431501035483565660, guid: f3c9c0b14fdc66641847e0e3bd895311, type: 3}
   item: {fileID: 2577600633806197976, guid: 8d2346eaae7a856439a0028fdcc05714, type: 3}
   interactedItem: {fileID: 0}
+  currentCollectibleType: 0
