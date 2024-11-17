@@ -11,12 +11,12 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     [Header("Light Settings")]
     [SerializeField] private float minimNightLight = 0.04f;
-    [SerializeField] private float bunkerLight = 0.5f;
+    [SerializeField] private float insideLighting = 0.5f;
+    [SerializeField] private float outsideLighting = 1f;
 
     [Header("Day And Night Cicle")]
     [SerializeField] private float timeMinutes = 1f;
     [SerializeField] private ParticleSystem dustParticles;
-    [SerializeField] private bool? day = true;
     private float dayTimeSeconds;
 
     [Header("Time Settings")]
@@ -27,7 +27,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     private void Start()
     {
         dayTimeSeconds = timeMinutes * 60;
-        mainLight.intensity = 1;
+        outsideLighting = 1;
         StartCoroutine(CountTime());
     }
 
@@ -42,7 +42,6 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
         currentTimeSeconds += addToSeconds;
 
-        //Debug.Log(currentTimeSeconds);
         StartCoroutine(CountTime());
     }
 
@@ -55,7 +54,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     private void ControlTime()
     {
-        if(RightScene())
+        if(!RightScene())
         {
             if (currentTimeSeconds >= dayTimeSeconds * 0.4f && currentTimeSeconds <= dayTimeSeconds * 0.5f)
             {
@@ -65,36 +64,24 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
             {
                 StartDay();
             }
-            else
-            {
-                day = null;
-            }
         }
     }
 
     private void CheckScene()
     {
-        if (RightScene() == false)
+        if (RightScene())
         {
-            mainLight.intensity = bunkerLight;
-        }
-        else if (day == true)
-        {
-            mainLight.intensity = 1;
-        }
-        else if (day == false)
-        {
-            mainLight.intensity = minimNightLight;
+            mainLight.intensity = insideLighting;
         }
         else 
-        { 
-        
+        {
+            mainLight.intensity = outsideLighting;
         }
     }
 
     private bool RightScene()
     {
-        return SceneManager.GetActiveScene().name != "BunkerInsideBuildings";
+        return SceneManager.GetActiveScene().name == "BunkerInsideBuildings";
     }
 
     private void StartNight()
@@ -106,11 +93,10 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
         if (intensity < 0.05f)
         {
-            day = false;
             intensity = minimNightLight;
         }
 
-        mainLight.intensity = intensity;
+        outsideLighting = intensity;
     }
 
     private void StartDay()
@@ -126,10 +112,9 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         }
         else if( intensity > 0.95f)
         {
-            day = true;
             intensity = 1;
         }
 
-        mainLight.intensity = intensity;
+        outsideLighting = intensity;
     }
 }
