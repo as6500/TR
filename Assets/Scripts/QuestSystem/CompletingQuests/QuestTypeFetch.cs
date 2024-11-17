@@ -6,11 +6,9 @@ public class QuestTypeFetch : MonoBehaviour
 	[SerializeField] private QuestData quest;
 	[SerializeField] private QuestManager manager;
 	private Item item;
-	private bool itemPickedUp;
 	
 	private void Start()
 	{
-		itemPickedUp = false;
 		item = GetComponent<Item>();
 		manager = FindFirstObjectByType<QuestManager>();
 		

@@ -9,7 +9,6 @@ public class PillsUIScript : MonoBehaviour
 
 	private void Start()
 	{
-		//pillsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PillsScript>();
 		UpdateUIText();
 	}
 

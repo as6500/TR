@@ -7,8 +7,9 @@ public class ExitBunker : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
-			SceneManager.LoadScene("Bunker");
+			SceneManager.LoadScene("BunkerOutside");
 			collision.transform.position = new Vector3(-10, 2, 0);
 		}
 	}
 }
+ 

@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class CheatCodes : MonoBehaviour
 {
+    [SerializeField] private AntiRadiationScript antiRadiationScript;
+    [SerializeField] private PillsScript pillsScript;
+    [SerializeField] private PillsUIScript pillsUIScript;
+    [SerializeField] private AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)) //change scene to inside of the building in the city
+        if (Input.GetKeyDown(KeyCode.C)) //change scene to inside the building in the city
         {
             SceneManager.LoadScene("Building1");
             transform.position = new Vector3(-17, -3, 0);
@@ -19,10 +24,16 @@ public class CheatCodes : MonoBehaviour
             transform.position = new Vector3(43, 9, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.B)) //change scene to right outside of the enterance of the bunker
+        if (Input.GetKeyDown(KeyCode.B)) //change scene to right outside the entrance of the bunker
         {
-            SceneManager.LoadScene("Bunker");
+            SceneManager.LoadScene("BunkerOutside");
             transform.position = new Vector3(-11, 2, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.N)) //adds 80 more pills and anti-radiation flasks to the player
+        {
+            antiRadiationScript.UpdateFlasks(80);
+            pillsScript.UpdatePills(80);
         }
     }
 }

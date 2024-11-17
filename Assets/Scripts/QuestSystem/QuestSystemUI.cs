@@ -22,20 +22,20 @@ public class QuestSystemUI : MonoBehaviour
 		questText.text = $"{questName}: \nGet {questAmount} {itemName} {currentItemAmount} / {questAmount}";
 	}
 
-	public void DisplayFetchDeliverText(string questName, string NPCName)
+	public void DisplayFetchDeliverText(string questName, string npcName)
 	{
-		questText.text = $"{questName}: \nReturn to {NPCName}";
+		questText.text = $"{questName}: \nReturn to {npcName}";
 	}
 
 	public void DisplayLocateQuestText(string questName, string itemName)
 	{
 		questText.enabled = true;
-		questText.text = $"{questName}: \nFind the location of {itemName}";
+		questText.text = $"{questName}: \nFind the location of a {itemName}";
 	}
 
-	public void DisplayLocateDeliverText(string questName, string NPCName)
+	public void DisplayLocateDeliverText(string questName, string npcName)
 	{
-		questText.text = $"{questName}: \nReturn to {NPCName}";
+		questText.text = $"{questName}: \nReturn to {npcName}";
 	}
 
     public void DisplayResourceQuestText(string questName, string itemName, int questAmount, int currentItemAmount)
@@ -44,9 +44,9 @@ public class QuestSystemUI : MonoBehaviour
 		questText.text = $"{questName}: \nGet {questAmount} {itemName} by killing enemies. {currentItemAmount} / {questAmount}";
     }
 
-    public void DisplayResourceDeliverText(string questName, string NPCName)
+    public void DisplayResourceDeliverText(string questName, string npcName)
     {
-        questText.text = $"{questName}: \nReturn to {NPCName}";
+        questText.text = $"{questName}: \nReturn to {npcName}";
     }
 
     public TextMeshProUGUI TextOfQuest()

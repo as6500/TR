@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AntiRadiationScript : MonoBehaviour
 {
 	private int numberOfFlasks = 5;
-	private bool flaskTaken;
+	public bool flaskTaken;
 	[SerializeField] private float delayTimeSec = 2.0f;
 	[SerializeField] private float amountDamageGiven;
 	[SerializeField] private AntiRadiationTimer timer;
@@ -46,10 +46,16 @@ public class AntiRadiationScript : MonoBehaviour
 			StartCoroutine(RadiationDamage());
 		}
 	}
+	public void UpdateFlasks(int quantity)
+	{
+		numberOfFlasks += quantity;
+		antiRadiationFlaskUIScript.UpdateTextFlasks();
+	}
 
 	public int FlasksQuantityReturn()
 	{
 		return numberOfFlasks;
 	}
+	
 
 }

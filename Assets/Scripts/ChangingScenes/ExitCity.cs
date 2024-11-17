@@ -8,7 +8,7 @@ public class ExitCity : MonoBehaviour
         if (!collision.CompareTag("Player")) 
             return;
         
-        SceneManager.LoadScene("Scenes/MapOutside/Bunker");
+        SceneManager.LoadScene("Scenes/MapOutside/BunkerOutside");
         collision.transform.position = new Vector3(-38, 2, 0);
     }
 }

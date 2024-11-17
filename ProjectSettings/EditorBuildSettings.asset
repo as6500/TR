@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MapInside/BunkerInsideBuildings.unity
     guid: eb48149c2fded414f9de4ca85b7040c9
   - enabled: 1
-    path: Assets/Scenes/MapOutside/Bunker.unity
+    path: Assets/Scenes/MapOutside/BunkerOutside.unity
     guid: 0337601648b3aba44abe0b84bd9c63b2
   - enabled: 1
     path: Assets/Scenes/MapOutside/City.unity

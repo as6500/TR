@@ -100,9 +100,9 @@ public class QuestManager : Singleton<QuestManager>
 		
 		for (int i = 0; i < questCount; i++)
 		{
-			Vector3 randomPosition = transform.position + new Vector3(Random.Range(-10f, -20f), Random.Range(2f, 6f), 0);
+			Vector3 randomPosition = transform.position + new Vector3(Random.Range(-6f, -4f), Random.Range(-2f, -5f), 0);
 			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
-			tempItem.name = "Item" + i; //name + 1 namber
+			tempItem.name = "Item" + i; //name + 1 number
 			Item newItem = tempItem.GetComponent<Item>();
 			newItem.SetUpItem(questParam);
 		}
@@ -124,7 +124,7 @@ public class QuestManager : Singleton<QuestManager>
 		string questName = activeQuest.displayName;
 		string questItemName = activeQuest.typeName;
 		
-		Vector3 randomPosition = transform.position + new Vector3(Random.Range(-10f, -15f), Random.Range(2f, 6f), 0);
+		Vector3 randomPosition = transform.position + new Vector3(Random.Range(-5f, 2f), Random.Range(-2f, 1f), 0);
 		GameObject tempLocation = Instantiate(location, randomPosition, Quaternion.identity);
 		questTypeLocation = tempLocation.GetComponent<QuestTypeLocation>();
 		questText.DisplayLocateQuestText(questName, questItemName);
