@@ -28,6 +28,7 @@ TagManager:
   - AINavMeshSurface
   - SceneManager
   - NextRegion
+  - Treasure
   layers:
   - Default
   - TransparentFX
