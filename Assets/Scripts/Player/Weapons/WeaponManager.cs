@@ -26,11 +26,16 @@ public class WeaponManager : MonoBehaviour
     private WeaponsUiManager ui;
     private Pistol pistolScript;
 
+    private string currentScene;
+    private string outDatedScene;
+
     private void Start()
     {
-        SceneManagement.Instance.AddObjectToSceneForWeapon(gameObject, SceneManager.GetActiveScene().name);
         pistolScript = pistol.GetComponent<Pistol>();
         ui = GameObject.FindGameObjectWithTag("WeaponsUI").GetComponent<WeaponsUiManager>();
+
+        currentScene = SceneManager.GetActiveScene().name;
+        outDatedScene = currentScene;
 
         SetMainWeapon();
         ChangeUI();
@@ -38,6 +43,19 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
+        currentScene = SceneManager.GetActiveScene().name;
+        if(SceneChanged())
+        {
+            if (RightScene())
+            {
+                holder.SetActive(true);
+            }
+            else
+            {
+                holder.SetActive(false);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             ChangeWeapon();
@@ -47,6 +65,21 @@ public class WeaponManager : MonoBehaviour
         }
 
         ChangeMainWeaponSettings();
+    }
+
+    private bool SceneChanged()
+    {
+        if(outDatedScene != currentScene)
+        {
+            outDatedScene = currentScene;
+            return true;
+        }
+        return false;
+    }
+
+    private bool RightScene()
+    {
+        return SceneManager.GetActiveScene().name != "BunkerInsideBuildings";
     }
 
     private void ChangeMainWeaponSettings()
