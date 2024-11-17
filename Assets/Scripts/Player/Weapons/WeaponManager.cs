@@ -44,6 +44,7 @@ public class WeaponManager : MonoBehaviour
     private void Update()
     {
         currentScene = SceneManager.GetActiveScene().name;
+
         if(SceneChanged())
         {
             if (RightScene())
@@ -79,7 +80,7 @@ public class WeaponManager : MonoBehaviour
 
     private bool RightScene()
     {
-        return SceneManager.GetActiveScene().name != "BunkerInsideBuildings";
+        return SceneManager.GetActiveScene().name != "BunkerInside";
     }
 
     private void ChangeMainWeaponSettings()
