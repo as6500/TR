@@ -21,7 +21,7 @@ public class CheatCodes : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V)) //change scene to the entry of the city 
         {
             SceneManager.LoadScene("City");
-            transform.position = new Vector3(43, 9, 0);
+            transform.position = new Vector3(50, -3, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.B)) //change scene to right outside the entrance of the bunker
