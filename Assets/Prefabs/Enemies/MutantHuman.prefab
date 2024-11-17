@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312c9a8287b7af459e34ddf00dce57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 30
   currentHealth: 0
   bloodColor: {r: 0.18828201, g: 0, b: 1, a: 1}
   mainColor: {r: 0, g: 0, b: 0, a: 0}
@@ -283,6 +283,7 @@ MonoBehaviour:
   - {fileID: 4605421280697415680, guid: 55c957732cca5d344a522e201127223f, type: 3}
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.5
+  enemyType: 0
 --- !u!114 &3972627454184604642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
-  damage: 5
+  damage: 7
 --- !u!114 &1715574605545671551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +374,7 @@ MonoBehaviour:
   - {x: -0.0028004646, y: -0.9979782, z: 0}
   m_ShapePathHash: -2094736955
   m_Mesh: {fileID: 0}
-  m_InstanceId: -66998
+  m_InstanceId: 156608
   m_LocalBounds:
     m_Center: {x: 0.00020456314, y: -0.5576563, z: 0}
     m_Extent: {x: 0.5019007, y: 0.44032192, z: 0}

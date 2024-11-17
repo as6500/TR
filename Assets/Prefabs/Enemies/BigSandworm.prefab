@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312c9a8287b7af459e34ddf00dce57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 40
   currentHealth: 0
   bloodColor: {r: 0, g: 1, b: 0.045894384, a: 0}
   mainColor: {r: 0, g: 0, b: 0, a: 0}
