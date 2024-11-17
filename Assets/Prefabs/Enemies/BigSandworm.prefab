@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 2289588527511844780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.98, y: 0.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,10 +138,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   currentHealth: 0
-  bloodColor: {r: 0, g: 1, b: 0.045894384, a: 0}
-  mainColor: {r: 0, g: 0, b: 0, a: 0}
+  bloodColor: {r: 0, g: 1, b: 0.045894384, a: 1}
+  mainColor: {r: 0.34934455, g: 0.3584906, b: 0.16740833, a: 1}
   damageEffectTimeSeconds: 0.3
-  dropCollectibles: []
+  dropCollectibles:
+  - {fileID: 4605421280697415680, guid: 768773ade1d6c5b46bf55521d04b482e, type: 3}
+  - {fileID: 4605421280697415680, guid: 55c957732cca5d344a522e201127223f, type: 3}
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.5
   enemyType: 2
@@ -177,7 +179,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2289588527511844780}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.79
   m_Speed: 1
@@ -206,8 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1010583488579287692}
   lineOfSight: {fileID: 9178627561606369009}
-  pointA: {fileID: 0}
-  pointB: {fileID: 0}
+  pointA: {x: 0, y: 0, z: 0}
+  pointB: {x: 0, y: 0, z: 0}
   fromAtoB: 0
 --- !u!114 &2943764179029583521
 MonoBehaviour:

@@ -1373,6 +1373,7 @@ MonoBehaviour:
   pillsScript: {fileID: 2381387438219204223}
   pillsUIScript: {fileID: 0}
   antiRadiationFlaskUIScript: {fileID: 0}
+  treasure: {fileID: 1224428143000546461, guid: 3871a07b02fcd6a4da91cf14eb74c70b, type: 3}
 --- !u!114 &1219374903157713629
 MonoBehaviour:
   m_ObjectHideFlags: 0

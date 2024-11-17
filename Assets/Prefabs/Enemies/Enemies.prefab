@@ -124,6 +124,7 @@ Transform:
   m_Children:
   - {fileID: 2709744085699548800}
   - {fileID: 2113516103288754382}
+  - {fileID: 1392393955024362098}
   m_Father: {fileID: 1868204120551658045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7318303379519130909
@@ -175,21 +176,46 @@ MonoBehaviour:
   surfaceAI: {fileID: 0}
   mutantTreePrefab: {fileID: 1871030766902764616, guid: 2b79c37d01c29aa45b55a2e6ed70ed06, type: 3}
   mutantHumanPrefab: {fileID: 2852099708569583667, guid: 88f94af171a94a944b9b81968de53a58, type: 3}
-  smallWormPrefab: {fileID: 0}
-  bigWormPrefab: {fileID: 0}
-  enemiesChosen:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  enemyChosen: 1
+  smallWormPrefab: {fileID: 3704700942264273731, guid: 4e984bccac9bfe0459ab698858f3216e, type: 3}
+  bigWormPrefab: {fileID: 2289588527511844780, guid: 8ebce818636556f429283861fdbfd866, type: 3}
+  enemyChosen: 0
   spawnPoint:
   - {fileID: 2375320985277614554}
-  - {fileID: 727332226457617998}
   enemyHolder: {fileID: 188742462220839549}
   spawnRatePerSeconds: 1
   spawnDelaySeconds: 1
   spawnArea: 5
   minSpawnDistFromPlayer: 16
-  maxSpawnDistFromPlayer: 36
+  maxSpawnDistFromPlayer: 50
   maxEnemiesInGame: 10
+--- !u!1 &8806263829651556663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1392393955024362098}
+  m_Layer: 0
+  m_Name: Point3
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392393955024362098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806263829651556663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.24, y: 13.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8611724067239536755}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

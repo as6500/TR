@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 3704700942264273731}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.98, y: 0.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -138,10 +138,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
-  bloodColor: {r: 0, g: 1, b: 0.045894384, a: 0}
-  mainColor: {r: 0, g: 0, b: 0, a: 0}
+  bloodColor: {r: 0, g: 1, b: 0.045894384, a: 1}
+  mainColor: {r: 0.46102926, g: 0.5188679, b: 0.15419188, a: 1}
   damageEffectTimeSeconds: 0.3
-  dropCollectibles: []
+  dropCollectibles:
+  - {fileID: 4605421280697415680, guid: 768773ade1d6c5b46bf55521d04b482e, type: 3}
+  - {fileID: 4605421280697415680, guid: 55c957732cca5d344a522e201127223f, type: 3}
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.5
   enemyType: 2
@@ -177,7 +179,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3704700942264273731}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.79
   m_Speed: 1
@@ -206,8 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 3838195435526624617}
   lineOfSight: {fileID: 4971276981618775675}
-  pointA: {fileID: 0}
-  pointB: {fileID: 0}
+  pointA: {x: 0, y: 0, z: 0}
+  pointB: {x: 0, y: 0, z: 0}
   fromAtoB: 0
 --- !u!114 &1589138348741505821
 MonoBehaviour:

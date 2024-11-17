@@ -6,11 +6,10 @@ public class PatrolState : StateBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private LineOfSight lineOfSight;
-    //[SerializeField] private AttackState attackState;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private GameObject pointA;
-    [SerializeField] private GameObject pointB;
+    [SerializeField] private Vector3 pointA;
+    [SerializeField] private Vector3 pointB;
     [SerializeField] private bool fromAtoB;
     private AttackState attack;
 
@@ -24,6 +23,7 @@ public class PatrolState : StateBehaviour
         attack = gameObject.GetComponent<AttackState>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        agent.enabled = true;
     }
 
     public override bool InitializeState()
@@ -34,9 +34,7 @@ public class PatrolState : StateBehaviour
     public override void OnStateStart()
     {
         attack.SetBigAttackDone(false);
-        Debug.Log("Hello!");
         spriteRenderer.color = Color.white; 
-        //attackState.isUnderground = true; //makes sure the worm is underground
     }
 
     public override void OnStateUpdate()
@@ -46,20 +44,20 @@ public class PatrolState : StateBehaviour
         //if worm reaches its destination, move to next point
         if (fromAtoB == true)
         {
-            agent.SetDestination(pointB.transform.position);
+            agent.SetDestination(pointB);
         }
         if (fromAtoB == false)
         {
-            agent.SetDestination(pointA.transform.position);
+            agent.SetDestination(pointA);
         }
 
         //if distance between worm and the point is close enough switch the direction to the other point
-        if (Vector2.Distance(agent.transform.position, pointB.transform.position) <= 0.1f)
+        if (Vector2.Distance(agent.transform.position, pointB) <= 0.1f)
         {
             fromAtoB = false;
         }
         
-        if (Vector2.Distance(agent.transform.position, pointA.transform.position) <= 0.1f)
+        if (Vector2.Distance(agent.transform.position, pointA) <= 0.1f)
         {
             fromAtoB = true;
         }
@@ -67,11 +65,17 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        //attackState.isUnderground = true; //makes sure the worm is underground
+        
     }
 
     public override int StateTransitionCondition()
     {
         return -1;
+    }
+
+    public void SetPoints(Vector3 a, Vector3 b)
+    {
+        pointA = a;
+        pointB = b;
     }
 }
