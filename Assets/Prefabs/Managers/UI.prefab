@@ -3141,7 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57531fd746ffea64a92b0fb2e38e4112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemainingMin: 0.5
+  timeRemainingMin: 10
   TimerAntiRadiation: {fileID: 8624064421542694222}
   TimerText: {fileID: 5299560830066800172}
   antiRadiationScript: {fileID: 0}
