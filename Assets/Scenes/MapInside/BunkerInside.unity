@@ -34012,10 +34012,6 @@ PrefabInstance:
       propertyPath: pillsScript
       value: 
       objectReference: {fileID: 2119754512}
-    - target: {fileID: 3086203471705905480, guid: 37bd2bb5dc96c5942acab3e68efa6749, type: 3}
-      propertyPath: valueToAdd
-      value: 0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 4208686172280765544, guid: 37bd2bb5dc96c5942acab3e68efa6749, type: 3}
       propertyPath: healthScript
       value: 
