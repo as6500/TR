@@ -37,9 +37,9 @@ public class AntiRadiationTimer : MonoBehaviour
 				timeRemainingSec = 0;
 				TimeDisplayed(0);
 				isTimerOn = false;
-				StartCoroutine(antiRadiationScript.RadiationDamage());
 				TimerAntiRadiation.enabled = false;
 				TimerText.enabled = false;
+				antiRadiationScript.IsThisTheRightScene();
 			}
 		}
 	}

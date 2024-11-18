@@ -18,22 +18,13 @@ public class RadiationOutsideSafeZones : MonoBehaviour
 
     private void Update()
     {
-        currentScene = SceneManager.GetActiveScene().name;
         if (SceneChanged())
-        {
-            if (RightScene())
-            {
-                antiRadiationScript.StopCoroutines();
-            }
-            else
-            {
-                antiRadiationScript.StartCoroutine(antiRadiationScript.RadiationDamage());
-            }
-        }
+            antiRadiationScript.IsThisTheRightScene();
     }
 
     private bool SceneChanged()
     {
+        currentScene = SceneManager.GetActiveScene().name;
         if (outDatedScene != currentScene)
         {
             outDatedScene = currentScene;
@@ -42,8 +33,4 @@ public class RadiationOutsideSafeZones : MonoBehaviour
         return false;
     }
 
-    private bool RightScene()
-    {
-        return SceneManager.GetActiveScene().name == "BunkerInside";
-    }
 }
