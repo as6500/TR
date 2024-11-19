@@ -53,7 +53,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("BunkerInside");
     }
 
     //In-Game Menu Functions
