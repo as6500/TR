@@ -4895,7 +4895,7 @@ MonoBehaviour:
   minimNightLight: 0.04
   insideLighting: 0.15
   outsideLighting: 1
-  timeMinutes: 10
+  timeMinutes: 0.5
   dustParticles: {fileID: 5197731031094483931}
   secondsInSeconds: 0.1
   addToSeconds: 0.1
@@ -4909,6 +4909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8571864220937515947}
   - component: {fileID: 6104890308854739560}
+  - component: {fileID: 873290005835940102}
   m_Layer: 0
   m_Name: Global Light 2D
   m_TagString: Untagged
@@ -4981,3 +4982,15 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &873290005835940102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439271890492430188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84fa2523134f5645a37b971f812e4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
