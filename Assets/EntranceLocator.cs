@@ -39,4 +39,10 @@ public class EntranceLocator : MonoBehaviour
 		get;
 		set;
 	}
+
+	[field: SerializeField] public EBuildings buildingType
+	{
+		get;
+		set;
+	}
 }
