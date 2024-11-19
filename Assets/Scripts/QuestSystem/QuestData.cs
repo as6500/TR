@@ -2,7 +2,7 @@ using UnityEngine;
 
 [System.Serializable] public enum QuestType { Fetch, Locate, Resource };
 
-[CreateAssetMenu(menuName = "ScriptableObjects/QuestData")] 
+[CreateAssetMenu(menuName = "ScriptableObjects/QuestData")]
 
 public class QuestData : ScriptableObject
 {
@@ -14,4 +14,5 @@ public class QuestData : ScriptableObject
 	public string typeName;
 	public NPCData npc;
 	public QuestData nextQuest;
+
 }
