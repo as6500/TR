@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AntiRadiationScript : MonoBehaviour
 {
@@ -41,7 +40,8 @@ public class AntiRadiationScript : MonoBehaviour
 	public IEnumerator RadiationDamage()
 	{
         isCoroutineActive = true;
-
+		
+        
 		while (isCoroutineActive)
 		{
             flaskTaken = timer.TimeRemaining() > 0.0f;
@@ -55,15 +55,18 @@ public class AntiRadiationScript : MonoBehaviour
         }
 	}
 
-	public void StopCoroutines()
-	{
-		StopAllCoroutines();
-	}
-
 	public void UpdateFlasks(int quantity)
 	{
 		numberOfFlasks += quantity;
 		antiRadiationFlaskUIScript.UpdateTextFlasks();
+	}
+	
+	public void IsThisTheRightScene()
+	{
+		if (SceneManager.GetActiveScene().name == "BunkerInside")
+			StopAllCoroutines();
+		else
+			StartCoroutine(RadiationDamage());
 	}
 
 	public int FlasksQuantityReturn()
@@ -75,6 +78,4 @@ public class AntiRadiationScript : MonoBehaviour
 	{
 		return isCoroutineActive;
 	}
-	
-
 }
