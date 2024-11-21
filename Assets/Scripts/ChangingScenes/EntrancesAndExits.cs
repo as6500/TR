@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class EntrancesAndExits: MonoBehaviour
 {
     [SerializeField] private string sceneName;
-    [SerializeField] private EEntranceType WhereToLoadTo;
+    [SerializeField] private EEntranceType whereToLoadTo;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,7 +12,8 @@ public class EntrancesAndExits: MonoBehaviour
             return;
         
         SceneManager.LoadScene(sceneName);
-
-        collision.GetComponent<MapChangingInfo>().entranceTypeToFind = WhereToLoadTo;
+        
+        collision.GetComponent<MapChangingInfo>().entranceTypeToFind = whereToLoadTo;
+        Debug.Log(whereToLoadTo);
     }
 }

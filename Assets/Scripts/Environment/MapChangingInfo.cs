@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,16 +24,16 @@ public class MapChangingInfo : MonoBehaviour
 		EntranceLocator[] arrayOfAllEntrances = FindObjectsOfType<EntranceLocator>();
 		for (int i = 0; i < arrayOfAllEntrances.Length; ++i)
 		{
-			if (arrayOfAllEntrances[i].entranceType == entranceTypeToFind)
+			if (arrayOfAllEntrances[i].entranceType != entranceTypeToFind) 
+				continue;
+			
+			if (entranceTypeToFind == EEntranceType.CityBuilding)
 			{
-				if (arrayOfAllEntrances[i].entranceType == EEntranceType.CityBuilding)
-				{
-					if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
-						transform.position = arrayOfAllEntrances[i].transform.position;
-				}
-				else
+				if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
 					transform.position = arrayOfAllEntrances[i].transform.position;
 			}
+			else
+				transform.position = arrayOfAllEntrances[i].transform.position;
 		}
 	}
 }

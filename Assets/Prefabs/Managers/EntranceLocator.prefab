@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <entranceType>k__BackingField: 0
+  <buildingType>k__BackingField: 0
