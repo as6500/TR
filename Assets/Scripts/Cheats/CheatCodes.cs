@@ -9,6 +9,7 @@ public class CheatCodes : MonoBehaviour
     [SerializeField] private PillsUIScript pillsUIScript;
     [SerializeField] private AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
     [SerializeField] private GameObject treasure;
+    [SerializeField] private EntrancesAndExits entrancesAndExits;
     private GameObject tempTreasure;
 
     void Update()
@@ -16,19 +17,25 @@ public class CheatCodes : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)) //change scene to inside the building in the city
         {
             SceneManager.LoadScene("Building1");
-            transform.position = new Vector3(-17, -3, 0);
+            entrancesAndExits.WhereToLoadTo();
         }
 
         if (Input.GetKeyDown(KeyCode.V)) //change scene to the entry of the city 
         {
             SceneManager.LoadScene("City");
-            transform.position = new Vector3(50, -3, 0);
+            entrancesAndExits.WhereToLoadTo();
         }
 
-        if (Input.GetKeyDown(KeyCode.B)) //change scene to right outside the entrance of the bunker
+        if (Input.GetKeyDown(KeyCode.B)) //change scene to bunker
         {
             SceneManager.LoadScene("BunkerInside");
-            transform.position = new Vector3(-6, 2, 0);
+            entrancesAndExits.WhereToLoadTo();
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SceneManager.LoadScene("Road");
+            entrancesAndExits.WhereToLoadTo();
         }
 
         if (Input.GetKeyDown(KeyCode.N)) //adds 80 more pills and anti-radiation flasks to the player

@@ -14,6 +14,10 @@ public class EntrancesAndExits: MonoBehaviour
         SceneManager.LoadScene(sceneName);
         
         collision.GetComponent<MapChangingInfo>().entranceTypeToFind = whereToLoadTo;
-        Debug.Log(whereToLoadTo);
+    }
+
+    public EEntranceType WhereToLoadTo()
+    {
+        return whereToLoadTo;
     }
 }

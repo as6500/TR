@@ -6,8 +6,9 @@ public enum EEntranceType
 	BunkerOutside,
 	RoadOutside,
 	CityRoad,
-	CityBuilding,
 	FarmRoad,
+	CityBuilding,
+	BuildingInsideBuilding
 }
 
 public enum EBuildings
