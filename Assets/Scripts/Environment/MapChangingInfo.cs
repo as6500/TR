@@ -25,14 +25,24 @@ public class MapChangingInfo : MonoBehaviour
 		{
 			if (arrayOfAllEntrances[i].entranceType != entranceTypeToFind) 
 				continue;
-			
+
 			if (entranceTypeToFind == EEntranceType.CityBuilding)
 			{
+
 				if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
-					transform.position = arrayOfAllEntrances[i].transform.position;
+				{
+					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
+					return;
+				}
 			}
 			else
-				transform.position = arrayOfAllEntrances[i].transform.position;
+			{
+				Debug.Log("target: " + arrayOfAllEntrances[i].transform.position);
+				GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
+				Debug.Log("position: " + transform.position);
+				return;
+			}
+
 		}
 	}
 }
