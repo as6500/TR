@@ -34,9 +34,12 @@ public class EnemieSpawner : MonoBehaviour
     [SerializeField] private int maxSpawnDistFromPlayer = 36;
     [SerializeField] private int maxEnemiesInGame = 10;
 
+    private EnvironmentManager environmentManager;
+
     void Start()
     {
         surfaceAI = GameObject.FindGameObjectWithTag("AINavMeshSurface").GetComponent<NavMeshSurface>();
+        environmentManager = GameObject.FindGameObjectWithTag("EnvironmentManager").GetComponent<EnvironmentManager>();
         StartCoroutine(SpawnEnemy());
     }
 
@@ -48,6 +51,13 @@ public class EnemieSpawner : MonoBehaviour
 
             if (CanSpawnEnemy())
             {
+                spawnRatePerSeconds = 1;
+
+                if (environmentManager.GetCicleState() == EDayCicleState.Night)
+                {
+                    spawnRatePerSeconds = 2;
+                }
+
                 for (int i = 0; i < spawnRatePerSeconds; i++)
                 {
                     GameObject spawner = GetRandomSpawnerCloseToPlayer();

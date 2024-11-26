@@ -224,7 +224,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7075472, g: 0.5750293, b: 0.45723566, a: 0}
+      maxColor: {r: 0.8867924, g: 0.76190054, b: 0.6483624, a: 0}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4857,7 +4857,7 @@ GameObject:
   - component: {fileID: 2673162193907973230}
   m_Layer: 0
   m_Name: EnvironmentManager
-  m_TagString: Untagged
+  m_TagString: EnvironmentManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4871,7 +4871,7 @@ Transform:
   m_GameObject: {fileID: 7386889158152402665}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1319017, y: -1.1937546, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4895,10 +4895,12 @@ MonoBehaviour:
   minimNightLight: 0.04
   insideLighting: 0.15
   outsideLighting: 1
-  timeMinutes: 1
+  dayCicleMinutes: 1
   dustParticles: {fileID: 5197731031094483931}
+  currentDayCicleState: 0
   updatePeriod: 0.1
   addToSeconds: 0.1
+  currentTimeSeconds: 0
 --- !u!1 &7439271890492430188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,7 +4951,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.15
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: c5dbf06000000000e9bddb8ce350bfcb5d54fe65
