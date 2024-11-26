@@ -47,7 +47,6 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     void FixedUpdate()
     {
-        Debug.Log(currentTimeSeconds);
         CheckScene();
         ControlTime();
         dustParticles.transform.position = Camera.main.transform.position;
