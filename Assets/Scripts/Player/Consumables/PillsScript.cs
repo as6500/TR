@@ -15,7 +15,7 @@ public class PillsScript : MonoBehaviour
 	[SerializeField] private HealthScript healthScript;
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Alpha2) && healthScript.CurrentHealthReturn() < 100.0f)
+		if (Input.GetKeyDown(KeyCode.Alpha2) && healthScript.CurrentHealthReturn() < 100.0f && pillsTaken == false)
 		{
 			GainHealth();
 			PillCount();
