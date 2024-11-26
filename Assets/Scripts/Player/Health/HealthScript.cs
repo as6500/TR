@@ -10,9 +10,15 @@ public class OnPlayerHealthChanged : UnityEvent<float> { };
 
 public class HealthScript : MonoBehaviour, IDamageable
 {
+    [Header("Health")]
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private float currentHealth = 0.0f;
+
+    [Header("Damage")]
     [SerializeField] private Color bloodColor;
+    [SerializeField] private Color mainColor;
+    [SerializeField] private float damageEffectTimeSeconds;
+
     private float normalizedHealth = 0.0f;
     private bool canHeal = false;
 
@@ -95,11 +101,19 @@ public class HealthScript : MonoBehaviour, IDamageable
     public virtual void TakeDamage(GameObject instigator, float damage, float knockbackForce)
     {
         DealDamage(damage);
+        StartCoroutine(DamageEffect());
         KnockbackEffect(instigator, knockbackForce);
     }
 
     public virtual Color GetBloodColor()
     {
         return bloodColor;
+    }
+
+    private IEnumerator DamageEffect()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = bloodColor;
+        yield return new WaitForSeconds(damageEffectTimeSeconds);
+        gameObject.GetComponent<SpriteRenderer>().color = mainColor;
     }
 }
