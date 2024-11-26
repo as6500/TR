@@ -34,8 +34,6 @@ public class EnemieSpawner : MonoBehaviour
     [SerializeField] private int maxSpawnDistFromPlayer = 36;
     [SerializeField] private int maxEnemiesInGame = 10;
 
-
-
     void Start()
     {
         surfaceAI = GameObject.FindGameObjectWithTag("AINavMeshSurface").GetComponent<NavMeshSurface>();

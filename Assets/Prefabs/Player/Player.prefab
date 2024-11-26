@@ -1290,8 +1290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467277506a3582a49be127b27ceb80c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityModifier: 4
-  sprintMultiplier: 1.5
+  velocityModifier: 0
+  walkVelocity: 4
+  sprintVelocity: 2
+  walkAction: {fileID: -7833374369896648280, guid: 74e6deac0028ee94aafd00f8f7d3bfd6, type: 3}
+  sprintAction: {fileID: -4981879909087940162, guid: 74e6deac0028ee94aafd00f8f7d3bfd6, type: 3}
 --- !u!114 &985926617799968136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,6 +1310,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   bloodColor: {r: 1, g: 0, b: 0.43320227, a: 1}
+  mainColor: {r: 0, g: 0, b: 0, a: 0}
+  damageEffectTimeSeconds: 0
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1375,6 +1380,7 @@ MonoBehaviour:
   pillsUIScript: {fileID: 0}
   antiRadiationFlaskUIScript: {fileID: 0}
   treasure: {fileID: 1224428143000546461, guid: 3871a07b02fcd6a4da91cf14eb74c70b, type: 3}
+  entrancesAndExits: {fileID: 0}
 --- !u!114 &1219374903157713629
 MonoBehaviour:
   m_ObjectHideFlags: 0
