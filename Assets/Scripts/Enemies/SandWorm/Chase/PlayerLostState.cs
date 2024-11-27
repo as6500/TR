@@ -13,6 +13,7 @@ public class PlayerLostState : StateBehaviour
     [SerializeField] private LineOfSight lineOfSight;
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private AttackState attackState;
+    public Animator animator;
     
 
     void Start()
@@ -35,6 +36,7 @@ public class PlayerLostState : StateBehaviour
 
     public override void OnStateUpdate()
     {
+        animator.SetBool("isLost", true);
         if (lineOfSight.HasSeenPlayerThisFrame() == false) //if player isn't seen
         {
             waitToPatrolTime = waitToPatrolTime + Time.deltaTime; //counts up the time to patrol timer
@@ -55,6 +57,7 @@ public class PlayerLostState : StateBehaviour
     {
         agent.isStopped = false; //at the end of the state makes sure the worm isn't stopped
         attackState.isUnderground = true; //and the worm is underground
+        animator.SetBool("isLost", false);
     }
 
     public override int StateTransitionCondition()
