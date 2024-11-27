@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
+public enum EDayCicleState { Day, Transition, Night }
+
 public class EnvironmentManager : Singleton<EnvironmentManager>
 {
     [Header("Light Objects")]
@@ -15,18 +17,21 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     [SerializeField] private float outsideLighting = 1f;
 
     [Header("Day And Night Cicle")]
-    [SerializeField] private float timeMinutes = 1f;
+    [SerializeField] private float dayCicleMinutes = 1f;
     [SerializeField] private ParticleSystem dustParticles;
+    [SerializeField] private EDayCicleState currentDayCicleState;
+    private EDayCicleState tempDayCicleState;
     private float dayTimeSeconds;
 
     [Header("Time Settings")]
     [SerializeField] private float updatePeriod = 1f;
     [SerializeField] private float addToSeconds = 1f;
-    private float currentTimeSeconds = 0f;
+    [SerializeField] private float currentTimeSeconds = 0f;
 
     private void Start()
     {
-        dayTimeSeconds = timeMinutes * 60;
+        currentDayCicleState = EDayCicleState.Day;
+        dayTimeSeconds = dayCicleMinutes * 60;
         outsideLighting = 1;
         StartCoroutine(CountTime());
     }
@@ -36,7 +41,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         while (true) {
             yield return new WaitForSeconds(updatePeriod);
 
-            if (currentTimeSeconds >= timeMinutes * 60)
+            if (currentTimeSeconds >= dayTimeSeconds)
             {
                 currentTimeSeconds = 0;
             }
@@ -49,22 +54,30 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     {
         CheckScene();
         ControlTime();
+        CheckDayCicleState();
         dustParticles.transform.position = Camera.main.transform.position;
+    }
+
+    private void CheckDayCicleState()
+    {
+        if (currentDayCicleState != tempDayCicleState)
+        {
+            Debug.Log(currentDayCicleState);
+            tempDayCicleState = currentDayCicleState;
+        }
     }
 
     private void ControlTime()
     {
-        if(RightScene())
+        if (currentTimeSeconds >= dayTimeSeconds * 0.4f && currentTimeSeconds <= dayTimeSeconds * 0.5f)
         {
-            if (currentTimeSeconds >= dayTimeSeconds * 0.4f && currentTimeSeconds <= dayTimeSeconds * 0.5f)
-            {
-                StartNight();
-            }
-            else if (currentTimeSeconds >= dayTimeSeconds * 0.9f && currentTimeSeconds <= dayTimeSeconds)
-            {
-                Debug.Log("YabbaDabbaDub");
-                StartDay();
-            }
+            currentDayCicleState = EDayCicleState.Transition;
+            StartNight();
+        }
+        else if (currentTimeSeconds >= dayTimeSeconds * 0.9f && currentTimeSeconds <= dayTimeSeconds)
+        {
+            currentDayCicleState = EDayCicleState.Transition;
+            StartDay();
         }
     }
 
@@ -95,6 +108,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         if (intensity < 0.05f)
         {
             intensity = minimNightLight;
+            currentDayCicleState = EDayCicleState.Night;
         }
 
         outsideLighting = intensity;
@@ -114,8 +128,14 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         else if( intensity > 0.95f)
         {
             intensity = 1;
+            currentDayCicleState = EDayCicleState.Day;
         }
 
         outsideLighting = intensity;
+    }
+
+    public EDayCicleState GetCicleState()
+    {
+        return currentDayCicleState;
     }
 }

@@ -18,6 +18,7 @@ public class ChaseState : StateBehaviour
     private float playerLostMaxTime = 3f; //max time that the player can not be seen for
     private float playerLostSinceTime = 0f; //counts the time since the player was last seen
     public bool enemyHasLostPlayer = false;
+    public Animator animator;
     
     
     void Start()
@@ -34,6 +35,7 @@ public class ChaseState : StateBehaviour
     public override void OnStateStart()
     {
         ResetPlayerLostTimer();
+        animator.SetBool("isChasing", true);
     }
 
     public override void OnStateUpdate()
@@ -58,6 +60,7 @@ public class ChaseState : StateBehaviour
     public override void OnStateEnd()
     {
         ResetPlayerLostTimer(); //at the end of the state reset the timer
+        animator.SetBool("isChasing", false);
     }
     private void ResetPlayerLostTimer()
     {

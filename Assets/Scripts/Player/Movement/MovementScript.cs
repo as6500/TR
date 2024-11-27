@@ -14,6 +14,9 @@ public class MovementScript : Singleton<MovementScript>
     [SerializeField] private InputActionReference walkAction;
     [SerializeField] private InputActionReference sprintAction;
 
+    [Header("Animations")]
+    [SerializeField] private Animator anim;
+
     private Vector2 currentInput = Vector2.zero;
 
     private Rigidbody2D myRigidbody;
@@ -37,7 +40,6 @@ public class MovementScript : Singleton<MovementScript>
 
         velocityModifier = walkVelocity;
 
-        walkAction.action.started += OnWalkStarted;
         walkAction.action.performed += OnWalkPerformed;
         walkAction.action.canceled += OnWalkCancelled;
 
@@ -46,18 +48,16 @@ public class MovementScript : Singleton<MovementScript>
         sprintAction.action.canceled += OnSprintCancelled;
     }
 
-    private void OnWalkStarted(InputAction.CallbackContext callbackContext)
-    {
-    }
-
     private void OnWalkPerformed(InputAction.CallbackContext callbackContext)
     {
         currentInput = callbackContext.ReadValue<Vector2>();
+        anim.SetBool("walking", true);
     }
 
     private void OnWalkCancelled(InputAction.CallbackContext callbackContext)
     {
         currentInput = Vector2.zero;
+        anim.SetBool("walking", false);
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext callbackContext)
