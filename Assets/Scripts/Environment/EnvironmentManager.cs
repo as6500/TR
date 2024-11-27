@@ -69,18 +69,15 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     private void ControlTime()
     {
-        if(RightScene())
+        if (currentTimeSeconds >= dayTimeSeconds * 0.4f && currentTimeSeconds <= dayTimeSeconds * 0.5f)
         {
-            if (currentTimeSeconds >= dayTimeSeconds * 0.4f && currentTimeSeconds <= dayTimeSeconds * 0.5f)
-            {
-                currentDayCicleState = EDayCicleState.Transition;
-                StartNight();
-            }
-            else if (currentTimeSeconds >= dayTimeSeconds * 0.9f && currentTimeSeconds <= dayTimeSeconds)
-            {
-                currentDayCicleState = EDayCicleState.Transition;
-                StartDay();
-            }
+            currentDayCicleState = EDayCicleState.Transition;
+            StartNight();
+        }
+        else if (currentTimeSeconds >= dayTimeSeconds * 0.9f && currentTimeSeconds <= dayTimeSeconds)
+        {
+            currentDayCicleState = EDayCicleState.Transition;
+            StartDay();
         }
     }
 
