@@ -29,10 +29,10 @@ public class MovementScript : Singleton<MovementScript>
 
     private void OnDisable()
     {
-        walkAction.action.Disable();
-        sprintAction.action.Disable();
+        //walkAction.action.Disable();
+        //sprintAction.action.Disable();
     }
-
+    
 
     private void Start()
     {
