@@ -10,7 +10,7 @@ public class PatrolState : StateBehaviour
     [SerializeField] private Vector3 pointA;
     [SerializeField] private Vector3 pointB;
     [SerializeField] private bool fromAtoB;
-    private AttackState attack;
+    [SerializeField] private AttackState attack;
     public Animator animator;
 
     void Start()
