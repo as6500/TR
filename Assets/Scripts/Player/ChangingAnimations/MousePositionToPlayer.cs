@@ -10,6 +10,10 @@ public class MousePositionToPlayer : MonoBehaviour
 
     [SerializeField] private float currentAngle;
     [SerializeField] private float currentWholeAngle;
+
+    [SerializeField] private AudioSource stepOne;
+    [SerializeField] private AudioSource stepTwo;
+
     private float tempAngle;
 
     private void FixedUpdate()
@@ -79,6 +83,23 @@ public class MousePositionToPlayer : MonoBehaviour
         else
         {
             anim.SetTrigger("side");
+        }
+    }
+
+    public void Step()
+    {
+        int randomStep = Random.Range(0,2);
+
+        stepOne.Stop();
+        stepTwo.Stop();
+
+        if (randomStep == 0)
+        {
+            stepOne.Play();
+        }
+        else
+        {
+            stepTwo.Play();
         }
     }
 }
