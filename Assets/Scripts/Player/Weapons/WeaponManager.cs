@@ -14,6 +14,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject holder;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject stick;
+    [SerializeField] private int nullDistance;
 
     [Header("Main Weapon Settings")]
     [SerializeField] private float weaponDist;
@@ -126,15 +127,16 @@ public class WeaponManager : MonoBehaviour
 
     public float WeaponAng()
     {
-        float angle;
-
         Vector3 mousePos = Input.mousePosition;
         Vector3 objectPos = Camera.main.WorldToScreenPoint(player.transform.position);
 
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
 
-        angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        if (mousePos.magnitude < nullDistance)
+            return tempMainWeapon.transform.rotation.z;
+
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         
         if (mainWeapon == MainWeapon.Stick)
         {
