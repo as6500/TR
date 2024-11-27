@@ -59,7 +59,7 @@ public class AttackState : StateBehaviour
         rb.velocity = Vector2.zero;
         timeSinceLastAttack += Time.deltaTime; //count time since the last attack
         timeSinceOnAttackMode += Time.deltaTime; //count the time since the worm entered attack mode
-        Debug.Log(timeSinceOnAttackMode);
+        //Debug.Log(timeSinceOnAttackMode);
         
         //check if player is withing attack range and if the worm is underground and if so does the earthquake attack
         if (lineOfSight.playerInAttackRange)
