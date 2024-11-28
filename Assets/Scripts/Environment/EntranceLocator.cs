@@ -8,7 +8,8 @@ public enum EEntranceType
 	CityRoad,
 	FarmRoad,
 	CityBuilding,
-	BuildingInsideBuilding
+	BuildingInsideBuilding,
+	FarmBuilding
 }
 
 public enum EBuildings
@@ -29,6 +30,8 @@ public enum EBuildings
 	Building13,
 	Building14,
 	Building15,
+	Barn,
+	Windmill
 }
 
 public class EntranceLocator : MonoBehaviour
