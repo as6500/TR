@@ -256,6 +256,12 @@ PrefabInstance:
     - {fileID: 3711287626759156948, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
     - {fileID: 2965732731108957396, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1441899563117754818, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1845706812}
+    - targetCorrespondingSourceObject: {fileID: 1441899563117754818, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856247335}
     - targetCorrespondingSourceObject: {fileID: 2837199101886126300, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1101848735}
@@ -286,6 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04976799df50f54ba128eff723155a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &247932553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1441899563117754818, guid: 1cefe92ddf4a9f4408bdccee62f3cae3, type: 3}
+  m_PrefabInstance: {fileID: 247932550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &256039632
 GameObject:
   m_ObjectHideFlags: 0
@@ -65920,12 +65931,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845706808}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.58, y: -16.96, z: 0}
   m_LocalScale: {x: 1, y: 6.5809584, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 247932553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1845706813
 MonoBehaviour:
@@ -65941,6 +65952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Road
   whereToLoadTo: 2
+  whereToLoadToBuildings: -1
 --- !u!1 &1856247332
 GameObject:
   m_ObjectHideFlags: 0
@@ -66065,12 +66077,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856247332}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 34.4992, y: -1.0318, z: 0}
   m_LocalScale: {x: 2.5972807, y: 1.9626997, z: 2.0190306}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 247932553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1856247336
 MonoBehaviour:
@@ -66085,7 +66097,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Building1
-  whereToLoadTo: 3
+  whereToLoadTo: 4
+  whereToLoadToBuildings: 0
 --- !u!43 &1901845145
 Mesh:
   m_ObjectHideFlags: 0
@@ -66256,8 +66269,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 807214421}
-  - {fileID: 1845706812}
-  - {fileID: 1856247335}
   - {fileID: 1579764039}
   - {fileID: 247932550}
   - {fileID: 161509782}

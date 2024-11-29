@@ -38,6 +38,12 @@ public class CheatCodes : MonoBehaviour
             entrancesAndExits.WhereToLoadTo();
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SceneManager.LoadScene("Farm");
+            entrancesAndExits.WhereToLoadTo();
+        }
+
         if (Input.GetKeyDown(KeyCode.N)) //adds 80 more pills and anti-radiation flasks to the player
         {
             antiRadiationScript.UpdateFlasks(80);

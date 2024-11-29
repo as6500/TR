@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Farm
   whereToLoadTo: 3
+  whereToLoadToBuildings: -1
 --- !u!1001 &327601851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101448,6 +101449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: City
   whereToLoadTo: 2
+  whereToLoadToBuildings: -1
 --- !u!1 &560496087
 GameObject:
   m_ObjectHideFlags: 0
@@ -133375,6 +133377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: BunkerOutside
   whereToLoadTo: 1
+  whereToLoadToBuildings: -1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

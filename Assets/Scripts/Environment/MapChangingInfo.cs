@@ -26,20 +26,20 @@ public class MapChangingInfo : MonoBehaviour
 			if (arrayOfAllEntrances[i].entranceType != entranceTypeToFind) 
 				continue;
 
-			if (entranceTypeToFind == EEntranceType.CityBuilding)
+			if (entranceTypeToFind == EEntranceType.CityBuilding || entranceTypeToFind == EEntranceType.FarmBuilding)
 			{
-
+				Debug.Log("Farmmmmmm!!!");
 				if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
 				{
+					Debug.Log("Windmill");
+					Debug.Log(arrayOfAllEntrances[i].buildingType);
 					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 					return;
 				}
 			}
 			else
 			{
-				Debug.Log("target: " + arrayOfAllEntrances[i].transform.position);
 				GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
-				Debug.Log("position: " + transform.position);
 				return;
 			}
 

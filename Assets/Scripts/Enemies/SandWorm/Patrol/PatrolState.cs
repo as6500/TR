@@ -11,7 +11,7 @@ public class PatrolState : StateBehaviour
     [SerializeField] private Vector3 pointB;
     [SerializeField] private bool fromAtoB;
     [SerializeField] private AttackState attack;
-    public Animator animator;
+    // public Animator animator;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateUpdate()
     {
-        animator.SetBool("isPatrolling", true);
+        // animator.SetBool("isPatrolling", true);
         rb.velocity = Vector2.zero; //makes sure the worm isn't affected by forces from the player
         
         //if worm reaches its destination, move to next point
@@ -59,7 +59,7 @@ public class PatrolState : StateBehaviour
 
     public override void OnStateEnd()
     {
-        animator.SetBool("isPatrolling", false);
+        // animator.SetBool("isPatrolling", false);
     }
 
     public override int StateTransitionCondition()
