@@ -28,10 +28,8 @@ public class MapChangingInfo : MonoBehaviour
 
 			if (entranceTypeToFind == EEntranceType.CityBuilding || entranceTypeToFind == EEntranceType.FarmBuilding)
 			{
-				Debug.Log("Farmmmmmm!!!");
 				if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
 				{
-					Debug.Log("Windmill");
 					Debug.Log(arrayOfAllEntrances[i].buildingType);
 					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 					return;

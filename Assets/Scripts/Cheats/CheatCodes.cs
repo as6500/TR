@@ -20,25 +20,25 @@ public class CheatCodes : MonoBehaviour
             entrancesAndExits.WhereToLoadTo();
         }
 
-        if (Input.GetKeyDown(KeyCode.V)) //change scene to the entry of the city 
+        if (Input.GetKeyDown(KeyCode.V)) //change scene to the City
         {
             SceneManager.LoadScene("City");
             entrancesAndExits.WhereToLoadTo();
         }
 
-        if (Input.GetKeyDown(KeyCode.B)) //change scene to bunker
+        if (Input.GetKeyDown(KeyCode.B)) //change scene to Bunker
         {
             SceneManager.LoadScene("BunkerInside");
             entrancesAndExits.WhereToLoadTo();
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K)) //change scene to Road
         {
             SceneManager.LoadScene("Road");
             entrancesAndExits.WhereToLoadTo();
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I)) //change scene to Farm
         {
             SceneManager.LoadScene("Farm");
             entrancesAndExits.WhereToLoadTo();
