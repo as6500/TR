@@ -40,7 +40,6 @@ public class MapChangingInfo : MonoBehaviour
 				GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 				return;
 			}
-
 		}
 	}
 }

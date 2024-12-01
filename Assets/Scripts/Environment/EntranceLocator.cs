@@ -30,6 +30,15 @@ public enum EBuildings
 	Building13,
 	Building14,
 	Building15,
+	Building16,
+	Building17,
+	Shop1,
+	Shop2,
+	Shop3,
+	Shop4,
+	Shop5,
+	Shop6,
+	Shop7,
 	Barn,
 	Windmill
 }

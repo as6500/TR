@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MapOutside/City.unity
     guid: 56e406580617d0f42805a14db510abae
   - enabled: 1
-    path: Assets/Scenes/MapInside/Building1.unity
+    path: Assets/Scenes/MapInside/Buildings.unity
     guid: d075b8c6189b10c47b54d134cb3c7ab9
   - enabled: 1
     path: Assets/Scenes/MapInside/2ndFloorBuilding1.unity
