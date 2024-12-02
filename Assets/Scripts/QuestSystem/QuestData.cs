@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable] public enum QuestType { Fetch, Locate, Resource };
 
@@ -12,6 +13,7 @@ public class QuestData : ScriptableObject
 	public int typeParam;
 	public int typeCount;
 	public string typeName;
+    public Text descriptionOfQuest;
 	public NPCData npc;
 	public QuestData nextQuest;
 

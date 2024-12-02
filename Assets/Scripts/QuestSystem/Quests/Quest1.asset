@@ -17,6 +17,10 @@ MonoBehaviour:
   type: 1
   typeParam: 0
   typeCount: 1
-  typeName: Bottle of alcohol
+  typeName: bottle of alcohol
+  descriptionOfQuest: A long time ago, I hid a bottle of alcohol inside of my office
+    back at the city when i worked as an engineer in one of those tall buildings
+    with only windows as walls. Please try to find its location so I can later go
+    pick it up, because at these times... a bit of alcohol calms my soul.
   npc: {fileID: 11400000, guid: ca9f231201e5f6b4490ef182c266a647, type: 2}
   nextQuest: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}

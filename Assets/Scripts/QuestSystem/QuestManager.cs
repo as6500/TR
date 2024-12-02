@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 [Serializable] public enum QuestState { Pending, Active, Completed };
@@ -20,6 +21,7 @@ public class QuestManager : Singleton<QuestManager>
 	private CollectibleType collectibleType;
 	public CollectibleType currentCollectibleType;
     private int activeQuestItemCounter;
+    private Text descriptionOfQuest;
 	
 	public void Start()
 	{
@@ -31,6 +33,16 @@ public class QuestManager : Singleton<QuestManager>
 		npcs[3].SetIcon(IconType.None);
 		
 		OnQuestAction.AddListener(CompleteQuest);
+	}
+
+	public void Update()
+	{
+		descriptionOfQuest = activeQuest.descriptionOfQuest;
+		if (Input.GetKeyDown(KeyCode.Tab))
+			descriptionOfQuest.enabled = true;
+		else
+			descriptionOfQuest.enabled = false;
+
 	}
 	
 	public void AcceptQuest()
