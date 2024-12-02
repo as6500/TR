@@ -14,7 +14,7 @@ public class AttackState : StateBehaviour
     [SerializeField] private LineOfSight lineOfSight;
     private Rigidbody2D rb;
     private NavMeshAgent agent;
-    [SerializeField] public float attackCooldown = 5f;  // time between attacks
+    [SerializeField] public float attackCooldown = 2f;  // time between attacks
     public float timeSinceLastAttack;
     [SerializeField] public float earthquakeCooldown = 0.5f; //cooldown so the worm doesnt attack immediately after emerging
     [SerializeField] public float timeSinceOnAttackMode = 0f;
@@ -25,6 +25,7 @@ public class AttackState : StateBehaviour
     private float attackBitingDamage = 3f;
     public bool isUnderground; //verifies if the worm is underground so it can do the earthquake attack
     private bool bigAttackDone = false;
+    public Animator animator;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class AttackState : StateBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;  // find the player by tag
         agent = GetComponent<NavMeshAgent>();
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public override bool InitializeState()
@@ -49,8 +51,18 @@ public class AttackState : StateBehaviour
 
     public override void OnStateStart()
     {
+        Debug.Log("I;m in acctack state");
         agent.isStopped = true; //stops the worm so it doesnt wiggle around
         isUnderground = true;
+        // if (isUnderground == true)
+        // {
+        //     animator.SetBool("isUnderGround", true);
+        // }
+        // else if (isUnderground == false)
+        // {
+        //     animator.SetBool("isAboveGround", true);
+        // }
+
         timeSinceOnAttackMode = 0;
     }
 
@@ -60,22 +72,8 @@ public class AttackState : StateBehaviour
         timeSinceLastAttack += Time.deltaTime; //count time since the last attack
         timeSinceOnAttackMode += Time.deltaTime; //count the time since the worm entered attack mode
         //Debug.Log(timeSinceOnAttackMode);
-        
-        //check if player is withing attack range and if the worm is underground and if so does the earthquake attack
-        if (lineOfSight.playerInAttackRange)
-        {
-            if (isUnderground && timeSinceOnAttackMode >= earthquakeCooldown && !bigAttackDone)
-            {
-                Debug.Log("Performing Earthquake Attack.");
-                bigAttackDone = true;
-                DoEarthquakeAttack();
-            }
-            else if (timeSinceLastAttack >= attackCooldown)
-            {
-                Debug.Log("Performing main attack.");
-                DoMainAttack();
-            }
-        }
+        CanDoMainAttackAnimation();
+        CanDoEarthquakeAttackAnimation();
     }
     
     private void DoMainAttack()
@@ -95,9 +93,26 @@ public class AttackState : StateBehaviour
             damageable.TakeDamage(gameObject, attackMainDamage);
         }
         isUnderground = false;
+
         timeSinceLastAttack = 0f;
     }
     
+    private void CanDoMainAttackAnimation()
+    {
+        if (timeSinceLastAttack >= attackCooldown && lineOfSight.playerInAttackRange)
+        {
+            animator.SetTrigger("biting");
+        }
+    }
+
+    private void CanDoEarthquakeAttackAnimation()
+    {
+        if (isUnderground && timeSinceOnAttackMode >= earthquakeCooldown && !bigAttackDone && lineOfSight.playerInAttackRange)
+        {
+            animator.SetTrigger("unbury");
+        }
+    }
+
     private void DoEarthquakeAttack()
     {
         IDamageable damageable = player.GetComponent<IDamageable>();
@@ -117,7 +132,8 @@ public class AttackState : StateBehaviour
             timeSinceLastAttack = 0f;
         }
         isUnderground = false;  //emerges the worm
-
+        // animator.SetBool("isAboveGround", true);
+        // animator.SetBool("isUnderGround", false);
     }
 
     public override void OnStateEnd()
@@ -125,10 +141,32 @@ public class AttackState : StateBehaviour
         agent.isStopped = false; //unfreezes the worm so its ready for the next state
         lineOfSight.playerInAttackRange = false;
         timeSinceOnAttackMode = 0;
+        animator.SetTrigger("bury");
+        Debug.Log("I left acctack state");
     }
 
     public override int StateTransitionCondition()
     {
         return -1;
     }
+
+    private void CanDoMainAttackChecker()
+    {
+        if (timeSinceLastAttack >= attackCooldown && lineOfSight.playerInAttackRange)
+        {
+            Debug.Log("Performing main attack." );
+            DoMainAttack();
+        }
+    }
+
+    private void CanDoEarthquakeAttackChecker()
+    {
+        if (isUnderground && timeSinceOnAttackMode >= earthquakeCooldown && !bigAttackDone && lineOfSight.playerInAttackRange)
+        {
+            Debug.Log("Performing Earthquake Attack.");
+            bigAttackDone = true;
+            DoEarthquakeAttack();
+        }
+    }
 }
+
