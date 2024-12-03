@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -21,7 +22,8 @@ public class QuestManager : Singleton<QuestManager>
 	private CollectibleType collectibleType;
 	public CollectibleType currentCollectibleType;
     private int activeQuestItemCounter;
-    private Text descriptionOfQuest;
+    [SerializeField] private Text descriptionOfQuest;
+	[SerializeField] private RawImage background;
 	
 	public void Start()
 	{
@@ -33,16 +35,20 @@ public class QuestManager : Singleton<QuestManager>
 		npcs[3].SetIcon(IconType.None);
 		
 		OnQuestAction.AddListener(CompleteQuest);
+
+		descriptionOfQuest.enabled = false;
+		background.enabled = false;
+
 	}
 
 	public void Update()
 	{
-		descriptionOfQuest = activeQuest.descriptionOfQuest;
-		if (Input.GetKeyDown(KeyCode.Tab))
+		descriptionOfQuest.text = activeQuest.descriptionOfQuest;
+		if (Input.GetKeyDown(KeyCode.CapsLock))
+		{
 			descriptionOfQuest.enabled = true;
-		else
-			descriptionOfQuest.enabled = false;
-
+			background.enabled = true;
+		}
 	}
 	
 	public void AcceptQuest()

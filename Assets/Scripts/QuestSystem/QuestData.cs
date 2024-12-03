@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class QuestData : ScriptableObject
 	public int typeParam;
 	public int typeCount;
 	public string typeName;
-    public Text descriptionOfQuest;
+    public string descriptionOfQuest;
 	public NPCData npc;
 	public QuestData nextQuest;
 
