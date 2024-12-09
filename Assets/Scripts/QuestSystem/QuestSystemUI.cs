@@ -19,7 +19,7 @@ public class QuestSystemUI : MonoBehaviour
 	public void DisplayFetchQuestText(string questName, int questAmount, string itemName, int currentItemAmount)
 	{
 		questText.enabled = true;
-		questText.text = $"{questName}: \nGet {questAmount} {itemName} {currentItemAmount} / {questAmount}";
+		questText.text = $"{questName}: \nGet {questAmount} {itemName} {currentItemAmount} / {questAmount} \nPress z to see the description";
 	}
 
 	public void DisplayFetchDeliverText(string questName, string npcName)
@@ -30,7 +30,7 @@ public class QuestSystemUI : MonoBehaviour
 	public void DisplayLocateQuestText(string questName, string itemName)
 	{
 		questText.enabled = true;
-		questText.text = $"{questName}: \nFind the location of a {itemName}";
+		questText.text = $"{questName}: \nFind the location of a {itemName} \nPress z to see the description";
 	}
 
 	public void DisplayLocateDeliverText(string questName, string npcName)
@@ -41,7 +41,7 @@ public class QuestSystemUI : MonoBehaviour
     public void DisplayResourceQuestText(string questName, string itemName, int questAmount, int currentItemAmount)
     {
         questText.enabled = true;
-		questText.text = $"{questName}: \nGet {questAmount} {itemName} by killing enemies. {currentItemAmount} / {questAmount}";
+		questText.text = $"{questName}: \nGet {questAmount} {itemName} by killing enemies. {currentItemAmount} / {questAmount} \nPress z to see the description";
     }
 
     public void DisplayResourceDeliverText(string questName, string npcName)

@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 1
   typeParam: 0
   typeCount: 1
-  typeName: bottle of alcohol    Press z to see the description
+  typeName: bottle of alcohol
   descriptionOfQuest: A long time ago, when i worked as an engineer in one of those
     tall buildings with only windows, I hid a bottle of alcohol inside my office.
     Please try to find its location so I can later go pick it up, because in these
