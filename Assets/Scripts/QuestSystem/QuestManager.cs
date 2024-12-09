@@ -46,7 +46,7 @@ public class QuestManager : Singleton<QuestManager>
 		descriptionOfQuest.text = "<b>Quest:</b> \n\n" + activeQuest.descriptionOfQuest;
 		if (activeQuestState == QuestState.Active)
 		{
-			if (Input.GetKeyDown(KeyCode.Z))
+			if (Input.GetKeyDown(KeyCode.Q))
 			{
 				Debug.Log("Hello!");
 				descriptionOfQuest.enabled = !descriptionOfQuest.enabled;

@@ -45,7 +45,7 @@ public class WeaponManager : MonoBehaviour
     {
         CheckWeapons();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             ChangeWeapon();
             SetMainWeapon();
