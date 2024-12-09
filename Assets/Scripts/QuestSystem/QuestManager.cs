@@ -43,21 +43,14 @@ public class QuestManager : Singleton<QuestManager>
 
 	public void Update()
 	{
-		descriptionOfQuest.text = "<u>Quest:</u> \n" + activeQuest.descriptionOfQuest;
+		descriptionOfQuest.text = "<b>Quest:</b> \n\n" + activeQuest.descriptionOfQuest;
 		if (activeQuestState == QuestState.Active)
 		{
-			if (Input.GetKey(KeyCode.Z))
+			if (Input.GetKeyDown(KeyCode.Z))
 			{
 				Debug.Log("Hello!");
-				descriptionOfQuest.enabled = true;
-				background.enabled = true;
-				
-			}
-			else
-			{
-				Debug.Log("HEREEEEE PLEASEEEE");
-				descriptionOfQuest.enabled = false;
-				background.enabled = false;
+				descriptionOfQuest.enabled = !descriptionOfQuest.enabled;
+				background.enabled = !background.enabled;
 			}
 		}
 	}
