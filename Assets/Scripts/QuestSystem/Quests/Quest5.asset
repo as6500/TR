@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 0
   typeParam: 4
   typeCount: 2
-  typeName: vials of antibiotics
+  typeName: vials of antibiotics    Press z to see the description
   descriptionOfQuest: 
   npc: {fileID: 11400000, guid: bde54cfe715e57f47b1ce1780caa1ea2, type: 2}
   nextQuest: {fileID: 0}
