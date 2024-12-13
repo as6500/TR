@@ -14,6 +14,10 @@ public class NewStateMachine : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject SmallSandworm;
     [SerializeField] private AttackState attackState;
+    [SerializeField] private EnemyHealth health;
+    [SerializeField] private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Transform player;   
     
     bool InitializeStates()
     {
@@ -26,7 +30,7 @@ public class NewStateMachine : MonoBehaviour
                 stateBehaviour.AssociatedStateMachine = this;
                 continue;
             }
-            Debug.Log($"StateMachine On {gameObject.name} has failed to initialize the state {stateBehaviours[i]?.GetType().Name}!");
+            //Debug.Log($"StateMachine On {gameObject.name} has failed to initialize the state {stateBehaviours[i]?.GetType().Name}!");
             return false;
         }
         return true;
@@ -34,7 +38,11 @@ public class NewStateMachine : MonoBehaviour
 
     void Start()
     //initialises the states, starts the default state (the one in the zero position / patrol state)
+    
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         if (!InitializeStates())
         {
             this.enabled = false;
@@ -49,7 +57,10 @@ public class NewStateMachine : MonoBehaviour
             currentState.OnStateStart();
         }
         else
-            Debug.Log($"StateMachine On {gameObject.name} has no state behaviours associated with it!");
+        {
+            //Debug.Log($"StateMachine On {gameObject.name} has no state behaviours associated with it!");
+        }
+            
     }
 
     void Update()
@@ -120,8 +131,12 @@ public class NewStateMachine : MonoBehaviour
             currentState = stateBehaviours[newState];
             currentState.OnStateStart();
         }
+        
+        if(health.currentHealth == 0) {
+            animator.SetTrigger("isDead");
+        }
     }
-    
+
     //checks if the number of states is valid
     private bool IsValidNewStateIndex(int stateIndex)
     {

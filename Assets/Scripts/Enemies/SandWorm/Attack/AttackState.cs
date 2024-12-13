@@ -14,7 +14,7 @@ public class AttackState : StateBehaviour
     [SerializeField] private LineOfSight lineOfSight;
     private Rigidbody2D rb;
     private NavMeshAgent agent;
-    [SerializeField] public float attackCooldown = 2f;  // time between attacks
+    [SerializeField] public float attackCooldown = 1f;  // time between attacks
     public float timeSinceLastAttack;
     [SerializeField] public float earthquakeCooldown = 0.5f; //cooldown so the worm doesnt attack immediately after emerging
     [SerializeField] public float timeSinceOnAttackMode = 0f;
@@ -27,6 +27,8 @@ public class AttackState : StateBehaviour
     private bool bigAttackDone = false;
     public Animator animator;
 
+    private SpriteRenderer spriteRenderer;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,7 +38,7 @@ public class AttackState : StateBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;  // find the player by tag
         agent = GetComponent<NavMeshAgent>();
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public override bool InitializeState()
@@ -51,7 +53,8 @@ public class AttackState : StateBehaviour
 
     public override void OnStateStart()
     {
-        Debug.Log("I;m in acctack state");
+        
+        //Debug.Log("I;m in acctack state");
         agent.isStopped = true; //stops the worm so it doesnt wiggle around
         isUnderground = true;
         // if (isUnderground == true)
@@ -68,12 +71,15 @@ public class AttackState : StateBehaviour
 
     public override void OnStateUpdate()
     {
+        
         rb.velocity = Vector2.zero;
         timeSinceLastAttack += Time.deltaTime; //count time since the last attack
         timeSinceOnAttackMode += Time.deltaTime; //count the time since the worm entered attack mode
         //Debug.Log(timeSinceOnAttackMode);
         CanDoMainAttackAnimation();
         CanDoEarthquakeAttackAnimation();
+        int WhichSideOfPlayerAmI = (int)Mathf.Sign( Vector2.Dot( Vector2.right, (player.transform.position - transform.position).normalized ) );
+        spriteRenderer.flipX = WhichSideOfPlayerAmI < 0;
     }
     
     private void DoMainAttack()
@@ -128,7 +134,7 @@ public class AttackState : StateBehaviour
                 EarthquakeDamage = attackBigEarthquakeDamage;
             }
             damageable.TakeDamage(gameObject, EarthquakeDamage);
-            Debug.Log("Earthquake attack performed: " + EarthquakeDamage + " damage to player");
+            //Debug.Log("Earthquake attack performed: " + EarthquakeDamage + " damage to player");
             timeSinceLastAttack = 0f;
         }
         isUnderground = false;  //emerges the worm
@@ -142,7 +148,7 @@ public class AttackState : StateBehaviour
         lineOfSight.playerInAttackRange = false;
         timeSinceOnAttackMode = 0;
         animator.SetTrigger("bury");
-        Debug.Log("I left acctack state");
+        //Debug.Log("I left acctack state");
     }
 
     public override int StateTransitionCondition()
@@ -154,7 +160,7 @@ public class AttackState : StateBehaviour
     {
         if (timeSinceLastAttack >= attackCooldown && lineOfSight.playerInAttackRange)
         {
-            Debug.Log("Performing main attack." );
+            //Debug.Log("Performing main attack." );
             DoMainAttack();
         }
     }
@@ -163,7 +169,7 @@ public class AttackState : StateBehaviour
     {
         if (isUnderground && timeSinceOnAttackMode >= earthquakeCooldown && !bigAttackDone && lineOfSight.playerInAttackRange)
         {
-            Debug.Log("Performing Earthquake Attack.");
+            //Debug.Log("Performing Earthquake Attack.");
             bigAttackDone = true;
             DoEarthquakeAttack();
         }

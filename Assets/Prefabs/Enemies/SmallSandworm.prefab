@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 4971276981618775675}
   - component: {fileID: 7198935788221118424}
   - component: {fileID: 1847006830886746860}
+  - component: {fileID: 5823610876010978251}
   m_Layer: 7
   m_Name: SmallSandworm
   m_TagString: SmallSandworm
@@ -211,6 +212,8 @@ MonoBehaviour:
   pointA: {x: 0, y: 0, z: 0}
   pointB: {x: 0, y: 0, z: 0}
   fromAtoB: 0
+  attack: {fileID: 2906028892570209098}
+  animator: {fileID: 5823610876010978251}
 --- !u!114 &1589138348741505821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +238,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   SmallSandworm: {fileID: 3704700942264273731}
   attackState: {fileID: 2906028892570209098}
+  health: {fileID: 7592385506114851079}
+  animator: {fileID: 5823610876010978251}
 --- !u!114 &1803547229883502841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +256,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 4971276981618775675}
   speed: 1
   enemyHasLostPlayer: 0
+  animator: {fileID: 5823610876010978251}
 --- !u!114 &2029458816605943369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +273,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 4971276981618775675}
   chaseState: {fileID: 1803547229883502841}
   attackState: {fileID: 2906028892570209098}
+  animator: {fileID: 5823610876010978251}
 --- !u!114 &2906028892570209098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,12 +289,13 @@ MonoBehaviour:
   wormType: 0
   healthScript: {fileID: 0}
   lineOfSight: {fileID: 4971276981618775675}
-  attackCooldown: 5
+  attackCooldown: 2
   timeSinceLastAttack: 0
   earthquakeCooldown: 0.5
   timeSinceOnAttackMode: 0
   attackRange: 5
   isUnderground: 0
+  animator: {fileID: 5823610876010978251}
 --- !u!114 &4971276981618775675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,3 +387,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &5823610876010978251
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3704700942264273731}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7baa799b4889b746aedb6cc625db036, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
