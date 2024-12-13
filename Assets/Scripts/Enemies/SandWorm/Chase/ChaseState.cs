@@ -60,7 +60,7 @@ public class ChaseState : StateBehaviour
     public override void OnStateEnd()
     {
         ResetPlayerLostTimer(); //at the end of the state reset the timer
-        Debug.Log("im no longer chasing");
+        //Debug.Log("im no longer chasing");
         animator.SetBool("isChasing", false);
     }
     private void ResetPlayerLostTimer()
