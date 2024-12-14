@@ -148,6 +148,7 @@ MonoBehaviour:
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.5
   enemyType: 2
+  animator: {fileID: 5823610876010978251}
 --- !u!114 &3601112472828575334
 MonoBehaviour:
   m_ObjectHideFlags: 0
