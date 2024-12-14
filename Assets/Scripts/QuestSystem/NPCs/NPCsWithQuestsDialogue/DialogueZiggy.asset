@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueZiggy
   m_EditorClassIdentifier: 
-  dialogue:
-  - This people keep messing with my work... Why did I accepted this job??
+  dialogueWithQuest:
+  - These people keep messing with my work... Why did I accept this job??
   - Anyway, hello! I've called you here to my lab because I need to ask for a favor.
   - I'm too old to go outside and look for what I want, but you are young and still
     with many years to live.
   - 'My plan is now complete. I have developed a potion that can make the land outside
-    of the Bunker fertille once again, however 1 ingredient is missing: 2 vials of
-    antibiotics.'
+    of the Bunker fertille once again, however, 1 ingredient is missing: 2 vials
+    of antibiotics.'
   - 'That''s where you come in: would you do me the favor of going to the City and
-    find the missing ingredient? It''s probably in one of the 3 stores on the left
-    side of the City.'
+    finding the missing ingredient? It''s probably in one of the 3 stores on the
+    left side of the City.'
+  dialogueWithoutQuest: []

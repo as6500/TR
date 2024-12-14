@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueSuzi
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogueWithQuest:
   - Not again.. the flickering lights are back. We really should fix the power in
     the bunker.
   - Well.. now is the best time to fix it..
   - Can you try to find any type of power source like some batteries so we can put
-    on the generator?
+    it on the generator?
   - I believe that I saw a few old toys on the barn at the Farm, maybe they have
     what we need.
+  dialogueWithoutQuest: []

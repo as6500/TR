@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueDanielQuest2
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogueWithQuest:
   - Have you noticed that people here in the Bunker are getting sadder and sadder?
     I'm getting worried about them..
   - 'But I have an idea that it''s going to stay in everyone''s memory: let''s throw
@@ -23,3 +23,4 @@ MonoBehaviour:
     a music store near a huge and beautiful park.
   - Do you have time to go check it out and see if there is still any record left?
     Any record of happy music is good to bring here again!
+  dialogueWithoutQuest: []

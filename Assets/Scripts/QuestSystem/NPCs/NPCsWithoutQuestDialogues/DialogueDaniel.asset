@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueDaniel
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogueWithQuest: []
+  dialogueWithoutQuest:
   - The first partner that I had was really something, my first real friend.. Then
     he vanished from the earth... No, he didn't die, he just moved to the other side
     of the planet.

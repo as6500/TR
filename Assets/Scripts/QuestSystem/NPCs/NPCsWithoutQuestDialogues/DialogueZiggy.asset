@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueZiggy
   m_EditorClassIdentifier: 
-  dialogue:
-  - If you mix clorophorme and ether it creates a kind of anesthesia! It was used
-    by american military doctors on the battlefield! How awesome is that?
-  - People call me insane but you know what? I'm quite mad by nature, and it's my
-    craziness that has saved me from extinction.
-  - Please try not to eat to many bananas.. They are delicious but if you ate too
+  dialogueWithQuest: []
+  dialogueWithoutQuest:
+  - Do you know that mixing clorophorme and ether creates a kind of anesthesia? American
+    military doctors used it on the battlefield! How awesome is that?
+  - 'People call me insane but you know what? I''m quite mad by nature, and it''s
+    my craziness that has saved me from extinction. '
+  - Please try not to eat too many bananas.. They are delicious but if you eat too
     much of them.. you get radioactive!

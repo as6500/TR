@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueMany
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogueWithQuest:
   - A long time ago, when I worked as an engineer in one of those tall buildings
     with only windows, I hid a bottle of alcohol inside my office.
   - Please try to find its location so I can later go pick it up, because in these
     times... a bit of alcohol calms my soul.
+  dialogueWithoutQuest: []

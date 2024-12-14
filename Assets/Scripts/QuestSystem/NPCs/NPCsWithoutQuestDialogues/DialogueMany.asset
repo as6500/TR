@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueMany
   m_EditorClassIdentifier: 
-  dialogue:
-  - Do you know that suzi loooves pancakes? She is so cool..
+  dialogueWithQuest: []
+  dialogueWithoutQuest:
+  - Do you know that Suzi loooves pancakes? She is so cool..
   - My old company used me just to get free service.. if I worked on the electricity
     for them, they would get a house for my grandmother.. It turned out to be a complete
-    lie and my grandmother didn't get the house and I didn't get payed..
-  - I really enjoy what I do for a living! What is life without a bit of sparkles
-    and high-voltage running through your body?
+    lie and my grandmother didn't get the house and I didn't get paid..
+  - I really enjoy what I do for a living! What is life without a bit of sparkle
+    and high voltage running through your body?

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueSuzi
   m_EditorClassIdentifier: 
-  dialogue:
-  - I wish things could go back to way they were.. I miss my parents.
+  dialogueWithQuest: []
+  dialogueWithoutQuest:
+  - I wish things could go back to the way they were.. I miss my parents.
   - Do you know that pigs are actually smart? They can learn tricks or follow commands
     just like dogs! I love pigs!
-  - Before any job that people have right now in the Bunker, like Many being an enginner
-    or Ziggy being a scientist (or so he calls himself), being a farmer is the one
-    of the oldest job in the world!
+  - Before any job that people have right now in the Bunker, like Many being an engineer
+    or Ziggy being a scientist (or so he calls himself), being a farmer is one of
+    the oldest jobs in the world!

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
   m_Name: DialogueDanielQuest1
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogueWithQuest:
   - Being a cop is not an easy task you know? You have to keep moving forward no
     matter what.
   - Now that the end of the world has come, I don't know what to do with my time.
     It used to be such a rush and now I just sit here drinking.
-  - From being still for too long, my old injurie has been hurting quite a lot and
+  - From being still for too long, my old injury has been hurting quite a lot and
     my pills are almost over.
   - Would you mind going to the City to see if there are any pills left in the stores?
-    Otherwise maybe the mutants already scavange that and have the pills in them.
+    Otherwise, maybe the mutants already scavenge that and have the pills in them.
+  dialogueWithoutQuest: []
