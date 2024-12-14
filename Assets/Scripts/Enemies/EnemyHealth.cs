@@ -21,6 +21,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     [Header("EnemyType")]
     [SerializeField] public EnemyType enemyType;
+    [SerializeField] private Animator animator;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void DealDamage(float damage)
     {
+        animator.SetTrigger("isHurt");
         currentHealth -= damage;
         StartCoroutine(DamageEffect());
 
