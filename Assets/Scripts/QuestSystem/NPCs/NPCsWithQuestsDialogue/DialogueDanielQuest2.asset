@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
+  m_Name: DialogueDanielQuest2
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Have you noticed that people here in the Bunker are getting sadder and sadder?
+    I'm getting worried about them..
+  - 'But I have an idea that it''s going to stay in everyone''s memory: let''s throw
+    a party!'
+  - We have the bar, the people, the lights.. the only thing that we are missing
+    is MUSIC!
+  - Before everything was destroyed and "swallowed" by radiation, there used to be
+    a music store near a huge and beautiful park.
+  - Do you have time to go check it out and see if there is still any record left?
+    Any record of happy music is good to bring here again!

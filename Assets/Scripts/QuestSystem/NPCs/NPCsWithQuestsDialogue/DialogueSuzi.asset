@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf2a414c5e22a1499965bd836303260, type: 3}
+  m_Name: DialogueSuzi
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Not again.. the flickering lights are back. We really should fix the power in
+    the bunker.
+  - Well.. now is the best time to fix it..
+  - Can you try to find any type of power source like some batteries so we can put
+    on the generator?
+  - I believe that I saw a few old toys on the barn at the Farm, maybe they have
+    what we need.
