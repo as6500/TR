@@ -6,11 +6,8 @@ public class DialogueManager : MonoBehaviour
     public DialogueData activeDialogue;
     public QuestManager questManager;
 
-    private void Update()
+    private void Start()
     {
-        if (questManager.activeQuestState == QuestState.Pending)
-        {
-            
-        }
+        
     }
 }

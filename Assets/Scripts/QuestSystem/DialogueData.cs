@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/DialogueData")] 
 public class DialogueData : ScriptableObject
 {
-    public List<String> dialogue;
+    public List<String> dialogueWithQuest;
+    public List<String> dialogueWithoutQuest;
 }
