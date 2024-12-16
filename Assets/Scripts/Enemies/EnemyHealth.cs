@@ -32,7 +32,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void DealDamage(float damage)
     {
-        animator.SetTrigger("isHurt");
+        if (animator != null)
+        {
+            animator.SetTrigger("isHurt");
+        }
         currentHealth -= damage;
         StartCoroutine(DamageEffect());
 
