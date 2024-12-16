@@ -5,7 +5,8 @@ using UnityEngine.Networking;
 
 struct UnJasonedData
 {
-    public string MessageID;
+    public string message;
+    public int num;
 }
 
 public class APIRequests : MonoBehaviour
@@ -22,7 +23,7 @@ public class APIRequests : MonoBehaviour
 
             UnJasonedData data = (UnJasonedData)JsonUtility.FromJson(WebRequest.downloadHandler.text, typeof(UnJasonedData));
 
-            Debug.Log(data.MessageID);
+            Debug.Log(data.num);
         }
         else
         {
