@@ -10,9 +10,10 @@ using Random = UnityEngine.Random;
 
 public class QuestManager : Singleton<QuestManager>
 {
-	public static readonly UnityEvent OnQuestAction = new(); //readonly so you can't change it
+	public static readonly UnityEvent OnQuestAction = new();
 	public QuestData activeQuest;
 	public DialogueManager dialogueManager;
+	[SerializeField]private DialogueData dialogueData;
 	public QuestState activeQuestState;
 	[SerializeField] private QuestSystemUI questText;
 	public List<QuestNPC> npcs = new();
@@ -36,6 +37,7 @@ public class QuestManager : Singleton<QuestManager>
 		npcs[3].SetIcon(IconType.None);
 		
 		OnQuestAction.AddListener(CompleteQuest);
+		
 
 		descriptionOfQuest.enabled = false;
 		background.enabled = false;
@@ -58,8 +60,13 @@ public class QuestManager : Singleton<QuestManager>
 
 	public void StartingDialogue()
 	{
-		if (dialogueManager.OnContinueButtonClicked())
-			AcceptQuest();
+		dialogueManager.StartDialogue(dialogueData);
+		dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
+	}
+
+	private void OnDialogueFinished()
+	{
+		AcceptQuest();
 	}
 	
 	public void AcceptQuest()

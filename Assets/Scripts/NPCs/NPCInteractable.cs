@@ -19,7 +19,7 @@ public class NPCInteractable : MonoBehaviour
 	        interactingText.enabled = true;
 	        interactingText.text = "E to Interact";
             if (Input.GetKeyDown(KeyCode.E))
-                interacting.Invoke();
+                interacting?.Invoke();
         }
         else
 	        interactingText.enabled = false;
