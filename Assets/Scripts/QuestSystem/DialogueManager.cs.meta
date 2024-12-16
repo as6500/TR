@@ -3,7 +3,12 @@ guid: a43e5e8e3fb89814e871cca0059301e1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - activeDialogue: {fileID: 11400000, guid: 8d5f93edaebc37e4f82c87cb76ba03f2, type: 2}
+  - questManager: {instanceID: 0}
+  - currentDialogue: {fileID: 11400000, guid: 72576fecabea94c4589e356a3c39d0ef, type: 2}
+  - dialogueText: {instanceID: 0}
+  - continueButton: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

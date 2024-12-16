@@ -21,3 +21,4 @@ MonoBehaviour:
   - I believe that I saw a few old toys on the barn at the Farm, maybe they have
     what we need.
   dialogueWithoutQuest: []
+  nextDialogue: {fileID: 11400000, guid: f6a6d5efc029b6f48bea27cab5b126c1, type: 2}
