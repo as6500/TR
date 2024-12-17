@@ -15,6 +15,7 @@ public class HealthScript : MonoBehaviour, IDamageable
     [SerializeField] private float currentHealth = 0.0f;
 
     [Header("Damage")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color bloodColor;
     [SerializeField] private Color mainColor;
     [SerializeField] private float damageEffectTimeSeconds;
@@ -112,9 +113,9 @@ public class HealthScript : MonoBehaviour, IDamageable
 
     private IEnumerator DamageEffect()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = bloodColor;
+        spriteRenderer.color = bloodColor;
         yield return new WaitForSeconds(damageEffectTimeSeconds);
-        gameObject.GetComponent<SpriteRenderer>().color = mainColor;
+        spriteRenderer.color = mainColor;
     }
 
     public float GetCurrentHealth()
