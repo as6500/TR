@@ -140,7 +140,7 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 0
   bloodColor: {r: 0.18632075, g: 0.745283, b: 0.21293804, a: 1}
-  mainColor: {r: 0.64466274, g: 1, b: 0.18396229, a: 1}
+  mainColor: {r: 0.20784314, g: 0.29411766, b: 0.16078432, a: 1}
   damageEffectTimeSeconds: 0.3
   dropCollectibles:
   - {fileID: 4605421280697415680, guid: 768773ade1d6c5b46bf55521d04b482e, type: 3}
