@@ -51,7 +51,6 @@ public class QuestManager : Singleton<QuestManager>
 		{
 			if (Input.GetKeyDown(KeyCode.Q))
 			{
-				Debug.Log("Hello!");
 				descriptionOfQuest.enabled = !descriptionOfQuest.enabled;
 				background.enabled = !background.enabled;
 			}

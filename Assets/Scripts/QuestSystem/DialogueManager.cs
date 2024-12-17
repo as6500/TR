@@ -13,17 +13,19 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private Image dialogueImage;
     private bool ballonTextEnded;
-    private int i;
-    private int j;
+    private bool ballonTextEnded2;
     private string currentDialogueText;
     private string currentDialogueTextProgress;
-
+    private int i;
+    private int j;
+    
     public UnityEvent OnDialogueEnd;
     
     private void Start()
     {
         dialogueText.enabled = false;
         ballonTextEnded = false;
+        ballonTextEnded2 = false;
         continueButton.gameObject.SetActive(false);
         dialogueImage.enabled = false;
     }
@@ -55,15 +57,19 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.text += currentDialogueText[j];
                 currentDialogueTextProgress = dialogueText.text;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.07f);
             }
-            
             continueButton.gameObject.SetActive(true);
             yield return new WaitUntil(ButtonClickedNotifier);
+            
         }
-        
-        if (i == currentDialogue.dialogueWithQuest.Length)
+
+        if (i >= currentDialogue.dialogueWithQuest.Length)
+        {
+            ballonTextEnded = false;
+            yield return new WaitUntil(ButtonClickedNotifier);
             OnDialogueEnd?.Invoke();
+        }
         
         dialogueImage.enabled = false;
         dialogueText.enabled = false;
@@ -79,7 +85,6 @@ public class DialogueManager : MonoBehaviour
             ballonTextEnded = true;
             continueButton.gameObject.SetActive(false);
         }
-
     }
 
     private bool ButtonClickedNotifier()
