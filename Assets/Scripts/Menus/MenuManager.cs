@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : Singleton<MenuManager>
 {
-    private enum Menu {MainMenu, InGameMenu};
+    private enum Menu {MainMenu, InGameMenu, DeathMenu};
 
     [Header("Choose Menu")]
     [SerializeField] private Menu menu;
@@ -22,6 +24,13 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField] private GameObject collectibles;
     [SerializeField] private GameObject settings;
 
+    [Header("Death Menu")]
+    [SerializeField] private GameObject deathMenu;
+    [SerializeField] private GameObject restart;
+    [SerializeField] private GameObject quitToTitle;
+    [SerializeField] private HealthScript healthScript;
+    [SerializeField] private GameObject Weapons;
+    
     private bool isMenuActive = false;
 
 
@@ -70,12 +79,40 @@ public class MenuManager : Singleton<MenuManager>
             ChangeGameState(!isMenuActive);
             ShowSettings();
         }
+        if (healthScript != null)
+        {
+            float currentHealth = healthScript.GetCurrentHealth(); // Get health from the HealthScript
+            CheckPlayerDeath(currentHealth);
+        }
     }
 
     public void LeaveToMainMenu()
     {
+        Debug.Log("Leaving to main menu");
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void ResetGame()
+    {
+        Debug.Log("Reset game");
+        SceneManager.LoadScene("BunkerInside");
+    }
+    
+    private void CheckPlayerDeath(float currentHealth)
+    {
+        if (currentHealth <= 0)
+        {
+            ShowDeathScreen();
+        }
+    }
+    
+    private void ShowDeathScreen()
+    {
+        deathMenu.SetActive(true);
+        Weapons.SetActive(false);
+        menu = Menu.DeathMenu;
+    }
+
 
     public void ChangeGameState(bool state)
     {
