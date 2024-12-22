@@ -35,7 +35,6 @@ public class APIRequests : MonoBehaviour
             UnJasonedData data = (UnJasonedData)JsonUtility.FromJson(WebRequest.downloadHandler.text, typeof(UnJasonedData));
 
             response = data;
-            Debug.Log(response);
         }
         else
         {
@@ -52,7 +51,6 @@ public class APIRequests : MonoBehaviour
         {
             UnJasonedData data = (UnJasonedData)JsonUtility.FromJson(WebRequest.downloadHandler.text, typeof(UnJasonedData));
             response = data;
-            Debug.Log(response);
             callback();
         }
         else

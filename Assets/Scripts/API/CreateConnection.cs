@@ -23,6 +23,7 @@ public class CreateConnection : APIRequests
     {
         firstCallback();
         unity_connection_id = response.unity_connection_id;
+        unity_connection_code = response.unity_connection_code;
         SearchingForConnection();
     }
 
@@ -38,10 +39,12 @@ public class CreateConnection : APIRequests
     {
         if (response.connection_successful)
         {
+            Debug.Log(response.message);
             secondCallback();
         }
         else
         {
+            Debug.Log(response.message);
             SearchingForConnection();
         }
     }

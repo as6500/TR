@@ -12,7 +12,7 @@ public class MenuManager : Singleton<MenuManager>
     private enum Menu {MainMenu, InGameMenu, DeathMenu};
 
     [Header ("API Connection")]
-    [SerializeField] private APIRequests APIRequests;
+    [SerializeField] private CreateConnection APIRequests;
 
     [Header("Choose Menu")]
     [SerializeField] private Menu menu;
@@ -101,7 +101,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void GetConnectionCode() 
     {
-           
+        APIRequests.CreateNewConnection(ShowCode, GoBackAppView);
     }
 
     private void ShowCode()
