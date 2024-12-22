@@ -1,29 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
-struct UnJasonedData
+public struct UnJasonedData
 {
     public string message;
-    public int num;
+    public int unity_connection_id;
+    public int unity_connection_code;
+    public bool connection_successful;
 }
 
 public class APIRequests : MonoBehaviour
 {
-    IEnumerator GetRequest(string uri)
+    public int unity_connection_id { get; set; }
+    public int unity_connection_code { get; set; }
+    public UnJasonedData response { get; private set; }
+
+    private void Start()
+    {
+        unity_connection_id = 0;
+    }
+
+    public IEnumerator GetRequest(string uri)
     {
         UnityWebRequest WebRequest = UnityWebRequest.Get(uri);
         yield return WebRequest.SendWebRequest();
 
         if (WebRequest.result == UnityWebRequest.Result.Success)
         {
-            // Parse Information
-            Debug.Log(WebRequest.downloadHandler.text);
-
             UnJasonedData data = (UnJasonedData)JsonUtility.FromJson(WebRequest.downloadHandler.text, typeof(UnJasonedData));
 
-            Debug.Log(data.num);
+            response = data;
+            Debug.Log(response);
         }
         else
         {
@@ -31,37 +43,21 @@ public class APIRequests : MonoBehaviour
         }
     }
 
-    IEnumerator PostRequest(string uri, WWWForm composedMessage)
+    public IEnumerator PostRequest(string uri, WWWForm composedMessage, Action callback = null)
     {
         UnityWebRequest WebRequest = UnityWebRequest.Post(uri, composedMessage);
         yield return WebRequest.SendWebRequest();
 
         if (WebRequest.result == UnityWebRequest.Result.Success)
         {
-            // Parse Information
-            Debug.Log(WebRequest.downloadHandler.text);
+            UnJasonedData data = (UnJasonedData)JsonUtility.FromJson(WebRequest.downloadHandler.text, typeof(UnJasonedData));
+            response = data;
+            Debug.Log(response);
+            callback();
         }
         else
         {
             Debug.Log("Error While Sending: " + WebRequest.error);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            WWWForm formData = new WWWForm();
-            formData.AddField("code", 40); // For Posts
-
-            //StartCoroutine(PostRequest("http://localhost:3308/connect", formData));
-            StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/connect", formData));
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            //StartCoroutine(GetRequest("http://localhost:3308/create"));
-            StartCoroutine(GetRequest("https://the-rumble-server.vercel.app/create"));
         }
     }
 }
