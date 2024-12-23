@@ -10,6 +10,7 @@ public struct UnJasonedData
 {
     public string message;
     public int unity_connection_id;
+    public int unity_android_connection_id;
     public int unity_connection_code;
     public bool connection_successful;
 }
@@ -17,6 +18,7 @@ public struct UnJasonedData
 public class APIRequests : MonoBehaviour
 {
     public int unity_connection_id { get; set; }
+    public int unity_android_connection_id { get; set; }
     public int unity_connection_code { get; set; }
     public UnJasonedData response { get; private set; }
 

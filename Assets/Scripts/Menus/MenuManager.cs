@@ -185,6 +185,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LeaveGame()
     {
+
     #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
     #else

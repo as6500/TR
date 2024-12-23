@@ -39,7 +39,8 @@ public class CreateConnection : APIRequests
     {
         if (response.connection_successful)
         {
-            Debug.Log(response.message);
+            unity_android_connection_id = response.unity_android_connection_id;
+            Debug.Log(response.unity_android_connection_id);
             secondCallback();
         }
         else
@@ -47,5 +48,10 @@ public class CreateConnection : APIRequests
             Debug.Log(response.message);
             SearchingForConnection();
         }
+    }
+
+    private void CloseConnection()
+    {
+        //CloseConnection
     }
 }
