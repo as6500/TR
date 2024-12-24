@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 [Serializable] public enum QuestState { Pending, Active, Completed };
 
@@ -26,6 +30,7 @@ public class QuestManager : Singleton<QuestManager>
     private int activeQuestItemCounter;
     [SerializeField] private Text descriptionOfQuest;
 	[SerializeField] private RawImage background;
+	private MovementScript playerMovement;
 	
 	public void Start()
 	{
@@ -38,10 +43,10 @@ public class QuestManager : Singleton<QuestManager>
 		
 		OnQuestAction.AddListener(CompleteQuest);
 		
-
 		descriptionOfQuest.enabled = false;
 		background.enabled = false;
-
+		
+		playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
 	}
 
 	public void Update()
@@ -59,6 +64,7 @@ public class QuestManager : Singleton<QuestManager>
 
 	public void StartingDialogue()
 	{
+		//playerMovement.walkVelocity = 0f;
 		dialogueManager.StartDialogue(dialogueData);
 		dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
 	}

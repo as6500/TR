@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
     private DialogueData currentDialogue;
+    private MovementScript playerMovement;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Button continueButton;
     [SerializeField] private Image dialogueImage;
@@ -28,6 +29,8 @@ public class DialogueManager : MonoBehaviour
         ballonTextEnded2 = false;
         continueButton.gameObject.SetActive(false);
         dialogueImage.enabled = false;
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
+        Debug.Log(GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>());
     }
 
     public void StartDialogue(DialogueData dialogueToPlay)
@@ -37,7 +40,6 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("DialogueManager::StartDialogue: Mafalda Needs To Fix The Null Ref");
             return;
         }
-
         currentDialogue = dialogueToPlay;
         StartCoroutine(PlayDialogue());
     }
@@ -69,6 +71,7 @@ public class DialogueManager : MonoBehaviour
             ballonTextEnded = false;
             yield return new WaitUntil(ButtonClickedNotifier);
             OnDialogueEnd?.Invoke();
+            //playerMovement.walkVelocity = 4f;
         }
         
         dialogueImage.enabled = false;

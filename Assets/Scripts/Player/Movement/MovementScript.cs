@@ -7,7 +7,7 @@ public class MovementScript : Singleton<MovementScript>
 {
     [Header("Velocity")]
     [SerializeField] private float velocityModifier;
-    [SerializeField] private float walkVelocity;
+    [SerializeField] public float walkVelocity;
     [SerializeField] private float sprintVelocity;
 
     [Header("Input Actions References")]
