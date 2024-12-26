@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0de85cc5df3f18f4883185a70f99acab
-      internalID: 1490087677
+      spriteID: aab9e7eae2e03be44821127c3e3fb6a1
+      internalID: 177271131
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99a03907063b95a4ab670182f9ab5e0c
-      internalID: 248016896
+      spriteID: 5a83d28862a544a46b96d0a37fe753e3
+      internalID: 1319376702
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c271efad933dc7459af5d9bbe5170f0
-      internalID: -738864752
+      spriteID: c25da629be4da404389c499b8dd9dab0
+      internalID: 1868890896
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec7f787e1b61c3644b43b920c8c89f7a
-      internalID: -299925393
+      spriteID: 3686c9e37ff9256499a5a4d80bd43eed
+      internalID: 2127116581
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buryunbury sprite_0: 1490087677
-      buryunbury sprite_1: 248016896
-      buryunbury sprite_2: -738864752
-      buryunbury sprite_3: -299925393
+      buryunbury sprite_0: 177271131
+      buryunbury sprite_1: 1319376702
+      buryunbury sprite_2: 1868890896
+      buryunbury sprite_3: 2127116581
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

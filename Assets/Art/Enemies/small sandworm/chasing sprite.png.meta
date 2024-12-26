@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe993a70cfbdaa84398c358e0cad18f7
-      internalID: -813949440
+      spriteID: 049b327083e6de74cbf7df06dbcbf73f
+      internalID: -1914251799
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e40201a54e6974945968dc717d49c65f
-      internalID: -1854751964
+      spriteID: 385fad73a2047db46a0fab81ff05933d
+      internalID: -1825571524
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2af60dda95db21a47b912a76adc249ef
-      internalID: 696370090
+      spriteID: 18c446a5920515c48979de80050889eb
+      internalID: 49254796
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dddb1b1d4bb80964d8f69dd923eb1d17
-      internalID: 1077094246
+      spriteID: 0bc9939978ec78f4baa553431a4407d1
+      internalID: 1189358849
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df818ab4cf78d5540925f85cf3e1e7dc
-      internalID: -1352972030
+      spriteID: aa58b0942aa927e4e9305e6ee5772178
+      internalID: 1267301720
       vertices: []
       indices: 
       edges: []
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b30e124a2924eb442b69cb9c3a512b43
-      internalID: -1796316964
+      spriteID: 3752a4dfdecd641428f0e17ae646cf79
+      internalID: 740021342
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      chasing sprite_0: -813949440
-      chasing sprite_1: -1854751964
-      chasing sprite_2: 696370090
-      chasing sprite_3: 1077094246
-      chasing sprite_4: -1352972030
-      chasing sprite_5: -1796316964
+      chasing sprite_0: -1914251799
+      chasing sprite_1: -1825571524
+      chasing sprite_2: 49254796
+      chasing sprite_3: 1189358849
+      chasing sprite_4: 1267301720
+      chasing sprite_5: 740021342
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

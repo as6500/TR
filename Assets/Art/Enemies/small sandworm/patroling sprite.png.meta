@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b14921ab473bab1429c851008c9d8c8f
-      internalID: -2005002799
+      spriteID: eb0e7f45db90a964fa67919a0156284a
+      internalID: -279962976
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58b21f7af21ddcd449ffa2afd765f4db
-      internalID: -193192345
+      spriteID: 64b597964461bfb4faef1fb7b290af77
+      internalID: -233487710
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c82e5af8851240547ab00c874d5f268e
-      internalID: 1310452451
+      spriteID: 59b55e2ccfc1be943a9508c45a7dbeac
+      internalID: 1880043143
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67c7251215b3dc643a2d6d12963638f7
-      internalID: -1839401815
+      spriteID: 1daacd26128303145b4ef8c10208bf3b
+      internalID: -1360152123
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14b61556e52397640b2a10eb4ce1e7c7
-      internalID: -1121868065
+      spriteID: b40143ea21e2c964ab4fceeacaeda967
+      internalID: 20563851
       vertices: []
       indices: 
       edges: []
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97723d75e69dee440af79421aa8011bf
-      internalID: 612822665
+      spriteID: 43caeb1815f541d4983aac75f3b74d27
+      internalID: 572714023
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      patroling sprite_0: -2005002799
-      patroling sprite_1: -193192345
-      patroling sprite_2: 1310452451
-      patroling sprite_3: -1839401815
-      patroling sprite_4: -1121868065
-      patroling sprite_5: 612822665
+      patroling sprite_0: -279962976
+      patroling sprite_1: -233487710
+      patroling sprite_2: 1880043143
+      patroling sprite_3: -1360152123
+      patroling sprite_4: 20563851
+      patroling sprite_5: 572714023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
