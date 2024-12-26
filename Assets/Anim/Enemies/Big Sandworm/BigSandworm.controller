@@ -505,6 +505,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: bury
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isBiting
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4243676998018588077}
   m_Solo: 0

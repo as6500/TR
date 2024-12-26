@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4057d8b0cadf9d149861f8a065f0ec1f
-      internalID: -958036565
+      spriteID: 08d65bc652dafe447b2d3a718e931b31
+      internalID: -1953231434
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa3d9a11f519aac4498bb3957138bdf5
-      internalID: -387049297
+      spriteID: a906efd2baa407548a1a8c8adc829ebd
+      internalID: -1599429916
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a3b807ecae735e48bdc3f9bc9dc8c82
-      internalID: -1174941397
+      spriteID: 6f4fa24e5b0c09d4485c17743bb751f3
+      internalID: -702360068
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 698b9c72c91799940b825848dc5f6eb4
-      internalID: -819398033
+      spriteID: cf89c5f9ed873c1428cc520492acbe50
+      internalID: 2077722721
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad8bff404583934bb1269a3f23153da
-      internalID: 1360082905
+      spriteID: cc967a0e8fdec7e468fe7aeb04f5653f
+      internalID: 815397354
       vertices: []
       indices: 
       edges: []
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16baf02009a2533468bf159e09651967
-      internalID: -1854226621
+      spriteID: 4926d5573e8cf0143968776d273eb6b7
+      internalID: 1600027002
       vertices: []
       indices: 
       edges: []
@@ -250,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5c9ab630832a8540bf672fddd3dc451
-      internalID: -745219572
+      spriteID: ebb267de830075f49a0444cc7b1330e0
+      internalID: -372216620
       vertices: []
       indices: 
       edges: []
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f08380a4261185141ab4111c9f87b75c
-      internalID: -848397339
+      spriteID: 01f2bb282621715479c83db2c5c037f8
+      internalID: -217442267
       vertices: []
       indices: 
       edges: []
@@ -292,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbd553bc5b1fc6e4180731784aae8886
-      internalID: 321416771
+      spriteID: 649871d0bde29524b8495fc18ccaf9f9
+      internalID: 1186060634
       vertices: []
       indices: 
       edges: []
@@ -313,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a9886be26f1ba246ace9818ab5ac57e
-      internalID: 1973741774
+      spriteID: 7c6abff9ee3d7574dbca6d76e2a14153
+      internalID: -664397710
       vertices: []
       indices: 
       edges: []
@@ -334,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2353f777a65cf14da3dfa30299e8ff3
-      internalID: 1960513902
+      spriteID: 0a5dd3c4b27062342a72b9b97ac09da4
+      internalID: 914596078
       vertices: []
       indices: 
       edges: []
@@ -355,8 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41b65439e35f38d42bfac8a9dfc238eb
-      internalID: -1507491139
+      spriteID: fbf4fd3758f7a8a469691af62b55a8e5
+      internalID: 1540815162
       vertices: []
       indices: 
       edges: []
@@ -376,8 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13887039795f5ee4392299c4b27ed6a1
-      internalID: 970072726
+      spriteID: c7a04695506da7d4d8c42f64a8de59b5
+      internalID: -1615794222
       vertices: []
       indices: 
       edges: []
@@ -397,8 +397,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0efc0233f95d374e9021fc282d443af
-      internalID: -1790245137
+      spriteID: f0cfb29701b33ff4ea235109b06316a2
+      internalID: -797188402
       vertices: []
       indices: 
       edges: []
@@ -418,8 +418,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57702f3692993794bb3eddeee5de0929
-      internalID: 833870137
+      spriteID: c2b0d7693763f6f4a88c41cbdb895d00
+      internalID: -195240888
       vertices: []
       indices: 
       edges: []
@@ -439,50 +439,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bafb1984c9534c4f81a3d16f91d2f62
-      internalID: -875231046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big worm bury animation_16
-      rect:
-        serializedVersion: 2
-        x: 1440
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 119858c52d9632943affa3215f214ad7
-      internalID: 1843227157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big worm bury animation_17
-      rect:
-        serializedVersion: 2
-        x: 1530
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 05e1e80e7b4155c4dbf35129b1994d55
-      internalID: 1110107797
+      spriteID: 247aeef583dcbd24db636a8b524237b4
+      internalID: -1812518082
       vertices: []
       indices: 
       edges: []
@@ -498,24 +456,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      big worm bury animation_0: -958036565
-      big worm bury animation_1: -387049297
-      big worm bury animation_10: 1960513902
-      big worm bury animation_11: -1507491139
-      big worm bury animation_12: 970072726
-      big worm bury animation_13: -1790245137
-      big worm bury animation_14: 833870137
-      big worm bury animation_15: -875231046
-      big worm bury animation_16: 1843227157
-      big worm bury animation_17: 1110107797
-      big worm bury animation_2: -1174941397
-      big worm bury animation_3: -819398033
-      big worm bury animation_4: 1360082905
-      big worm bury animation_5: -1854226621
-      big worm bury animation_6: -745219572
-      big worm bury animation_7: -848397339
-      big worm bury animation_8: 321416771
-      big worm bury animation_9: 1973741774
+      big worm bury animation_0: -1953231434
+      big worm bury animation_1: -1599429916
+      big worm bury animation_10: 914596078
+      big worm bury animation_11: 1540815162
+      big worm bury animation_12: -1615794222
+      big worm bury animation_13: -797188402
+      big worm bury animation_14: -195240888
+      big worm bury animation_15: -1812518082
+      big worm bury animation_2: -702360068
+      big worm bury animation_3: 2077722721
+      big worm bury animation_4: 815397354
+      big worm bury animation_5: 1600027002
+      big worm bury animation_6: -372216620
+      big worm bury animation_7: -217442267
+      big worm bury animation_8: 1186060634
+      big worm bury animation_9: -664397710
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
