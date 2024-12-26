@@ -290,7 +290,7 @@ MonoBehaviour:
   wormType: 0
   healthScript: {fileID: 0}
   lineOfSight: {fileID: 9178627561606369009}
-  attackCooldown: 2
+  attackCooldown: 1
   timeSinceLastAttack: 0
   earthquakeCooldown: 0.5
   timeSinceOnAttackMode: 0
