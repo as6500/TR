@@ -156,7 +156,7 @@ public class AttackState : StateBehaviour
         return -1;
     }
 
-    private void CanDoMainAttackChecker()
+    public void CanDoMainAttackChecker()
     {
         if (timeSinceLastAttack >= attackCooldown && lineOfSight.playerInAttackRange)
         {

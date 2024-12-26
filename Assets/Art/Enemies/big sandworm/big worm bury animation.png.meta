@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 593f5b7226a66934a8eba77df5420ab6
+guid: 3283f5ad058f10f4cab07769bd8a4c8f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: big bite sprite_0
+      name: big worm bury animation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04d46c2137897914faa889c8b1b076e0
-      internalID: -521344701
+      spriteID: 4057d8b0cadf9d149861f8a065f0ec1f
+      internalID: -958036565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_1
+      name: big worm bury animation_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 90
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57fc0dd2838baeb459e02e36ba9aa05b
-      internalID: 808731275
+      spriteID: fa3d9a11f519aac4498bb3957138bdf5
+      internalID: -387049297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_2
+      name: big worm bury animation_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 180
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5fefd5f945acce4e9b01f62b38157ce
-      internalID: -356475027
+      spriteID: 7a3b807ecae735e48bdc3f9bc9dc8c82
+      internalID: -1174941397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_3
+      name: big worm bury animation_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 270
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0b46fd5ccee5db4b965bd6cc98dcce0
-      internalID: -722373613
+      spriteID: 698b9c72c91799940b825848dc5f6eb4
+      internalID: -819398033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_4
+      name: big worm bury animation_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 360
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adb3309178a44254ba10470ab8e9583a
-      internalID: -433936903
+      spriteID: dad8bff404583934bb1269a3f23153da
+      internalID: 1360082905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_5
+      name: big worm bury animation_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 450
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9712cb78c7a970c40a2e47d33fb882a8
-      internalID: 1607359122
+      spriteID: 16baf02009a2533468bf159e09651967
+      internalID: -1854226621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_6
+      name: big worm bury animation_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 540
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22f0274da1feda0479140396c4ce343c
-      internalID: 441267335
+      spriteID: d5c9ab630832a8540bf672fddd3dc451
+      internalID: -745219572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_7
+      name: big worm bury animation_7
       rect:
         serializedVersion: 2
-        x: 224
+        x: 630
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4c5ac6173da86240afd563c08e37356
-      internalID: 548689949
+      spriteID: f08380a4261185141ab4111c9f87b75c
+      internalID: -848397339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_8
+      name: big worm bury animation_8
       rect:
         serializedVersion: 2
-        x: 256
+        x: 720
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4be3a6a5e83171a4585f1e392d2fb2c5
-      internalID: -492423511
+      spriteID: bbd553bc5b1fc6e4180731784aae8886
+      internalID: 321416771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_9
+      name: big worm bury animation_9
       rect:
         serializedVersion: 2
-        x: 288
+        x: 810
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d80f45434c8eb34d8b6d171189701de
-      internalID: -1096491399
+      spriteID: 8a9886be26f1ba246ace9818ab5ac57e
+      internalID: 1973741774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_10
+      name: big worm bury animation_10
       rect:
         serializedVersion: 2
-        x: 320
+        x: 900
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa67410a72fb2494c9cb9a202679bec2
-      internalID: -1296714277
+      spriteID: a2353f777a65cf14da3dfa30299e8ff3
+      internalID: 1960513902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_11
+      name: big worm bury animation_11
       rect:
         serializedVersion: 2
-        x: 352
+        x: 990
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c30b4826f0b6bf449ab090966a5c59cf
-      internalID: 1187184400
+      spriteID: 41b65439e35f38d42bfac8a9dfc238eb
+      internalID: -1507491139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_12
+      name: big worm bury animation_12
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1080
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9006e0c42e928d54a8fcbafeb2bce7a8
-      internalID: -1875714042
+      spriteID: 13887039795f5ee4392299c4b27ed6a1
+      internalID: 970072726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_13
+      name: big worm bury animation_13
       rect:
         serializedVersion: 2
-        x: 416
+        x: 1170
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +397,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af16b7622a5036e4da20e1db6ad325f7
-      internalID: 804973951
+      spriteID: a0efc0233f95d374e9021fc282d443af
+      internalID: -1790245137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_14
+      name: big worm bury animation_14
       rect:
         serializedVersion: 2
-        x: 448
+        x: 1260
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,20 +418,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0af28165f94d28743a4566b2e0e60363
-      internalID: -1311245218
+      spriteID: 57702f3692993794bb3eddeee5de0929
+      internalID: 833870137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_15
+      name: big worm bury animation_15
       rect:
         serializedVersion: 2
-        x: 480
+        x: 1350
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,20 +439,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de5f11441ada4a24eb91f9ec66fa9919
-      internalID: 1937370968
+      spriteID: 2bafb1984c9534c4f81a3d16f91d2f62
+      internalID: -875231046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big bite sprite_16
+      name: big worm bury animation_16
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1440
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,8 +460,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed547e17f152f1048955a656cc7abbdd
-      internalID: 741195189
+      spriteID: 119858c52d9632943affa3215f214ad7
+      internalID: 1843227157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury animation_17
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e1e80e7b4155c4dbf35129b1994d55
+      internalID: 1110107797
       vertices: []
       indices: 
       edges: []
@@ -477,23 +498,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      big bite sprite_0: -521344701
-      big bite sprite_1: 808731275
-      big bite sprite_10: -1296714277
-      big bite sprite_11: 1187184400
-      big bite sprite_12: -1875714042
-      big bite sprite_13: 804973951
-      big bite sprite_14: -1311245218
-      big bite sprite_15: 1937370968
-      big bite sprite_16: 741195189
-      big bite sprite_2: -356475027
-      big bite sprite_3: -722373613
-      big bite sprite_4: -433936903
-      big bite sprite_5: 1607359122
-      big bite sprite_6: 441267335
-      big bite sprite_7: 548689949
-      big bite sprite_8: -492423511
-      big bite sprite_9: -1096491399
+      big worm bury animation_0: -958036565
+      big worm bury animation_1: -387049297
+      big worm bury animation_10: 1960513902
+      big worm bury animation_11: -1507491139
+      big worm bury animation_12: 970072726
+      big worm bury animation_13: -1790245137
+      big worm bury animation_14: 833870137
+      big worm bury animation_15: -875231046
+      big worm bury animation_16: 1843227157
+      big worm bury animation_17: 1110107797
+      big worm bury animation_2: -1174941397
+      big worm bury animation_3: -819398033
+      big worm bury animation_4: 1360082905
+      big worm bury animation_5: -1854226621
+      big worm bury animation_6: -745219572
+      big worm bury animation_7: -848397339
+      big worm bury animation_8: 321416771
+      big worm bury animation_9: 1973741774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

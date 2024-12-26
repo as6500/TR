@@ -87,12 +87,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -252314537, guid: 5f34aecca0ab86446badedefa71a2da2, type: 3}
-  m_Color: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+  m_Sprite: {fileID: -1782664001, guid: 43e8c9df3b3baa942a8fe442c3a71df0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -236,7 +236,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 9178627561606369009}
   chaseState: {fileID: 8350139521818966528}
   playerLostState: {fileID: 907220281204888023}
-  Player: {fileID: 0}
+  Player: {fileID: 5576376846064974364, guid: 0bf8e49c29a797647aad91af4123957f, type: 3}
   SmallSandworm: {fileID: 2289588527511844780}
   attackState: {fileID: 8943324949058297617}
   health: {fileID: 3514832066026537382}
@@ -290,7 +290,7 @@ MonoBehaviour:
   wormType: 0
   healthScript: {fileID: 0}
   lineOfSight: {fileID: 9178627561606369009}
-  attackCooldown: 5
+  attackCooldown: 2
   timeSinceLastAttack: 0
   earthquakeCooldown: 0.5
   timeSinceOnAttackMode: 0
