@@ -14,13 +14,7 @@ public class CheatCodes : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)) //change scene to inside the building in the city
-        {
-            SceneManager.LoadScene("Building1");
-            entrancesAndExits.WhereToLoadTo();
-        }
-
-        if (Input.GetKeyDown(KeyCode.V)) //change scene to the City
+        if (Input.GetKeyDown(KeyCode.C)) //change scene to the City
         {
             SceneManager.LoadScene("City");
             entrancesAndExits.WhereToLoadTo();
