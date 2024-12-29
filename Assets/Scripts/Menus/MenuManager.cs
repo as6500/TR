@@ -33,12 +33,11 @@ public class MenuManager : Singleton<MenuManager>
     [Header("Death Menu")]
     [SerializeField] private GameObject deathMenu;
     [SerializeField] private GameObject restart;
+    [SerializeField] private GameObject quitGame;
     [SerializeField] private GameObject quitToTitle;
     [SerializeField] private HealthScript healthScript;
-    [SerializeField] private GameObject Weapons;
     
     private bool isMenuActive = false;
-
 
     void Start()
     {
@@ -143,7 +142,12 @@ public class MenuManager : Singleton<MenuManager>
         Debug.Log("Reset game");
         SceneManager.LoadScene("BunkerInside");
     }
-    
+
+    private void destroyObjects()
+    {
+        
+    }
+
     private void CheckPlayerDeath(float currentHealth)
     {
         if (currentHealth <= 0)
@@ -155,7 +159,6 @@ public class MenuManager : Singleton<MenuManager>
     private void ShowDeathScreen()
     {
         deathMenu.SetActive(true);
-        Weapons.SetActive(false);
         menu = Menu.DeathMenu;
     }
 
