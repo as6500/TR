@@ -215,6 +215,7 @@ MonoBehaviour:
   sceneName: Farm
   whereToLoadTo: 3
   whereToLoadToBuildings: -1
+  whereToLoadToFloors: -1
 --- !u!1001 &327601851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -227,13 +228,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntranceLocatorRoadFromCity
       objectReference: {fileID: 0}
+    - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
+      propertyPath: <floorType>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
+      propertyPath: <buildingType>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
+      propertyPath: <entranceType>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6811027445635996210, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.14
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 6811027445635996210, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 82.24
+      value: 87.7
       objectReference: {fileID: 0}
     - target: {fileID: 6811027445635996210, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: m_LocalPosition.z
@@ -101618,6 +101631,7 @@ MonoBehaviour:
   sceneName: City
   whereToLoadTo: 2
   whereToLoadToBuildings: -1
+  whereToLoadToFloors: -1
 --- !u!1 &560496087
 GameObject:
   m_ObjectHideFlags: 0
@@ -133248,6 +133262,10 @@ PrefabInstance:
       value: EntranceLocatorRoadFromFarm
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
+      propertyPath: <floorType>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <buildingType>k__BackingField
       value: -1
       objectReference: {fileID: 0}
@@ -133750,6 +133768,10 @@ PrefabInstance:
       value: EntranceLocatorToOutside
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
+      propertyPath: <floorType>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <buildingType>k__BackingField
       value: -1
       objectReference: {fileID: 0}
@@ -134063,6 +134085,7 @@ MonoBehaviour:
   sceneName: BunkerOutside
   whereToLoadTo: 1
   whereToLoadToBuildings: -1
+  whereToLoadToFloors: -1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

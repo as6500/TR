@@ -13,6 +13,11 @@ public class MapChangingInfo : MonoBehaviour
 		get; set;
 	}
 
+	public EFloors floorToFind
+	{
+		get; set;
+	}
+
 	private void Awake()
 	{
 		SceneManager.sceneLoaded += OnSceneLoaded;
@@ -30,7 +35,12 @@ public class MapChangingInfo : MonoBehaviour
 			{
 				if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
 				{
-					Debug.Log(arrayOfAllEntrances[i].buildingType);
+					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
+					return;
+				}
+				
+				if (arrayOfAllEntrances[i].floorType == floorToFind)
+				{
 					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 					return;
 				}
