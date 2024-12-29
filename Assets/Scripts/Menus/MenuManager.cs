@@ -134,18 +134,39 @@ public class MenuManager : Singleton<MenuManager>
     public void LeaveToMainMenu()
     {
         Debug.Log("Leaving to main menu");
+        //destroyObjects();
         SceneManager.LoadScene("Main Menu");
     }
+    
+    // private void destroyObjects()
+    // {
+    //     GameObject[] dontDestroyOnLoadObjects = null;
+    //     for(int i = 0; i < SceneManager.sceneCount; ++i)
+    //     {
+    //         if(SceneManager.GetSceneAt(i).name == "DontDestroyOnLoad")
+    //         {
+    //             dontDestroyOnLoadObjects = SceneManager.GetSceneAt(i).GetRootGameObjects();
+    //             break;
+    //         }
+    //     }
+    //
+    //     if (dontDestroyOnLoadObjects == null)
+    //     {
+    //         return;
+    //     }
+    //
+    //     for( int i = 0; i < dontDestroyOnLoadObjects.Length; i++ )
+    //     {
+    //          Destroy(dontDestroyOnLoadObjects[i]);
+    //     }
+    // }
 
     public void ResetGame()
     {
         Debug.Log("Reset game");
+        healthScript.SetCurrentHealth(100);
+        deathMenu.SetActive(false);
         SceneManager.LoadScene("BunkerInside");
-    }
-
-    private void destroyObjects()
-    {
-        
     }
 
     private void CheckPlayerDeath(float currentHealth)

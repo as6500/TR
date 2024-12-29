@@ -122,4 +122,9 @@ public class HealthScript : MonoBehaviour, IDamageable
     {
         return currentHealth;
     }
+    
+    public void SetCurrentHealth(float healthValue)
+    {
+        currentHealth = healthValue;
+    }
 }
