@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 
 [Serializable] public enum QuestState { Pending, Active, Completed };
 
@@ -20,17 +17,15 @@ public class QuestManager : Singleton<QuestManager>
 	[SerializeField]private DialogueData dialogueData;
 	public QuestState activeQuestState;
 	[SerializeField] private QuestSystemUI questText;
+	[SerializeField] private TextMeshProUGUI titleText;
 	public List<QuestNPC> npcs = new();
 	[SerializeField] private QuestTypeLocation questTypeLocation;
 	[SerializeField] private GameObject location;
 	[SerializeField] private GameObject item;
 	public Item interactedItem;
-	private CollectibleType collectibleType;
-	public CollectibleType currentCollectibleType;
     private int activeQuestItemCounter;
     [SerializeField] private Text descriptionOfQuest;
 	[SerializeField] private RawImage background;
-	private MovementScript playerMovement;
 	
 	public void Start()
 	{
@@ -45,8 +40,7 @@ public class QuestManager : Singleton<QuestManager>
 		
 		descriptionOfQuest.enabled = false;
 		background.enabled = false;
-		
-		playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
+		titleText.enabled = false;
 	}
 
 	public void Update()
@@ -64,7 +58,6 @@ public class QuestManager : Singleton<QuestManager>
 
 	public void StartingDialogue()
 	{
-		//playerMovement.walkVelocity = 0f;
 		dialogueManager.StartDialogue(dialogueData);
 		dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
 	}
@@ -76,8 +69,11 @@ public class QuestManager : Singleton<QuestManager>
 	
 	public void AcceptQuest()
 	{
-		if (activeQuestState != QuestState.Pending) return;
+		if (activeQuestState != QuestState.Pending)
+			return;
+		
 		activeQuestState = QuestState.Active;
+		titleText.enabled = true;
 
 		npcs[activeQuest.npc.id].SetIcon(IconType.None);
 		switch (activeQuest.type)
@@ -128,7 +124,6 @@ public class QuestManager : Singleton<QuestManager>
 		activeQuestItemCounter = 0;
 		activeQuest = activeQuest.nextQuest;
 		activeQuestState = QuestState.Pending;
-			
 		npcs[activeQuest.npc.id].SetIcon(IconType.ExclamationPoint);
 	}
 
@@ -152,7 +147,6 @@ public class QuestManager : Singleton<QuestManager>
 
 	private void AcceptResourceQuest()
 	{
-        collectibleType = (CollectibleType) activeQuest.typeParam;	
         string questName = activeQuest.displayName;
         string questItemName = activeQuest.typeName;
         int questCount = activeQuest.typeCount;

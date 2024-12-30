@@ -4575,7 +4575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Farm
   whereToLoadTo: 6
-  whereToLoadToBuildings: -1
+  whereToLoadToBuildings: 25
+  whereToLoadToFloors: -1
 --- !u!1 &387430241
 GameObject:
   m_ObjectHideFlags: 0
@@ -16001,7 +16002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Farm
   whereToLoadTo: 6
-  whereToLoadToBuildings: -1
+  whereToLoadToBuildings: 26
+  whereToLoadToFloors: -1
 --- !u!61 &1165178863
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16060,8 +16062,12 @@ PrefabInstance:
       value: EntranceLocatorFromFarmInsideWindmill
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
+      propertyPath: <floorType>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <buildingType>k__BackingField
-      value: 16
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <entranceType>k__BackingField
@@ -35685,8 +35691,12 @@ PrefabInstance:
       value: EntranceLocatorFromFarmInsideBarn
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
+      propertyPath: <floorType>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <buildingType>k__BackingField
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <entranceType>k__BackingField

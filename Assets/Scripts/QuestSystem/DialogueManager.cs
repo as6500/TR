@@ -9,14 +9,16 @@ using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
     private DialogueData currentDialogue;
-    private MovementScript playerMovement;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Button continueButton;
     [SerializeField] private Image dialogueImage;
+    [SerializeField] private QuestManager questManager;
     private bool ballonTextEnded;
     private bool ballonTextEnded2;
     private string currentDialogueText;
     private string currentDialogueTextProgress;
+    
+    
     private int i;
     private int j;
     
@@ -29,8 +31,6 @@ public class DialogueManager : MonoBehaviour
         ballonTextEnded2 = false;
         continueButton.gameObject.SetActive(false);
         dialogueImage.enabled = false;
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
-        Debug.Log(GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>());
     }
 
     public void StartDialogue(DialogueData dialogueToPlay)
@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         currentDialogue = dialogueToPlay;
+        DialoguePicker();
         StartCoroutine(PlayDialogue());
     }
 
@@ -71,20 +72,16 @@ public class DialogueManager : MonoBehaviour
             ballonTextEnded = false;
             yield return new WaitUntil(ButtonClickedNotifier);
             OnDialogueEnd?.Invoke();
-            //playerMovement.walkVelocity = 4f;
         }
-        
         dialogueImage.enabled = false;
         dialogueText.enabled = false;
         continueButton.gameObject.SetActive(false);
-
     }
 
     private void OnButtonClicked()
     {
         if (dialogueText.text.Length == currentDialogueTextProgress.Length)
         { 
-            Debug.Log("button clicked");
             ballonTextEnded = true;
             continueButton.gameObject.SetActive(false);
         }
@@ -93,5 +90,11 @@ public class DialogueManager : MonoBehaviour
     private bool ButtonClickedNotifier()
     {
         return ballonTextEnded;
+    }
+
+    private void DialoguePicker()
+    {
+        if (questManager.activeQuestState == QuestState.Completed)
+            currentDialogue = currentDialogue.nextDialogue;
     }
 }

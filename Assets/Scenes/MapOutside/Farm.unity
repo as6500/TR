@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3143189068341442298, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: m_Name
-      value: EntranceLocatorFarmFromWindmill
+      value: ExitFromWindmill
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <floorType>k__BackingField
@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <buildingType>k__BackingField
-      value: -1
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <entranceType>k__BackingField
@@ -1291,7 +1291,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3143189068341442298, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: m_Name
-      value: EntranceLocatorFarmFromBarn
+      value: ExitFromBarn
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <floorType>k__BackingField
@@ -1299,7 +1299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <buildingType>k__BackingField
-      value: -1
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <entranceType>k__BackingField
@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 1246336900}
   - component: {fileID: 1246336901}
   m_Layer: 0
-  m_Name: ExitFromFarmToRoad
+  m_Name: ExitFromFarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99594,7 +99594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3143189068341442298, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: m_Name
-      value: EntranceLocatorFarmFromRoad
+      value: EntranceToFarm
       objectReference: {fileID: 0}
     - target: {fileID: 4691687429997711395, guid: ce5bd6e1472dac945a3ec4d7152aa397, type: 3}
       propertyPath: <floorType>k__BackingField
@@ -99703,7 +99703,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7614212, y: 0.8424897}
+  m_Offset: {x: 0.7614212, y: 0.70974445}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -99714,7 +99714,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6477356, y: 2.9788961}
+  m_Size: {x: 2.6477356, y: 3.2443867}
   m_EdgeRadius: 0
 --- !u!4 &1376849432
 Transform:
@@ -116748,5 +116748,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1461881107}
   - {fileID: 1376408292}
-  - {fileID: 925618469}
   - {fileID: 519717224}
+  - {fileID: 925618469}

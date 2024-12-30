@@ -6,7 +6,6 @@ public class EntrancesAndExits: MonoBehaviour
     [SerializeField] private string sceneName;
     [SerializeField] private EEntranceType whereToLoadTo;
     [SerializeField] private EBuildings whereToLoadToBuildings;
-    [SerializeField] private EFloors whereToLoadToFloors;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,10 +16,8 @@ public class EntrancesAndExits: MonoBehaviour
         
         collision.GetComponent<MapChangingInfo>().entranceTypeToFind = whereToLoadTo;
         collision.GetComponent<MapChangingInfo>().buildingTypeToFind = whereToLoadToBuildings;
-        collision.GetComponent<MapChangingInfo>().floorToFind = whereToLoadToFloors;
-        
     }
-
+    
     public EEntranceType WhereToLoadTo()
     {
         return whereToLoadTo;

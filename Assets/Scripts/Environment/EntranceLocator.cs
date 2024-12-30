@@ -43,24 +43,6 @@ public enum EBuildings
 	Barn,
 	Windmill
 }
-
-public enum EFloors
-{
-	INVALID = -1,
-	Appartment1_1stFloor,
-	Appartment2_1stFloor,
-	Appartment4_1stFloor,
-	Appartment12_1stFloor,
-	Building1_1stFloor,
-	Building3_1stFloor,
-	Appartment1_2ndFloor,
-	Appartment2_2ndFloor,
-	Appartment4_2ndFloor,
-	Appartment12_2ndFloor,
-	Building1_2ndFloor,
-	Building3_2ndFloor
-}
-
 public class EntranceLocator : MonoBehaviour
 {
 	[field: SerializeField] public EEntranceType entranceType
@@ -70,12 +52,6 @@ public class EntranceLocator : MonoBehaviour
 	}
 
 	[field: SerializeField] public EBuildings buildingType
-	{
-		get;
-		set;
-	}
-	
-	[field: SerializeField] public EFloors floorType
 	{
 		get;
 		set;

@@ -3,21 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class MapChangingInfo : MonoBehaviour
 {
-	public EEntranceType entranceTypeToFind
+	[field:SerializeField] public EEntranceType entranceTypeToFind
 	{
 		get; set;
 	}
 
-	public EBuildings buildingTypeToFind
+	[field:SerializeField] public EBuildings buildingTypeToFind
 	{
 		get; set;
 	}
-
-	public EFloors floorToFind
-	{
-		get; set;
-	}
-
 	private void Awake()
 	{
 		SceneManager.sceneLoaded += OnSceneLoaded;
@@ -34,12 +28,6 @@ public class MapChangingInfo : MonoBehaviour
 			if (entranceTypeToFind == EEntranceType.CityBuilding || entranceTypeToFind == EEntranceType.FarmBuilding)
 			{
 				if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
-				{
-					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
-					return;
-				}
-				
-				if (arrayOfAllEntrances[i].floorType == floorToFind)
 				{
 					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 					return;
