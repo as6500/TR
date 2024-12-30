@@ -72,8 +72,11 @@ public class EnemieSpawner : MonoBehaviour
 
                     if (EnemyType.MutantTree == enemyChosen)
                     {
-                        surfaceAI.RemoveData();
-                        surfaceAI.BuildNavMesh();
+                        if (enemyHolder.transform.childCount == maxEnemiesInGame - 1)
+                        {
+                            surfaceAI.RemoveData();
+                            surfaceAI.BuildNavMesh();
+                        }
                     }
                     else if (EnemyType.SmallWorm == enemyChosen || EnemyType.BigWorm == enemyChosen)
                     {
