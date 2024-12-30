@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2767ae9e2762356498eb99d276fc9478
+guid: 22247318644eb004f9026814ce194270
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: big worm death animation_0
+      name: big worm bury spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 386c549cae1badd4ab47551f17497b63
-      internalID: -364336698
+      spriteID: 96592fbb8daf5ff4a9a9a23e6add8358
+      internalID: 1878233393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm death animation_1
+      name: big worm bury spritesheet_1
       rect:
         serializedVersion: 2
         x: 90
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da7daf5c083bade40b9a6669e6c96db1
-      internalID: 1492925871
+      spriteID: ca56a1e9c50d736459f8cd686db1fbb0
+      internalID: -213674201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm death animation_2
+      name: big worm bury spritesheet_2
       rect:
         serializedVersion: 2
         x: 180
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1de6d128a1752f14f8634ee04e211e52
-      internalID: -1038364256
+      spriteID: 1f35fe864fde15343a3fb4631aea18d1
+      internalID: 896401215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm death animation_3
+      name: big worm bury spritesheet_3
       rect:
         serializedVersion: 2
         x: 270
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb67db35f2405f041b63f8bcb05738cb
-      internalID: -917460186
+      spriteID: c9ae4c6cd7b5c094ca4d91483ce93330
+      internalID: 537953790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm death animation_4
+      name: big worm bury spritesheet_4
       rect:
         serializedVersion: 2
         x: 360
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18e2e6e64247b00478f28553e1e4177f
-      internalID: -145481740
+      spriteID: 7a93d045f2a646142ac966153eeb8ef2
+      internalID: 918133197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm death animation_5
+      name: big worm bury spritesheet_5
       rect:
         serializedVersion: 2
         x: 450
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd876199c09aaed48a6e013c95089768
-      internalID: -1327625754
+      spriteID: 4066dbd5cd2b04148ac7b4f8679aecc5
+      internalID: -1085120362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm death animation_6
+      name: big worm bury spritesheet_6
       rect:
         serializedVersion: 2
         x: 540
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5429651ba705a34cb1ba834b8eb5129
-      internalID: -1362231979
+      spriteID: 73cb6bd339a85f948b644d03d8ab3d92
+      internalID: -421422899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm death animation_7
+      name: big worm bury spritesheet_7
       rect:
         serializedVersion: 2
         x: 630
@@ -271,8 +271,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abeae1c63cee45540952ad2dc6a54622
-      internalID: -992098075
+      spriteID: 0d383661e8aa2134d9f5086d32a952b7
+      internalID: -220335620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805b33913240d544985b4794b083b3c8
+      internalID: 1137907461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c38ec60360f8ac46bf3dc05c90be11e
+      internalID: 1327637035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28a9daae13140fd4c894defca83865b9
+      internalID: 340305229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19229834c4890c84399ef6eec0319a63
+      internalID: 372702458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de43792722fcdf4282ff08a8a2ea115
+      internalID: -1388119801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 028de48495fdb594c95edac62c201e9d
+      internalID: -2062729945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3907f672d47066e48a21a8f9e6494ed5
+      internalID: -1350695812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm bury spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769eef6db5c24d548bcb6b6e589e6480
+      internalID: -8513411
       vertices: []
       indices: 
       edges: []
@@ -288,14 +456,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      big worm death animation_0: -364336698
-      big worm death animation_1: 1492925871
-      big worm death animation_2: -1038364256
-      big worm death animation_3: -917460186
-      big worm death animation_4: -145481740
-      big worm death animation_5: -1327625754
-      big worm death animation_6: -1362231979
-      big worm death animation_7: -992098075
+      big worm bury spritesheet_0: 1878233393
+      big worm bury spritesheet_1: -213674201
+      big worm bury spritesheet_10: 340305229
+      big worm bury spritesheet_11: 372702458
+      big worm bury spritesheet_12: -1388119801
+      big worm bury spritesheet_13: -2062729945
+      big worm bury spritesheet_14: -1350695812
+      big worm bury spritesheet_15: -8513411
+      big worm bury spritesheet_2: 896401215
+      big worm bury spritesheet_3: 537953790
+      big worm bury spritesheet_4: 918133197
+      big worm bury spritesheet_5: -1085120362
+      big worm bury spritesheet_6: -421422899
+      big worm bury spritesheet_7: -220335620
+      big worm bury spritesheet_8: 1137907461
+      big worm bury spritesheet_9: 1327637035
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

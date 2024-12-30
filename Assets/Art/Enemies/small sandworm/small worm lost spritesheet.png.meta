@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d0726ca901a29248b635c0dcb8016b7
+guid: 21eeaf340d36367408c8c341ddb058ab
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: patroling sprite_0
+      name: small worm lost spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb0e7f45db90a964fa67919a0156284a
-      internalID: -279962976
+      spriteID: 33a879d08b0d30942b8b923ec43eb72f
+      internalID: -12944559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: patroling sprite_1
+      name: small worm lost spritesheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64b597964461bfb4faef1fb7b290af77
-      internalID: -233487710
+      spriteID: 3f2dd65a66df58e48bd3216aff1fc90f
+      internalID: 1923733630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: patroling sprite_2
+      name: small worm lost spritesheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59b55e2ccfc1be943a9508c45a7dbeac
-      internalID: 1880043143
+      spriteID: b1fa5c6837329b34eb06a73504a51300
+      internalID: 1037465178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: patroling sprite_3
+      name: small worm lost spritesheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,50 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1daacd26128303145b4ef8c10208bf3b
-      internalID: -1360152123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: patroling sprite_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b40143ea21e2c964ab4fceeacaeda967
-      internalID: 20563851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: patroling sprite_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43caeb1815f541d4983aac75f3b74d27
-      internalID: 572714023
+      spriteID: 837033de09743f94ba417a96455aa38e
+      internalID: -1289220877
       vertices: []
       indices: 
       edges: []
@@ -246,12 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      patroling sprite_0: -279962976
-      patroling sprite_1: -233487710
-      patroling sprite_2: 1880043143
-      patroling sprite_3: -1360152123
-      patroling sprite_4: 20563851
-      patroling sprite_5: 572714023
+      small worm lost spritesheet_0: -12944559
+      small worm lost spritesheet_1: 1923733630
+      small worm lost spritesheet_2: 1037465178
+      small worm lost spritesheet_3: -1289220877
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

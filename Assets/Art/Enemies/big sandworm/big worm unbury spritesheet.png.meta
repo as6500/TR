@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27f281d592485564bb92f00812a0f18a
+guid: f5614b5477fae4b418f274e8ebfc8605
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lost sprite_0
+      name: big worm unbury spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,41 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a8030f9780396b4296ae23ed5f33e97
-      internalID: -217892399
+      spriteID: a2b16f408ff14ed4f9b8a5eaa15535db
+      internalID: 606946739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lost sprite_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd85894eabfe417458872d5eb2145225
-      internalID: 1416663999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lost sprite_2
+      name: big worm unbury spritesheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99009f2b920bbd2479beeef41b7588cf
-      internalID: -1841156898
+      spriteID: 49a3679c2d36e0949a51665ef9c6df51
+      internalID: 761358228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lost sprite_3
+      name: big worm unbury spritesheet_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +166,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7996b4a7220ea824686fd0020068ec55
-      internalID: -845556137
+      spriteID: 614c4844853fb3e4884f5086b6f8eea5
+      internalID: -1757667035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm unbury spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed308cf30a088d94695fc458431bcb0c
+      internalID: -1954143764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm unbury spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4226592e8d000a4da8ccf66a80a8b14
+      internalID: 814676500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm unbury spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6d15826d410bb44a440263e104cd35
+      internalID: 919705360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm unbury spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a095810dddf124ea7b9919cad93277
+      internalID: -1377070676
       vertices: []
       indices: 
       edges: []
@@ -204,10 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      lost sprite_0: -217892399
-      lost sprite_1: 1416663999
-      lost sprite_2: -1841156898
-      lost sprite_3: -845556137
+      big worm unbury spritesheet_0: 606946739
+      big worm unbury spritesheet_1: 761358228
+      big worm unbury spritesheet_2: -1757667035
+      big worm unbury spritesheet_3: -1954143764
+      big worm unbury spritesheet_4: 814676500
+      big worm unbury spritesheet_5: 919705360
+      big worm unbury spritesheet_6: -1377070676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4dd13a9d0c27d2a47938481597248854
+guid: 63c369cd11c2190429ec815a8bb8717e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buryunbury sprite_0
+      name: small worm hurt spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aab9e7eae2e03be44821127c3e3fb6a1
-      internalID: 177271131
+      spriteID: 1e7f08bd8423b6b4983b49bce73dc595
+      internalID: -1568015562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buryunbury sprite_1
+      name: small worm hurt spritesheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a83d28862a544a46b96d0a37fe753e3
-      internalID: 1319376702
+      spriteID: e8e684ef3a3020f44907d8ac0f467a60
+      internalID: -1713080655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buryunbury sprite_2
+      name: small worm hurt spritesheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c25da629be4da404389c499b8dd9dab0
-      internalID: 1868890896
+      spriteID: 96a7624592ea9af4a8a34567deb41b3c
+      internalID: 1498893667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buryunbury sprite_3
+      name: small worm hurt spritesheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3686c9e37ff9256499a5a4d80bd43eed
-      internalID: 2127116581
+      spriteID: 3d5c9329a4f6e3746ba67d41c8773250
+      internalID: -1603469905
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buryunbury sprite_0: 177271131
-      buryunbury sprite_1: 1319376702
-      buryunbury sprite_2: 1868890896
-      buryunbury sprite_3: 2127116581
+      small worm hurt spritesheet_0: -1568015562
+      small worm hurt spritesheet_1: -1713080655
+      small worm hurt spritesheet_2: 1498893667
+      small worm hurt spritesheet_3: -1603469905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

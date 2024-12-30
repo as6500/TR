@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ead201ec8e3a0ef49a887ddbf871dbc4
+guid: 943ce9029cf8b6341aa463ea50740314
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: big worm lost animation_0
+      name: small worm dying spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4abe2bf7aec86de4893cb67cc9f30beb
-      internalID: 848482234
+      spriteID: ba192e30f4914304fb744ca5aa68c6c6
+      internalID: 2134791673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm lost animation_1
+      name: small worm dying spritesheet_1
       rect:
         serializedVersion: 2
-        x: 90
+        x: 32
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0d7a54f2e963314c92c6eea299637cc
-      internalID: 133987951
+      spriteID: a24a59f721c792048827efa3328a9dfd
+      internalID: 1801429435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm lost animation_2
+      name: small worm dying spritesheet_2
       rect:
         serializedVersion: 2
-        x: 180
+        x: 64
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e686b57b0d0bc7c498ca2cd3dc2e9150
-      internalID: -1743942122
+      spriteID: bd13dac5ea39b2f49a27209cd7fff8ed
+      internalID: -626737863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm lost animation_3
+      name: small worm dying spritesheet_3
       rect:
         serializedVersion: 2
-        x: 270
+        x: 96
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abc3b73fcdcf64f4da7b79b5f59f7316
-      internalID: 1157962208
+      spriteID: 5592d847e61ec5d478ff76103551f2bd
+      internalID: 1793274999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm lost animation_4
+      name: small worm dying spritesheet_4
       rect:
         serializedVersion: 2
-        x: 360
+        x: 128
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86cf17b5ea8091c42b7d2314ba3151e4
-      internalID: 519292615
+      spriteID: 5baa512693d9abf4c9ef4f32295cdeb5
+      internalID: -399798410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm lost animation_5
+      name: small worm dying spritesheet_5
       rect:
         serializedVersion: 2
-        x: 450
+        x: 160
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +229,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beeaabf3f42e06e438825b067022af90
-      internalID: -164497088
+      spriteID: 529109a1766491247912103bcd11abf4
+      internalID: 2139849049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small worm dying spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adaf36fbdc7ce8445acb19c3f8e4d167
+      internalID: -819704719
       vertices: []
       indices: 
       edges: []
@@ -246,12 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      big worm lost animation_0: 848482234
-      big worm lost animation_1: 133987951
-      big worm lost animation_2: -1743942122
-      big worm lost animation_3: 1157962208
-      big worm lost animation_4: 519292615
-      big worm lost animation_5: -164497088
+      small worm dying spritesheet_0: 2134791673
+      small worm dying spritesheet_1: 1801429435
+      small worm dying spritesheet_2: -626737863
+      small worm dying spritesheet_3: 1793274999
+      small worm dying spritesheet_4: -399798410
+      small worm dying spritesheet_5: 2139849049
+      small worm dying spritesheet_6: -819704719
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3881d435855ac41428cdfbc35c04261e
+guid: bf8cc72992c700a478e088f6410fc55f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: big worm chasing animation_0
+      name: big worm lost spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e56a9a6e84b4ee45b353b3759eb6dca
-      internalID: -1874868476
+      spriteID: 4663baccfbf74b94dad7a6d4d1096f7d
+      internalID: 1294228359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm chasing animation_1
+      name: big worm lost spritesheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 90
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a87f57d932927c4fbc8870d3b34eaac
-      internalID: 1522654603
+      spriteID: 1cc70604bf8e97349a8afb7c474306f1
+      internalID: -2122801313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm chasing animation_2
+      name: big worm lost spritesheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 180
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e68b2d17a4bab394fafa720a710ae865
-      internalID: 886697008
+      spriteID: 67629f001369ed74091fdce783f129dd
+      internalID: 3001039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm chasing animation_3
+      name: big worm lost spritesheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 270
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d31e14c10bf5e64c97c6280902ae088
-      internalID: -943525119
+      spriteID: 18d07779589133e4685a3ba2bfdeab0a
+      internalID: 2100801645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm chasing animation_4
+      name: big worm lost spritesheet_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 360
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21c91e1c4fce0c64992fc2aa2021edc9
-      internalID: 1086144785
+      spriteID: 2a751e54ee5a28246bb4c3f5c0589b15
+      internalID: -1014808122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm chasing animation_5
+      name: big worm lost spritesheet_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 450
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcbf1be0055fc214ea2b32e7836bb586
-      internalID: 919148407
+      spriteID: 5cb507d50945b1d4a8f1908ed42870a0
+      internalID: -938252250
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      big worm chasing animation_0: -1874868476
-      big worm chasing animation_1: 1522654603
-      big worm chasing animation_2: 886697008
-      big worm chasing animation_3: -943525119
-      big worm chasing animation_4: 1086144785
-      big worm chasing animation_5: 919148407
+      big worm lost spritesheet_0: 1294228359
+      big worm lost spritesheet_1: -2122801313
+      big worm lost spritesheet_2: 3001039
+      big worm lost spritesheet_3: 2100801645
+      big worm lost spritesheet_4: -1014808122
+      big worm lost spritesheet_5: -938252250
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

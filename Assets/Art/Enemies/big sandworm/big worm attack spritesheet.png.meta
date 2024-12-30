@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 071303bd75fd13f41a0d02028379415d
+guid: 0fb59e846b93e9347828fef2818bef7b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bite sprite_0
+      name: big worm attack spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbe8ef97e1de7ef44a97a836196f9e66
-      internalID: -471414108
+      spriteID: 52fd8affd0079f94798d5c53fec6483f
+      internalID: -2041415808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_1
+      name: big worm attack spritesheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 90
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27b367b6a208c8b45b8fcfbad5e0ba37
-      internalID: -235088372
+      spriteID: a8a50c7ed9088384393c78bb22e67d50
+      internalID: -1186482398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_2
+      name: big worm attack spritesheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 180
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3167f84e086c9e646a1a431c95c1da38
-      internalID: -469742320
+      spriteID: 394a48df82d25654d87eec222fa10f0b
+      internalID: 1172010804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_3
+      name: big worm attack spritesheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 270
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29e86b05ca9e47246ae2117aa8381ffe
-      internalID: -625948414
+      spriteID: 9d9c6036f51861248a7f850e2d35a668
+      internalID: -1809346912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_4
+      name: big worm attack spritesheet_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 360
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c5711182dc4ee3419af4a2d0c46ddf5
-      internalID: 1662600243
+      spriteID: 4b9ba57ee5c6d964393948475792f30d
+      internalID: 177395416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_5
+      name: big worm attack spritesheet_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 450
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f76d7994799cbb41918f98f79b06fe3
-      internalID: -1581896893
+      spriteID: 23c9340029af3e54a994a786373bf55a
+      internalID: -845426871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_6
+      name: big worm attack spritesheet_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 540
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8683bff07139ca34e857dbc31e531b60
-      internalID: 1070621528
+      spriteID: 375392e8867dfd94c8eae792a97abeb7
+      internalID: 840906537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_7
+      name: big worm attack spritesheet_7
       rect:
         serializedVersion: 2
-        x: 224
+        x: 630
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91944b410e81c4f4f8870f210979d3b8
-      internalID: 1891597958
+      spriteID: a0c96e6638e68f84ea2b07e221584ece
+      internalID: 1330041685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_8
+      name: big worm attack spritesheet_8
       rect:
         serializedVersion: 2
-        x: 256
+        x: 720
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 583b5b3d545389945847a5d08f412a3d
-      internalID: 1795692677
+      spriteID: b1ef9cc8be464844abeefae17dfea31f
+      internalID: -1929599919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_9
+      name: big worm attack spritesheet_9
       rect:
         serializedVersion: 2
-        x: 288
+        x: 810
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 295df948453862d4c9b3a9bc7be4574f
-      internalID: 399196613
+      spriteID: 13996acd197521840b7241e3728cce65
+      internalID: -1662052997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_10
+      name: big worm attack spritesheet_10
       rect:
         serializedVersion: 2
-        x: 320
+        x: 900
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84ea5a30a1b3c8b4b95b98b5d7c2782f
-      internalID: -442708064
+      spriteID: fb82f4f90bc0524499c8eb0d5ed1439f
+      internalID: 1934121027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_11
+      name: big worm attack spritesheet_11
       rect:
         serializedVersion: 2
-        x: 352
+        x: 990
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b004402461b19a8469432347e0a6c770
-      internalID: 1938540217
+      spriteID: 7d4508ffec58b6e40b7a89fe71569156
+      internalID: -1304972150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_12
+      name: big worm attack spritesheet_12
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1080
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10bbd31f735a6484fbd9bd32d564a5ea
-      internalID: 1901752244
+      spriteID: 1cbbf245434d33e45a62bc198b887956
+      internalID: 756470712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_13
+      name: big worm attack spritesheet_13
       rect:
         serializedVersion: 2
-        x: 416
+        x: 1170
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +397,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 844a0236a86e31b46965994c1b59edfa
-      internalID: -1338818931
+      spriteID: dcb144bf1d40fed43a49bf2597e8e5df
+      internalID: -836657466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_14
+      name: big worm attack spritesheet_14
       rect:
         serializedVersion: 2
-        x: 448
+        x: 1260
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,20 +418,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66d40ab46b8f8ea408c941029eb2a3ad
-      internalID: 219093809
+      spriteID: 95f3a670f41eb0f43b2ad3d38f6d1d27
+      internalID: 758083013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_15
+      name: big worm attack spritesheet_15
       rect:
         serializedVersion: 2
-        x: 480
+        x: 1350
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,20 +439,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea093dc96b5c89640bcd4d0c0776dc28
-      internalID: -2058114208
+      spriteID: a1e965395580ff943a23d972656b149d
+      internalID: -982955442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bite sprite_16
+      name: big worm attack spritesheet_16
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1440
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,8 +460,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 070dd865fa2d59942bf0aad7785888f6
-      internalID: -1712873430
+      spriteID: 65837249cb38e08478c7a9ea4ffdeb68
+      internalID: 131948461
       vertices: []
       indices: 
       edges: []
@@ -477,23 +477,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bite sprite_0: -471414108
-      bite sprite_1: -235088372
-      bite sprite_10: -442708064
-      bite sprite_11: 1938540217
-      bite sprite_12: 1901752244
-      bite sprite_13: -1338818931
-      bite sprite_14: 219093809
-      bite sprite_15: -2058114208
-      bite sprite_16: -1712873430
-      bite sprite_2: -469742320
-      bite sprite_3: -625948414
-      bite sprite_4: 1662600243
-      bite sprite_5: -1581896893
-      bite sprite_6: 1070621528
-      bite sprite_7: 1891597958
-      bite sprite_8: 1795692677
-      bite sprite_9: 399196613
+      big worm attack spritesheet_0: -2041415808
+      big worm attack spritesheet_1: -1186482398
+      big worm attack spritesheet_10: 1934121027
+      big worm attack spritesheet_11: -1304972150
+      big worm attack spritesheet_12: 756470712
+      big worm attack spritesheet_13: -836657466
+      big worm attack spritesheet_14: 758083013
+      big worm attack spritesheet_15: -982955442
+      big worm attack spritesheet_16: 131948461
+      big worm attack spritesheet_2: 1172010804
+      big worm attack spritesheet_3: -1809346912
+      big worm attack spritesheet_4: 177395416
+      big worm attack spritesheet_5: -845426871
+      big worm attack spritesheet_6: 840906537
+      big worm attack spritesheet_7: 1330041685
+      big worm attack spritesheet_8: -1929599919
+      big worm attack spritesheet_9: -1662052997
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

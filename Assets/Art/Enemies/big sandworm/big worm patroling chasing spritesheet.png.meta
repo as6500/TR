@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4b65d175e4f77b498da981a536f0bf5
+guid: 1562d1ed8ae08cf4b8a624a944f05e12
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dying sprite_0
+      name: big worm patroling chasing spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6e7b82034d55174397cc86e36c9713c
-      internalID: -1381987143
+      spriteID: 65c2ac55a18dbff469ddc02f36806149
+      internalID: -2063581927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dying sprite_1
+      name: big worm patroling chasing spritesheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9901d475614edf94799d6a03853f2307
-      internalID: -1205915912
+      spriteID: e3b30d87c235a9243918ba176740b8ec
+      internalID: -1515472853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dying sprite_2
+      name: big worm patroling chasing spritesheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8765acceffa7b654797c83bd002afbd3
-      internalID: -1161582660
+      spriteID: e95b619070a4702438da3932ab2f9e21
+      internalID: 1302058764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dying sprite_3
+      name: big worm patroling chasing spritesheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a056b117eede3143bf72d612c0f9ae0
-      internalID: -759411764
+      spriteID: 260b61ff2c2542443bca2ace95fe075b
+      internalID: 538991542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dying sprite_4
+      name: big worm patroling chasing spritesheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca44b565e2ea6ac46b1e88fb159c8eff
-      internalID: 1062438269
+      spriteID: e2440b7d3a8458142b57ebefb24cb7b5
+      internalID: -653318452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dying sprite_5
+      name: big worm patroling chasing spritesheet_5
       rect:
         serializedVersion: 2
         x: 160
@@ -229,29 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dadcb62fe184e3c47bde77abae3ce778
-      internalID: -1856070842
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dying sprite_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb50e6444f89b624eae769e41f2b668a
-      internalID: -823557937
+      spriteID: 8f751a30708b9da4c99f2e65bfc49c98
+      internalID: 1669306296
       vertices: []
       indices: 
       edges: []
@@ -267,13 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dying sprite_0: -1381987143
-      dying sprite_1: -1205915912
-      dying sprite_2: -1161582660
-      dying sprite_3: -759411764
-      dying sprite_4: 1062438269
-      dying sprite_5: -1856070842
-      dying sprite_6: -823557937
+      big worm patroling chasing spritesheet_0: -2063581927
+      big worm patroling chasing spritesheet_1: -1515472853
+      big worm patroling chasing spritesheet_2: 1302058764
+      big worm patroling chasing spritesheet_3: 538991542
+      big worm patroling chasing spritesheet_4: -653318452
+      big worm patroling chasing spritesheet_5: 1669306296
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

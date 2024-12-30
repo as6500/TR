@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d90d7d4151b4c2f43b3fd62b39ee1c39
+guid: 085ec9016d6e61e4296db65462792a4c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hurt sprite_0
+      name: big worm hurt spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b64480867a572a045994af0766e9150f
-      internalID: 387254015
+      spriteID: 592707f470841a3478cec5fdb26b5fc0
+      internalID: 1566943854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hurt sprite_1
+      name: big worm hurt spritesheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 90
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c85709c908e70b745bd1185e5c282fa9
-      internalID: 1752953024
+      spriteID: 461bcdd3a3caa9342ae1dddeb68b1e36
+      internalID: -1258925297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hurt sprite_2
+      name: big worm hurt spritesheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 180
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a35347b5607cd274c918c2c53d24a1ed
-      internalID: -683526069
+      spriteID: cb362bd5c56bcb0418b9d216756ad348
+      internalID: -793055990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hurt sprite_3
+      name: big worm hurt spritesheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 270
         y: 0
-        width: 32
-        height: 32
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d2b677058d6a9f47b36ddbdeb0946ab
-      internalID: 1918310184
+      spriteID: f1d370c97eb0f3e48b60ca85624922cd
+      internalID: -768414966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm hurt spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf90b393da6bd543bed050896a252ad
+      internalID: 1715216433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm hurt spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48123f8ef2ef6a149b0d5d868fb687a9
+      internalID: -1939003306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big worm hurt spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f12edad3d18bca54e9f0959b4c0e6f1d
+      internalID: -1321365812
       vertices: []
       indices: 
       edges: []
@@ -204,10 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hurt sprite_0: 387254015
-      hurt sprite_1: 1752953024
-      hurt sprite_2: -683526069
-      hurt sprite_3: 1918310184
+      big worm hurt spritesheet_0: 1566943854
+      big worm hurt spritesheet_1: -1258925297
+      big worm hurt spritesheet_2: -793055990
+      big worm hurt spritesheet_3: -768414966
+      big worm hurt spritesheet_4: 1715216433
+      big worm hurt spritesheet_5: -1939003306
+      big worm hurt spritesheet_6: -1321365812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

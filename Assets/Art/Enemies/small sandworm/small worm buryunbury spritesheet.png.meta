@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4708439317a3e94d8b5b53bd012589b
+guid: 5df2f73e7a000bb49b5a85ee0130e0e0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: big worm hurt animation_0
+      name: small worm buryunbury spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 400e7e0f8d480f3429fa8edf38816daa
-      internalID: 164055573
+      spriteID: 7097fdc4d24b23b4c9dfda747b56eea6
+      internalID: 1118006989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm hurt animation_1
+      name: small worm buryunbury spritesheet_1
       rect:
         serializedVersion: 2
-        x: 90
+        x: 32
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f74c0b3fc222ca44be7c9a581abb108
-      internalID: 1603219058
+      spriteID: d7eb8aa591858274787dc62278826ad5
+      internalID: 1988646300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm hurt animation_2
+      name: small worm buryunbury spritesheet_2
       rect:
         serializedVersion: 2
-        x: 180
+        x: 64
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc26df8a837d6aa478620320f32cd0cf
-      internalID: 1862548259
+      spriteID: c7cc3a38b95a6fd46b74568ef8a81cc9
+      internalID: -2093462218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big worm hurt animation_3
+      name: small worm buryunbury spritesheet_3
       rect:
         serializedVersion: 2
-        x: 270
+        x: 96
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,71 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c0104c8fa0683740a78a20ed743ea7d
-      internalID: -1601081233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big worm hurt animation_4
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 05c4b1237bf45f646a98aaea168bc020
-      internalID: 1866652760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big worm hurt animation_5
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8595e8f8c9e8bc349ba618e3e491556d
-      internalID: 1531520647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big worm hurt animation_6
-      rect:
-        serializedVersion: 2
-        x: 540
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d07f927a99e81d4f9ace20488304ccc
-      internalID: 363408508
+      spriteID: 190f46b138b6dc84c9d44ce94a186348
+      internalID: 370017590
       vertices: []
       indices: 
       edges: []
@@ -267,13 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      big worm hurt animation_0: 164055573
-      big worm hurt animation_1: 1603219058
-      big worm hurt animation_2: 1862548259
-      big worm hurt animation_3: -1601081233
-      big worm hurt animation_4: 1866652760
-      big worm hurt animation_5: 1531520647
-      big worm hurt animation_6: 363408508
+      small worm buryunbury spritesheet_0: 1118006989
+      small worm buryunbury spritesheet_1: 1988646300
+      small worm buryunbury spritesheet_2: -2093462218
+      small worm buryunbury spritesheet_3: 370017590
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
