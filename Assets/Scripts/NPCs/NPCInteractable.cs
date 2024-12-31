@@ -10,7 +10,7 @@ public class NPCInteractable : MonoBehaviour
 {
     [SerializeField] private bool isInRange;
     [SerializeField] private Interacting interacting;
-    [SerializeField] private TextMeshPro interactingText;
+    [SerializeField] public TextMeshPro interactingText;
 
     void Update()
     {
@@ -35,10 +35,5 @@ public class NPCInteractable : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Player"))
             isInRange = false;
-	}
-
-	public bool IsInRange()
-	{
-		return isInRange;
 	}
 }

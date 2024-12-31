@@ -55,7 +55,6 @@ public class QuestManager : Singleton<QuestManager>
 				background.enabled = !background.enabled;
 			}
 		}
-		Debug.Log(activeQuestState);
 	}
 
 	public void StartingDialogue()
@@ -131,6 +130,7 @@ public class QuestManager : Singleton<QuestManager>
 		if (activeQuestState != QuestState.Completed) 
 			return;
 		
+		dialogueManager.OntoNextDialogue();
 		npcs[activeQuest.npc.id].SetIcon(IconType.None);
 		questText.TextOfQuest().enabled = false;
 		
@@ -205,7 +205,7 @@ public class QuestManager : Singleton<QuestManager>
 		questText.DisplayFetchDeliverText(questName, questNPCName);
 		activeQuestState = QuestState.Completed;
 		npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
-		dialogueManager.OntoNextDialogue();
+
 	}
 
 	private void ExecuteLocateQuest()
@@ -221,7 +221,6 @@ public class QuestManager : Singleton<QuestManager>
 		SceneManagement.Instance.RemoveObjectFromScene(questTypeLocation.gameObject);
 		Destroy(questTypeLocation.gameObject);
 		npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
-		dialogueManager.OntoNextDialogue();
 	}
 
 	private void ExecuteResourceQuest()
@@ -243,6 +242,5 @@ public class QuestManager : Singleton<QuestManager>
         activeQuestState = QuestState.Completed;
         questText.DisplayResourceDeliverText(questName, questNPCName);
         npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
-        dialogueManager.OntoNextDialogue();
     }
 }

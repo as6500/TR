@@ -16,6 +16,7 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private QuestManager questManager;
     [SerializeField] private GameObject dialogueCanvas;
     [SerializeField] private NPCInteractable interactableNPC;
+    private Interacting interacting;
     private bool ballonTextEnded;
     private string currentDialogueText;
     private string currentDialogueTextProgress;
@@ -62,7 +63,7 @@ public class DialogueManager : Singleton<DialogueManager>
             }
             continueButton.gameObject.SetActive(true);
             yield return new WaitUntil(ButtonClickedNotifier);
-            ++index;
+            index++;
         }
             
         if (index >= currentDialogue.dialogueWithQuest.Length)
@@ -92,16 +93,9 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void OntoNextDialogue()
     {
-        if (questManager.activeQuestState == QuestState.Completed && interactableNPC.IsInRange())
+        if (questManager.activeQuestState == QuestState.Completed && interactableNPC.interactingText.enabled)
         {
             currentDialogueText = currentDialogue.dialogueFinishingQuest[0];
         }
-        
-        if (questManager.activeQuestState == QuestState.Completed &&
-            questManager.activeQuest == questManager.activeQuest.nextQuest && questManager.activeQuest.npc.id == questManager.activeQuest.npc.id + 1)
-        {
-            currentDialogue = currentDialogue.nextDialogue;
-        }
-        
     }
 }
