@@ -19,9 +19,9 @@ public class DialogueManager : Singleton<DialogueManager>
     private bool ballonTextEnded;
     private string currentDialogueText;
     private string currentDialogueTextProgress;
-    
-    
-    private int i;
+
+
+    private int index = 0;
     private int j;
     
     public UnityEvent OnDialogueEnd;
@@ -48,38 +48,32 @@ public class DialogueManager : Singleton<DialogueManager>
     {   
         continueButton.onClick.AddListener(OnButtonClicked);
         Debug.Log(SceneManager.GetActiveScene().name);
-        if (SceneManager.GetActiveScene().name == "BunkerInside")
+        dialogueCanvas.gameObject.SetActive(true);
+        for (int i = 0; i < currentDialogue.dialogueWithQuest.Length; ++i) //passing from ballon to another ballon
         {
-            dialogueCanvas.gameObject.SetActive(true);
-            for (i = 0; i < currentDialogue.dialogueWithQuest.Length; ++i) //passing from ballon to another ballon
-            {
-                dialogueText.text = "";
-                currentDialogueText = currentDialogue.dialogueWithQuest[i];
+            dialogueText.text = "";
+            currentDialogueText = currentDialogue.dialogueWithQuest[i];
 
-                for (j = 0; j < currentDialogueText.Length; ++j) //actual text
-                {
-                    dialogueText.text += currentDialogueText[j];
-                    currentDialogueTextProgress = dialogueText.text;
-                    yield return new WaitForSeconds(0.07f);
-                }
-                continueButton.gameObject.SetActive(true);
-                yield return new WaitUntil(ButtonClickedNotifier);
-            }
-
-            if (i >= currentDialogue.dialogueWithQuest.Length)
+            for (j = 0; j < currentDialogueText.Length; ++j) //actual text
             {
-                ballonTextEnded = false;
-                yield return new WaitUntil(ButtonClickedNotifier);
-                OnDialogueEnd?.Invoke();
-                dialogueCanvas.gameObject.SetActive(false);
+                dialogueText.text += currentDialogueText[j];
+                currentDialogueTextProgress = dialogueText.text;
+                yield return new WaitForSeconds(0.07f);
             }
-            continueButton.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(true);
+            yield return new WaitUntil(ButtonClickedNotifier);
+            ++index;
         }
-        else
+            
+        if (index >= currentDialogue.dialogueWithQuest.Length)
         {
+            ballonTextEnded = false;
+            yield return new WaitUntil(ButtonClickedNotifier);
+            OnDialogueEnd?.Invoke();
             dialogueCanvas.gameObject.SetActive(false);
-            continueButton.gameObject.SetActive(false);
         }
+        continueButton.gameObject.SetActive(false);
+        dialogueCanvas.gameObject.SetActive(false);
     }
 
     private void OnButtonClicked()

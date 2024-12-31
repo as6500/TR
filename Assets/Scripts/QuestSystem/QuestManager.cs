@@ -55,24 +55,32 @@ public class QuestManager : Singleton<QuestManager>
 				background.enabled = !background.enabled;
 			}
 		}
+		Debug.Log(activeQuestState);
 	}
 
 	public void StartingDialogue()
 	{
-		Debug.Log("Starting Dialogue");
-		dialogueManager.StartDialogue(dialogueData);
-		dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
+		if (activeQuestState == QuestState.Pending)
+		{
+			Debug.Log("Starting Dialogue");
+			dialogueManager.StartDialogue(dialogueData);
+			dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
+		}
+
+		if (activeQuestState == QuestState.Completed)
+		{
+			Debug.Log("Starting Dialogue2");
+			dialogueManager.StartDialogue(dialogueData);
+			dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
+		}
 	}
 
 	private void OnDialogueFinished()
 	{
 		if (activeQuestState == QuestState.Pending)
 			AcceptQuest();
-		if (activeQuestState == QuestState.Completed)
-		{
-			if (interactableNPC.IsInRange())
-				dialogueManager.OntoNextDialogue();
-		}
+		if (activeQuestState == QuestState.Active)
+			CompleteQuest();
 	}
 	
 	public void AcceptQuest()
@@ -197,6 +205,7 @@ public class QuestManager : Singleton<QuestManager>
 		questText.DisplayFetchDeliverText(questName, questNPCName);
 		activeQuestState = QuestState.Completed;
 		npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
+		dialogueManager.OntoNextDialogue();
 	}
 
 	private void ExecuteLocateQuest()
@@ -212,6 +221,7 @@ public class QuestManager : Singleton<QuestManager>
 		SceneManagement.Instance.RemoveObjectFromScene(questTypeLocation.gameObject);
 		Destroy(questTypeLocation.gameObject);
 		npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
+		dialogueManager.OntoNextDialogue();
 	}
 
 	private void ExecuteResourceQuest()
@@ -233,5 +243,6 @@ public class QuestManager : Singleton<QuestManager>
         activeQuestState = QuestState.Completed;
         questText.DisplayResourceDeliverText(questName, questNPCName);
         npcs[activeQuest.npc.id].SetIcon(IconType.InterrogationPoint);
+        dialogueManager.OntoNextDialogue();
     }
 }
