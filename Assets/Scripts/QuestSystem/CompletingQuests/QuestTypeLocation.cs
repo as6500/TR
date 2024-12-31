@@ -8,7 +8,7 @@ public class QuestTypeLocation : MonoBehaviour
     private void Start()
     {
         onLocation = false;
-        SceneManagement.Instance.AddObjectToScene(gameObject, "2ndFloorBuilding1");
+        SceneManagement.Instance.AddObjectToScene(gameObject, "BunkerOutside");
     }
     
     private void OnTriggerEnter2D(Collider2D collision)

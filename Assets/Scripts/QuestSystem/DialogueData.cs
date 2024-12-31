@@ -6,7 +6,8 @@ using UnityEngine;
 public class DialogueData : ScriptableObject
 {
     public string[] dialogueWithQuest;
-    public List<String> dialogueWithoutQuest;
+    public string[] dialogueWithoutQuest;
+    public string[] dialogueFinishingQuest;
     public DialogueData nextDialogue;
     
 }

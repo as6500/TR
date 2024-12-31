@@ -35,7 +35,7 @@ public class QuestSystemUI : MonoBehaviour
 
 	public void DisplayLocateDeliverText(string questName, string npcName)
 	{
-		questText.text = $"{questName}: \nReturn to {npcName}";
+			questText.text = $"{questName}: \nReturn to {npcName}";
 	}
 
     public void DisplayResourceQuestText(string questName, string itemName, int questAmount, int currentItemAmount)

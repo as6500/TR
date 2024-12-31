@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestrroyObjectOnLoad : MonoBehaviour
+public class DontDestrroyObjectOnLoad : Singleton<DontDestrroyObjectOnLoad>
 {
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    
 }

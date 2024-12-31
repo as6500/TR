@@ -34,7 +34,7 @@ public class MapChangingInfo : MonoBehaviour
 				}
 			}
 			else
-			{
+			{ 
 				GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 				return;
 			}

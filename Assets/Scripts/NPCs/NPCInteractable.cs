@@ -36,4 +36,9 @@ public class NPCInteractable : MonoBehaviour
 		if (collision.gameObject.CompareTag("Player"))
             isInRange = false;
 	}
+
+	public bool IsInRange()
+	{
+		return isInRange;
+	}
 }

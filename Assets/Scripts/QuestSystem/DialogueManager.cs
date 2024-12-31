@@ -5,16 +5,18 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : Singleton<DialogueManager>
 {
     private DialogueData currentDialogue;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Button continueButton;
     [SerializeField] private Image dialogueImage;
     [SerializeField] private QuestManager questManager;
+    [SerializeField] private GameObject dialogueCanvas;
+    [SerializeField] private NPCInteractable interactableNPC;
     private bool ballonTextEnded;
-    private bool ballonTextEnded2;
     private string currentDialogueText;
     private string currentDialogueTextProgress;
     
@@ -26,11 +28,9 @@ public class DialogueManager : MonoBehaviour
     
     private void Start()
     {
-        dialogueText.enabled = false;
         ballonTextEnded = false;
-        ballonTextEnded2 = false;
         continueButton.gameObject.SetActive(false);
-        dialogueImage.enabled = false;
+        dialogueCanvas.gameObject.SetActive(false);
     }
 
     public void StartDialogue(DialogueData dialogueToPlay)
@@ -41,41 +41,45 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         currentDialogue = dialogueToPlay;
-        DialoguePicker();
         StartCoroutine(PlayDialogue());
     }
 
     private IEnumerator PlayDialogue()
     {   
         continueButton.onClick.AddListener(OnButtonClicked);
-        
-        for (i = 0; i < currentDialogue.dialogueWithQuest.Length; ++i) //passing from ballon to another ballon
+        Debug.Log(SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().name == "BunkerInside")
         {
-            dialogueImage.enabled = true;
-            dialogueText.enabled = true;
-            dialogueText.text = "";
-            currentDialogueText = currentDialogue.dialogueWithQuest[i];
-
-            for (j = 0; j < currentDialogueText.Length; ++j) //actual text
+            dialogueCanvas.gameObject.SetActive(true);
+            for (i = 0; i < currentDialogue.dialogueWithQuest.Length; ++i) //passing from ballon to another ballon
             {
-                dialogueText.text += currentDialogueText[j];
-                currentDialogueTextProgress = dialogueText.text;
-                yield return new WaitForSeconds(0.07f);
-            }
-            continueButton.gameObject.SetActive(true);
-            yield return new WaitUntil(ButtonClickedNotifier);
-            
-        }
+                dialogueText.text = "";
+                currentDialogueText = currentDialogue.dialogueWithQuest[i];
 
-        if (i >= currentDialogue.dialogueWithQuest.Length)
-        {
-            ballonTextEnded = false;
-            yield return new WaitUntil(ButtonClickedNotifier);
-            OnDialogueEnd?.Invoke();
+                for (j = 0; j < currentDialogueText.Length; ++j) //actual text
+                {
+                    dialogueText.text += currentDialogueText[j];
+                    currentDialogueTextProgress = dialogueText.text;
+                    yield return new WaitForSeconds(0.07f);
+                }
+                continueButton.gameObject.SetActive(true);
+                yield return new WaitUntil(ButtonClickedNotifier);
+            }
+
+            if (i >= currentDialogue.dialogueWithQuest.Length)
+            {
+                ballonTextEnded = false;
+                yield return new WaitUntil(ButtonClickedNotifier);
+                OnDialogueEnd?.Invoke();
+                dialogueCanvas.gameObject.SetActive(false);
+            }
+            continueButton.gameObject.SetActive(false);
         }
-        dialogueImage.enabled = false;
-        dialogueText.enabled = false;
-        continueButton.gameObject.SetActive(false);
+        else
+        {
+            dialogueCanvas.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(false);
+        }
     }
 
     private void OnButtonClicked()
@@ -92,9 +96,18 @@ public class DialogueManager : MonoBehaviour
         return ballonTextEnded;
     }
 
-    private void DialoguePicker()
+    public void OntoNextDialogue()
     {
-        if (questManager.activeQuestState == QuestState.Completed)
+        if (questManager.activeQuestState == QuestState.Completed && interactableNPC.IsInRange())
+        {
+            currentDialogueText = currentDialogue.dialogueFinishingQuest[0];
+        }
+        
+        if (questManager.activeQuestState == QuestState.Completed &&
+            questManager.activeQuest == questManager.activeQuest.nextQuest && questManager.activeQuest.npc.id == questManager.activeQuest.npc.id + 1)
+        {
             currentDialogue = currentDialogue.nextDialogue;
+        }
+        
     }
 }

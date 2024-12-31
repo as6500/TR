@@ -10,6 +10,7 @@ public class CheatCodes : MonoBehaviour
     [SerializeField] private AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
     [SerializeField] private GameObject treasure;
     [SerializeField] private EntrancesAndExits entrancesAndExits;
+    [SerializeField] private QuestManager questManager;
     private GameObject tempTreasure;
 
     void Update()
@@ -52,5 +53,8 @@ public class CheatCodes : MonoBehaviour
                 tempTreasure.transform.position = new Vector3(-25, 5, 0);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+            questManager.activeQuestState = QuestState.Completed;
     }
 }

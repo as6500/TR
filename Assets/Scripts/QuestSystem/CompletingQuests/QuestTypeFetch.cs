@@ -12,7 +12,7 @@ public class QuestTypeFetch : MonoBehaviour
 		item = GetComponent<Item>();
 		manager = FindFirstObjectByType<QuestManager>();
 		
-		SceneManagement.Instance.AddObjectToScene(gameObject, "3rdFloorBuilding1");
+		SceneManagement.Instance.AddObjectToScene(gameObject, "BunkerOutside");
 	}
 
 	private void Update()

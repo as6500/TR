@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
-
+using Vector3 = UnityEngine.Vector3;
 [Serializable] public enum QuestState { Pending, Active, Completed };
 
 public class QuestManager : Singleton<QuestManager>
@@ -26,6 +26,7 @@ public class QuestManager : Singleton<QuestManager>
     private int activeQuestItemCounter;
     [SerializeField] private Text descriptionOfQuest;
 	[SerializeField] private RawImage background;
+	[SerializeField] private NPCInteractable interactableNPC;
 	
 	public void Start()
 	{
@@ -58,13 +59,20 @@ public class QuestManager : Singleton<QuestManager>
 
 	public void StartingDialogue()
 	{
+		Debug.Log("Starting Dialogue");
 		dialogueManager.StartDialogue(dialogueData);
 		dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
 	}
 
 	private void OnDialogueFinished()
 	{
-		AcceptQuest();
+		if (activeQuestState == QuestState.Pending)
+			AcceptQuest();
+		if (activeQuestState == QuestState.Completed)
+		{
+			if (interactableNPC.IsInRange())
+				dialogueManager.OntoNextDialogue();
+		}
 	}
 	
 	public void AcceptQuest()
