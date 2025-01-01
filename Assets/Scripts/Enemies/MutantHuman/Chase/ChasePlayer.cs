@@ -12,6 +12,9 @@ public class ChasePlayer : MonoBehaviour
     [SerializeField] private int secondsWaitingToFindPlayer;
     [SerializeField] private Vector3 idlePosition;
 
+    [Header("Animations")]
+    [SerializeField] private Animator anim;
+
     [Header("Object to Follow")]
     [SerializeField] private Transform player;
 
@@ -45,15 +48,127 @@ public class ChasePlayer : MonoBehaviour
     {
         if (chasing)
         {
-            UpdateChaseState(); 
+            UpdateChaseState();
+            ChangeAnimSide();
         }
     }
+
+
 
     public void UpdateChaseState()
     {
         if (state.GetCurrentState() == State.Chase)
         {
-            agent.SetDestination(player.position);   
+            agent.SetDestination(player.position);
+        }
+    }
+
+    private void ChangeAnimSide()
+    {
+        if (agent.velocity.x == 0 && agent.velocity.y == 0)
+        {
+            return;
+        }
+
+        if (agent.velocity.x >= 0 && agent.velocity.y >= 0)
+        {
+            if(agent.velocity.x > 0)
+            {
+                if (agent.velocity.y > 0)
+                {
+                    if (agent.velocity.x > agent.velocity.y)
+                    {
+                        anim.SetTrigger("side_right");
+                    }
+                    else
+                    {
+                        anim.SetTrigger("back");
+                    }
+                }
+                else
+                {
+                    anim.SetTrigger("side_right");
+                }
+            }
+            else
+            {
+                anim.SetTrigger("back");
+            }
+        }
+        else if (agent.velocity.x <= 0 && agent.velocity.y <= 0)
+        {
+            if (agent.velocity.x < 0)
+            {
+                if (agent.velocity.y < 0)
+                {
+                    if (agent.velocity.x < agent.velocity.y)
+                    {
+                        anim.SetTrigger("side_left");
+                    }
+                    else
+                    {
+                        anim.SetTrigger("front");
+                    }
+                }
+                else
+                {
+                    anim.SetTrigger("side_left");
+                }
+            }
+            else
+            {
+                anim.SetTrigger("front");
+            }
+        }
+        else if (agent.velocity.x >= 0 && agent.velocity.y <= 0)
+        {
+            if (agent.velocity.x > 0)
+            {
+                if (agent.velocity.y < 0)
+                {
+                    if (agent.velocity.x > agent.velocity.y * -1)
+                    {
+                        anim.SetTrigger("side_right");
+                    }
+                    else
+                    {
+                        anim.SetTrigger("front");
+                    }
+                }
+                else
+                {
+                    anim.SetTrigger("side_right");
+                }
+            }
+            else
+            {
+                anim.SetTrigger("front");
+            }
+        }
+        else if (agent.velocity.x <= 0 && agent.velocity.y >= 0)
+        {
+            if (agent.velocity.x < 0)
+            {
+                if (agent.velocity.y > 0)
+                {
+                    if (agent.velocity.x * -1 > agent.velocity.y)
+                    {
+                        anim.SetTrigger("side_left");
+                    }
+                    else
+                    {
+                        anim.SetTrigger("back");
+                    }
+                }
+                else
+                {
+                    anim.SetTrigger("side_left");
+                }
+            }
+            else
+            {
+                anim.SetTrigger("back");
+            }
         }
     }
 

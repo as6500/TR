@@ -7,6 +7,7 @@ public class MutantHumanAttack : MonoBehaviour
 {
     [SerializeField] private MutantHumanState state;
     [SerializeField] private int damage;
+    private IDamageable player;
     private bool attacking;
 
     void Start()
@@ -34,14 +35,21 @@ public class MutantHumanAttack : MonoBehaviour
             attacking = false;
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
-        if(damageable != null)
+        if (damageable != null)
         {
-            damageable.TakeDamage(gameObject, damage, 500);
+            player = damageable;
+        }
+    }
+
+    private void DealDamageToPlayer()
+    {
+        if (player != null)
+        {
+            player.TakeDamage(gameObject, damage, 500);
         }
     }
 }

@@ -22,6 +22,7 @@ public class MutantHumanState : MonoBehaviour
     private void Start()
     {
         currentState = State.Idle;
+        SetIdleAnim();
     }
 
     private bool StateChanged()
@@ -41,15 +42,6 @@ public class MutantHumanState : MonoBehaviour
         if (StateChanged())
         {
             onStateChangedEvent.Invoke();
-
-            if (currentState == State.Chase)
-            {
-
-            }
-            else if (currentState == State.Attack) 
-            { 
-                
-            }
         }
     }
 
@@ -63,10 +55,12 @@ public class MutantHumanState : MonoBehaviour
         if (currentState == State.Idle)
         {
             currentState = State.Chase;
+            SetWalkAnim();
         }
         else if (currentState == State.Chase)
         {
             currentState = State.Attack;
+            SetAttackAnim();
         }
     }
 
@@ -75,11 +69,32 @@ public class MutantHumanState : MonoBehaviour
         if (currentState == State.Chase)
         {
             currentState = State.Idle;
+            SetIdleAnim();
         }
         else if (currentState == State.Attack)
         {
             currentState = State.Chase;
+            SetWalkAnim();
         }
+    }
+
+    private void SetIdleAnim()
+    {
+        anim.SetBool("idle", true);
+        anim.SetBool("walking", false);
+        anim.SetBool("attacking", false);
+    }
+    private void SetWalkAnim()
+    {
+        anim.SetBool("idle", false);
+        anim.SetBool("walking", true);
+        anim.SetBool("attacking", false);
+    }
+    private void SetAttackAnim()
+    {
+        anim.SetBool("idle", false);
+        anim.SetBool("walking", false);
+        anim.SetBool("attacking", true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
