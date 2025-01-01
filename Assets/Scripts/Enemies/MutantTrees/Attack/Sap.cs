@@ -64,7 +64,9 @@ public class Sap : MonoBehaviour
         if (!collision.CompareTag("Enemy") && !collision.isTrigger)
         {
             IDamageable damageable = collision.GetComponent<IDamageable>();
-            if (damageable != null)
+            EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
+
+            if (damageable != null && enemyHealth == null)
             {
                 damageable.TakeDamage(gameObject, damage, 50);
                 BulletDestroyedEffect(damageable.GetBloodColor(), 5);
