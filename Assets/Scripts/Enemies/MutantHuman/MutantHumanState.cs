@@ -11,6 +11,10 @@ public enum State { Idle, Chase, Attack }
 
 public class MutantHumanState : MonoBehaviour
 {
+    [Header("Animations")]
+    [SerializeField] private Animator anim;
+
+    [Header("States")]
     [SerializeField] private OnStateChanged onStateChangedEvent;
     [SerializeField] private State currentState;
     private State changeFromState;
@@ -37,6 +41,15 @@ public class MutantHumanState : MonoBehaviour
         if (StateChanged())
         {
             onStateChangedEvent.Invoke();
+
+            if (currentState == State.Chase)
+            {
+
+            }
+            else if (currentState == State.Attack) 
+            { 
+                
+            }
         }
     }
 

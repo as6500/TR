@@ -1191,7 +1191,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1261966255313698153
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1332,6 +1332,7 @@ MonoBehaviour:
   antiRadiationFlaskUIScript: {fileID: 0}
   treasure: {fileID: 1224428143000546461, guid: 3871a07b02fcd6a4da91cf14eb74c70b, type: 3}
   entrancesAndExits: {fileID: 0}
+  questManager: {fileID: 0}
 --- !u!114 &1219374903157713629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,6 +1387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920b88c0431956b43b9e0f0c54bcd3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <entranceTypeToFind>k__BackingField: 0
+  <buildingTypeToFind>k__BackingField: 0
 --- !u!1 &5684625343898364618
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,12 +27,12 @@ public class ChasePlayer : MonoBehaviour
 
         chasing = false;
 
-        StartCoroutine(Test());
+        StartCoroutine(BugWithPositionFix());
 
         agent.enabled = true;
     }
 
-    private IEnumerator Test()
+    private IEnumerator BugWithPositionFix()
     {
         yield return new WaitForSeconds(1);
 

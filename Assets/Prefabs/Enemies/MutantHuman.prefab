@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 7037774541930251413}
   - component: {fileID: 5101687534942761632}
   - component: {fileID: 1715574605545671551}
+  - component: {fileID: 6424822334131601216}
   m_Layer: 0
   m_Name: MutantHuman
   m_TagString: Untagged
@@ -284,6 +285,7 @@ MonoBehaviour:
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.5
   enemyType: 0
+  animator: {fileID: 0}
 --- !u!114 &3972627454184604642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3d2622078af4c43a5f5a43df763ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   onStateChangedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -378,3 +381,24 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0.00020456314, y: -0.5576563, z: 0}
     m_Extent: {x: 0.5019007, y: 0.44032192, z: 0}
+--- !u!95 &6424822334131601216
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852099708569583667}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ec02b87603c66c45bb9bd6ba6649a41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
