@@ -9,20 +9,13 @@ using UnityEngine.UI;
 
 public class MenuManager : Singleton<MenuManager>
 {
-    private enum Menu {MainMenu, InGameMenu, DeathMenu};
+    private enum Menu {InGameMenu, DeathMenu};
 
     [Header ("API Connection")]
     [SerializeField] private CreateConnection APIRequests;
 
     [Header("Choose Menu")]
     [SerializeField] private Menu menu;
-
-    [Header("Main Menu")]
-    [SerializeField] private GameObject mainOptions;
-    [SerializeField] private GameObject settingsView;
-    [SerializeField] private GameObject appView;
-    [SerializeField] private GameObject codeView;
-    [SerializeField] private Text connectionCodeText;
 
     [Header("In-Game Menu")]
     [SerializeField] private GameObject inGameMenu;
@@ -41,73 +34,10 @@ public class MenuManager : Singleton<MenuManager>
 
     void Start()
     {
-        if (menu == Menu.MainMenu)
-        {
-            GoBackMainOptions();
-        }
-        else if (menu == Menu.InGameMenu)
+        if (menu == Menu.InGameMenu)
         {
             ChangeGameState(isMenuActive);
         }
-    }
-
-    //Main Menu Functions
-
-    public void GoToSettingsView()
-    {
-        settingsView.SetActive(true);
-        appView.SetActive(false);
-        mainOptions.SetActive(false);
-        codeView.SetActive(false);
-    }
-
-    public void GoToAppView()
-    {
-        appView.SetActive(true);
-        settingsView.SetActive(false);
-        codeView.SetActive(false);
-        mainOptions.SetActive(false);
-    }
-
-    public void GoToCodeView()
-    {
-        appView.SetActive(true);
-        settingsView.SetActive(false);
-        codeView.SetActive(true);
-        mainOptions.SetActive(false);
-    }
-
-    public void GoBackMainOptions()
-    {
-        settingsView.SetActive(false);
-        codeView.SetActive(false);
-        appView.SetActive(false);
-        mainOptions.SetActive(true);
-    }
-
-    public void GoBackAppView()
-    {
-        settingsView.SetActive(false);
-        codeView.SetActive(false);
-        appView.SetActive(true);
-        mainOptions.SetActive(false);
-    }
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene("BunkerInside");
-    }
-
-    public void GetConnectionCode() 
-    {
-        APIRequests.CreateNewConnection(ShowCode, GoBackAppView);
-    }
-
-    private void ShowCode()
-    {
-        UnJasonedData data = APIRequests.response;
-        GoToCodeView();
-        connectionCodeText.text = data.unity_connection_code.ToString();
     }
 
     //In-Game Menu Functions
