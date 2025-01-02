@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MapChangingInfo : MonoBehaviour
+public class MapChangingInfo : Singleton<MapChangingInfo>
 {
     private FadeInAndOutBlackScreen blackScreen; 
     [field:SerializeField] public EEntranceType entranceTypeToFind
@@ -9,7 +9,7 @@ public class MapChangingInfo : MonoBehaviour
 		get; set;
 	}
 
-	[field:SerializeField] public EBuildings buildingTypeToFind
+	[field: SerializeField] public EBuildings buildingTypeToFind
 	{
 		get; set;
 	}
@@ -27,6 +27,7 @@ public class MapChangingInfo : MonoBehaviour
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
 	{
 		EntranceLocator[] arrayOfAllEntrances = FindObjectsOfType<EntranceLocator>();
+		Debug.Log("OnSceneLoaded Called");
 		for (int i = 0; i < arrayOfAllEntrances.Length; ++i)
 		{
 			if (arrayOfAllEntrances[i].entranceType != entranceTypeToFind) 
@@ -38,20 +39,21 @@ public class MapChangingInfo : MonoBehaviour
 				{
 					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 					Camera.main.transform.position = new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y, Camera.main.transform.position.z);
-                    StartCoroutine(blackScreen.ChangeBlackScreenOpacityDown());
-                    return;
+                    ;
+					blackScreen.ResetAndStartFade(blackScreen.ChangeBlackScreenOpacityDown());
+                    break;
 				}
 			}
-			else
-			{ 
-				GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
+			else if (this != null)
+			{
+                GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 				Camera.main.transform.position = new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y, Camera.main.transform.position.z);
 
 				if (blackScreen != null)
 				{
-					StartCoroutine(blackScreen.ChangeBlackScreenOpacityDown());
-				}
-                return;
+                    blackScreen.ResetAndStartFade(blackScreen.ChangeBlackScreenOpacityDown());
+                }
+                break;
 			}
 		}
 		

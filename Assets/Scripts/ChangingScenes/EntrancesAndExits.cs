@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class EntrancesAndExits: MonoBehaviour
+public class EntrancesAndExits : MonoBehaviour
 {
     [SerializeField] private string sceneName;
     [SerializeField] private EEntranceType whereToLoadTo;
     [SerializeField] private EBuildings whereToLoadToBuildings;
+    private bool changingScenes = false;
     private FadeInAndOutBlackScreen blackScreen;
     private GameObject player;
 
@@ -20,11 +21,11 @@ public class EntrancesAndExits: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player")) 
+        if (!collision.CompareTag("Player"))
             return;
         StartCoroutine(GoToScene(sceneName, whereToLoadTo, whereToLoadToBuildings));
     }
-    
+
     public EEntranceType WhereToLoadTo()
     {
         return whereToLoadTo;
@@ -32,12 +33,21 @@ public class EntrancesAndExits: MonoBehaviour
 
     public IEnumerator GoToScene(String nameOfScene, EEntranceType place, EBuildings buildings)
     {
-        StartCoroutine(blackScreen.ChangeBlackScreenOpacityUp());
-        yield return new WaitUntil(blackScreen.FadeEnded);
-        
-        SceneManager.LoadScene(nameOfScene);
-        
-        player.GetComponent<MapChangingInfo>().entranceTypeToFind = place;
-        player.GetComponent<MapChangingInfo>().buildingTypeToFind = buildings;
+        if(!changingScenes)
+        {
+            Debug.Log("Clicked" + changingScenes);
+
+            changingScenes = true;
+
+            blackScreen.ResetAndStartFade(blackScreen.ChangeBlackScreenOpacityUp());
+            yield return new WaitUntil(blackScreen.FadeEnded);
+
+            SceneManager.LoadScene(nameOfScene);
+
+            player.GetComponent<MapChangingInfo>().entranceTypeToFind = place;
+            player.GetComponent<MapChangingInfo>().buildingTypeToFind = buildings;
+
+            changingScenes = false;
+        }
     }
 }

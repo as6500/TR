@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class CheatCodes : MonoBehaviour
     [SerializeField] private GameObject treasure;
     [SerializeField] private EntrancesAndExits entrancesAndExits;
     [SerializeField] private QuestManager questManager;
+    private bool cheatCoding = false;
     private GameObject tempTreasure;
 
     void Update()

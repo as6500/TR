@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class FadeInAndOutBlackScreen : MonoBehaviour
         fadeEnded = false;
         while (currentTimeSeconds < timeToFadeSeconds)
         {
-            blackScreen.color = new Color(0, 0, 0, blackScreen.color.a + opacityChangePerTick);
+            blackScreen.color = new Color(0, 0, 0, Mathf.Clamp(blackScreen.color.a + opacityChangePerTick, 0f, 1f));
             yield return new WaitForSeconds(timeBetweenOpacityChanged);
             currentTimeSeconds += timeBetweenOpacityChanged;
         }
@@ -37,12 +38,21 @@ public class FadeInAndOutBlackScreen : MonoBehaviour
         fadeEnded = false;
         while (currentTimeSeconds < timeToFadeSeconds)
         {
-            blackScreen.color = new Color(0, 0, 0, blackScreen.color.a - opacityChangePerTick);
+            
+            blackScreen.color = new Color(0, 0, 0, Mathf.Clamp(blackScreen.color.a - opacityChangePerTick, 0f, 1f));
             yield return new WaitForSeconds(timeBetweenOpacityChanged);
             currentTimeSeconds += timeBetweenOpacityChanged;
         }
         currentTimeSeconds = 0;
         fadeEnded = true;
+    }
+
+    public void ResetAndStartFade(IEnumerator courotine)
+    {
+        StopAllCoroutines();
+        currentTimeSeconds = 0;
+        fadeEnded = true;
+        StartCoroutine(courotine);
     }
 
     public bool FadeEnded()

@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <entranceTypeToFind>k__BackingField: 0
-  <buildingTypeToFind>k__BackingField: 0
+  <buildingTypeToFind>k__BackingField: -1
 --- !u!1 &5684625343898364618
 GameObject:
   m_ObjectHideFlags: 0
