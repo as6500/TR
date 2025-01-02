@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1128340025190005625}
   - component: {fileID: 1780387542264391774}
+  - component: {fileID: 3607469397374132617}
   m_Layer: 0
   m_Name: FadeInAndOutBlackScreen
   m_TagString: Untagged
@@ -308,6 +309,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3607469397374132617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301985007347219370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dbe81fc34bad148a06e98f25ebb7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToFadeSeconds: 1
+  timeBetweenOpacityChanged: 0.01
+  currentTimeSeconds: 0
+  opacityChangePerTick: 0
 --- !u!1 &9124192243582081161
 GameObject:
   m_ObjectHideFlags: 0

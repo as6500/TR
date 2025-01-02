@@ -7,10 +7,12 @@ public class EntrancesAndExits: MonoBehaviour
     [SerializeField] private string sceneName;
     [SerializeField] private EEntranceType whereToLoadTo;
     [SerializeField] private EBuildings whereToLoadToBuildings;
+    private FadeInAndOutBlackScreen blackScreen;
     private GameObject player;
 
     private void Start()
     {
+        blackScreen = Camera.main.GetComponent<FadeInAndOutBlackScreen>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -20,7 +22,6 @@ public class EntrancesAndExits: MonoBehaviour
             return;
         
         GoToScene(sceneName, whereToLoadTo, whereToLoadToBuildings);
-
     }
     
     public EEntranceType WhereToLoadTo()
