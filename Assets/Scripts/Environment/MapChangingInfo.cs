@@ -30,14 +30,17 @@ public class MapChangingInfo : MonoBehaviour
 				if (arrayOfAllEntrances[i].buildingType == buildingTypeToFind)
 				{
 					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
+					Camera.main.transform.position = new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y, Camera.main.transform.position.z);
 					return;
 				}
 			}
 			else
 			{ 
 				GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
+				Camera.main.transform.position = new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y, Camera.main.transform.position.z);
 				return;
 			}
 		}
+		
 	}
 }

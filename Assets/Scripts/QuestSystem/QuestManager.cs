@@ -66,8 +66,6 @@ public class QuestManager : Singleton<QuestManager>
 				background.enabled = !background.enabled;
 			}
 		}
-		
-		Debug.Log(activeQuestState);
 	}
 
 	public void StartingDialogue()
