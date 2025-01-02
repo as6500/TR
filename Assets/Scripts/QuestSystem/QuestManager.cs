@@ -39,9 +39,20 @@ public class QuestManager : Singleton<QuestManager>
 		
 		OnQuestAction.AddListener(CompleteQuest);
 		
+		
 		descriptionOfQuest.enabled = false;
 		background.enabled = false;
 		titleText.enabled = false;
+	}
+
+	private void OnEnable()
+	{
+		dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
+	}
+
+	private void OnDisable()
+	{
+		dialogueManager.OnDialogueEnd.RemoveListener(OnDialogueFinished);
 	}
 
 	public void Update()
@@ -55,31 +66,24 @@ public class QuestManager : Singleton<QuestManager>
 				background.enabled = !background.enabled;
 			}
 		}
+		
+		Debug.Log(activeQuestState);
 	}
 
 	public void StartingDialogue()
 	{
-		if (activeQuestState == QuestState.Pending)
-		{
-			Debug.Log("Starting Dialogue");
-			dialogueManager.StartDialogue(dialogueData);
-			dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
-		}
-
-		if (activeQuestState == QuestState.Completed)
-		{
-			Debug.Log("Starting Dialogue2");
-			dialogueManager.StartDialogue(dialogueData);
-			dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
-		}
+		Debug.Log("Starting Dialogue");
+		dialogueManager.StartDialogue(dialogueData);
 	}
 
 	private void OnDialogueFinished()
 	{
 		if (activeQuestState == QuestState.Pending)
 			AcceptQuest();
-		if (activeQuestState == QuestState.Active)
+		else if (activeQuestState == QuestState.Active)
 			CompleteQuest();
+		else if (activeQuestState == QuestState.Completed)
+			OntoNextQuest();
 	}
 	
 	public void AcceptQuest()
@@ -129,8 +133,7 @@ public class QuestManager : Singleton<QuestManager>
 	{
 		if (activeQuestState != QuestState.Completed) 
 			return;
-		
-		dialogueManager.OntoNextDialogue();
+
 		npcs[activeQuest.npc.id].SetIcon(IconType.None);
 		questText.TextOfQuest().enabled = false;
 		

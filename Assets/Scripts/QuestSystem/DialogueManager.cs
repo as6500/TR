@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,6 +35,16 @@ public class DialogueManager : Singleton<DialogueManager>
         dialogueCanvas.gameObject.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        continueButton.onClick.AddListener(OnButtonClicked);
+    }
+
+    private void OnDisable()
+    {
+        continueButton.onClick.RemoveListener(OnButtonClicked);
+    }
+
     public void StartDialogue(DialogueData dialogueToPlay)
     {
         if (!dialogueToPlay)
@@ -47,34 +58,57 @@ public class DialogueManager : Singleton<DialogueManager>
 
     private IEnumerator PlayDialogue()
     {   
-        continueButton.onClick.AddListener(OnButtonClicked);
-        Debug.Log(SceneManager.GetActiveScene().name);
+
         dialogueCanvas.gameObject.SetActive(true);
-        for (int i = 0; i < currentDialogue.dialogueWithQuest.Length; ++i) //passing from ballon to another ballon
+
+        if (questManager.activeQuestState != QuestState.Completed)
+        {
+            for (int i = 0; i < currentDialogue.dialogueWithQuest.Length; i++) //passing from ballon to another ballon
+            {
+                dialogueText.text = "";
+                currentDialogueText = currentDialogue.dialogueWithQuest[i];
+                
+                for (j = 0; j < currentDialogueText.Length; ++j) //actual text
+                {
+                    dialogueText.text += currentDialogueText[j];
+                    currentDialogueTextProgress = dialogueText.text;
+                    yield return new WaitForSeconds(0.06f);
+                }
+                continueButton.gameObject.SetActive(true);
+                index++;
+                yield return new WaitUntil(ButtonClickedNotifier);
+            }
+                
+            if (index >= currentDialogue.dialogueWithQuest.Length)
+            {
+                ballonTextEnded = false;
+                yield return new WaitUntil(ButtonClickedNotifier);
+                OnDialogueEnd?.Invoke();
+                dialogueCanvas.gameObject.SetActive(false);
+            }
+            continueButton.gameObject.SetActive(false);
+            dialogueCanvas.gameObject.SetActive(false);    
+        }
+        else
         {
             dialogueText.text = "";
-            currentDialogueText = currentDialogue.dialogueWithQuest[i];
-
+            currentDialogueText = currentDialogue.dialogueFinishingQuest[0];
+            continueButton.gameObject.SetActive(false);
+            
             for (j = 0; j < currentDialogueText.Length; ++j) //actual text
             {
                 dialogueText.text += currentDialogueText[j];
                 currentDialogueTextProgress = dialogueText.text;
-                yield return new WaitForSeconds(0.07f);
+                yield return new WaitForSeconds(0.06f);
             }
             continueButton.gameObject.SetActive(true);
             yield return new WaitUntil(ButtonClickedNotifier);
-            index++;
-        }
-            
-        if (index >= currentDialogue.dialogueWithQuest.Length)
-        {
             ballonTextEnded = false;
-            yield return new WaitUntil(ButtonClickedNotifier);
-            OnDialogueEnd?.Invoke();
+            continueButton.gameObject.SetActive(false);
             dialogueCanvas.gameObject.SetActive(false);
+            currentDialogue = currentDialogue.nextDialogue;
+            OnDialogueEnd?.Invoke();
         }
-        continueButton.gameObject.SetActive(false);
-        dialogueCanvas.gameObject.SetActive(false);
     }
 
     private void OnButtonClicked()
@@ -86,16 +120,8 @@ public class DialogueManager : Singleton<DialogueManager>
         }
     }
 
-    private bool ButtonClickedNotifier()
+    public bool ButtonClickedNotifier()
     {
         return ballonTextEnded;
-    }
-
-    public void OntoNextDialogue()
-    {
-        if (questManager.activeQuestState == QuestState.Completed && interactableNPC.interactingText.enabled)
-        {
-            currentDialogueText = currentDialogue.dialogueFinishingQuest[0];
-        }
     }
 }
