@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EntrancesAndExits: MonoBehaviour
 {
@@ -12,16 +14,15 @@ public class EntrancesAndExits: MonoBehaviour
 
     private void Start()
     {
-        blackScreen = Camera.main.GetComponent<FadeInAndOutBlackScreen>();
         player = GameObject.FindGameObjectWithTag("Player");
+        blackScreen = GameObject.FindGameObjectWithTag("FadeInAndOutBlackScreen").GetComponent<FadeInAndOutBlackScreen>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) 
             return;
-        
-        GoToScene(sceneName, whereToLoadTo, whereToLoadToBuildings);
+        StartCoroutine(GoToScene(sceneName, whereToLoadTo, whereToLoadToBuildings));
     }
     
     public EEntranceType WhereToLoadTo()
@@ -29,8 +30,11 @@ public class EntrancesAndExits: MonoBehaviour
         return whereToLoadTo;
     }
 
-    public void GoToScene(String nameOfScene, EEntranceType place, EBuildings buildings)
+    public IEnumerator GoToScene(String nameOfScene, EEntranceType place, EBuildings buildings)
     {
+        StartCoroutine(blackScreen.ChangeBlackScreenOpacityUp());
+        yield return new WaitUntil(blackScreen.FadeEnded);
+        
         SceneManager.LoadScene(nameOfScene);
         
         player.GetComponent<MapChangingInfo>().entranceTypeToFind = place;

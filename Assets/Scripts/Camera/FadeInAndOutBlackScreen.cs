@@ -10,6 +10,7 @@ public class FadeInAndOutBlackScreen : MonoBehaviour
     [SerializeField] private float timeBetweenOpacityChanged = 0.1f;
     [SerializeField] private float currentTimeSeconds;
     [SerializeField] private float opacityChangePerTick;
+    [SerializeField] private bool fadeEnded = true;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class FadeInAndOutBlackScreen : MonoBehaviour
 
     public IEnumerator ChangeBlackScreenOpacityUp()
     {
+        fadeEnded = false;
         while (currentTimeSeconds < timeToFadeSeconds)
         {
             blackScreen.color = new Color(0, 0, 0, blackScreen.color.a + opacityChangePerTick);
@@ -27,10 +29,12 @@ public class FadeInAndOutBlackScreen : MonoBehaviour
             currentTimeSeconds += timeBetweenOpacityChanged;
         }
         currentTimeSeconds = 0;
+        fadeEnded = true;
     }
 
     public IEnumerator ChangeBlackScreenOpacityDown()
     {
+        fadeEnded = false;
         while (currentTimeSeconds < timeToFadeSeconds)
         {
             blackScreen.color = new Color(0, 0, 0, blackScreen.color.a - opacityChangePerTick);
@@ -38,5 +42,11 @@ public class FadeInAndOutBlackScreen : MonoBehaviour
             currentTimeSeconds += timeBetweenOpacityChanged;
         }
         currentTimeSeconds = 0;
+        fadeEnded = true;
+    }
+
+    public bool FadeEnded()
+    {
+        return fadeEnded;
     }
 }

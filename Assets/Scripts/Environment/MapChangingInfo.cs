@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MapChangingInfo : Singleton<MapChangingInfo>
 {
-	[field:SerializeField] public EEntranceType entranceTypeToFind
+    private FadeInAndOutBlackScreen blackScreen; 
+    [field:SerializeField] public EEntranceType entranceTypeToFind
 	{
 		get; set;
 	}
@@ -14,10 +15,16 @@ public class MapChangingInfo : Singleton<MapChangingInfo>
 	}
 	private void Awake()
 	{
-		SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
-	private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+	private void Start()
+	{
+		blackScreen = GameObject.FindGameObjectWithTag("FadeInAndOutBlackScreen").GetComponent<FadeInAndOutBlackScreen>();
+    }
+
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
 	{
 		EntranceLocator[] arrayOfAllEntrances = FindObjectsOfType<EntranceLocator>();
 		for (int i = 0; i < arrayOfAllEntrances.Length; ++i)
@@ -31,14 +38,20 @@ public class MapChangingInfo : Singleton<MapChangingInfo>
 				{
 					GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 					Camera.main.transform.position = new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y, Camera.main.transform.position.z);
-					return;
+                    StartCoroutine(blackScreen.ChangeBlackScreenOpacityDown());
+                    return;
 				}
 			}
 			else
 			{ 
 				GetComponent<Rigidbody2D>().position = arrayOfAllEntrances[i].transform.position;
 				Camera.main.transform.position = new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y, Camera.main.transform.position.z);
-				return;
+
+				if (blackScreen != null)
+				{
+					StartCoroutine(blackScreen.ChangeBlackScreenOpacityDown());
+				}
+                return;
 			}
 		}
 		

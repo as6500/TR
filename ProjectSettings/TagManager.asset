@@ -30,6 +30,7 @@ TagManager:
   - NextRegion
   - Treasure
   - EnvironmentManager
+  - FadeInAndOutBlackScreen
   layers:
   - Default
   - TransparentFX
