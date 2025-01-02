@@ -21,10 +21,6 @@ public class DialogueManager : Singleton<DialogueManager>
     private bool ballonTextEnded;
     private string currentDialogueText;
     private string currentDialogueTextProgress;
-
-
-    private int index = 0;
-    private int j;
     
     public UnityEvent OnDialogueEnd;
     
@@ -52,7 +48,8 @@ public class DialogueManager : Singleton<DialogueManager>
             Debug.LogError("DialogueManager::StartDialogue: Mafalda Needs To Fix The Null Ref");
             return;
         }
-        currentDialogue = dialogueToPlay;
+        if (currentDialogue == null)
+            currentDialogue = dialogueToPlay;
         StartCoroutine(PlayDialogue());
     }
 
@@ -60,7 +57,7 @@ public class DialogueManager : Singleton<DialogueManager>
     {   
 
         dialogueCanvas.gameObject.SetActive(true);
-
+        Debug.Log(questManager.activeQuestState);
         if (questManager.activeQuestState != QuestState.Completed)
         {
             for (int i = 0; i < currentDialogue.dialogueWithQuest.Length; i++) //passing from ballon to another ballon
@@ -68,24 +65,18 @@ public class DialogueManager : Singleton<DialogueManager>
                 dialogueText.text = "";
                 currentDialogueText = currentDialogue.dialogueWithQuest[i];
                 
-                for (j = 0; j < currentDialogueText.Length; ++j) //actual text
+                for (int j = 0; j < currentDialogueText.Length; ++j) //actual text
                 {
                     dialogueText.text += currentDialogueText[j];
                     currentDialogueTextProgress = dialogueText.text;
                     yield return new WaitForSeconds(0.06f);
                 }
                 continueButton.gameObject.SetActive(true);
-                index++;
                 yield return new WaitUntil(ButtonClickedNotifier);
-            }
-                
-            if (index >= currentDialogue.dialogueWithQuest.Length)
-            {
                 ballonTextEnded = false;
-                yield return new WaitUntil(ButtonClickedNotifier);
-                OnDialogueEnd?.Invoke();
-                dialogueCanvas.gameObject.SetActive(false);
             }
+            
+            OnDialogueEnd?.Invoke();
             continueButton.gameObject.SetActive(false);
             dialogueCanvas.gameObject.SetActive(false);    
         }
@@ -95,7 +86,7 @@ public class DialogueManager : Singleton<DialogueManager>
             currentDialogueText = currentDialogue.dialogueFinishingQuest[0];
             continueButton.gameObject.SetActive(false);
             
-            for (j = 0; j < currentDialogueText.Length; ++j) //actual text
+            for (int j = 0; j < currentDialogueText.Length; ++j) //actual text
             {
                 dialogueText.text += currentDialogueText[j];
                 currentDialogueTextProgress = dialogueText.text;

@@ -17,26 +17,22 @@ public class CheatCodes : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C)) //change scene to the City
         {
-            SceneManager.LoadScene("City");
-            entrancesAndExits.WhereToLoadTo();
+            entrancesAndExits.GoToScene("City",EEntranceType.CityRoad, EBuildings.INVALID);
         }
 
         if (Input.GetKeyDown(KeyCode.B)) //change scene to Bunker
         {
-            SceneManager.LoadScene("BunkerInside");
-            entrancesAndExits.WhereToLoadTo();
+            entrancesAndExits.GoToScene("BunkerInside",EEntranceType.BunkerOutside, EBuildings.INVALID);
         }
 
         if (Input.GetKeyDown(KeyCode.K)) //change scene to Road
         {
-            SceneManager.LoadScene("Road");
-            entrancesAndExits.WhereToLoadTo();
+            entrancesAndExits.GoToScene("Road",EEntranceType.RoadOutside, EBuildings.INVALID);
         }
 
         if (Input.GetKeyDown(KeyCode.I)) //change scene to Farm
         {
-            SceneManager.LoadScene("Farm");
-            entrancesAndExits.WhereToLoadTo();
+            entrancesAndExits.GoToScene("Farm", EEntranceType.FarmRoad, EBuildings.INVALID);
         }
 
         if (Input.GetKeyDown(KeyCode.N)) //adds 80 more pills and anti-radiation flasks to the player
