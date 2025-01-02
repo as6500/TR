@@ -64,38 +64,35 @@ public class MenuManager : Singleton<MenuManager>
     public void LeaveToMainMenu()
     {
         Debug.Log("Leaving to main menu");
-        //destroyObjects();
+        DestroyObjects();
         SceneManager.LoadScene("Main Menu");
     }
     
-    // private void destroyObjects()
-    // {
-    //     GameObject[] dontDestroyOnLoadObjects = null;
-    //     for(int i = 0; i < SceneManager.sceneCount; ++i)
-    //     {
-    //         if(SceneManager.GetSceneAt(i).name == "DontDestroyOnLoad")
-    //         {
-    //             dontDestroyOnLoadObjects = SceneManager.GetSceneAt(i).GetRootGameObjects();
-    //             break;
-    //         }
-    //     }
-    //
-    //     if (dontDestroyOnLoadObjects == null)
-    //     {
-    //         return;
-    //     }
-    //
-    //     for( int i = 0; i < dontDestroyOnLoadObjects.Length; i++ )
-    //     {
-    //          Destroy(dontDestroyOnLoadObjects[i]);
-    //     }
-    // }
+    private void DestroyObjects()
+     {
+         // Get all tracked DontDestroyOnLoad objects
+         List<GameObject> trackedObjects = ProjectUtils.GetAllTrackedDontDestroyOnLoadObjects();
+         // Iterate through the list and destroy each object
+         for (int i = trackedObjects.Count - 1; i >= 0; i--)
+         {
+             if (trackedObjects[i] != null)
+             {
+                 Debug.Log($"Destroying tracked object: {trackedObjects[i].name}");
+                 ProjectUtils.DestroyOnLoadTracked(trackedObjects[i]);
+             }
+         }
+
+         // Clear the tracked objects list in ProjectUtils to avoid dangling references
+         trackedObjects.Clear();
+     }
 
     public void ResetGame()
     {
         Debug.Log("Reset game");
         healthScript.SetCurrentHealth(100);
-        deathMenu.SetActive(false);
+        if (deathMenu != null){
+            deathMenu.SetActive(false);
+        }
         SceneManager.LoadScene("BunkerInside");
     }
 
@@ -109,7 +106,10 @@ public class MenuManager : Singleton<MenuManager>
     
     private void ShowDeathScreen()
     {
-        deathMenu.SetActive(true);
+        if (deathMenu != null)
+        {
+            deathMenu.SetActive(true);
+        }
         menu = Menu.DeathMenu;
     }
 

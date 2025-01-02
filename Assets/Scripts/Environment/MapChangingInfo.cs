@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MapChangingInfo : Singleton<MapChangingInfo>
+public class MapChangingInfo : MonoBehaviour
 {
     private FadeInAndOutBlackScreen blackScreen; 
     [field:SerializeField] public EEntranceType entranceTypeToFind

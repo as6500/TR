@@ -51,13 +51,19 @@ public class MovementScript : Singleton<MovementScript>
     private void OnWalkPerformed(InputAction.CallbackContext callbackContext)
     {
         currentInput = callbackContext.ReadValue<Vector2>();
-        anim.SetBool("walking", true);
+        if (anim != null)
+        {
+            anim.SetBool("walking", true);    
+        }
     }
 
     private void OnWalkCancelled(InputAction.CallbackContext callbackContext)
     {
         currentInput = Vector2.zero;
-        anim.SetBool("walking", false);
+        if (anim != null)
+        {
+            anim.SetBool("walking", false);
+        }
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext callbackContext)

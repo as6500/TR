@@ -126,5 +126,6 @@ public class HealthScript : MonoBehaviour, IDamageable
     public void SetCurrentHealth(float healthValue)
     {
         currentHealth = healthValue;
+        normalizedHealth = currentHealth / maxHealth;
     }
 }

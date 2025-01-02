@@ -18,6 +18,11 @@ public class SceneManagement : Singleton<SceneManagement>
     {
         foreach (KeyValuePair<GameObject, string> keyValuePair in scenes) //KeyValuePair - key = gameObject, value = scene (dictionary has both)
         {
+            if (keyValuePair.Key == null)
+            {
+                return;
+            }
+
             if (keyValuePair.Value == scene.name)
                 keyValuePair.Key.SetActive(true); //shows the gameobject on the scene if the scene is the same as the gameobject truly is
             else
@@ -27,6 +32,7 @@ public class SceneManagement : Singleton<SceneManagement>
 
     public void AddObjectToScene(GameObject obj, String sceneName)
     {
+        
         int instanceId = obj.GetInstanceID(); // get the id that the unity creates on the object
         	
         if (!uniqueIdentifiers.ContainsKey(instanceId)) //if it doesn't have the name of this gameObject
