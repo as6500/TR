@@ -38,8 +38,9 @@ public class MutantHumanAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
 
-        if (damageable != null)
+        if (damageable != null && enemyHealth == null)
         {
             player = damageable;
         }
