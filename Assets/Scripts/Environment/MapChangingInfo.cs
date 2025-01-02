@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MapChangingInfo : MonoBehaviour
+public class MapChangingInfo : Singleton<MapChangingInfo>
 {
 	[field:SerializeField] public EEntranceType entranceTypeToFind
 	{
