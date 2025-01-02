@@ -5,11 +5,11 @@ using UnityEngine;
 public class PocketBullets : MonoBehaviour
 {
     [SerializeField] private int pocketBullets = 0;
-    [SerializeField] private BulletsUIScript bulletsUI;
+    [SerializeField] private PistolUI pistolUI;
 
     private void Start()
     {
-        bulletsUI.ChangeText(pocketBullets);
+        pistolUI.ChangeText();
     }
 
     public int GetPocketBullets()
@@ -20,6 +20,6 @@ public class PocketBullets : MonoBehaviour
     public void UpdateBullets(int quantity)
     {
         pocketBullets += quantity;
-        bulletsUI.ChangeText(pocketBullets);
+        pistolUI.ChangeText();
     }
 }

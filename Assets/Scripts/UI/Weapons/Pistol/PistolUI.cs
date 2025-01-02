@@ -7,9 +7,9 @@ public class PistolUI : MonoBehaviour
 {
     [Header("Bullets")]
     [SerializeField] private Text bulletsText;
-    [SerializeField] private Pistol bullets;
+    [SerializeField] private Pistol magBullets;
+    [SerializeField] private PocketBullets pocketbullets;
 
-    // Start is called before the first frame update
     void Start()
     {
         ChangeText();
@@ -17,7 +17,8 @@ public class PistolUI : MonoBehaviour
 
     public void ChangeText()
     {
-        int qnt = bullets.MagBullets();
-        bulletsText.text = qnt.ToString() + "/10";
+        int mag = magBullets.MagBullets();
+        int pocket = pocketbullets.GetPocketBullets();
+        bulletsText.text = mag.ToString() + "/" + pocket.ToString();
     }
 }
