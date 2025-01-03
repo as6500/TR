@@ -22,3 +22,4 @@ MonoBehaviour:
   - I appreciate that you found it! Good luck with the other guys.. They are a little
     crazy sometimes
   nextDialogue: {fileID: 11400000, guid: ec11b6bfee76bad4badbd2f0aeb99a46, type: 2}
+  dialogueSprite: {fileID: 1890214329, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

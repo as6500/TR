@@ -25,18 +25,11 @@ public class EntrancesAndExits : MonoBehaviour
             return;
         StartCoroutine(GoToScene(sceneName, whereToLoadTo, whereToLoadToBuildings));
     }
-
-    public EEntranceType WhereToLoadTo()
-    {
-        return whereToLoadTo;
-    }
-
+    
     public IEnumerator GoToScene(String nameOfScene, EEntranceType place, EBuildings buildings)
     {
         if(!changingScenes)
         {
-            Debug.Log("Clicked" + changingScenes);
-
             changingScenes = true;
 
             blackScreen.ResetAndStartFade(blackScreen.ChangeBlackScreenOpacityUp());
