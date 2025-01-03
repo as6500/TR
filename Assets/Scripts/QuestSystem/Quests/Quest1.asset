@@ -24,3 +24,7 @@ MonoBehaviour:
     times... a bit of alcohol calms my soul.
   npc: {fileID: 11400000, guid: ca9f231201e5f6b4490ef182c266a647, type: 2}
   nextQuest: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}
+  rewardItemType: 0000000001000000
+  rewardItemQuantities: 050000000a000000
+  sceneNameForItems: Outside
+  buildingTypeForItems: -1

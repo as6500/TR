@@ -13,11 +13,21 @@ MonoBehaviour:
   m_Name: Quest4
   m_EditorClassIdentifier: 
   id: 3
-  displayName: Music Record
+  displayName: Food for everyone
   type: 0
   typeParam: 3
-  typeCount: 1
-  typeName: record
-  descriptionOfQuest: 
+  typeCount: 3
+  typeName: bread
+  descriptionOfQuest: "Have you noticed that people here in the Bunker are getting
+    sadder and sadder? I'm getting worried about them.. We haven\u2019t eaten anything
+    good for a while. Just by thinking about one of those scrumptious stakes it makes
+    me salivate Before everything was destroyed and \"swallowed\" by radiation, there
+    used to be a supermarket near a huge and beautiful park. Do you have time to
+    go check it out and see if there is still any good food left? Any type of food
+    that doesn\u2019t have mold in it would be amazing!"
   npc: {fileID: 11400000, guid: 14ec758859277d24d8fe243863469e95, type: 2}
   nextQuest: {fileID: 11400000, guid: 4b9770a4d0d373843841ea48a574b5aa, type: 2}
+  rewardItemType: 00000000
+  rewardItemQuantities: 03000000
+  sceneNameForItems: Buildings
+  buildingTypeForItems: 21

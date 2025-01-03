@@ -17,9 +17,8 @@ MonoBehaviour:
     with only windows, I hid a bottle of alcohol inside my office.
   - Please try to find its location so I can later go pick it up, because in these
     times... a bit of alcohol calms my soul.
-  dialogueWithoutQuest: []
   dialogueFinishingQuest:
-  - I appreciate that you found it! Good luck with the other guys.. They are a little
-    crazy sometimes
+  - 'I appreciate that you found it! Here is a little gift for the trouble: 5x pills
+    and 10x bullets. Good luck with the other guys.. They are a little crazy sometimes.'
   nextDialogue: {fileID: 11400000, guid: ec11b6bfee76bad4badbd2f0aeb99a46, type: 2}
   dialogueSprite: {fileID: 1890214329, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

@@ -18,6 +18,14 @@ MonoBehaviour:
   typeParam: 1
   typeCount: 1
   typeName: battery
-  descriptionOfQuest: 
+  descriptionOfQuest: Not again.. the flickering lights are back. We really should
+    fix the power in the bunker.  Well.. now is the best time to fix it..  Can you
+    try to find any type of power source like some batteries so we can put it on
+    the generator?  I believe that I saw a few old toys on the barn at the Farm,
+    maybe they have what we need.
   npc: {fileID: 11400000, guid: 45a36d8977fd0004ebefaac50a1147a2, type: 2}
   nextQuest: {fileID: 11400000, guid: cc6803dd49510bc459b9f37b6040df55, type: 2}
+  rewardItemType: 00000000
+  rewardItemQuantities: 05000000
+  sceneNameForItems: Farm
+  buildingTypeForItems: 25

@@ -17,5 +17,9 @@ public class QuestData : ScriptableObject
     public string descriptionOfQuest;
 	public NPCData npc;
 	public QuestData nextQuest;
+	public CollectibleType[] rewardItemType;
+	public int[] rewardItemQuantities;
+	public string sceneNameForItems;
+	public EBuildings buildingTypeForItems;
 
 }

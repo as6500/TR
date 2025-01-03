@@ -57,4 +57,9 @@ public class SceneManagement : Singleton<SceneManagement>
         uniqueIdentifiers.Remove(obj.GetInstanceID());
         scenes.Remove(obj);
     }
+
+    public bool ObjectBelongsToScene(GameObject obj, string sceneName)
+    {
+        return scenes.ContainsKey(obj) && scenes[obj] == sceneName;
+    }
 }

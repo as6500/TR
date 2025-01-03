@@ -18,6 +18,17 @@ MonoBehaviour:
   typeParam: 4
   typeCount: 2
   typeName: vials of antibiotics
-  descriptionOfQuest: 
+  descriptionOfQuest: 'These people keep messing with my work... Why did I accept
+    this job??  Anyway, hello! I''ve called you here to my lab because I need to
+    ask for a favor.  I''m too old to go outside and look for what I want, but you
+    are young and still with many years to live.  My plan is now complete. I have
+    developed a potion that can make the land outside of the Bunker fertille once
+    again, however, 1 ingredient is missing: 2 vials of antibiotics.  That''s where
+    you come in: would you do me the favor of going to the City and finding the missing
+    ingredient? It''s probably in one of the 3 stores on the left side of the City.'
   npc: {fileID: 11400000, guid: bde54cfe715e57f47b1ce1780caa1ea2, type: 2}
   nextQuest: {fileID: 0}
+  rewardItemType: 02000000
+  rewardItemQuantities: 03000000
+  sceneNameForItems: Buildings
+  buildingTypeForItems: 10

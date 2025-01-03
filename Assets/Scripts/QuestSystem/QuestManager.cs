@@ -8,7 +8,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 [Serializable] public enum QuestState { Pending, Active, Completed };
-
+[System.Serializable] public class FinishedQuest : UnityEvent <NPCInteractable> { };
 public class QuestManager : Singleton<QuestManager>
 {
 	public static readonly UnityEvent OnQuestAction = new();
@@ -27,6 +27,8 @@ public class QuestManager : Singleton<QuestManager>
     [SerializeField] private Text descriptionOfQuest;
 	[SerializeField] private RawImage background;
 	[SerializeField] private NPCInteractable interactableNPC;
+	[SerializeField] private Rewards rewards;
+	public static FinishedQuest finishedQuest = new();
 	
 	public void Start()
 	{
@@ -47,11 +49,14 @@ public class QuestManager : Singleton<QuestManager>
 	private void OnEnable()
 	{
 		dialogueManager.OnDialogueEnd.AddListener(OnDialogueFinished);
+		foreach (QuestNPC npc in npcs)
+			npc.GetComponent<NPCInteractable>().interacting.AddListener(StartingDialogue);
 	}
 
 	private void OnDisable()
 	{
 		dialogueManager.OnDialogueEnd.RemoveListener(OnDialogueFinished);
+
 	}
 
 	public void Update()
@@ -137,6 +142,9 @@ public class QuestManager : Singleton<QuestManager>
 		if (activeQuest.npc.id == npcs.Count - 1) 
 			return;
 		
+		rewards.GetRewards();
+		if(activeQuest.npc.id != activeQuest.nextQuest.npc.id)
+			finishedQuest?.Invoke(npcs[activeQuest.npc.id].GetComponent<NPCInteractable>());
 		activeQuestItemCounter = 0;
 		activeQuest = activeQuest.nextQuest;
 		activeQuestState = QuestState.Pending;
@@ -152,10 +160,11 @@ public class QuestManager : Singleton<QuestManager>
 		
 		for (int i = 0; i < questCount; i++)
 		{
-			Vector3 randomPosition = transform.position + new Vector3(Random.Range(-6f, -4f), Random.Range(-2f, -5f), 0);
-			GameObject tempItem = Instantiate(item, randomPosition, Quaternion.identity); //create temporary item
-			tempItem.name = "Item" + i; //name + 1 number
+			GameObject tempItem = Instantiate(item, Vector3.zero, Quaternion.identity);
+			tempItem.name = "Item" + i;
 			Item newItem = tempItem.GetComponent<Item>();
+			QuestTypeFetch questTypeFetch = tempItem.GetComponent<QuestTypeFetch>();
+			questTypeFetch.InitiateItem(activeQuest);
 			newItem.SetUpItem(questParam);
 		}
 		questText.DisplayFetchQuestText(questName, questCount, questItemName, activeQuestItemCounter);
@@ -174,10 +183,15 @@ public class QuestManager : Singleton<QuestManager>
 	{
 		string questName = activeQuest.displayName;
 		string questItemName = activeQuest.typeName;
-		
+		Vector3 locationPosition =	Vector3.zero;
 		Vector3 randomPosition = transform.position + new Vector3(Random.Range(-5f, 2f), Random.Range(-2f, 1f), 0);
-		GameObject tempLocation = Instantiate(location, randomPosition, Quaternion.identity);
+		
+		if (activeQuest.buildingTypeForItems != EBuildings.INVALID)
+			locationPosition = ItemLocations.FindItemLocation(activeQuest.buildingTypeForItems);
+		
+		GameObject tempLocation = Instantiate(location, locationPosition + randomPosition, Quaternion.identity);
 		questTypeLocation = tempLocation.GetComponent<QuestTypeLocation>();
+		questTypeLocation.InitiateLocation(activeQuest);
 		questText.DisplayLocateQuestText(questName, questItemName);
 	}
 	

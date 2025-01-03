@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum CollectibleParent { World, Enemy }
-public enum CollectibleType { Pills, Ammo }
+public enum CollectibleType { Pills, Ammo, AntiRadiationFlasks }
 
 public class Collectible : MonoBehaviour, ICollectible
 {

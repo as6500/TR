@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: DialogueDanielQuest2
   m_EditorClassIdentifier: 
   dialogueWithQuest:
-  - Have you noticed that people here in the Bunker are getting sadder and sadder?
-    I'm getting worried about them..
-  - 'But I have an idea that it''s going to stay in everyone''s memory: let''s throw
-    a party!'
-  - We have the bar, the people, the lights.. the only thing that we are missing
-    is MUSIC!
-  - Before everything was destroyed and "swallowed" by radiation, there used to be
-    a music store near a huge and beautiful park.
-  - Do you have time to go check it out and see if there is still any record left?
-    Any record of happy music is good to bring here again!
-  dialogueWithoutQuest: []
-  dialogueFinishingQuest: []
+  - 'Have you noticed that people here in the Bunker are getting sadder and sadder?
+    I''m getting worried about them.. '
+  - "We haven\u2019t eaten anything good for a while."
+  - 'Just by thinking about one of those scrumptious stakes it makes me salivate. '
+  - 'Before everything was destroyed and "swallowed" by radiation, there used to
+    be a supermarket near a huge and beautiful park. '
+  - "Do you have time to go check it out and see if there is still any good food
+    left? Any type of food that doesn\u2019t have mold in it would be amazing!"
+  dialogueFinishingQuest:
+  - This looks awesome!! And even with just a tiny bit of mold in the corner it looks
+    delicious! Thank you for giving us a change in the food section! Here are 3x
+    pills to help you stay healthy!
   nextDialogue: {fileID: 11400000, guid: c25991832309daf4bb4003adc0593c52, type: 2}
   dialogueSprite: {fileID: -1107213468, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

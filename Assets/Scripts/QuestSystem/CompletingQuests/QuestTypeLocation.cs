@@ -8,7 +8,7 @@ public class QuestTypeLocation : MonoBehaviour
     private void Start()
     {
         onLocation = false;
-        SceneManagement.Instance.AddObjectToScene(gameObject, "BunkerOutside");
+
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,4 +24,10 @@ public class QuestTypeLocation : MonoBehaviour
     {
         return onLocation;
     }
+    
+    public void InitiateLocation(QuestData activeQuest)
+    {
+        SceneManagement.Instance.AddObjectToScene(gameObject, activeQuest.sceneNameForItems);
+    }
+    
 }
