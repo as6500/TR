@@ -29,6 +29,7 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField] private GameObject quitGame;
     [SerializeField] private GameObject quitToTitle;
     [SerializeField] private HealthScript healthScript;
+    [SerializeField] private AntiRadiationTimer antiRadiationTimer;
     
     private bool isMenuActive = false;
 
@@ -56,9 +57,19 @@ public class MenuManager : Singleton<MenuManager>
         }
         if (healthScript != null)
         {
-            float currentHealth = healthScript.GetCurrentHealth(); // Get health from the HealthScript
+            float currentHealth = healthScript.GetCurrentHealth();
             CheckPlayerDeath(currentHealth);
         }
+    }
+
+    private void GamePause()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void GameResume()
+    {
+        Time.timeScale = 1;
     }
 
     public void LeaveToMainMenu()
@@ -88,8 +99,10 @@ public class MenuManager : Singleton<MenuManager>
 
     public void ResetGame()
     {
+        GameResume();
         Debug.Log("Reset game");
-        healthScript.SetCurrentHealth(100);
+        healthScript.ModifyHealth(100);
+        antiRadiationTimer.ShowRadiationUI();
         if (deathMenu != null){
             deathMenu.SetActive(false);
         }
@@ -101,11 +114,13 @@ public class MenuManager : Singleton<MenuManager>
         if (currentHealth <= 0)
         {
             ShowDeathScreen();
+            GamePause();
         }
     }
     
     private void ShowDeathScreen()
     {
+        antiRadiationTimer.HideRadiationUI();
         if (deathMenu != null)
         {
             deathMenu.SetActive(true);
