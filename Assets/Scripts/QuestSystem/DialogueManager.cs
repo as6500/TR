@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -29,6 +30,7 @@ public class DialogueManager : Singleton<DialogueManager>
         ballonTextEnded = false;
         continueButton.gameObject.SetActive(false);
         dialogueCanvas.gameObject.SetActive(false);
+        dialogueImage.gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -98,6 +100,8 @@ public class DialogueManager : Singleton<DialogueManager>
             continueButton.gameObject.SetActive(false);
             dialogueCanvas.gameObject.SetActive(false);
             currentDialogue = currentDialogue.nextDialogue;
+
+            
             OnDialogueEnd?.Invoke();
         }
     }

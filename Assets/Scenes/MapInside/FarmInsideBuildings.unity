@@ -4576,7 +4576,6 @@ MonoBehaviour:
   sceneName: Farm
   whereToLoadTo: 6
   whereToLoadToBuildings: 25
-  whereToLoadToFloors: -1
 --- !u!1 &387430241
 GameObject:
   m_ObjectHideFlags: 0
@@ -11129,6 +11128,67 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &614254947
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.592145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.677801
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.405109
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2978530338019675146, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: sceneName
+      value: Farm Buildings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154434600080483802, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_Name
+      value: ShowSceneName
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
 --- !u!1 &618814427
 GameObject:
   m_ObjectHideFlags: 0
@@ -16003,7 +16063,6 @@ MonoBehaviour:
   sceneName: Farm
   whereToLoadTo: 6
   whereToLoadToBuildings: 26
-  whereToLoadToFloors: -1
 --- !u!61 &1165178863
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70516,3 +70575,4 @@ SceneRoots:
   - {fileID: 98220131}
   - {fileID: 1529193682}
   - {fileID: 1261539303}
+  - {fileID: 614254947}

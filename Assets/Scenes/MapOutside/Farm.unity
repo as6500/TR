@@ -1235,7 +1235,6 @@ MonoBehaviour:
   sceneName: FarmInsideBuildings
   whereToLoadTo: 6
   whereToLoadToBuildings: 26
-  whereToLoadToFloors: -1
 --- !u!61 &839483344
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1443,7 +1442,6 @@ MonoBehaviour:
   sceneName: Road
   whereToLoadTo: 3
   whereToLoadToBuildings: -1
-  whereToLoadToFloors: -1
 --- !u!1 &1313774884
 GameObject:
   m_ObjectHideFlags: 0
@@ -99746,7 +99744,67 @@ MonoBehaviour:
   sceneName: FarmInsideBuildings
   whereToLoadTo: 6
   whereToLoadToBuildings: 25
-  whereToLoadToFloors: -1
+--- !u!1001 &1391943568
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.592145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.677801
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.405109
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903462529339526757, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2978530338019675146, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: sceneName
+      value: Farm
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154434600080483802, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
+      propertyPath: m_Name
+      value: ShowSceneName
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc25fd535a3fa35459b1f14137b274d1, type: 3}
 --- !u!1 &1397779956
 GameObject:
   m_ObjectHideFlags: 0
@@ -116750,3 +116808,4 @@ SceneRoots:
   - {fileID: 1376408292}
   - {fileID: 519717224}
   - {fileID: 925618469}
+  - {fileID: 1391943568}
