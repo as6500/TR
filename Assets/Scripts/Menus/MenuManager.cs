@@ -61,6 +61,16 @@ public class MenuManager : Singleton<MenuManager>
         }
     }
 
+    private void GamePause()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void GameResume()
+    {
+        Time.timeScale = 1;
+    }
+
     public void LeaveToMainMenu()
     {
         Debug.Log("Leaving to main menu");
@@ -88,8 +98,9 @@ public class MenuManager : Singleton<MenuManager>
 
     public void ResetGame()
     {
+        //GameResume();
         Debug.Log("Reset game");
-        healthScript.SetCurrentHealth(100);
+        healthScript.ModifyHealth(100);
         if (deathMenu != null){
             deathMenu.SetActive(false);
         }
@@ -101,6 +112,7 @@ public class MenuManager : Singleton<MenuManager>
         if (currentHealth <= 0)
         {
             ShowDeathScreen();
+            //GamePause();
         }
     }
     
