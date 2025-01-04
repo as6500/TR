@@ -39,7 +39,6 @@ public class QuestManager : Singleton<QuestManager>
 		
 		OnQuestAction.AddListener(CompleteQuest);
 		
-		
 		descriptionOfQuest.enabled = false;
 		background.enabled = false;
 		titleText.enabled = false;

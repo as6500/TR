@@ -24,4 +24,6 @@ MonoBehaviour:
   - Do you have time to go check it out and see if there is still any record left?
     Any record of happy music is good to bring here again!
   dialogueWithoutQuest: []
+  dialogueFinishingQuest: []
   nextDialogue: {fileID: 11400000, guid: c25991832309daf4bb4003adc0593c52, type: 2}
+  dialogueSprite: {fileID: -1107213468, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

@@ -7,7 +7,7 @@ public class AntiRadiationTimer : MonoBehaviour
 {
 	[SerializeField] private float timeRemainingMin;
 	private float timeRemainingSec;
-	[SerializeField] private RawImage TimerAntiRadiation;
+	[SerializeField] public RawImage TimerAntiRadiation;
 	[SerializeField] private Text TimerText;
 	[SerializeField] private AntiRadiationScript antiRadiationScript;
 	private bool isTimerOn = false;
@@ -62,4 +62,17 @@ public class AntiRadiationTimer : MonoBehaviour
 	{
 		return timeRemainingSec;
 	}
+	
+	public void HideRadiationUI()
+	{
+		TimerAntiRadiation.enabled = false;
+		TimerText.enabled = false;
+	}
+
+	public void ShowRadiationUI()
+	{
+		TimerAntiRadiation.enabled = true;
+		TimerText.enabled = true;
+	}
+	
 }

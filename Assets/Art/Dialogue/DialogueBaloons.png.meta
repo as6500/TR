@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b7960ad3b938d44380bd09fe765b910
+guid: 2427f13341305624696aa5a5b163fc33
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: DialogueBaloons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 298.5
+        width: 316
+        height: 99.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 745064fefe1e6ae46949b1953fae166a
+      internalID: 1890214329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogueBaloons_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 199.5
+        width: 316
+        height: 99.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf124baea2200d4aa69111d29d11055
+      internalID: -1299280691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogueBaloons_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100.5
+        width: 316
+        height: 99.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644d3f0b82b2304409202cc428046f86
+      internalID: -1107213468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogueBaloons_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.5
+        width: 316
+        height: 99.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc9051b58460e74183900e6811cf983
+      internalID: -427157586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DialogueBaloons_0: 1890214329
+      DialogueBaloons_1: -1299280691
+      DialogueBaloons_2: -1107213468
+      DialogueBaloons_3: -427157586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

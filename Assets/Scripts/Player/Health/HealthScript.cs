@@ -64,7 +64,7 @@ public class HealthScript : MonoBehaviour, IDamageable
 		OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
     }
 
-    private void ModifyHealth(float modifier)
+    public void ModifyHealth(float modifier)
     {
         currentHealth = Mathf.Clamp(currentHealth + modifier, 0.0f, maxHealth);
         normalizedHealth = currentHealth / maxHealth;
@@ -121,11 +121,5 @@ public class HealthScript : MonoBehaviour, IDamageable
     public float GetCurrentHealth()
     {
         return currentHealth;
-    }
-    
-    public void SetCurrentHealth(float healthValue)
-    {
-        currentHealth = healthValue;
-        normalizedHealth = currentHealth / maxHealth;
     }
 }

@@ -22,4 +22,6 @@ MonoBehaviour:
   - Would you mind going to the City to see if there are any pills left in the stores?
     Otherwise, maybe the mutants already scavenge that and have the pills in them.
   dialogueWithoutQuest: []
+  dialogueFinishingQuest: []
   nextDialogue: {fileID: 11400000, guid: 84d7a74911a737649aec3a7521d95b15, type: 2}
+  dialogueSprite: {fileID: -1107213468, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

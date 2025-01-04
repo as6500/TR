@@ -30,7 +30,6 @@ public class DialogueManager : Singleton<DialogueManager>
         ballonTextEnded = false;
         continueButton.gameObject.SetActive(false);
         dialogueCanvas.gameObject.SetActive(false);
-        dialogueImage.gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -52,12 +51,12 @@ public class DialogueManager : Singleton<DialogueManager>
         }
         if (currentDialogue == null)
             currentDialogue = dialogueToPlay;
+        
         StartCoroutine(PlayDialogue());
     }
 
     private IEnumerator PlayDialogue()
-    {   
-
+    {
         dialogueCanvas.gameObject.SetActive(true);
         Debug.Log(questManager.activeQuestState);
         if (questManager.activeQuestState != QuestState.Completed)
@@ -83,27 +82,7 @@ public class DialogueManager : Singleton<DialogueManager>
             dialogueCanvas.gameObject.SetActive(false);    
         }
         else
-        {
-            dialogueText.text = "";
-            currentDialogueText = currentDialogue.dialogueFinishingQuest[0];
-            continueButton.gameObject.SetActive(false);
-            
-            for (int j = 0; j < currentDialogueText.Length; ++j) //actual text
-            {
-                dialogueText.text += currentDialogueText[j];
-                currentDialogueTextProgress = dialogueText.text;
-                yield return new WaitForSeconds(0.06f);
-            }
-            continueButton.gameObject.SetActive(true);
-            yield return new WaitUntil(ButtonClickedNotifier);
-            ballonTextEnded = false;
-            continueButton.gameObject.SetActive(false);
-            dialogueCanvas.gameObject.SetActive(false);
-            currentDialogue = currentDialogue.nextDialogue;
-
-            
-            OnDialogueEnd?.Invoke();
-        }
+            StartCoroutine(PlayFinishingDialogue());
     }
 
     private void OnButtonClicked()
@@ -118,5 +97,27 @@ public class DialogueManager : Singleton<DialogueManager>
     public bool ButtonClickedNotifier()
     {
         return ballonTextEnded;
+    }
+
+    private IEnumerator PlayFinishingDialogue()
+    {
+        dialogueText.text = "";
+        currentDialogueText = currentDialogue.dialogueFinishingQuest[0];
+        continueButton.gameObject.SetActive(false);
+            
+        for (int j = 0; j < currentDialogueText.Length; ++j) //actual text
+        {
+            dialogueText.text += currentDialogueText[j];
+            currentDialogueTextProgress = dialogueText.text;
+            yield return new WaitForSeconds(0.06f);
+        }
+        continueButton.gameObject.SetActive(true);
+        yield return new WaitUntil(ButtonClickedNotifier);
+        ballonTextEnded = false;
+        continueButton.gameObject.SetActive(false);
+        dialogueCanvas.gameObject.SetActive(false);
+        currentDialogue = currentDialogue.nextDialogue;
+        dialogueImage.sprite = currentDialogue.dialogueSprite;
+        OnDialogueEnd?.Invoke();
     }
 }
