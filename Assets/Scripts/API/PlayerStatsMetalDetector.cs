@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatsMetalDetector : APIRequests
 {
-    [SerializeField] private int secondsBetweenStatsUpdate = 2;
+    [SerializeField] private int secondsBetweenStatsUpdate = 1;
     private GameObject player;
 
     private void Start()
