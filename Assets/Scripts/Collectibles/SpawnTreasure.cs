@@ -13,8 +13,11 @@ public class SpawnTreasure : Singleton<SpawnTreasure>
     {
         for(int i = 0; i < transform.childCount; i++)
         {
-            collectibles.Add(transform.GetChild(i).gameObject);
-            transform.GetChild(i).gameObject.gameObject.SetActive(false);
+            for (int j = 0; j < transform.GetChild(i).childCount; j++)
+            {
+                collectibles.Add(transform.GetChild(i).GetChild(j).gameObject);
+                transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
+            }        
         }
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
