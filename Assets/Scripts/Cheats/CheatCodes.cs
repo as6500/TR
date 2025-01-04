@@ -37,6 +37,11 @@ public class CheatCodes : MonoBehaviour
             StartCoroutine(entrancesAndExits.GoToScene("Farm", EEntranceType.FarmRoad, EBuildings.INVALID));
         }
 
+        if (Input.GetKeyDown(KeyCode.O)) //change scene to Outside
+        {
+            StartCoroutine(entrancesAndExits.GoToScene("BunkerOutside", EEntranceType.BunkerOutside, EBuildings.INVALID));
+        }
+
         if (Input.GetKeyDown(KeyCode.N)) //adds 80 more pills and anti-radiation flasks to the player
         {
             antiRadiationScript.UpdateFlasks(80);

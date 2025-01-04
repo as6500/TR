@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class CreateConnection : APIRequests
 {
+    [SerializeField] private PlayerStatsMetalDetector playerStats;
     private Action firstCallback;
     private Action secondCallback;
 
-    public void CreateNewConnection(Action firstCallback = null, Action secondCallBack = null)
+    public void CreateNewConnection(Action firstCallback = null, Action secondCallback = null)
     {
         WWWForm formData = new WWWForm();
         formData.AddField("unity_connection_id", unity_connection_id);
         this.firstCallback = firstCallback;
-        this.secondCallback = secondCallBack;
+        this.secondCallback = secondCallback;
 
         StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/unityConnection/create", formData, StartSearchForConnection));
     }
@@ -40,12 +41,11 @@ public class CreateConnection : APIRequests
         if (response.connection_successful)
         {
             unity_android_connection_id = response.unity_android_connection_id;
-            Debug.Log(response.unity_android_connection_id);
             secondCallback();
+            playerStats.CreatePlayerStats(unity_android_connection_id);
         }
         else
         {
-            Debug.Log(response.message);
             SearchingForConnection();
         }
     }

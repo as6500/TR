@@ -9,10 +9,12 @@ using UnityEngine.UI;
 public struct UnJasonedData
 {
     public string message;
+    public string error;
     public int unity_connection_id;
     public int unity_android_connection_id;
     public int unity_connection_code;
     public bool connection_successful;
+    public int collectibles_ids;
 }
 
 public class APIRequests : MonoBehaviour
@@ -20,7 +22,9 @@ public class APIRequests : MonoBehaviour
     public int unity_connection_id { get; set; }
     public int unity_android_connection_id { get; set; }
     public int unity_connection_code { get; set; }
-    public UnJasonedData response { get; private set; }
+    public UnJasonedData response { 
+        get; 
+        private set; }
 
     private void Start()
     {
@@ -53,11 +57,15 @@ public class APIRequests : MonoBehaviour
         {
             UnJasonedData data = (UnJasonedData)JsonUtility.FromJson(WebRequest.downloadHandler.text, typeof(UnJasonedData));
             response = data;
-            callback();
+
+            if(callback != null)
+            {
+                callback();
+            }
         }
         else
         {
             Debug.Log("Error While Sending: " + WebRequest.error);
         }
-    }
+    }   
 }

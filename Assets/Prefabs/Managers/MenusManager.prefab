@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &960896982984971094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4123558183686231750}
+  - component: {fileID: 3343541929993718226}
+  - component: {fileID: 6033332968522165001}
+  m_Layer: 0
+  m_Name: MenusManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4123558183686231750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960896982984971094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 747.0363, y: 459.39996, z: -15.23768}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3343541929993718226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960896982984971094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dede81e919e25384a95166b2173ccf97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIRequests: {fileID: 0}
+  mainOptions: {fileID: 0}
+  settingsView: {fileID: 0}
+  appView: {fileID: 0}
+  codeView: {fileID: 0}
+  connectionCodeText: {fileID: 0}
+--- !u!114 &6033332968522165001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960896982984971094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df15ef1bbb214746ad4358eec3637b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIRequests: {fileID: 0}
+  menu: 0
+  inGameMenu: {fileID: 0}
+  map: {fileID: 0}
+  collectibles: {fileID: 0}
+  settings: {fileID: 0}
+  deathMenu: {fileID: 0}
+  restart: {fileID: 0}
+  quitGame: {fileID: 0}
+  quitToTitle: {fileID: 0}
+  healthScript: {fileID: 0}

@@ -13,21 +13,17 @@ public class MapChangingInfo : Singleton<MapChangingInfo>
 	{
 		get; set;
 	}
-	private void Awake()
-	{
-        SceneManager.sceneLoaded += OnSceneLoaded;
-	}
 
 	private void Start()
 	{
 		blackScreen = GameObject.FindGameObjectWithTag("FadeInAndOutBlackScreen").GetComponent<FadeInAndOutBlackScreen>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
 	{
 		EntranceLocator[] arrayOfAllEntrances = FindObjectsOfType<EntranceLocator>();
-		Debug.Log("OnSceneLoaded Called");
+		Debug.Log("Scene Loaded");
 		for (int i = 0; i < arrayOfAllEntrances.Length; ++i)
 		{
 			if (arrayOfAllEntrances[i].entranceType != entranceTypeToFind) 
