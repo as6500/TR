@@ -218,12 +218,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 4063085219234675834}
   coll: {fileID: 8880372667431002037}
-  radius: 5
+  radius: 15
   attack: 0
   sap: {fileID: 3646532361901412936, guid: d7696f045c71eef4cbd1c0eb1c3f58ae, type: 3}
   sapHolder: {fileID: 1065254514807299356}
   sapOrigin: {fileID: 573325456576667944}
   shootDelaySeconds: 1
+  audioManager: {fileID: 0}
 --- !u!114 &471905545831886187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +279,7 @@ MonoBehaviour:
   - {x: 0.42444748, y: -2.6348248, z: 0}
   m_ShapePathHash: 163447321
   m_Mesh: {fileID: 0}
-  m_InstanceId: 229366
+  m_InstanceId: 266812
   m_LocalBounds:
     m_Center: {x: -0.013460219, y: -2.038722, z: 0}
     m_Extent: {x: 0.96413755, y: 0.5973669, z: 0}
@@ -399,4 +400,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 15

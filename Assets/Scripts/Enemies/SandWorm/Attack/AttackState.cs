@@ -28,7 +28,10 @@ public class AttackState : StateBehaviour
     public Animator animator;
 
     private SpriteRenderer spriteRenderer;
-    
+
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,6 +60,11 @@ public class AttackState : StateBehaviour
         //Debug.Log("I;m in acctack state");
         agent.isStopped = true; //stops the worm so it doesnt wiggle around
         isUnderground = true;
+
+        if (audioManager != null)
+        {
+            audioManager.drag.Play();
+        }
         // if (isUnderground == true)
         // {
         //     animator.SetBool("isUnderGround", true);
@@ -71,7 +79,12 @@ public class AttackState : StateBehaviour
 
     public override void OnStateUpdate()
     {
-        
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+            audioManager.drag.Play();
+        }
+
         rb.velocity = Vector2.zero;
         timeSinceLastAttack += Time.deltaTime; //count time since the last attack
         timeSinceOnAttackMode += Time.deltaTime; //count the time since the worm entered attack mode
@@ -99,6 +112,7 @@ public class AttackState : StateBehaviour
             damageable.TakeDamage(gameObject, attackMainDamage);
         }
         isUnderground = false;
+        audioManager.drag.Stop();
 
         timeSinceLastAttack = 0f;
     }
@@ -138,6 +152,8 @@ public class AttackState : StateBehaviour
             timeSinceLastAttack = 0f;
         }
         isUnderground = false;  //emerges the worm
+        audioManager.drag.Stop();
+
         // animator.SetBool("isAboveGround", true);
         // animator.SetBool("isUnderGround", false);
     }

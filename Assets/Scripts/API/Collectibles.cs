@@ -34,12 +34,7 @@ public class Collectibles : APIRequests
             formData.AddField("collectible_positionX", collectiblesPositions[i].x.ToString());
             formData.AddField("collectible_positionY", collectiblesPositions[i].y.ToString());
             formData.AddField("collectible_regionOfMap", collectiblesRegionOfMap[i].ToString());
-            StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/collectiblesStats/setPositions", formData, CheckUpdatedStats));
+            StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/collectiblesStats/setPositions", formData));
         }
-    }
-
-    private void CheckUpdatedStats()
-    {
-        Debug.Log(response.message);
     }
 }

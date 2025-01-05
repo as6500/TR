@@ -230,6 +230,7 @@ MonoBehaviour:
   damage: 5
   anim: {fileID: 1792169613146177551}
   coll: {fileID: 7527879286751667342}
+  audioManager: {fileID: 0}
 --- !u!95 &1792169613146177551
 Animator:
   serializedVersion: 5
@@ -451,6 +452,7 @@ MonoBehaviour:
   flashLight: {fileID: 7830230651307510288}
   particlesCollider: {fileID: 6810260785948441776}
   magBulletsUI: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!212 &751717997626881792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1287,6 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467277506a3582a49be127b27ceb80c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   velocityModifier: 0
   walkVelocity: 4
   sprintVelocity: 2
@@ -1305,12 +1308,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7e992865c600f4e831c4ff56e4a957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
   spriteRenderer: {fileID: 8171955013536134370}
   bloodColor: {r: 1, g: 0, b: 0.43320227, a: 1}
   mainColor: {r: 0, g: 0, b: 0, a: 0}
-  damageEffectTimeSeconds: 0
+  damageEffectTimeSeconds: 0.1
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1419,7 +1423,7 @@ MonoBehaviour:
   - {x: -0.2008462, y: -0.47015095, z: 0}
   m_ShapePathHash: 1831644765
   m_Mesh: {fileID: 0}
-  m_InstanceId: 157416
+  m_InstanceId: 246756
   m_LocalBounds:
     m_Center: {x: -0.00065732, y: 0.00257802, z: 0}
     m_Extent: {x: 0.5031593, y: 0.4999442, z: 0}
@@ -2277,7 +2281,6 @@ MonoBehaviour:
   anim: {fileID: 8771450963634429957}
   nullDistance: 5
   currentAngle: 0
-  currentWholeAngle: 0
   stepOne: {fileID: 7791300356284926044}
   stepTwo: {fileID: 1184864642221562580}
 --- !u!82 &7791300356284926044

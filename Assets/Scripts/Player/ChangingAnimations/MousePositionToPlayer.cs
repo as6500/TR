@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MousePositionToPlayer : MonoBehaviour
 {
@@ -10,13 +11,17 @@ public class MousePositionToPlayer : MonoBehaviour
 
     [SerializeField] private float currentAngle;
 
-    [SerializeField] private AudioSource stepOne;
-    [SerializeField] private AudioSource stepTwo;
+    [SerializeField] private AudioManager audioManager;
 
     private float tempAngle;
 
     private void FixedUpdate()
     {
+        if(audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        }
+
         SetAngle();
         AngleChanged();
     }
@@ -87,16 +92,29 @@ public class MousePositionToPlayer : MonoBehaviour
     {
         int randomStep = Random.Range(0,2);
 
-        stepOne.Stop();
-        stepTwo.Stop();
-
-        if (randomStep == 0)
+        if (SceneManager.GetActiveScene().name == "BunkerOutside" || SceneManager.GetActiveScene().name == "Farm")
         {
-            stepOne.Play();
+            if (randomStep == 0)
+            {
+                audioManager.stepOneSandFloor.Play();
+            }
+            else
+            {
+                audioManager.stepTwoSandFloor.Play();
+            }
         }
         else
         {
-            stepTwo.Play();
+            if (randomStep == 0)
+            {
+                audioManager.stepOneSolidFloor.Play();
+            }
+            else
+            {
+                audioManager.stepTwoSolidFloor.Play();
+            }
         }
+        
+
     }
 }

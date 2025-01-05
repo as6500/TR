@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     [field: Header("   Movement")]
     [field: SerializeField] public AudioSource stepOneSolidFloor { get; set; }
     [field: SerializeField] public AudioSource stepTwoSolidFloor { get; set; }
-    [field: SerializeField] public AudioSource stepOneSandFloo { get; set; }
+    [field: SerializeField] public AudioSource stepOneSandFloor { get; set; }
     [field: SerializeField] public AudioSource stepTwoSandFloor { get; set; }
 
     [field: Header("   Weapons")]

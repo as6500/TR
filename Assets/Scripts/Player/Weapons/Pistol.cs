@@ -169,6 +169,15 @@ public class Pistol : MonoBehaviour
     {
         bool tempState = !flashLight.activeSelf;
 
+        if (tempState == true)
+        {
+            audioManager.flashlightOn.Play();
+        }
+        else
+        {
+            audioManager.flashlightOff.Play();
+        }
+        
         particlesCollider.SetActive(tempState);
         flashLight.SetActive(tempState);
     }
