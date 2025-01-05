@@ -17,15 +17,14 @@ public class QuestTypeFetch : MonoBehaviour
 		item = GetComponent<Item>();
 		questManager = FindFirstObjectByType<QuestManager>();
 	}
-	
+
 	private void OnEnable()
 	{
-		SceneManager.sceneLoaded += OnSceneLoaded;
-	}
-
-	private void OnDisable()
-	{
-		SceneManager.sceneLoaded -= OnSceneLoaded;
+		if (building != EBuildings.INVALID)
+		{
+			targetPosition = ItemLocations.FindItemLocation(building);
+			transform.position = targetPosition + new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
+		}
 	}
 
 	private void Update()
@@ -61,16 +60,4 @@ public class QuestTypeFetch : MonoBehaviour
 		SceneManagement.Instance.AddObjectToScene(gameObject, activeQuest.sceneNameForItems);
 		building = activeQuest.buildingTypeForItems;
 	}
-	
-	public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-	{
-		if (!SceneManagement.Instance.ObjectBelongsToScene(gameObject, scene.name))
-			return;
-
-		if (building != EBuildings.INVALID)
-		{
-			targetPosition = ItemLocations.FindItemLocation(building);
-			transform.position = targetPosition + new Vector2(Random.Range(-0.6f, -0.4f), Random.Range(-0.2f, -0.5f));
-		}
-	}	
 }

@@ -70,7 +70,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 {
                     dialogueText.text += currentDialogueText[j];
                     currentDialogueTextProgress = dialogueText.text;
-                    yield return new WaitForSeconds(0.06f);
+                    yield return new WaitForSeconds(0.01f);
                 }
                 continueButton.gameObject.SetActive(true);
                 yield return new WaitUntil(ButtonClickedNotifier);
@@ -109,7 +109,7 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             dialogueText.text += currentDialogueText[j];
             currentDialogueTextProgress = dialogueText.text;
-            yield return new WaitForSeconds(0.06f);
+            yield return new WaitForSeconds(0.01f);
         }
         continueButton.gameObject.SetActive(true);
         yield return new WaitUntil(ButtonClickedNotifier);

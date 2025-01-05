@@ -184,13 +184,8 @@ public class QuestManager : Singleton<QuestManager>
 	{
 		string questName = activeQuest.displayName;
 		string questItemName = activeQuest.typeName;
-		Vector3 locationPosition =	Vector3.zero;
-		Vector3 randomPosition = transform.position + new Vector3(Random.Range(-5f, 2f), Random.Range(-2f, 1f), 0);
 		
-		if (activeQuest.buildingTypeForItems != EBuildings.INVALID)
-			locationPosition = ItemLocations.FindItemLocation(activeQuest.buildingTypeForItems);
-		
-		GameObject tempLocation = Instantiate(location, locationPosition + randomPosition, Quaternion.identity);
+		GameObject tempLocation = Instantiate(location, new Vector3(-0.3f, -31.58f), Quaternion.identity);
 		questTypeLocation = tempLocation.GetComponent<QuestTypeLocation>();
 		questTypeLocation.InitiateLocation(activeQuest);
 		questText.DisplayLocateQuestText(questName, questItemName);
