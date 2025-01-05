@@ -38,8 +38,16 @@ public class Pistol : MonoBehaviour
     [Header("UI")]
     [SerializeField] private PistolUI magBulletsUI;
 
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+
     private void Update()
     {
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();

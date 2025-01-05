@@ -52,6 +52,15 @@ public class MenuManager : Singleton<MenuManager>
 
     private void Update()
     {
+        if(playerStats == null)
+        {
+            playerStats = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatsMetalDetector>();
+        }
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        }
+
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.M))
         {
             ChangeGameState(!isMenuActive);
@@ -143,7 +152,10 @@ public class MenuManager : Singleton<MenuManager>
 
     public void ChangeGameState(bool state)
     {
-        audioManager.mouseClicking.Play();
+        if(audioManager != null)
+        {
+            audioManager.mouseClicking.Play();
+        }
         isMenuActive = state;
         inGameMenu.SetActive(isMenuActive);
     }

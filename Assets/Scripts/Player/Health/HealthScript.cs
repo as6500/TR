@@ -10,6 +10,9 @@ public class OnPlayerHealthChanged : UnityEvent<float> { };
 
 public class HealthScript : MonoBehaviour, IDamageable
 {
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+
     [Header("Health")]
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private float currentHealth = 0.0f;
@@ -37,6 +40,14 @@ public class HealthScript : MonoBehaviour, IDamageable
 
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
 	}
+
+    private void Update()
+    {
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        }
+    }
 
     public void DealDamage(float damageAmount)
     {

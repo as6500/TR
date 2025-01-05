@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class MovementScript : Singleton<MovementScript>
 {
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+
     [Header("Velocity")]
     [SerializeField] private float velocityModifier;
     [SerializeField] public float walkVelocity;
@@ -78,6 +81,10 @@ public class MovementScript : Singleton<MovementScript>
 
     private void FixedUpdate()
     {
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        }
         if (myRigidbody != null) 
         {
             myRigidbody.velocity = currentInput * velocityModifier;
