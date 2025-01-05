@@ -23,7 +23,8 @@ MonoBehaviour:
   - 'That''s where you come in: would you do me the favor of going to the City and
     finding the missing ingredient? It''s probably in one of the 3 stores on the
     left side of the City.'
-  dialogueWithoutQuest: []
-  dialogueFinishingQuest: []
+  dialogueFinishingQuest:
+  - Finally!!! Now I can complete my potion! Thank you. Here are 3 anti-radiation
+    flasks.
   nextDialogue: {fileID: 0}
   dialogueSprite: {fileID: -427157586, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

@@ -23,7 +23,7 @@ MonoBehaviour:
     Otherwise, maybe the mutants already scavenge that and have the pills in them.
   dialogueFinishingQuest:
   - Thank you so much for getting these for me! To help you stay more protected,
-    here are 20x bullets for your pistol. Use them wisely, as they are rare to find
+    here are 20 bullets for your pistol. Use them wisely, as they are rare to find
     these days.
   nextDialogue: {fileID: 11400000, guid: 84d7a74911a737649aec3a7521d95b15, type: 2}
   dialogueSprite: {fileID: -1107213468, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

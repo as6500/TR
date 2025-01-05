@@ -22,6 +22,6 @@ MonoBehaviour:
     what we need.
   dialogueFinishingQuest:
   - Aaaand the power is back! You are brave by going out there and saving others.
-    As a reward, I'll give you 5x pills.
+    As a reward, I'll give you 5 pills.
   nextDialogue: {fileID: 11400000, guid: f6a6d5efc029b6f48bea27cab5b126c1, type: 2}
   dialogueSprite: {fileID: -1299280691, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

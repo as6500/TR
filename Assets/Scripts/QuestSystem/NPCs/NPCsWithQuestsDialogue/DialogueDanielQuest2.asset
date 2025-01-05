@@ -23,7 +23,7 @@ MonoBehaviour:
     left? Any type of food that doesn\u2019t have mold in it would be amazing!"
   dialogueFinishingQuest:
   - This looks awesome!! And even with just a tiny bit of mold in the corner it looks
-    delicious! Thank you for giving us a change in the food section! Here are 3x
-    pills to help you stay healthy!
+    delicious! Thank you for giving us a change in the food section! Here are 3 pills
+    to help you stay healthy!
   nextDialogue: {fileID: 11400000, guid: c25991832309daf4bb4003adc0593c52, type: 2}
   dialogueSprite: {fileID: -1107213468, guid: 2427f13341305624696aa5a5b163fc33, type: 3}
