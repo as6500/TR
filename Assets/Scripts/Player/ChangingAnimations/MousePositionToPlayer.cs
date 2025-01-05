@@ -9,7 +9,6 @@ public class MousePositionToPlayer : MonoBehaviour
     [SerializeField] private int nullDistance;
 
     [SerializeField] private float currentAngle;
-    [SerializeField] private float currentWholeAngle;
 
     [SerializeField] private AudioSource stepOne;
     [SerializeField] private AudioSource stepTwo;
@@ -43,8 +42,6 @@ public class MousePositionToPlayer : MonoBehaviour
             return;
 
         currentAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-
-        currentWholeAngle = currentAngle;
 
         if (currentAngle < 45f && currentAngle > -45f)
         {
