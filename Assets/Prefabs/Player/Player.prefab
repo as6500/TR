@@ -1272,8 +1272,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0.037224784, y: -0.16130733}
+  m_Size: {x: 0.44540367, y: 1.6898992}
   m_Direction: 0
 --- !u!114 &4331395144439990795
 MonoBehaviour:
@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
   m_ComponentVersion: 1
-  m_HasRenderer: 1
+  m_HasRenderer: 0
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   - {x: -0.2008462, y: -0.47015095, z: 0}
   m_ShapePathHash: 1831644765
   m_Mesh: {fileID: 0}
-  m_InstanceId: 100724
+  m_InstanceId: 157416
   m_LocalBounds:
     m_Center: {x: -0.00065732, y: 0.00257802, z: 0}
     m_Extent: {x: 0.5031593, y: 0.4999442, z: 0}
@@ -2116,7 +2116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pocketBullets: 10
-  bulletsUI: {fileID: 0}
+  pistolUI: {fileID: 0}
 --- !u!114 &2381387438219204223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2230,15 +2230,15 @@ SpriteRenderer:
   m_SortingLayerID: -876654365
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1314571577, guid: 03aa4785fc76ef04eb5d9c5bf00a51c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8771450963634429957
