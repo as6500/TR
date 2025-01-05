@@ -51,32 +51,51 @@ public class HealthScript : MonoBehaviour, IDamageable
 
     public void DealDamage(float damageAmount)
     {
-        ModifyHealth(-damageAmount);
+        ModifyHealth(-damageAmount, PlayRandomHurtSound());
         canHeal = true;
         normalizedHealth = currentHealth / maxHealth;
-
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+    }
+
+    private AudioSource PlayRandomHurtSound()
+    {
+        int rand = Random.Range(0, 3);
+
+        if (rand == 0)
+        {
+            return audioManager.loseHealthOne;
+        }
+        else if (rand == 1)
+        {
+            return audioManager.loseHealthTwo;
+        }
+        else
+        {
+            return audioManager.loseHealthThree;
+        }
     }
 
     public void HealthRegen(float healAmount)
     {
         if (currentHealth < 100.0f)
         {
-			ModifyHealth(healAmount);
+			ModifyHealth(healAmount, audioManager.gainHealth);
 			OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
 		}
     }
 
     public void DamageFromRadiation(float damageAmount) //damage from radiation if player doesn't take an anti-radiation flask
     {
-        ModifyHealth(-damageAmount);
-		normalizedHealth = currentHealth / maxHealth;
-
-		OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+        ModifyHealth(-damageAmount, PlayRandomHurtSound());
+        StartCoroutine(DamageEffect());
+        normalizedHealth = currentHealth / maxHealth;
+        
+        OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
     }
 
-    public void ModifyHealth(float modifier)
+    public void ModifyHealth(float modifier, AudioSource audioManager)
     {
+        audioManager.Play();
         currentHealth = Mathf.Clamp(currentHealth + modifier, 0.0f, maxHealth);
         normalizedHealth = currentHealth / maxHealth;
     }
@@ -105,7 +124,6 @@ public class HealthScript : MonoBehaviour, IDamageable
         Vector2 tempKnockDirection = transform.position - instigator.transform.position;
         tempKnockDirection = tempKnockDirection.normalized;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        //rb.velocity += tempKnockDirection * force;
 
         rb.AddForce(tempKnockDirection * force);
     }
@@ -125,6 +143,10 @@ public class HealthScript : MonoBehaviour, IDamageable
     private IEnumerator DamageEffect()
     {
         spriteRenderer.color = bloodColor;
+        yield return new WaitForSeconds(damageEffectTimeSeconds);
+        spriteRenderer.color = mainColor;
+        yield return new WaitForSeconds(damageEffectTimeSeconds);
+        spriteRenderer.color = bloodColor; 
         yield return new WaitForSeconds(damageEffectTimeSeconds);
         spriteRenderer.color = mainColor;
     }

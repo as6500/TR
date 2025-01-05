@@ -129,6 +129,7 @@ public class Pistol : MonoBehaviour
     {
         if (MagBullets() > 0 && canShoot)
         {
+            audioManager.shoot.Play();
             StartBullet();
             AddOrRmvBullets(-1);
             particles.Play();

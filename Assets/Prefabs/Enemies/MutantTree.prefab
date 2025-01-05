@@ -73,11 +73,12 @@ GameObject:
   - component: {fileID: 5941527452807093446}
   - component: {fileID: 4611677336042694921}
   - component: {fileID: 1104557179027028902}
-  - component: {fileID: 3673937651156489891}
+  - component: {fileID: 4063085219234675834}
   - component: {fileID: 4467776829183699319}
   - component: {fileID: 471905545831886187}
   - component: {fileID: 2902481268434080716}
   - component: {fileID: -2513509869081210457}
+  - component: {fileID: 2432444884491912992}
   m_Layer: 0
   m_Name: MutantTree
   m_TagString: Enemy
@@ -141,8 +142,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1711166557
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.5754717, g: 0.52099717, b: 0.4261748, a: 1}
@@ -182,41 +183,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &3673937651156489891
-CapsuleCollider2D:
+--- !u!95 &4063085219234675834
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871030766902764616}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b838f99dc99a44e4b9b332484e0e89b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4467776829183699319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5409fe6038a867409a935620e315a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 4063085219234675834}
   coll: {fileID: 8880372667431002037}
   radius: 5
   attack: 0
@@ -259,6 +247,7 @@ MonoBehaviour:
   collectiblesHolder: {fileID: 0}
   dropProbability: 0.3
   enemyType: 0
+  animator: {fileID: 0}
 --- !u!114 &2902481268434080716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,20 +268,20 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: c5dbf060
   m_ShapePath:
-  - {x: -0.35912538, y: -0.88730043, z: 0}
-  - {x: -0.51088023, y: -0.59869826, z: 0}
-  - {x: -0.32390666, y: -0.31717652, z: 0}
-  - {x: -0.017819405, y: -0.16903079, z: 0}
-  - {x: 0.30981922, y: -0.31013274, z: 0}
-  - {x: 0.51750374, y: -0.59869826, z: 0}
-  - {x: 0.36616945, y: -0.873213, z: 0}
-  - {x: 0.017399311, y: -1.0072343, z: 0}
-  m_ShapePathHash: 969988937
+  - {x: -0.4581895, y: -2.6360888, z: 0}
+  - {x: -0.9775978, y: -2.1942492, z: 0}
+  - {x: -0.92223793, y: -1.7624422, z: 0}
+  - {x: -0.6565104, y: -1.4634991, z: 0}
+  - {x: 0.64998305, y: -1.441355, z: 0}
+  - {x: 0.94951, y: -1.7385473, z: 0}
+  - {x: 0.95067734, y: -2.3294475, z: 0}
+  - {x: 0.42444748, y: -2.6348248, z: 0}
+  m_ShapePathHash: 163447321
   m_Mesh: {fileID: 0}
-  m_InstanceId: 62716
+  m_InstanceId: 229366
   m_LocalBounds:
-    m_Center: {x: 0.0033117533, y: -0.58813256, z: 0}
-    m_Extent: {x: 0.514192, y: 0.41910177, z: 0}
+    m_Center: {x: -0.013460219, y: -2.038722, z: 0}
+    m_Extent: {x: 0.96413755, y: 0.5973669, z: 0}
 --- !u!114 &-2513509869081210457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +298,41 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!58 &2432444884491912992
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871030766902764616}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.028178215, y: -2.0217738}
+  serializedVersion: 2
+  m_Radius: 1.148035
 --- !u!1 &4699790991906567872
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,4 +399,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 10

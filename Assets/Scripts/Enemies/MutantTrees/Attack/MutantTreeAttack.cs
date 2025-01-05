@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MutantTreeAttack : MonoBehaviour
 {
+    [Header("Animations")]
+    [SerializeField] private Animator anim;
+
     [Header("Detect Player Settings")]
     [SerializeField] private CircleCollider2D coll;
     [SerializeField] private float radius;
@@ -15,28 +18,23 @@ public class MutantTreeAttack : MonoBehaviour
     [SerializeField] private GameObject sapOrigin;
     [SerializeField] private float shootDelaySeconds;
 
-    private Coroutine shootSapCor;
-
     void Update()
     {
         coll.radius = radius;
     }
 
-    private IEnumerator ShootSap()
+    private void ShootSap()
     {
-        while (true)
-        {
-            GameObject tempSap = Instantiate(sap, sapHolder.transform);
-            tempSap.GetComponent<Sap>().SapSetup(sapOrigin);
-            yield return new WaitForSeconds(shootDelaySeconds);
-        }
+        GameObject tempSap = Instantiate(sap, sapHolder.transform);
+        tempSap.GetComponent<Sap>().SapSetup(sapOrigin);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            shootSapCor = StartCoroutine(ShootSap());
+            anim.SetBool("idle", false);
+            anim.SetBool("attack", true);
         }
     }
 
@@ -44,7 +42,8 @@ public class MutantTreeAttack : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            StopCoroutine(shootSapCor);
+            anim.SetBool("idle", true);
+            anim.SetBool("attack", false);
         }
     }
 

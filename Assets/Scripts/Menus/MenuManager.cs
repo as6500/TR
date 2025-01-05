@@ -120,7 +120,7 @@ public class MenuManager : Singleton<MenuManager>
         audioManager.mouseClicking.Play();
         GameResume();
         Debug.Log("Reset game");
-        healthScript.ModifyHealth(100);
+        healthScript.ModifyHealth(100, audioManager.gainHealth);
         antiRadiationTimer.ShowRadiationUI();
         if (deathMenu != null){
             deathMenu.SetActive(false);
