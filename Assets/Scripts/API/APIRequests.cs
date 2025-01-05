@@ -14,7 +14,19 @@ public struct UnJasonedData
     public int unity_android_connection_id;
     public int unity_connection_code;
     public bool connection_successful;
-    public int collectibles_ids;
+    public bool collectible_found;
+    public int collectible_id1; 
+    public int collectible_id2; 
+    public int collectible_id3; 
+    public int collectible_id4; 
+    public int collectible_id5; 
+    public int collectible_id6; 
+    public int collectible_id7; 
+    public int collectible_id8; 
+    public int collectible_id9;
+    public int collectible_id10;
+    public int collectible_id11;
+    public int collectible_id12;
 }
 
 public class APIRequests : MonoBehaviour

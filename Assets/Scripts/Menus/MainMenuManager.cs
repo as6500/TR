@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     [Header("API Connection")]
     [SerializeField] private APIRequests APIReq;
     [SerializeField] private CreateConnection createConnection;
+    [SerializeField] private CloseConnection closeConnection;
 
     [Header("Main Menu")]
     [SerializeField] private GameObject mainOptions;
@@ -81,13 +82,20 @@ public class MainMenuManager : MonoBehaviour
         connectionCodeText.text = data.unity_connection_code.ToString();
     }
 
+    public void CancelSearch()
+    {
+        closeConnection.CloseExistingConnection();
+        GoToAppView();
+    }
+
     public void LeaveGame()
     {
-
 #if UNITY_EDITOR
+        closeConnection.CloseExistingConnection();
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+        closeConnection.CloseExistingConnection();
+        Application.Quit();
 #endif
     }
 }

@@ -55,9 +55,4 @@ public class CreateConnection : APIRequests
             SearchingForConnection();
         }
     }
-
-    private void CloseConnection()
-    {
-        //CloseConnection
-    }
 }

@@ -7,6 +7,9 @@ public enum MapRegion { Bunker, Outside, Road, Farm, City }
 
 public class Treasure : MonoBehaviour
 {
+    [Header("API connection")]
+    [SerializeField] private PlayerStatsMetalDetector playerStats;
+
     [Header("Collectible Stats")]
     [SerializeField] private bool isInRange;
     [field: SerializeField] public bool caught { get; private set; }
@@ -15,21 +18,27 @@ public class Treasure : MonoBehaviour
     [field: SerializeField] public MapRegion mapRegion { get; private set; }
     [field: SerializeField] public string sceneName { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
+        position = transform.position;
         isInRange = false;
         caught = false;
-        position = transform.position;
+    }
+
+    private void Start()
+    {
+        playerStats = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatsMetalDetector>();
     }
 
     void Update()
     {
-        if (!caught)
+        if (!caught && gameObject.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (isInRange)
                 {
+                    playerStats.CaughtTreasure(id);
                     caught = true;
                     gameObject.SetActive(false);
                 }

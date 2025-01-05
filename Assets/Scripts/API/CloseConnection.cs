@@ -11,7 +11,7 @@ public class CloseConnection : APIRequests
         APIReq = gameObject.GetComponent<APIRequests>();
     }
 
-    private void CloseExistingConnection()
+    public void CloseExistingConnection()
     {
         WWWForm formData = new WWWForm();
         formData.AddField("unity_connection_id", APIReq.unity_connection_id);

@@ -14,6 +14,7 @@ public class MenuManager : Singleton<MenuManager>
 
     [Header ("API Connection")]
     [SerializeField] private CreateConnection APIRequests;
+    [SerializeField] private PlayerStatsMetalDetector playerStats;
 
     [Header("Choose Menu")]
     [SerializeField] private Menu menu;
@@ -40,6 +41,7 @@ public class MenuManager : Singleton<MenuManager>
         {
             ChangeGameState(isMenuActive);
         }
+        playerStats = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatsMetalDetector>();
     }
 
     //In-Game Menu Functions
@@ -75,6 +77,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LeaveToMainMenu()
     {
+        GameResume();
         Debug.Log("Leaving to main menu");
         DestroyObjects();
         SceneManager.LoadScene("Main Menu");
@@ -114,6 +117,7 @@ public class MenuManager : Singleton<MenuManager>
     {
         if (currentHealth <= 0)
         {
+            playerStats.SendUpdatedPlayerStats();
             ShowDeathScreen();
             GamePause();
         }

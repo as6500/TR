@@ -8,11 +8,10 @@ public class SpawnTreasure : Singleton<SpawnTreasure>
 {
     [SerializeField] private PlayerStatsMetalDetector playerStats;
     [SerializeField] private List<GameObject> collectibles;
-    [SerializeField] private MenuManager menuManager;
 
     private void Start()
     {
-        for(int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
@@ -20,30 +19,32 @@ public class SpawnTreasure : Singleton<SpawnTreasure>
                 transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
             }        
         }
-        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        playerStats = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatsMetalDetector>();
+        playerStats.SetTreasures(this);
     }
 
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    public void ShowFoundTreasures(List<int?> treasuresIds)
     {
-        if (arg0.name == "BunkerInside")
+        for (int i = 0; i < treasuresIds.Count; i++)
         {
-            menuManager.GameResume();
-        }
-        
-        if (collectibles.Count > 0)
-        {
-            for (int i = 0; i < collectibles.Count; i++)
+            Debug.Log(treasuresIds[i]);
+            if (treasuresIds[i] != null)
             {
-                if (collectibles[i] != null)
+                for (int j = 0; j < collectibles.Count; j++)
                 {
-                    Treasure collectibleStats = collectibles[i].GetComponent<Treasure>();
-                    if (arg0.name == collectibleStats.sceneName && !collectibleStats.caught)
+                    Treasure collectibleStats = collectibles[j].GetComponent<Treasure>();
+                    Debug.Log(collectibles[j]);
+                    if (treasuresIds[i] == collectibleStats.id)
                     {
-                        collectibles[i].SetActive(true);
-                    }
-                    else
-                    {
-                        collectibles[i].SetActive(false);
+                        if (SceneManager.GetActiveScene().name == collectibleStats.sceneName && !collectibleStats.caught)
+                        {
+                            collectibles[j].SetActive(true);
+                        }
+                        else
+                        {
+                            collectibles[j].SetActive(false);
+                        }
                     }
                 }
             }

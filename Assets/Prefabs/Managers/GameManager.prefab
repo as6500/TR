@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3443429002535122566}
   - component: {fileID: 3417967892341083257}
   - component: {fileID: 7726509357860679486}
+  - component: {fileID: 3389580280585068694}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -60,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c566cda405242408b0c3e6348653e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  APIReq: {fileID: 0}
   playerStats: {fileID: 0}
 --- !u!114 &3443429002535122566
 MonoBehaviour:
@@ -73,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3dc42debbdd194f9dddca074744e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  APIReq: {fileID: 0}
   secondsBetweenStatsUpdate: 1
 --- !u!114 &3417967892341083257
 MonoBehaviour:
@@ -102,3 +105,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2781b14772eac240a149280aef91ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3389580280585068694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7893628564868122563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf255a548e39cd4d9b1d19234efafe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIReq: {fileID: 0}
