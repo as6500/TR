@@ -33,6 +33,7 @@ TagManager:
   - FadeInAndOutBlackScreen
   - MenuManager
   - GameManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

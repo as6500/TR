@@ -1,46 +1,96 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("Music")]
-    [SerializeField] private AudioSource MainMenuMusic;
-    [SerializeField] private AudioSource GamePlayMusic;
+    [field: Header("Music")]
+    [field: SerializeField] public AudioSource mainMenuMusic { get; set; }
+    [field: SerializeField] public AudioSource gamePlayMusic { get; set; }
 
-    [Header("SoundEffects")]
-    [SerializeField] private AudioSource buttonSelecting;
-    [SerializeField] private AudioSource mouseClicking;
-    [SerializeField] private AudioSource deathSound;
+    [field: Header("SoundEffects")]
+    [field: SerializeField] public AudioSource buttonSelecting { get; set; }
+    [field: SerializeField] public AudioSource mouseClicking { get; set; }
+    [field: SerializeField] public AudioSource deathSound { get; set; }
 
-    [Header("Player")]
-    [Header("   Movement")]
-    [SerializeField] private AudioSource stepOneSolidFloor;
-    [SerializeField] private AudioSource stepTwoSolidFloor;
-    [SerializeField] private AudioSource stepOneSandFloor;
-    [SerializeField] private AudioSource stepTwoSandFloor;
-    
-    [Header("   Weapons")]
-    [SerializeField] private AudioSource shoot;
-    [SerializeField] private AudioSource swingOne;
-    [SerializeField] private AudioSource swingTwo;
+    [field:Header("Player")]
+    [field: Header("   Movement")]
+    [field: SerializeField] public AudioSource stepOneSolidFloor { get; set; }
+    [field: SerializeField] public AudioSource stepTwoSolidFloor { get; set; }
+    [field: SerializeField] public AudioSource stepOneSandFloo { get; set; }
+    [field: SerializeField] public AudioSource stepTwoSandFloor { get; set; }
 
-    [Header("   Health")]
-    [SerializeField] private AudioSource loseHealthOne;
-    [SerializeField] private AudioSource loseHealthTwo;
-    [SerializeField] private AudioSource loseHealthThree;
-    [SerializeField] private AudioSource gainHealth;
+    [field: Header("   Weapons")]
+    [field: SerializeField] public AudioSource shoot { get; set; }
+    [field: SerializeField] public AudioSource swingOne { get; set; }
+    [field: SerializeField] public AudioSource swingTwo { get; set; }
 
-    [Header("   FlashLight")]
-    [SerializeField] private AudioSource flashlightOn;
-    [SerializeField] private AudioSource flashlightOff;
+    [field: Header("   Health")]
+    [field: SerializeField] public AudioSource loseHealthOne { get; set; }
+    [field: SerializeField] public AudioSource loseHealthTwo { get; set; }
+    [field: SerializeField] public AudioSource loseHealthThree { get; set; }
+    [field: SerializeField] public AudioSource gainHealth { get; set; }
 
-    [Header("Enemies")]
-    [Header("   MutantTree")]
-    [SerializeField] private AudioSource sapOne;
-    [SerializeField] private AudioSource sapTwo;
-    [SerializeField] private AudioSource sapThree;
+    [field: Header("   FlashLight")]
+    [field: SerializeField] public AudioSource flashlightOn { get; set; }
+    [field: SerializeField] public AudioSource flashlightOff { get; set; }
 
-    [Header("   Worm")]
-    [SerializeField] private AudioSource drag;
+    [field: Header("Enemies")]
+    [field: Header("   MutantTree")]
+    [field: SerializeField] public AudioSource sapOne { get; set; }
+    [field: SerializeField] public AudioSource sapTwo { get; set; }
+    [field: SerializeField] public AudioSource sapThree { get; set; }
+
+    [field: Header("   Worm")]
+    [field: SerializeField] public AudioSource drag { get; set; }
+
+    private string currentSceneName;
+
+    //DontDestroyOnLoad
+
+    private static AudioManager instance;
+    public static AudioManager Instance { get { return instance; } }
+
+    protected virtual void Awake()
+    {
+        if (instance != null && this.gameObject != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        currentSceneName = SceneManager.GetActiveScene().name;
+        mainMenuMusic.Play();
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        if(arg0.name == "Main Menu")
+        {
+            currentSceneName = arg0.name;
+            gamePlayMusic.Stop();
+            mainMenuMusic.Play();
+        }
+        else if (currentSceneName == "Main Menu" && arg0.name != "Main Menu")
+        {
+            currentSceneName = arg0.name;
+            gamePlayMusic.Play();
+            mainMenuMusic.Stop();
+        }
+        else if (currentSceneName != "Main Menu" && arg0.name != "Main Menu")
+        {
+            currentSceneName = arg0.name;
+        }
+    }
 }

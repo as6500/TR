@@ -12,6 +12,9 @@ public class MenuManager : Singleton<MenuManager>
 {
     private enum Menu {InGameMenu, DeathMenu};
 
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+
     [Header ("API Connection")]
     [SerializeField] private CreateConnection APIRequests;
     [SerializeField] private PlayerStatsMetalDetector playerStats;
@@ -42,6 +45,7 @@ public class MenuManager : Singleton<MenuManager>
             ChangeGameState(isMenuActive);
         }
         playerStats = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatsMetalDetector>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     //In-Game Menu Functions
@@ -77,6 +81,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LeaveToMainMenu()
     {
+        audioManager.mouseClicking.Play();
         GameResume();
         Debug.Log("Leaving to main menu");
         DestroyObjects();
@@ -103,6 +108,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void ResetGame()
     {
+        audioManager.mouseClicking.Play();
         GameResume();
         Debug.Log("Reset game");
         healthScript.ModifyHealth(100);
@@ -117,6 +123,7 @@ public class MenuManager : Singleton<MenuManager>
     {
         if (currentHealth <= 0)
         {
+            audioManager.deathSound.Play();
             playerStats.SendUpdatedPlayerStats();
             ShowDeathScreen();
             GamePause();
@@ -136,22 +143,26 @@ public class MenuManager : Singleton<MenuManager>
 
     public void ChangeGameState(bool state)
     {
+        audioManager.mouseClicking.Play();
         isMenuActive = state;
         inGameMenu.SetActive(isMenuActive);
     }
 
     public void ShowMap()
     {
+        audioManager.mouseClicking.Play();
         map.transform.SetAsLastSibling();
     }
 
     public void ShowCollectibles()
     {
+        audioManager.mouseClicking.Play();
         collectibles.transform.SetAsLastSibling();
     }
 
     public void ShowSettings()
     {
+        audioManager.mouseClicking.Play();
         settings.transform.SetAsLastSibling();
     }
 
@@ -159,12 +170,12 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LeaveGame()
     {
-
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
-            Application.Quit();
-    #endif
+        audioManager.mouseClicking.Play();
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     public bool IsMenuActive()
