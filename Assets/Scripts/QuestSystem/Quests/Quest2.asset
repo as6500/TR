@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest2
   m_EditorClassIdentifier: 
   id: 1
-  displayName: Lost in The Dark
+  displayName: Lost in the dark
   type: 0
   typeParam: 1
   typeCount: 1

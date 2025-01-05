@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: DialogueMany
   m_EditorClassIdentifier: 
   dialogueWithQuest:
-  - A long time ago, when I worked as an engineer in one of those tall buildings
-    with only windows, I hid a bottle of alcohol inside my office.
-  - Please try to find its location so I can later go pick it up, because in these
-    times... a bit of alcohol calms my soul.
+  - "I left my car outside with my toolbox inside, near some weird and spooky trees.
+    It\u2019s probably destroyed now because of the meteors.."
+  - "Please try to find its location so I can go back later and pick up my toolbox,if
+    it\u2019s still there."
   dialogueFinishingQuest:
-  - 'I appreciate that you found it! Here is a little gift for the trouble: 5x pills
-    and 10x bullets. Good luck with the other guys.. They are a little crazy sometimes.'
+  - 'Thank god the car was still in the same place despite being destroyed.. Here
+    is a little gift for the trouble: 5 pills and 10 bullets. Good luck out there!'
   nextDialogue: {fileID: 11400000, guid: ec11b6bfee76bad4badbd2f0aeb99a46, type: 2}
   dialogueSprite: {fileID: 1890214329, guid: 2427f13341305624696aa5a5b163fc33, type: 3}

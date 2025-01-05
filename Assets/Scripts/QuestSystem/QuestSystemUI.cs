@@ -30,7 +30,7 @@ public class QuestSystemUI : MonoBehaviour
 	public void DisplayLocateQuestText(string questName, string itemName)
 	{
 		questText.enabled = true;
-		questText.text = $"{questName}: \nFind the location of a {itemName} \n";
+		questText.text = $"{questName}: \nFind the location of {itemName} \n";
 	}
 
 	public void DisplayLocateDeliverText(string questName, string npcName)

@@ -143,6 +143,7 @@ public class QuestManager : Singleton<QuestManager>
 			return;
 		
 		rewards.GetRewards();
+		titleText.enabled = false;
 		if(activeQuest.npc.id != activeQuest.nextQuest.npc.id)
 			finishedQuest?.Invoke(npcs[activeQuest.npc.id].GetComponent<NPCInteractable>());
 		activeQuestItemCounter = 0;

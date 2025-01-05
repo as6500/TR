@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Quest1
   m_EditorClassIdentifier: 
   id: 0
-  displayName: Explore the World
+  displayName: Find Many's car
   type: 1
   typeParam: 0
   typeCount: 1
-  typeName: bottle of alcohol
-  descriptionOfQuest: A long time ago, when i worked as an engineer in one of those
-    tall buildings with only windows, I hid a bottle of alcohol inside my office.
-    Please try to find its location so I can later go pick it up, because in these
-    times... a bit of alcohol calms my soul.
+  typeName: Many's car
+  descriptionOfQuest: "I left my car outside with my toolbox inside, near some weird
+    and spooky trees. It\u2019s probably destroyed now because of the meteors.. Please
+    try to find its location so I can go back later and pick up my toolbox, if it\u2019s
+    still there."
   npc: {fileID: 11400000, guid: ca9f231201e5f6b4490ef182c266a647, type: 2}
   nextQuest: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}
   rewardItemType: 0000000001000000
