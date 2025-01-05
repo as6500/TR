@@ -37427,7 +37427,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 462448adfea0fc040b97f24b1467b970, type: 3}
     - target: {fileID: 1671613016370293660, guid: 37bd2bb5dc96c5942acab3e68efa6749, type: 3}
       propertyPath: m_Name
-      value: Back TO main Menu
+      value: Back To main Menu
       objectReference: {fileID: 0}
     - target: {fileID: 1691543554458677594, guid: 37bd2bb5dc96c5942acab3e68efa6749, type: 3}
       propertyPath: m_AnchoredPosition.y
