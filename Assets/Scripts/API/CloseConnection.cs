@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloseConnection : MonoBehaviour
+public class CloseConnection : APIRequests
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private APIRequests APIReq;
+
+    private void Start()
     {
-        
+        APIReq = gameObject.GetComponent<APIRequests>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CloseExistingConnection()
     {
-        
+        WWWForm formData = new WWWForm();
+        formData.AddField("unity_connection_id", APIReq.unity_connection_id);
+        StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/unityConnection/close", formData));
     }
 }

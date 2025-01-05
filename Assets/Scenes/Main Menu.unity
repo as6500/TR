@@ -2659,7 +2659,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7726509357860679486, guid: ce0a515142720e94b965596ad42e2ee6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2684,6 +2685,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb3dc42debbdd194f9dddca074744e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1955968294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5942236435155845779, guid: ce0a515142720e94b965596ad42e2ee6, type: 3}
+  m_PrefabInstance: {fileID: 1955968286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda4f6b11b51b9b479307b79abfed059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1960354871
@@ -3015,6 +3027,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuManager
       objectReference: {fileID: 0}
+    - target: {fileID: 960896982984971094, guid: d28741f2ac5f7ca41bc7a73b7f681d84, type: 3}
+      propertyPath: m_TagString
+      value: MenuManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343541929993718226, guid: d28741f2ac5f7ca41bc7a73b7f681d84, type: 3}
+      propertyPath: APIReq
+      value: 
+      objectReference: {fileID: 1955968294}
     - target: {fileID: 3343541929993718226, guid: d28741f2ac5f7ca41bc7a73b7f681d84, type: 3}
       propertyPath: appView
       value: 
@@ -3035,6 +3055,10 @@ PrefabInstance:
       propertyPath: settingsView
       value: 
       objectReference: {fileID: 770267344}
+    - target: {fileID: 3343541929993718226, guid: d28741f2ac5f7ca41bc7a73b7f681d84, type: 3}
+      propertyPath: createConnection
+      value: 
+      objectReference: {fileID: 1955968288}
     - target: {fileID: 3343541929993718226, guid: d28741f2ac5f7ca41bc7a73b7f681d84, type: 3}
       propertyPath: connectionCodeText
       value: 

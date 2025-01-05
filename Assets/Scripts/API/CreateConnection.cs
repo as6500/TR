@@ -6,43 +6,49 @@ using UnityEngine.UI;
 
 public class CreateConnection : APIRequests
 {
+    [SerializeField] private APIRequests APIReq;
     [SerializeField] private PlayerStatsMetalDetector playerStats;
     private Action firstCallback;
     private Action secondCallback;
 
+    private void Start()
+    {
+        APIReq = gameObject.GetComponent<APIRequests>();
+    }
+
     public void CreateNewConnection(Action firstCallback = null, Action secondCallback = null)
     {
         WWWForm formData = new WWWForm();
-        formData.AddField("unity_connection_id", unity_connection_id);
+        formData.AddField("unity_connection_id", APIReq.unity_connection_id);
         this.firstCallback = firstCallback;
         this.secondCallback = secondCallback;
 
-        StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/unityConnection/create", formData, StartSearchForConnection));
+        StartCoroutine(APIReq.PostRequest("https://the-rumble-server.vercel.app/unityConnection/create", formData, StartSearchForConnection));
     }
 
     private void StartSearchForConnection()
     {
         firstCallback();
-        unity_connection_id = response.unity_connection_id;
-        unity_connection_code = response.unity_connection_code;
+        APIReq.unity_connection_id = APIReq.response.unity_connection_id;
+        APIReq.unity_connection_code = APIReq.response.unity_connection_code;
         SearchingForConnection();
     }
 
     public void SearchingForConnection() 
     {
         WWWForm formData = new WWWForm();
-        formData.AddField("unity_connection_id", unity_connection_id);
-        formData.AddField("unity_connection_code", unity_connection_code);
-        StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/unityConnection/search", formData, CheckConnection));
+        formData.AddField("unity_connection_id", APIReq.unity_connection_id);
+        formData.AddField("unity_connection_code", APIReq.unity_connection_code);
+        StartCoroutine(APIReq.PostRequest("https://the-rumble-server.vercel.app/unityConnection/search", formData, CheckConnection));
     }
 
     private void CheckConnection()
     {
-        if (response.connection_successful)
+        if (APIReq.response.connection_successful)
         {
-            unity_android_connection_id = response.unity_android_connection_id;
+            APIReq.unity_android_connection_id = APIReq.response.unity_android_connection_id;
             secondCallback();
-            playerStats.CreatePlayerStats(unity_android_connection_id);
+            playerStats.CreatePlayerStats();
         }
         else
         {

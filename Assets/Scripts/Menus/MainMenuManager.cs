@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     [Header("API Connection")]
-    [SerializeField] private CreateConnection APIRequests;
+    [SerializeField] private APIRequests APIReq;
+    [SerializeField] private CreateConnection createConnection;
 
     [Header("Main Menu")]
     [SerializeField] private GameObject mainOptions;
@@ -70,12 +71,12 @@ public class MainMenuManager : MonoBehaviour
 
     public void GetConnectionCode()
     {
-        APIRequests.CreateNewConnection(ShowCode, GoBackAppView);
+        createConnection.CreateNewConnection(ShowCode, GoBackAppView);
     }
 
     private void ShowCode()
     {
-        UnJasonedData data = APIRequests.response;
+        UnJasonedData data = APIReq.response;
         GoToCodeView();
         connectionCodeText.text = data.unity_connection_code.ToString();
     }

@@ -71,8 +71,10 @@ public class AntiRadiationTimer : MonoBehaviour
 
 	public void ShowRadiationUI()
 	{
-		TimerAntiRadiation.enabled = true;
-		TimerText.enabled = true;
+		if (TimerAntiRadiation)
+		{
+			TimerAntiRadiation.enabled = true;
+			TimerText.enabled = true;
+		}
 	}
-	
 }

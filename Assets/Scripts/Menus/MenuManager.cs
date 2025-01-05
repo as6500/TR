@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -67,7 +68,7 @@ public class MenuManager : Singleton<MenuManager>
         Time.timeScale = 0;
     }
 
-    private void GameResume()
+    public void GameResume()
     {
         Time.timeScale = 1;
     }

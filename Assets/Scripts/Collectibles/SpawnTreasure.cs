@@ -8,6 +8,7 @@ public class SpawnTreasure : Singleton<SpawnTreasure>
 {
     [SerializeField] private PlayerStatsMetalDetector playerStats;
     [SerializeField] private List<GameObject> collectibles;
+    [SerializeField] private MenuManager menuManager;
 
     private void Start()
     {
@@ -24,6 +25,11 @@ public class SpawnTreasure : Singleton<SpawnTreasure>
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
+        if (arg0.name == "BunkerInside")
+        {
+            menuManager.GameResume();
+        }
+        
         if (collectibles.Count > 0)
         {
             for (int i = 0; i < collectibles.Count; i++)

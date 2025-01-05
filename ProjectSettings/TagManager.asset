@@ -31,6 +31,7 @@ TagManager:
   - Treasure
   - EnvironmentManager
   - FadeInAndOutBlackScreen
+  - MenuManager
   layers:
   - Default
   - TransparentFX

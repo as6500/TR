@@ -5,15 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatsMetalDetector : APIRequests
 {
+    [SerializeField] private APIRequests APIReq;
     [SerializeField] private int secondsBetweenStatsUpdate = 1;
     private GameObject player;
 
     private void Start()
     {
+        APIReq = gameObject.GetComponent<APIRequests>();
         FindPlayerInScene();
     }
 
-    private IEnumerator UpdatePlayerStats(int unity_android_connection_id)
+    private IEnumerator UpdatePlayerStats()
     {
         while (true)
         {
@@ -29,8 +31,8 @@ public class PlayerStatsMetalDetector : APIRequests
                 formData.AddField("player_position_x", player.transform.position.x.ToString());
                 formData.AddField("player_position_y", player.transform.position.y.ToString());
                 formData.AddField("player_regionOfMap", SceneNameToInt(SceneManager.GetActiveScene().name));
-                formData.AddField("unity_android_connection_id", unity_android_connection_id.ToString());
-                StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/playerStats/updatePositions", formData, ShowResponseMessage));
+                formData.AddField("unity_android_connection_id", APIReq.unity_android_connection_id.ToString());
+                StartCoroutine(APIReq.PostRequest("https://the-rumble-server.vercel.app/playerStats/updatePositions", formData, ShowResponseMessage));
             }
         }
     }
@@ -42,18 +44,18 @@ public class PlayerStatsMetalDetector : APIRequests
 
     private void ShowResponseMessage()
     {
-        Debug.Log(response.message);
+        Debug.Log(APIReq.response.message);
     }
 
-    public void CreatePlayerStats(int unity_android_connection_id)
+    public void CreatePlayerStats()
     {
         WWWForm formData = new WWWForm();
         formData.AddField("player_position_x", 0);
         formData.AddField("player_position_y", 0);
         formData.AddField("player_regionOfMap", SceneNameToInt(SceneManager.GetActiveScene().name));
-        formData.AddField("unity_android_connection_id", unity_android_connection_id.ToString());
-        StartCoroutine(PostRequest("https://the-rumble-server.vercel.app/playerStats/createPositions", formData));
-        StartCoroutine(UpdatePlayerStats(unity_android_connection_id));
+        formData.AddField("unity_android_connection_id", APIReq.unity_android_connection_id.ToString());
+        StartCoroutine(APIReq.PostRequest("https://the-rumble-server.vercel.app/playerStats/createPositions", formData));
+        StartCoroutine(UpdatePlayerStats());
     }
 
     private int SceneNameToInt(string sceneName)

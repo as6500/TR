@@ -24,7 +24,8 @@ public class APIRequests : MonoBehaviour
     public int unity_connection_code { get; set; }
     public UnJasonedData response { 
         get; 
-        private set; }
+        private set; 
+    }
 
     private void Start()
     {
