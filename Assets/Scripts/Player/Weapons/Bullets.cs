@@ -24,7 +24,6 @@ public class Bullets : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         startPoint = GameObject.FindGameObjectWithTag("BulletOrigin");
         transform.position = startPoint.transform.position;
-        //gameObject.SetActive(false);
     }
 
     private void Update()
@@ -54,7 +53,6 @@ public class Bullets : MonoBehaviour
 
     private Vector3 BulletDirection()
     {
-       // transform.position = startPoint.transform.position;
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerP = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         Vector3 objectP = Camera.main.WorldToScreenPoint(playerP);
@@ -112,7 +110,6 @@ public class Bullets : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //Funções bue fixes
     private Vector3 Norm(Vector3 vec)
     {
         float mag = Mag(vec);

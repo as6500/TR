@@ -130,7 +130,7 @@ public class MenuManager : Singleton<MenuManager>
 
     private void CheckPlayerDeath(float currentHealth)
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && deathMenu.activeSelf == false)
         {
             audioManager.deathSound.Play();
             playerStats.SendUpdatedPlayerStats();
