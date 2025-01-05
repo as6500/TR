@@ -27,5 +27,5 @@ MonoBehaviour:
   nextQuest: {fileID: 11400000, guid: cc6803dd49510bc459b9f37b6040df55, type: 2}
   rewardItemType: 00000000
   rewardItemQuantities: 05000000
-  sceneNameForItems: Farm
+  sceneNameForItems: FarmInsideBuildings
   buildingTypeForItems: 25

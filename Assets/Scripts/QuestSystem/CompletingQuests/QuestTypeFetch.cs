@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class QuestTypeFetch : MonoBehaviour
 {
@@ -19,6 +21,11 @@ public class QuestTypeFetch : MonoBehaviour
 	private void OnEnable()
 	{
 		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
+
+	private void OnDisable()
+	{
+		SceneManager.sceneLoaded -= OnSceneLoaded;
 	}
 
 	private void Update()

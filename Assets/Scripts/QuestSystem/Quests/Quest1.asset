@@ -26,5 +26,5 @@ MonoBehaviour:
   nextQuest: {fileID: 11400000, guid: 445fe398ed33fe34a9fb9991fc8988ec, type: 2}
   rewardItemType: 0000000001000000
   rewardItemQuantities: 050000000a000000
-  sceneNameForItems: Outside
+  sceneNameForItems: BunkerOutside
   buildingTypeForItems: -1

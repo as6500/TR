@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum MapRegion { Bunker, Outside, Road, Farm, City }
@@ -9,6 +6,9 @@ public class Treasure : MonoBehaviour
 {
     [Header("API connection")]
     [SerializeField] private PlayerStatsMetalDetector playerStats;
+    
+    [Header("Collectible In-Game Menu")]
+    [SerializeField] private GameObject UICollectible;
 
     [Header("Collectible Stats")]
     [SerializeField] private bool isInRange;
@@ -41,6 +41,7 @@ public class Treasure : MonoBehaviour
                     playerStats.CaughtTreasure(id);
                     caught = true;
                     gameObject.SetActive(false);
+                    UICollectible.SetActive(false);
                 }
             }
         }
