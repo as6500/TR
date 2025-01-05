@@ -8,10 +8,9 @@ public class CheatCodes : MonoBehaviour
     [SerializeField] private PillsScript pillsScript;
     [SerializeField] private PillsUIScript pillsUIScript;
     [SerializeField] private AntiRadiationFlaskUIScript antiRadiationFlaskUIScript;
-    [SerializeField] private GameObject treasure;
     [SerializeField] private EntrancesAndExits entrancesAndExits;
     [SerializeField] private QuestManager questManager;
-    private GameObject tempTreasure;
+    [SerializeField] private PocketBullets bullets;
 
     void Update()
     {
@@ -44,18 +43,7 @@ public class CheatCodes : MonoBehaviour
         {
             antiRadiationScript.UpdateFlasks(80);
             pillsScript.UpdatePills(80);
+            bullets.UpdateBullets(100);
         }
-
-        if (Input.GetKeyDown(KeyCode.L)) // treasure found and activates the treasure
-        {
-            if (tempTreasure == null && SceneManager.GetActiveScene().name == "BunkerOutside")
-            {
-                tempTreasure = Instantiate(treasure);
-                tempTreasure.transform.position = new Vector3(-25, 5, 0);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-            questManager.activeQuestState = QuestState.Completed;
     }
 }
