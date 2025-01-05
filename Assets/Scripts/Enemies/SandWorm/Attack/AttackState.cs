@@ -65,6 +65,7 @@ public class AttackState : StateBehaviour
         {
             audioManager.drag.Play();
         }
+
         // if (isUnderground == true)
         // {
         //     animator.SetBool("isUnderGround", true);

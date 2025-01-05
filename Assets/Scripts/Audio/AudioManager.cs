@@ -76,7 +76,8 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        if(arg0.name == "Main Menu")
+        drag.Stop();
+        if (arg0.name == "Main Menu")
         {
             currentSceneName = arg0.name;
             gamePlayMusic.Stop();

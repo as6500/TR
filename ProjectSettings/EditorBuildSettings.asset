@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MapInside/2ndFloorBuilding1.unity
     guid: 078ed9ba3e453e541bddcac6d35ba0a0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MapInside/3rdFloorBuilding1.unity
     guid: 0f8d2843741f36b40a7e1e4961888ddc
   - enabled: 1
