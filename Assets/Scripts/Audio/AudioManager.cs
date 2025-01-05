@@ -8,6 +8,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource MainMenuMusic;
     [SerializeField] private AudioSource GamePlayMusic;
 
+    [Header("SoundEffects")]
+    [SerializeField] private AudioSource buttonSelecting;
+    [SerializeField] private AudioSource mouseClicking;
+    [SerializeField] private AudioSource deathSound;
+
     [Header("Player")]
     [Header("   Movement")]
     [SerializeField] private AudioSource stepOneSolidFloor;
